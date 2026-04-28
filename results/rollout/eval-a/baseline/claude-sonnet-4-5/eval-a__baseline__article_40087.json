@@ -1,0 +1,83 @@
+{
+  "scenario_id": "eval-a__baseline__article_40087",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_40087",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:baseline",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Kid Rock Buries Bad Bunny in TMZ's Post-Super Bowl Halftime Show Poll 31 Chris Graythen/Getty ImagesWarner Todd Huston11",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/entertainment/2026/02/11/kid-rock-buries-bad-bunny-in-tmzs-post-super-bowl-halftime-show-poll/",
+    "created_at": "2026-02-11 17:24:04"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: Kid Rock Buries Bad Bunny in TMZ's Post-Super Bowl Halftime Show Poll 31 Chris Graythen/Getty ImagesWarner Todd Huston11\nSOURCE: Breitbart Fact Check\n\nARTICLE:\n\nKid Rock Buries Bad Bunny in TMZ's Post-Super Bowl Halftime Show Poll 31 Chris Graythen/Getty ImagesWarner Todd Huston11 Feb 2026 Kid Rock buried Puerto Rican rapper Bad Bunny in the gossip site TMZ's poll asking fans their feelings about the 2026 Super Bowl Halftime show, with Rock nearly doubling Bad Bunny's support. The poll may not have gone exactly how TMZ expected as Kid Rock soared ahead of Bad Bunny with 64.5 percent saying Rock had the better show to Bad Bunny's 35.5 percent before TMZ shut the poll down. TMZ tried its best to lead its fans to pick Bad Bunny by characterizing the rabidly anti-Trump rapper's show as taking place on \"one of the world's biggest stages,\" while merely saying that Kid Rock \"tried to outshine\" Bad Bunny. The site also frontloaded the poll by putting Bad Bunny's name first, writing, \"Who had the better halftime show — Bad Bunny or Kid Rock?\" Fans did not fall for the push… Many fans jumped on TMZ's X post to joke that the poll probably wasn't going in the direction the gossip site thought it would. According to some of the latest statistics, it seems that nearly half of Super Bowl viewers tuned out of the league's Bad Bunny Halftime Show. Finally, in a strange turn of events, rapper Bad Bunny wiped all his social media accounts immediately after his Super Bowl performance. Follow Warner Todd Huston on Facebook at: Facebook.com/Warner.Todd.Huston, Truth Social @WarnerToddHuston, or at X/Twitter @WTHuston EntertainmentPoliticsSportsBad BunnyKid RockSuper BowlTMZTurning Point USA\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"Kid Rock Buries Bad Bunny\",\n    \"explanation\": \"The word 'buries' is inflammatory and exaggerated language designed to frame the poll result as a complete domination, rather than using neutral terms like 'leads' or 'wins.'\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"rabidly anti-Trump rapper\",\n    \"explanation\": \"The descriptor 'rabidly' is emotionally charged and pejorative, designed to negatively characterize Bad Bunny's political views rather than neutrally reporting them. This is irrelevant to a halftime show poll and serves to bias readers against Bad Bunny.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"TMZ tried its best to lead its fans to pick Bad Bunny by characterizing the rabidly anti-Trump rapper's show as taking place on 'one of the world's biggest stages,' while merely saying that Kid Rock 'tried to outshine' Bad Bunny.\",\n    \"explanation\": \"The article selectively interprets TMZ's language as intentionally biased without providing evidence of such intent, while omitting that describing the Super Bowl as 'one of the world's biggest stages' is objectively accurate and standard journalism.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"The poll may not have gone exactly how TMZ expected\",\n    \"explanation\": \"This suggests without evidence that TMZ had predetermined expectations or bias, implying a conspiracy or agenda without substantiation.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"The site also frontloaded the poll by putting Bad Bunny's name first\",\n    \"explanation\": \"The article frames standard alphabetical or chronological ordering as evidence of bias, without acknowledging that one name must come first in any binary poll question.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Fans did not fall for the push…\",\n    \"explanation\": \"This implies TMZ was attempting to manipulate results ('the push') without providing concrete evidence, suggesting conspiracy.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Many fans jumped on TMZ's X post to joke that the poll probably wasn't going in the direction the gossip site thought it would.\",\n    \"explanation\": \"Again suggests TMZ had a predetermined desired outcome without evidence, relying on speculation about the site's intentions.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"According to some of the latest statistics, it seems that nearly half of Super Bowl viewers tuned out of the league's Bad Bunny Halftime Show.\",\n    \"explanation\": \"Uses vague sourcing ('some of the latest statistics,' 'it seems') to make a negative claim about Bad Bunny without providing verifiable data or context about typical halftime show viewership patterns.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Finally, in a strange turn of events, rapper Bad Bunny wiped all his social media accounts immediately after his Super Bowl performance.\",\n    \"explanation\": \"The phrase 'strange turn of events' implies suspicious or negative behavior without context, potentially misleading readers about what could be a pre-planned marketing strategy or personal decision.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"Kid Rock Buries Bad Bunny\",\n    \"explanation\": \"The word 'buries' is inflammatory and exaggerated language designed to frame the poll result as a complete domination, rather than using neutral terms like 'leads' or 'wins.'\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"rabidly anti-Trump rapper\",\n    \"explanation\": \"The descriptor 'rabidly' is emotionally charged and pejorative, designed to negatively characterize Bad Bunny's political views rather than neutrally reporting them. This is irrelevant to a halftime show poll and serves to bias readers against Bad Bunny.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"TMZ tried its best to lead its fans to pick Bad Bunny by characterizing the rabidly anti-Trump rapper's show as taking place on 'one of the world's biggest stages,' while merely saying that Kid Rock 'tried to outshine' Bad Bunny.\",\n    \"explanation\": \"The article selectively interprets TMZ's language as intentionally biased without providing evidence of such intent, while omitting that describing the Super Bowl as 'one of the world's biggest stages' is objectively accurate and standard journalism.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"The poll may not have gone exactly how TMZ expected\",\n    \"explanation\": \"This suggests without evidence that TMZ had predetermined expectations or bias, implying a conspiracy or agenda without substantiation.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"The site also frontloaded the poll by putting Bad Bunny's name first\",\n    \"explanation\": \"The article frames standard alphabetical or chronological ordering as evidence of bias, without acknowledging that one name must come first in any binary poll question.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Fans did not fall for the push…\",\n    \"explanation\": \"This implies TMZ was attempting to manipulate results ('the push') without providing concrete evidence, suggesting conspiracy.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Many fans jumped on TMZ's X post to joke that the poll probably wasn't going in the direction the gossip site thought it would.\",\n    \"explanation\": \"Again suggests TMZ had a predetermined desired outcome without evidence, relying on speculation about the site's intentions.\"\n  },\n  {\n    \"biasType\": \"Selection and Omission\",\n    \"biasedText\": \"According to some of the latest statistics, it seems that nearly half of Super Bowl viewers tuned out of the league's Bad Bunny Halftime Show.\",\n    \"explanation\": \"Uses vague sourcing ('some of the latest statistics,' 'it seems') to make a negative claim about Bad Bunny without providing verifiable data or context about typical halftime show viewership patterns.\"\n  },\n  {\n    \"biasType\": \"Innuendo\",\n    \"biasedText\": \"Finally, in a strange turn of events, rapper Bad Bunny wiped all his social media accounts immediately after his Super Bowl performance.\",\n    \"explanation\": \"The phrase 'strange turn of events' implies suspicious or negative behavior without context, potentially misleading readers about what could be a pre-planned marketing strategy or personal decision.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "Kid Rock Buries Bad Bunny",
+      "explanation": "The word 'buries' is inflammatory and exaggerated language designed to frame the poll result as a complete domination, rather than using neutral terms like 'leads' or 'wins.'"
+    },
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "rabidly anti-Trump rapper",
+      "explanation": "The descriptor 'rabidly' is emotionally charged and pejorative, designed to negatively characterize Bad Bunny's political views rather than neutrally reporting them. This is irrelevant to a halftime show poll and serves to bias readers against Bad Bunny."
+    },
+    {
+      "biasType": "Selection and Omission",
+      "biasedText": "TMZ tried its best to lead its fans to pick Bad Bunny by characterizing the rabidly anti-Trump rapper's show as taking place on 'one of the world's biggest stages,' while merely saying that Kid Rock 'tried to outshine' Bad Bunny.",
+      "explanation": "The article selectively interprets TMZ's language as intentionally biased without providing evidence of such intent, while omitting that describing the Super Bowl as 'one of the world's biggest stages' is objectively accurate and standard journalism."
+    },
+    {
+      "biasType": "Innuendo",
+      "biasedText": "The poll may not have gone exactly how TMZ expected",
+      "explanation": "This suggests without evidence that TMZ had predetermined expectations or bias, implying a conspiracy or agenda without substantiation."
+    },
+    {
+      "biasType": "Selection and Omission",
+      "biasedText": "The site also frontloaded the poll by putting Bad Bunny's name first",
+      "explanation": "The article frames standard alphabetical or chronological ordering as evidence of bias, without acknowledging that one name must come first in any binary poll question."
+    },
+    {
+      "biasType": "Innuendo",
+      "biasedText": "Fans did not fall for the push…",
+      "explanation": "This implies TMZ was attempting to manipulate results ('the push') without providing concrete evidence, suggesting conspiracy."
+    },
+    {
+      "biasType": "Innuendo",
+      "biasedText": "Many fans jumped on TMZ's X post to joke that the poll probably wasn't going in the direction the gossip site thought it would.",
+      "explanation": "Again suggests TMZ had a predetermined desired outcome without evidence, relying on speculation about the site's intentions."
+    },
+    {
+      "biasType": "Selection and Omission",
+      "biasedText": "According to some of the latest statistics, it seems that nearly half of Super Bowl viewers tuned out of the league's Bad Bunny Halftime Show.",
+      "explanation": "Uses vague sourcing ('some of the latest statistics,' 'it seems') to make a negative claim about Bad Bunny without providing verifiable data or context about typical halftime show viewership patterns."
+    },
+    {
+      "biasType": "Innuendo",
+      "biasedText": "Finally, in a strange turn of events, rapper Bad Bunny wiped all his social media accounts immediately after his Super Bowl performance.",
+      "explanation": "The phrase 'strange turn of events' implies suspicious or negative behavior without context, potentially misleading readers about what could be a pre-planned marketing strategy or personal decision."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:10.889181+00:00",
+  "labeled_lean": "Right"
+}

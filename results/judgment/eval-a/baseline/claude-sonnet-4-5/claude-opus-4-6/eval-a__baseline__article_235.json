@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_235",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_235",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:The Hill"
+  ],
+  "article_meta": {
+    "title": "Defense Coast Guard denies report it won't classify swastikas, nooses as hate symbols by Filip Timotija 11/20/25 03:23 P",
+    "source": "The Hill",
+    "labeled_lean": "Center",
+    "url": "https://thehill.com/policy/defense/5615799-coast-guard-denies-report-it-wont-classify-swastikas-nooses-as-hate-symbols/amp/?fbclid=IwY2xjawON9mBleHRuA2FlbQIxMABicmlkETFSZVR1a2duZWh2QkZNb3Npc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHr4nl-QgYxQs0C_XszOq7xSbxRiI9rDpMZizFWYNhGGHJQI-30Xmi59icwJ4_aem_VmJpJzPSS1U69mIh8nKt2A",
+    "created_at": "2025-11-22 01:52:33"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 7,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model exhibits several failure patterns. It uses non-standard bias type labels ('Framing Bias', 'Selection/Omission Bias', 'Spin/Tone Bias', 'Omission Bias') instead of the defined list. It flags quoted text as author bias (the DHS spokesperson quotes). Some flagged items are questionable — the ad insertion is not really author bias, and the framing complaint about leading with the denial is debatable for a story about a denial. The model also misses some genuine author-level bias like 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' which is author-inserted contextual framing.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Item 3 flags quoted text from DHS spokesperson McLaughlin ('The @washingtonpost should be embarrassed it published this fake crap' and 'Y'all are just making things up now') as bias — these are clearly attributed quotes. The model's explanation even acknowledges these are from 'DHS officials' but frames the issue as the author amplifying them, which is a stretch but still fundamentally flags quoted language.",
+    "false_positive_rate": "Item 1 (leading with denial) is a stretch — this is standard journalism for a denial story. Item 2 (Amazon ad) is embedded advertising/web artifact, not author editorial bias. Item 3 flags quoted text. Item 4 about burying the admission is more defensible as structural slant but still debatable. Overall most items are questionable.",
+    "false_negative_rate": "The model missed the author's own contextual insertion 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' which is author prose adding emotional weight/context beyond neutral reporting. The article's overall structural choice to present the denial framework prominently could be flagged more precisely.",
+    "bias_type_accuracy": "The model uses labels not in the defined list: 'Framing Bias', 'Selection/Omission Bias', 'Spin/Tone Bias', 'Omission Bias'. The valid list includes Spin, Bias by Omission, Slant, Bias by Story Choice and Placement, etc. While some are close approximations, they don't match the defined types."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model exhibits several failure patterns. It uses non-standard bias type labels ('Framing Bias', 'Selection/Omission Bias', 'Spin/Tone Bias', 'Omission Bias') instead of the defined list. It flags quoted text as author bias (the DHS spokesperson quotes). Some flagged items are questionable — the ad insertion is not really author bias, and the framing complaint about leading with the denial is debatable for a story about a denial. The model also misses some genuine author-level bias like 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' which is author-inserted contextual framing.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 7, \"false_negative_rate\": 5, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Item 3 flags quoted text from DHS spokesperson McLaughlin ('The @washingtonpost should be embarrassed it published this fake crap' and 'Y'all are just making things up now') as bias — these are clearly attributed quotes. The model's explanation even acknowledges these are from 'DHS officials' but frames the issue as the author amplifying them, which is a stretch but still fundamentally flags quoted language.\", \"false_positive_rate\": \"Item 1 (leading with denial) is a stretch — this is standard journalism for a denial story. Item 2 (Amazon ad) is embedded advertising/web artifact, not author editorial bias. Item 3 flags quoted text. Item 4 about burying the admission is more defensible as structural slant but still debatable. Overall most items are questionable.\", \"false_negative_rate\": \"The model missed the author's own contextual insertion 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' which is author prose adding emotional weight/context beyond neutral reporting. The article's overall structural choice to present the denial framework prominently could be flagged more precisely.\", \"bias_type_accuracy\": \"The model uses labels not in the defined list: 'Framing Bias', 'Selection/Omission Bias', 'Spin/Tone Bias', 'Omission Bias'. The valid list includes Spin, Bias by Omission, Slant, Bias by Story Choice and Placement, etc. While some are close approximations, they don't match the defined types.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:16.016446+00:00",
+  "labeled_lean": "Center"
+}

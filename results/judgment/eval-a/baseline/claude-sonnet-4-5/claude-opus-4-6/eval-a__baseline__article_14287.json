@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_14287",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_14287",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "The headquarters of the Euroclear financial institute in Brussels Photograph: Nicolas Maeterlinck/Belga Mag/AFP/Getty Im",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/world/2025/dec/17/belgian-politicians-finance-bosses-targeted-russian-intelligence-seized-assets",
+    "created_at": "2025-12-17 18:30:13"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 9
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model exhibits several failure patterns. First, it uses bias type labels ('Framing Bias', 'Selection Bias', 'Source Bias') that are not in the defined list of valid bias types. Second, several of the flagged instances are questionable - the article is a news report and while there is some author-level framing worth flagging, the model's analysis is often reaching. The 'urgently needed' and 'critical' flags have some merit as author-level word choice bias, but the labels are wrong. The model also flags Russia's characterization being included without rebuttal, which could be a form of Slant or Bias by Omission, but the label 'Selection Bias' is not valid. The source criticism could be valid as an observation about sourcing imbalance but 'Source Bias' is not a valid type. Meanwhile, the model misses some clear author-prose bias like 'full-scale invasion' (word choice) and the overall sympathetic framing toward Ukraine throughout.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The first flagged instance includes 'aimed at persuading' which is author prose. The Russia 'theft' characterization is attributed to Russia ('Russia has publicly warned') - this is borderline as the author chose to include it, but the model is flagging how Russia's view is presented rather than flagging the quote itself. The 'urgently needed/critical' flag is legitimate author prose. The sourcing criticism is about author choices. Minor issues but no egregious attribution violations.",
+    "false_positive_rate": "The first item about 'persuading' is a stretch - the author also uses 'intimidation' and 'campaign of intimidation' throughout, so claiming the author softened the language is questionable. The second item about Russia's 'theft' characterization is debatable - it's noting an omission of counterarguments which has some merit. The third item about 'urgently needed' and 'critical' is the most defensible as genuine author-level bias. The fourth about sourcing imbalance has some merit but is more structural criticism than a specific bias instance.",
+    "false_negative_rate": "The model misses 'full-scale invasion of Ukraine' as word choice (vs. 'invasion'), misses the overall Slant/framing of the article which consistently presents the Ukrainian perspective sympathetically, and could have flagged 'big problems would arise' framing in the author's paraphrasing of sources.",
+    "bias_type_accuracy": "None of the labels used ('Framing Bias', 'Selection Bias', 'Source Bias') appear in the defined list of valid bias types. The valid types include Spin, Slant, Word Choice, Bias by Omission, etc. All four items use invented type labels, which is a severe labeling failure."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model exhibits several failure patterns. First, it uses bias type labels ('Framing Bias', 'Selection Bias', 'Source Bias') that are not in the defined list of valid bias types. Second, several of the flagged instances are questionable - the article is a news report and while there is some author-level framing worth flagging, the model's analysis is often reaching. The 'urgently needed' and 'critical' flags have some merit as author-level word choice bias, but the labels are wrong. The model also flags Russia's characterization being included without rebuttal, which could be a form of Slant or Bias by Omission, but the label 'Selection Bias' is not valid. The source criticism could be valid as an observation about sourcing imbalance but 'Source Bias' is not a valid type. Meanwhile, the model misses some clear author-prose bias like 'full-scale invasion' (word choice) and the overall sympathetic framing toward Ukraine throughout.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 9}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The first flagged instance includes 'aimed at persuading' which is author prose. The Russia 'theft' characterization is attributed to Russia ('Russia has publicly warned') - this is borderline as the author chose to include it, but the model is flagging how Russia's view is presented rather than flagging the quote itself. The 'urgently needed/critical' flag is legitimate author prose. The sourcing criticism is about author choices. Minor issues but no egregious attribution violations.\", \"false_positive_rate\": \"The first item about 'persuading' is a stretch - the author also uses 'intimidation' and 'campaign of intimidation' throughout, so claiming the author softened the language is questionable. The second item about Russia's 'theft' characterization is debatable - it's noting an omission of counterarguments which has some merit. The third item about 'urgently needed' and 'critical' is the most defensible as genuine author-level bias. The fourth about sourcing imbalance has some merit but is more structural criticism than a specific bias instance.\", \"false_negative_rate\": \"The model misses 'full-scale invasion of Ukraine' as word choice (vs. 'invasion'), misses the overall Slant/framing of the article which consistently presents the Ukrainian perspective sympathetically, and could have flagged 'big problems would arise' framing in the author's paraphrasing of sources.\", \"bias_type_accuracy\": \"None of the labels used ('Framing Bias', 'Selection Bias', 'Source Bias') appear in the defined list of valid bias types. The valid types include Spin, Slant, Word Choice, Bias by Omission, etc. All four items use invented type labels, which is a severe labeling failure.\"}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:15.477535+00:00",
+  "labeled_lean": "Left"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_25190",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_25190",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:CNN (Opinion)"
+  ],
+  "article_meta": {
+    "title": "Federal Reserve Chair Jerome Powell on June 25, 2025, in Washington, DC",
+    "source": "CNN (Opinion)",
+    "labeled_lean": "Left",
+    "url": "https://www.cnn.com/2026/01/13/business/powell-trump-us-economy",
+    "created_at": "2026-01-13 13:56:50"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model does a reasonable job identifying genuine author-level bias but has some issues. It correctly identifies subjective language like 'remarkable,' 'stunning,' and 'shocking' as author bias. However, the last item has a malformed JSON structure (two 'biasedText' keys), and one of them quotes Gotlob's attributed statement ('Powell is definitely in a better position than the Justice Department') which is an attribution rule violation since it's a quoted source statement. The Mind Reading flag on 'treasured' is defensible. The model misses some instances like 'The gloves are off' (sensationalism/word choice), 'called him every name and used every insult in the book' (spin/word choice), 'Trump forced Powell's hand' (mind reading/spin), 'to serve Trump's whims' (word choice - author's characterization before the quote), and 'could backfire spectacularly' (word choice). The article is labeled as CNN Opinion, but the author's prose still contains identifiable bias patterns.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The last item flags Gotlob's quoted statement 'Powell is definitely in a better position than the Justice Department' as biased text (though the JSON is malformed with duplicate keys, the quoted text is clearly attributed to a source). This is one clear attribution violation. The other items correctly target author prose.",
+    "false_positive_rate": "Most flagged items are genuine bias in author prose. The 'remarkable,' 'stunning,' 'shocking' items are defensible. The Mind Reading on 'treasured' is reasonable. The malformed last entry tries to flag overall slant which is defensible as a concept but poorly executed and includes a quoted source.",
+    "false_negative_rate": "Several clear author-level bias instances were missed: 'The gloves are off' (sensationalism), 'called him every name and used every insult in the book' (word choice/spin), 'Trump forced Powell's hand' (mind reading), 'to serve Trump's whims' (word choice in author characterization), 'could backfire spectacularly' (word choice), 'Among the many problems with Trump's demands' (opinion as fact). The article being labeled Opinion doesn't excuse the model from identifying these.",
+    "bias_type_accuracy": "The labels applied are mostly defensible. 'Opinion Statements Presented as Fact' for the shocking claim is correct. 'Subjective Qualifying Adjectives' for remarkable/stunning is correct. 'Mind Reading' for treasured is appropriate. The 'Slant' label for the overall framing is defensible conceptually but poorly executed in the JSON."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model does a reasonable job identifying genuine author-level bias but has some issues. It correctly identifies subjective language like 'remarkable,' 'stunning,' and 'shocking' as author bias. However, the last item has a malformed JSON structure (two 'biasedText' keys), and one of them quotes Gotlob's attributed statement ('Powell is definitely in a better position than the Justice Department') which is an attribution rule violation since it's a quoted source statement. The Mind Reading flag on 'treasured' is defensible. The model misses some instances like 'The gloves are off' (sensationalism/word choice), 'called him every name and used every insult in the book' (spin/word choice), 'Trump forced Powell's hand' (mind reading/spin), 'to serve Trump's whims' (word choice - author's characterization before the quote), and 'could backfire spectacularly' (word choice). The article is labeled as CNN Opinion, but the author's prose still contains identifiable bias patterns.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The last item flags Gotlob's quoted statement 'Powell is definitely in a better position than the Justice Department' as biased text (though the JSON is malformed with duplicate keys, the quoted text is clearly attributed to a source). This is one clear attribution violation. The other items correctly target author prose.\", \"false_positive_rate\": \"Most flagged items are genuine bias in author prose. The 'remarkable,' 'stunning,' 'shocking' items are defensible. The Mind Reading on 'treasured' is reasonable. The malformed last entry tries to flag overall slant which is defensible as a concept but poorly executed and includes a quoted source.\", \"false_negative_rate\": \"Several clear author-level bias instances were missed: 'The gloves are off' (sensationalism), 'called him every name and used every insult in the book' (word choice/spin), 'Trump forced Powell's hand' (mind reading), 'to serve Trump's whims' (word choice in author characterization), 'could backfire spectacularly' (word choice), 'Among the many problems with Trump's demands' (opinion as fact). The article being labeled Opinion doesn't excuse the model from identifying these.\", \"bias_type_accuracy\": \"The labels applied are mostly defensible. 'Opinion Statements Presented as Fact' for the shocking claim is correct. 'Subjective Qualifying Adjectives' for remarkable/stunning is correct. 'Mind Reading' for treasured is appropriate. The 'Slant' label for the overall framing is defensible conceptually but poorly executed in the JSON.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:21.831416+00:00",
+  "labeled_lean": "Left"
+}

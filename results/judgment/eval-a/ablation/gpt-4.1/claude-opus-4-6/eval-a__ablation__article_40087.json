@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_40087",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_40087",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Kid Rock Buries Bad Bunny in TMZ's Post-Super Bowl Halftime Show Poll 31 Chris Graythen/Getty ImagesWarner Todd Huston11",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/entertainment/2026/02/11/kid-rock-buries-bad-bunny-in-tmzs-post-super-bowl-halftime-show-poll/",
+    "created_at": "2026-02-11 17:24:04"
+  },
+  "behavior_presence_score": 2,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a strong job identifying genuine bias patterns in the author's own prose. All flagged instances come from the author's connecting prose, not from quoted text. The bias type labels are largely accurate. The model catches key instances like 'buried,' 'rabidly anti-Trump,' Mind Reading about TMZ's expectations, and the omission of source attribution. There's minor redundancy (flagging 'rabidly anti-Trump' both within a larger Sensationalism instance and separately as Subjective Qualifying Adjectives), but both are defensible. The model could have also flagged 'Fans did not fall for the push' as Mind Reading or Spin, and 'the gossip site' as Word Choice, but the instruction asked for fewer, confident examples.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged instances are from the author's own prose. No quoted text or attributed statements were incorrectly flagged. The quoted phrases from TMZ within the larger sentence are contextually part of the author's framing about TMZ's behavior, not flagged as TMZ's bias.",
+    "false_positive_rate": "All five flagged items are defensible instances of author-level bias. The 'rabidly anti-Trump' flagged separately as Subjective Qualifying Adjectives is slightly redundant with the Sensationalism flag but still valid. All items represent genuine bias patterns.",
+    "false_negative_rate": "The model caught the major instances. It could have additionally flagged: 'Fans did not fall for the push' (Mind Reading/Spin about fan motivations), 'gossip site' (Word Choice - dismissive characterization of TMZ), 'the site also frontloaded the poll' (Spin - author assumes intentional manipulation), 'Kid Rock soared ahead' (Word Choice). However, the instruction asked for fewer confident examples, so missing some is acceptable.",
+    "bias_type_accuracy": "Labels are well-applied. 'Spin' for 'buried' is correct. 'Sensationalism/Emotionalism' for the TMZ framing paragraph is appropriate. 'Mind Reading' for TMZ's expectations is correct. 'Omission of Source Attribution' for the unattributed statistics is correct. 'Subjective Qualifying Adjectives' for 'rabidly' is correct."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 2, \"reasoning\": \"The model does a strong job identifying genuine bias patterns in the author's own prose. All flagged instances come from the author's connecting prose, not from quoted text. The bias type labels are largely accurate. The model catches key instances like 'buried,' 'rabidly anti-Trump,' Mind Reading about TMZ's expectations, and the omission of source attribution. There's minor redundancy (flagging 'rabidly anti-Trump' both within a larger Sensationalism instance and separately as Subjective Qualifying Adjectives), but both are defensible. The model could have also flagged 'Fans did not fall for the push' as Mind Reading or Spin, and 'the gossip site' as Word Choice, but the instruction asked for fewer, confident examples.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 3, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged instances are from the author's own prose. No quoted text or attributed statements were incorrectly flagged. The quoted phrases from TMZ within the larger sentence are contextually part of the author's framing about TMZ's behavior, not flagged as TMZ's bias.\", \"false_positive_rate\": \"All five flagged items are defensible instances of author-level bias. The 'rabidly anti-Trump' flagged separately as Subjective Qualifying Adjectives is slightly redundant with the Sensationalism flag but still valid. All items represent genuine bias patterns.\", \"false_negative_rate\": \"The model caught the major instances. It could have additionally flagged: 'Fans did not fall for the push' (Mind Reading/Spin about fan motivations), 'gossip site' (Word Choice - dismissive characterization of TMZ), 'the site also frontloaded the poll' (Spin - author assumes intentional manipulation), 'Kid Rock soared ahead' (Word Choice). However, the instruction asked for fewer confident examples, so missing some is acceptable.\", \"bias_type_accuracy\": \"Labels are well-applied. 'Spin' for 'buried' is correct. 'Sensationalism/Emotionalism' for the TMZ framing paragraph is appropriate. 'Mind Reading' for TMZ's expectations is correct. 'Omission of Source Attribution' for the unattributed statistics is correct. 'Subjective Qualifying Adjectives' for 'rabidly' is correct.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.277603+00:00",
+  "labeled_lean": "Right"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_4695",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_4695",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "Police turned him over to ICE",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/nation/2025/11/22/ice-dallas-shooting-victim-immigration-287g/87324813007/",
+    "created_at": "2025-12-03 17:37:35"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model makes some reasonable identifications of author-level bias but also has notable issues. It commits a few attribution-adjacent errors (flagging Gauffeny's quoted statements within slant analysis, flagging a headline/link text 'rancid beans' that isn't really the author's prose in this article). Some flags are defensible but stretched. The model catches legitimate structural slant and framing choices but misses some clear instances while also over-reaching on others.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model mostly avoids flagging direct quotes, but in the Slant item about the hospital room, it includes Gauffeny's direct quote ('It felt weird because there are just eyes on you at all times') within the biasedText field. The 'rancid beans' item appears to be from a linked article headline/caption, not the author's own prose in this article. These are minor-to-moderate attribution errors.",
+    "false_positive_rate": "Several items are questionable: 'had ended up near death in a hospital' is arguably factual reporting given he was in a coma and died; 'rancid beans' is from a linked headline not this article's prose; 'ICE authorities did not respond' is standard journalistic practice of noting non-response. However, the slant identifications about structural emphasis on critics vs. supporters are defensible.",
+    "false_negative_rate": "The model misses some clear author-level bias: the extensive humanizing narrative about Garcia (cavorting with children, popsicle cart, 'Papi!' scenes) creates strong emotional framing; the author's choice to describe him as someone who 'had crossed into the U.S. as an unaccompanied minor two decades earlier and had grown into a house painter, husband and father' is sympathetic framing. The phrase 'mass detention and mass deportation machine' from a source is given prominent placement. The structural choice to frame the entire article around one family's tragedy is a significant framing decision that could be flagged.",
+    "bias_type_accuracy": "Most labels are defensible but some are imprecise. The 'Word Choice' label for 'ended up near death' would be better classified as Sensationalism/Emotionalism. The 'Subjective Qualifying Adjectives' for 'rancid beans' is misapplied since it's not from this article. The Slant and Spin labels are generally appropriate for the structural framing issues identified."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model makes some reasonable identifications of author-level bias but also has notable issues. It commits a few attribution-adjacent errors (flagging Gauffeny's quoted statements within slant analysis, flagging a headline/link text 'rancid beans' that isn't really the author's prose in this article). Some flags are defensible but stretched. The model catches legitimate structural slant and framing choices but misses some clear instances while also over-reaching on others.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model mostly avoids flagging direct quotes, but in the Slant item about the hospital room, it includes Gauffeny's direct quote ('It felt weird because there are just eyes on you at all times') within the biasedText field. The 'rancid beans' item appears to be from a linked article headline/caption, not the author's own prose in this article. These are minor-to-moderate attribution errors.\", \"false_positive_rate\": \"Several items are questionable: 'had ended up near death in a hospital' is arguably factual reporting given he was in a coma and died; 'rancid beans' is from a linked headline not this article's prose; 'ICE authorities did not respond' is standard journalistic practice of noting non-response. However, the slant identifications about structural emphasis on critics vs. supporters are defensible.\", \"false_negative_rate\": \"The model misses some clear author-level bias: the extensive humanizing narrative about Garcia (cavorting with children, popsicle cart, 'Papi!' scenes) creates strong emotional framing; the author's choice to describe him as someone who 'had crossed into the U.S. as an unaccompanied minor two decades earlier and had grown into a house painter, husband and father' is sympathetic framing. The phrase 'mass detention and mass deportation machine' from a source is given prominent placement. The structural choice to frame the entire article around one family's tragedy is a significant framing decision that could be flagged.\", \"bias_type_accuracy\": \"Most labels are defensible but some are imprecise. The 'Word Choice' label for 'ended up near death' would be better classified as Sensationalism/Emotionalism. The 'Subjective Qualifying Adjectives' for 'rancid beans' is misapplied since it's not from this article. The Slant and Spin labels are generally appropriate for the structural framing issues identified.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:38.774640+00:00",
+  "labeled_lean": "Lean Left"
+}

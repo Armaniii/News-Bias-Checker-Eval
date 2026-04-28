@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_1792",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_1792",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "Washington DC Trump celebrates US' long history giving foreign enemies 'hell' at massive military parade The military pa",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/trump-celebrates-us-long-history-giving-foreign-enemies-hell-massive-military-parade",
+    "created_at": "2025-11-26 07:48:00"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 6,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has several issues: it uses bias type labels not from the approved list (Selection Bias, Loaded Language, Source Bias, Authority Appeal, Absence of Counterpoints), it flags the source attribution (Fox News byline) as bias which is not author prose bias, and it includes some questionable flagging. However, it does correctly identify genuine author-level bias like 'illegal aliens who flooded the nation during the Biden administration' which is loaded language in the author's own prose. It also correctly identifies the overall slant/omission of counterpoints. But it flags Trump's quoted language ('people that hate our country') within its omission analysis, which is borderline. The 'Authority Appeal' flag on Hegseth is weak - reporting what a Defense Secretary says is standard journalism.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model mostly avoids flagging direct quotes, but item 5 references Trump's quoted phrase 'people that hate our country' as part of its characterization of the article's bias. Item 4 flags a quoted statement from Hegseth as problematic. The worst violation is item 5 which attributes the 'people that hate our country' framing to the article's bias when it's Trump's direct quote. Items 1-2 correctly identify author prose.",
+    "false_positive_rate": "Item 3 (Source Bias - flagging the Fox News byline) is not a valid bias instance in the author's prose. Item 4 (Authority Appeal on Hegseth) is weak - citing the Defense Secretary is standard practice. Item 5 is a structural observation rather than a specific biased text instance, and the 'biasedText' field contains the model's own summary rather than actual article text. Items 1-2 are defensible.",
+    "false_negative_rate": "The model correctly identifies 'illegal aliens who flooded the nation' as biased author prose and the general slant. It could have more specifically flagged 'massive military parade' in the headline as potentially loaded, the characterization of the parade as 'historic' and 'patriotic event' in author prose, and 'Trump previously said any potential violent protesters' framing. Some misses but the key ones were caught.",
+    "bias_type_accuracy": "None of the bias type labels used (Selection Bias, Loaded Language, Source Bias, Authority Appeal, Absence of Counterpoints) are from the approved list. The correct labels would have been: Word Choice for 'illegal aliens who flooded,' Slant or Bias by Omission for the absence of counterpoints, etc. This is a systematic failure to use the correct taxonomy."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model has several issues: it uses bias type labels not from the approved list (Selection Bias, Loaded Language, Source Bias, Authority Appeal, Absence of Counterpoints), it flags the source attribution (Fox News byline) as bias which is not author prose bias, and it includes some questionable flagging. However, it does correctly identify genuine author-level bias like 'illegal aliens who flooded the nation during the Biden administration' which is loaded language in the author's own prose. It also correctly identifies the overall slant/omission of counterpoints. But it flags Trump's quoted language ('people that hate our country') within its omission analysis, which is borderline. The 'Authority Appeal' flag on Hegseth is weak - reporting what a Defense Secretary says is standard journalism.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 6, \"false_negative_rate\": 4, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model mostly avoids flagging direct quotes, but item 5 references Trump's quoted phrase 'people that hate our country' as part of its characterization of the article's bias. Item 4 flags a quoted statement from Hegseth as problematic. The worst violation is item 5 which attributes the 'people that hate our country' framing to the article's bias when it's Trump's direct quote. Items 1-2 correctly identify author prose.\", \"false_positive_rate\": \"Item 3 (Source Bias - flagging the Fox News byline) is not a valid bias instance in the author's prose. Item 4 (Authority Appeal on Hegseth) is weak - citing the Defense Secretary is standard practice. Item 5 is a structural observation rather than a specific biased text instance, and the 'biasedText' field contains the model's own summary rather than actual article text. Items 1-2 are defensible.\", \"false_negative_rate\": \"The model correctly identifies 'illegal aliens who flooded the nation' as biased author prose and the general slant. It could have more specifically flagged 'massive military parade' in the headline as potentially loaded, the characterization of the parade as 'historic' and 'patriotic event' in author prose, and 'Trump previously said any potential violent protesters' framing. Some misses but the key ones were caught.\", \"bias_type_accuracy\": \"None of the bias type labels used (Selection Bias, Loaded Language, Source Bias, Authority Appeal, Absence of Counterpoints) are from the approved list. The correct labels would have been: Word Choice for 'illegal aliens who flooded,' Slant or Bias by Omission for the absence of counterpoints, etc. This is a systematic failure to use the correct taxonomy.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:19.254195+00:00",
+  "labeled_lean": "Lean Right"
+}

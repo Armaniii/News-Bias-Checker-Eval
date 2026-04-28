@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_25201",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_25201",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:538 (ABC News)"
+  ],
+  "article_meta": {
+    "title": "ABC NewsLiveVideoShowsShopInterest Successfully AddedWe'll notify you here with news aboutTurn on desktop notifications ",
+    "source": "538 (ABC News)",
+    "labeled_lean": "Center",
+    "url": "https://abcnews.go.com/Politics/minnesota-senator-white-house-attempting-cover-good-shooting/story?id=129100690",
+    "created_at": "2026-01-13 14:55:39"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 7,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model returned an empty array for an article that contains several defensible instances of author-level bias. While the article is heavily quote-driven, there are clear instances of bias in the author's own prose that should have been flagged.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model did not flag any quoted text, so there are zero attribution rule violations. This is correct behavior.",
+    "false_positive_rate": "The model returned an empty array, so there are no false positives. Score 1.",
+    "false_negative_rate": "Several defensible bias instances in the author's own prose were missed: (1) 'a U.S. citizen and mother of three' — Sensationalism/Emotionalism or Slant — the author chose to emphasize these humanizing details about Good in their own prose; (2) The article's structure heavily features Sen. Smith's critical perspective while giving only brief paraphrases of the administration's position (Slant); (3) 'Local officials and many Democratic lawmakers have disputed DHS's assessment' — the word 'many' is a Subjective Qualifying Adjective without quantification; (4) 'sparked country-wide protests' — 'sparked' is a loaded verb (Word Choice/Spin); (5) The article omits any direct quotes or detailed perspective from DHS/administration officials defending their actions, while extensively quoting Smith's criticism (Bias by Omission or Slant). These are significant structural bias patterns that the model missed entirely.",
+    "bias_type_accuracy": "No bias types were applied since the output was empty. Cannot evaluate accuracy, defaulting to 1."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model returned an empty array for an article that contains several defensible instances of author-level bias. While the article is heavily quote-driven, there are clear instances of bias in the author's own prose that should have been flagged.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 7, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model did not flag any quoted text, so there are zero attribution rule violations. This is correct behavior.\", \"false_positive_rate\": \"The model returned an empty array, so there are no false positives. Score 1.\", \"false_negative_rate\": \"Several defensible bias instances in the author's own prose were missed: (1) 'a U.S. citizen and mother of three' — Sensationalism/Emotionalism or Slant — the author chose to emphasize these humanizing details about Good in their own prose; (2) The article's structure heavily features Sen. Smith's critical perspective while giving only brief paraphrases of the administration's position (Slant); (3) 'Local officials and many Democratic lawmakers have disputed DHS's assessment' — the word 'many' is a Subjective Qualifying Adjective without quantification; (4) 'sparked country-wide protests' — 'sparked' is a loaded verb (Word Choice/Spin); (5) The article omits any direct quotes or detailed perspective from DHS/administration officials defending their actions, while extensively quoting Smith's criticism (Bias by Omission or Slant). These are significant structural bias patterns that the model missed entirely.\", \"bias_type_accuracy\": \"No bias types were applied since the output was empty. Cannot evaluate accuracy, defaulting to 1.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.807598+00:00",
+  "labeled_lean": "Center"
+}

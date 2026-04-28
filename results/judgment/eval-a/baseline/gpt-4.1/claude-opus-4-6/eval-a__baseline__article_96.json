@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_96",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_96",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Morning Wire"
+  ],
+  "article_meta": {
+    "title": "— News —Trump Honors Veterans At Arlington With Tales Of Valor, Courage, And Patriotism\"America stands tall because Amer",
+    "source": "Morning Wire",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.dailywire.com/news/trump-honors-veterans-at-arlington-with-tales-of-valor-courage-and-patriotism?topStoryPosition=undefined&amp;author=Mary+Margaret+Olohan&amp;category=News&amp;elementPosition=0&amp;row=1&amp;rowHeadline=Top+Stories&amp;rowType=Top+Stories&amp;title=Trump+Honors+Veterans+At+Arlington+With+Tales+Of+Valor%2C+Courage%2C+And+Patriotism",
+    "created_at": "2025-11-20 22:25:26"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 9
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model has several issues: (1) It uses bias type labels not from the defined list ('Partisan Bias', 'Promotional/Glorifying Language', 'Loaded Language/Uncritical Platforming' are not valid types). (2) The second and third flagged items include quoted text within them - while there's an argument about uncritical platforming/slant in the author's structural choices, the model is partially flagging quoted language. (3) The first item is arguably the strongest finding - the author's paraphrase of Trump's claim about Biden without counterpoint could be Slant or Unsubstantiated Claims. However, even this is borderline since it's paraphrasing what Trump 'stressed.' (4) The model misses significant author-level bias: the headline itself uses glorifying language ('Tales Of Valor, Courage, And Patriotism'), the overall structure is essentially a press release with no critical context or opposing voices (Slant/Bias by Omission), and author prose like 'legacy of gallantry and daring' is used outside quotes in places. The article is essentially a promotional piece with no balance, which represents clear Slant and Bias by Omission that could have been more precisely identified.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The second and third items include quoted text as part of the flagged content. While the model seems to be trying to flag the author's choice to include quotes uncritically, it explicitly includes quoted material in biasedText. The first item paraphrases Trump's statements but is arguably the author's own framing choice. Mixed compliance overall.",
+    "false_positive_rate": "The first item about Biden contrast has some merit as author-level bias (paraphrasing a partisan claim without context). The second and third items have a kernel of truth about structural bias but are poorly framed - they flag quoted text rather than the author's framing choices. They're not entirely wrong conceptually but are imprecisely targeted.",
+    "false_negative_rate": "The model misses the overall Slant/Bias by Omission - the article presents no opposing voices, no fact-checking, no critical context for any of Trump's claims. The headline uses glorifying language. The author's descriptive framing throughout is consistently positive. These are significant omissions, though the model does gesture at some of these issues.",
+    "bias_type_accuracy": "All three bias type labels ('Partisan Bias', 'Promotional/Glorifying Language', 'Loaded Language/Uncritical Platforming') are NOT from the defined list of valid types. The correct labels would be things like Slant, Bias by Omission, Unsubstantiated Claims, or Spin. This is a systematic failure in type labeling."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model has several issues: (1) It uses bias type labels not from the defined list ('Partisan Bias', 'Promotional/Glorifying Language', 'Loaded Language/Uncritical Platforming' are not valid types). (2) The second and third flagged items include quoted text within them - while there's an argument about uncritical platforming/slant in the author's structural choices, the model is partially flagging quoted language. (3) The first item is arguably the strongest finding - the author's paraphrase of Trump's claim about Biden without counterpoint could be Slant or Unsubstantiated Claims. However, even this is borderline since it's paraphrasing what Trump 'stressed.' (4) The model misses significant author-level bias: the headline itself uses glorifying language ('Tales Of Valor, Courage, And Patriotism'), the overall structure is essentially a press release with no critical context or opposing voices (Slant/Bias by Omission), and author prose like 'legacy of gallantry and daring' is used outside quotes in places. The article is essentially a promotional piece with no balance, which represents clear Slant and Bias by Omission that could have been more precisely identified.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 9}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The second and third items include quoted text as part of the flagged content. While the model seems to be trying to flag the author's choice to include quotes uncritically, it explicitly includes quoted material in biasedText. The first item paraphrases Trump's statements but is arguably the author's own framing choice. Mixed compliance overall.\", \"false_positive_rate\": \"The first item about Biden contrast has some merit as author-level bias (paraphrasing a partisan claim without context). The second and third items have a kernel of truth about structural bias but are poorly framed - they flag quoted text rather than the author's framing choices. They're not entirely wrong conceptually but are imprecisely targeted.\", \"false_negative_rate\": \"The model misses the overall Slant/Bias by Omission - the article presents no opposing voices, no fact-checking, no critical context for any of Trump's claims. The headline uses glorifying language. The author's descriptive framing throughout is consistently positive. These are significant omissions, though the model does gesture at some of these issues.\", \"bias_type_accuracy\": \"All three bias type labels ('Partisan Bias', 'Promotional/Glorifying Language', 'Loaded Language/Uncritical Platforming') are NOT from the defined list of valid types. The correct labels would be things like Slant, Bias by Omission, Unsubstantiated Claims, or Spin. This is a systematic failure in type labeling.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.976432+00:00",
+  "labeled_lean": "Lean Right"
+}

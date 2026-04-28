@@ -1,0 +1,53 @@
+{
+  "scenario_id": "eval-a__baseline__article_53896",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_53896",
+  "model": "gpt-4.1",
+  "tags": [
+    "condition:baseline",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Senate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislatio",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/politics/2026/03/16/schumer-save-america-act-despicable-trump-cheat-midterms/",
+    "created_at": "2026-03-17 10:42:59"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: Senate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislatio\nSOURCE: Breitbart Fact Check\n\nARTICLE:\n\nSenate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislation” he has seen ahead of the bill being brought to the floor for a vote this week. Speaking to reporters on a Sunday phone call, Schumer claimed that President Donald Trump and Senate Republicans are attempting to “disenfranchise millions of Americans and undermine democracy by pushing this despicable SAVE Act,” also called the Safeguarding American Voter Eligibility Act. He also called the election integrity bill “one of the most despicable pieces of legislation I’ve come across in the many years I’ve been a legislator.” “Nothing is more important than defeating this dagger to the heart of our democracy,” the Democrat leader told reporters. After weeks of dragging his feet on the voter ID bill, Senate Majority Leader John Thune finally said the act will be voted on this week, CNBC reported. However, the act is likely to fail due to Thune’s unwillingness to amend the filibuster in the Senate, which currently requires a 60-vote threshold to pass legislation. Schumer continued his rant to reporters, saying, “Donald Trump believes he’s going to lose the election. He knows his numbers are in the gutter.” “And so what does he want to do? Well, he wants to cheat. He wants to steal the election like he did in 2021 in a different way,” he claimed. He added that Senate Democrats do not know exactly what Thune will bring to the floor in the coming days, but they are ready to counter it. “We don’t yet know what Thune is doing, what he will do exactly, but we’re prepared for every possible scenario,” the New York senator said. “My caucus really feels strongly that this would be a horror, you know, one of the worst things that’s happened in the history of this country in terms of allowing people to vote.” Olivia Rondeau is a politics reporter for Breitbart News based in Washington, DC. Find her on X\\/Twitter and Instagram.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[{\"biasType\": \"Loaded Language\", \"biasedText\": \"\\\"despicable\\\", \\\"dagger to the heart of our democracy\\\", \\\"cheat\\\", \\\"steal the election\\\", \\\"horror\\\"\", \"explanation\": \"The article extensively quotes Senator Schumer using highly charged and emotive language to condemn the SAVE America Act and its supporters. This language is designed to provoke strong negative emotional responses in the reader and may influence opinions beyond presenting factual reporting.\"}, {\"biasType\": \"Framing\", \"biasedText\": \"After weeks of dragging his feet on the voter ID bill, Senate Majority Leader John Thune finally said the act will be voted on this week, CNBC reported.\", \"explanation\": \"The phrase \\\"dragging his feet\\\" implies intentional delay or obstruction by Senate Majority Leader Thune, presenting his actions in a negative light rather than neutrally stating the timeline. This frames Thune’s actions as reluctant or evasive without providing his justification.\"}, {\"biasType\": \"Selection of Sources\", \"biasedText\": \"The article only provides Schumer's perspective and statements, with no response or comments from Republican lawmakers or supporters of the SAVE America Act.\", \"explanation\": \"Presenting only one side's critique and not including voices from the other side of the debate can bias the reader, as it omits counterarguments or justifications for the legislation.\"}]"
+    }
+  ],
+  "raw_response": "[{\"biasType\": \"Loaded Language\", \"biasedText\": \"\\\"despicable\\\", \\\"dagger to the heart of our democracy\\\", \\\"cheat\\\", \\\"steal the election\\\", \\\"horror\\\"\", \"explanation\": \"The article extensively quotes Senator Schumer using highly charged and emotive language to condemn the SAVE America Act and its supporters. This language is designed to provoke strong negative emotional responses in the reader and may influence opinions beyond presenting factual reporting.\"}, {\"biasType\": \"Framing\", \"biasedText\": \"After weeks of dragging his feet on the voter ID bill, Senate Majority Leader John Thune finally said the act will be voted on this week, CNBC reported.\", \"explanation\": \"The phrase \\\"dragging his feet\\\" implies intentional delay or obstruction by Senate Majority Leader Thune, presenting his actions in a negative light rather than neutrally stating the timeline. This frames Thune’s actions as reluctant or evasive without providing his justification.\"}, {\"biasType\": \"Selection of Sources\", \"biasedText\": \"The article only provides Schumer's perspective and statements, with no response or comments from Republican lawmakers or supporters of the SAVE America Act.\", \"explanation\": \"Presenting only one side's critique and not including voices from the other side of the debate can bias the reader, as it omits counterarguments or justifications for the legislation.\"}]",
+  "parsed_output": [
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "\"despicable\", \"dagger to the heart of our democracy\", \"cheat\", \"steal the election\", \"horror\"",
+      "explanation": "The article extensively quotes Senator Schumer using highly charged and emotive language to condemn the SAVE America Act and its supporters. This language is designed to provoke strong negative emotional responses in the reader and may influence opinions beyond presenting factual reporting."
+    },
+    {
+      "biasType": "Framing",
+      "biasedText": "After weeks of dragging his feet on the voter ID bill, Senate Majority Leader John Thune finally said the act will be voted on this week, CNBC reported.",
+      "explanation": "The phrase \"dragging his feet\" implies intentional delay or obstruction by Senate Majority Leader Thune, presenting his actions in a negative light rather than neutrally stating the timeline. This frames Thune’s actions as reluctant or evasive without providing his justification."
+    },
+    {
+      "biasType": "Selection of Sources",
+      "biasedText": "The article only provides Schumer's perspective and statements, with no response or comments from Republican lawmakers or supporters of the SAVE America Act.",
+      "explanation": "Presenting only one side's critique and not including voices from the other side of the debate can bias the reader, as it omits counterarguments or justifications for the legislation."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:44.993531+00:00",
+  "labeled_lean": "Right"
+}

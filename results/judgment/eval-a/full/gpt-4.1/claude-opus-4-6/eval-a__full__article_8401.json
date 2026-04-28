@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_8401",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_8401",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Washington Post"
+  ],
+  "article_meta": {
+    "title": "Democracy Dies in DarknessBusinessFuture of WorkEconomyEconomic PolicyMediaPersonal FinanceTechnologyBusiness of Climate",
+    "source": "Washington Post",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.washingtonpost.com/investigations/interactive/2025/tyler-robinson-charlie-kirk-shooting/",
+    "created_at": "2025-12-17 19:53:18"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model returned an empty array for a long, detailed investigative article. The article is largely well-reported narrative journalism, and most of the text is either attributed statements, quoted material, or factual narration. However, there are some defensible author-level bias instances that could have been flagged, though they are subtle. The article is genuinely more balanced than many pieces, so returning [] is not as egregious as in calibration Example 3, but there are still some arguable instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model returned an empty array, so there are zero attribution violations. Perfect compliance by default.",
+    "false_positive_rate": "No items were flagged, so there are zero false positives.",
+    "false_negative_rate": "There are some defensible author-level bias patterns that could have been flagged: (1) Slant/Structural emphasis - The article's overall framing emphasizes Robinson's normalcy and compartmentalization, potentially creating sympathy for the alleged killer while the victim Kirk is described with loaded author prose like 'He was also accused of bigotry and bullying by some students and civil rights groups' without balancing this with supporters' views of Kirk's character beyond a brief mention. (2) Word Choice - 'right-wing political activist' for Kirk in the opening is arguably a loaded descriptor vs. more neutral alternatives like 'conservative commentator.' (3) The structural choice to devote extensive space to humanizing Robinson while Kirk's description is minimal could be flagged as Slant. However, these are subtle and debatable - this is an investigative profile piece about the alleged killer, so the focus is expected. The empty array is somewhat defensible but misses a few arguable instances.",
+    "bias_type_accuracy": "No bias types were applied, so no errors in labeling."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model returned an empty array for a long, detailed investigative article. The article is largely well-reported narrative journalism, and most of the text is either attributed statements, quoted material, or factual narration. However, there are some defensible author-level bias instances that could have been flagged, though they are subtle. The article is genuinely more balanced than many pieces, so returning [] is not as egregious as in calibration Example 3, but there are still some arguable instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 5, \"bias_type_accuracy\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model returned an empty array, so there are zero attribution violations. Perfect compliance by default.\", \"false_positive_rate\": \"No items were flagged, so there are zero false positives.\", \"false_negative_rate\": \"There are some defensible author-level bias patterns that could have been flagged: (1) Slant/Structural emphasis - The article's overall framing emphasizes Robinson's normalcy and compartmentalization, potentially creating sympathy for the alleged killer while the victim Kirk is described with loaded author prose like 'He was also accused of bigotry and bullying by some students and civil rights groups' without balancing this with supporters' views of Kirk's character beyond a brief mention. (2) Word Choice - 'right-wing political activist' for Kirk in the opening is arguably a loaded descriptor vs. more neutral alternatives like 'conservative commentator.' (3) The structural choice to devote extensive space to humanizing Robinson while Kirk's description is minimal could be flagged as Slant. However, these are subtle and debatable - this is an investigative profile piece about the alleged killer, so the focus is expected. The empty array is somewhat defensible but misses a few arguable instances.\", \"bias_type_accuracy\": \"No bias types were applied, so no errors in labeling.\"}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.517503+00:00",
+  "labeled_lean": "Lean Left"
+}

@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_235",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_235",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Hill"
+  ],
+  "article_meta": {
+    "title": "Defense Coast Guard denies report it won't classify swastikas, nooses as hate symbols by Filip Timotija 11/20/25 03:23 P",
+    "source": "The Hill",
+    "labeled_lean": "Center",
+    "url": "https://thehill.com/policy/defense/5615799-coast-guard-denies-report-it-wont-classify-swastikas-nooses-as-hate-symbols/amp/?fbclid=IwY2xjawON9mBleHRuA2FlbQIxMABicmlkETFSZVR1a2duZWh2QkZNb3Npc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHr4nl-QgYxQs0C_XszOq7xSbxRiI9rDpMZizFWYNhGGHJQI-30Xmi59icwJ4_aem_VmJpJzPSS1U69mIh8nKt2A",
+    "created_at": "2025-11-22 01:52:33"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 2,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies this as Center with 0.7 confidence. The article is from The Hill, which AllSides rates as Center/Lean Left. The article is primarily a straight news report presenting competing claims. However, there are some subtle Lean Left signals: the author's descriptive aside characterizing swastikas as 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' is editorial context that frames the Coast Guard's potential reclassification negatively. The article also closes with a Democratic lawmaker's critical statement without a Republican counterpoint. Still, the overall structure is largely balanced news reporting. Center is a defensible classification, though Lean Left would also be reasonable. The confidence of 0.7 is appropriate for subtle signals. The reasoning and key_indicators are general rather than citing specific author prose, which is a moderate weakness but doesn't constitute attribution violations.",
+  "custom_reasoning": {
+    "classification_accuracy": "Center is within one adjacent class of the likely actual lean (Lean Left). The article has some Lean Left signals (editorial context around swastikas, closing with Democratic criticism without Republican counterpoint) but is largely straight reporting. Center is defensible, Lean Left would be more precise.",
+    "confidence_calibration": "0.7 confidence for a Center classification on an article with subtle lean signals is well-calibrated. The signals are genuinely subtle and mixed, making moderate confidence appropriate.",
+    "reasoning_evidence_quality": "The reasoning is generally correct but vague. Key indicators like 'Absence of emotive or loaded language' and 'Balanced sourcing' are structural observations rather than specific textual citations. No attribution violations occur, but the evidence lacks the specificity of citing exact author phrases. The reasoning misses the author's own editorial aside about swastikas being 'linked to the killing of millions of Jews' which is a notable authorial choice."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model classifies this as Center with 0.7 confidence. The article is from The Hill, which AllSides rates as Center/Lean Left. The article is primarily a straight news report presenting competing claims. However, there are some subtle Lean Left signals: the author's descriptive aside characterizing swastikas as 'widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews' is editorial context that frames the Coast Guard's potential reclassification negatively. The article also closes with a Democratic lawmaker's critical statement without a Republican counterpoint. Still, the overall structure is largely balanced news reporting. Center is a defensible classification, though Lean Left would also be reasonable. The confidence of 0.7 is appropriate for subtle signals. The reasoning and key_indicators are general rather than citing specific author prose, which is a moderate weakness but doesn't constitute attribution violations.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 2, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Center is within one adjacent class of the likely actual lean (Lean Left). The article has some Lean Left signals (editorial context around swastikas, closing with Democratic criticism without Republican counterpoint) but is largely straight reporting. Center is defensible, Lean Left would be more precise.\", \"confidence_calibration\": \"0.7 confidence for a Center classification on an article with subtle lean signals is well-calibrated. The signals are genuinely subtle and mixed, making moderate confidence appropriate.\", \"reasoning_evidence_quality\": \"The reasoning is generally correct but vague. Key indicators like 'Absence of emotive or loaded language' and 'Balanced sourcing' are structural observations rather than specific textual citations. No attribution violations occur, but the evidence lacks the specificity of citing exact author phrases. The reasoning misses the author's own editorial aside about swastikas being 'linked to the killing of millions of Jews' which is a notable authorial choice.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:17.640934+00:00",
+  "labeled_lean": "Center"
+}

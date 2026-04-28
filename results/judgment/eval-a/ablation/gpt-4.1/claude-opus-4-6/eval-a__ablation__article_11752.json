@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_11752",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_11752",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:PBS NewsHour"
+  ],
+  "article_meta": {
+    "title": "Legacy of Trauma: The Impact of American Indian Boarding Schools Across Generations Posted by Dr",
+    "source": "PBS NewsHour",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.pbs.org/native-america/blog/legacy-of-trauma-the-impact-of-american-indian-boarding-schools-across-generations",
+    "created_at": "2025-12-12 16:06:12"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 4
+  },
+  "reasoning": "This is a first-person essay/opinion piece by Dr. Lajimodiere, not a traditional news article. The model identifies some genuinely loaded language in the author's prose, but the context matters - this is explicitly a personal essay by a scholar/advocate. The flagged items are defensible but some are debatable. The model correctly avoids flagging quoted text from sources. The 'dungeons and death camps' comparison and 'ethnocide and cultural genocide' characterizations are genuinely in the author's own prose. The Bias by Omission flag is reasonable for a media bias analysis tool. However, the model flags the same text twice (items 1 and 3 overlap significantly with the 'dungeons and death camps' passage), which is a minor issue.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly avoids flagging any quoted text. All flagged passages are from the author's own prose. The quotes from the mother, father, and elder are not flagged. Good compliance with the attribution rule.",
+    "false_positive_rate": "This is a first-person opinion essay/blog post, not a straight news article. Flagging opinion statements in what is clearly labeled as a personal essay is somewhat questionable - the piece is not pretending to be objective reporting. The 'dungeons and death camps' line is genuinely extreme language worth flagging. The 'ethnocide and cultural genocide' flag is more debatable as this terminology is widely used in scholarship. The Bias by Omission flag is reasonable but debatable for a first-person account. Items 1 and 3 substantially overlap.",
+    "false_negative_rate": "The model catches the most prominent instances. It could have also flagged 'I call the US American Indian boarding school era America's best kept secret' as opinion presented as fact, or 'Let the truth telling begin' as advocacy language, or the characterization 'Of great hope is Sen. Elizabeth Warren's reintroduction' as showing slant. Some misses but the major instances were caught.",
+    "bias_type_accuracy": "Item 1 labeled 'Subjective Qualifying Adjectives' for 'dungeons and death camps' - this is more Word Choice or Sensationalism than subjective qualifying adjectives. Item 2 'Opinion Statements Presented as Fact' is reasonable. Item 3 'Sensationalism/Emotionalism' is appropriate. Item 4 'Bias by Omission' is correctly applied. The first label is somewhat off."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"This is a first-person essay/opinion piece by Dr. Lajimodiere, not a traditional news article. The model identifies some genuinely loaded language in the author's prose, but the context matters - this is explicitly a personal essay by a scholar/advocate. The flagged items are defensible but some are debatable. The model correctly avoids flagging quoted text from sources. The 'dungeons and death camps' comparison and 'ethnocide and cultural genocide' characterizations are genuinely in the author's own prose. The Bias by Omission flag is reasonable for a media bias analysis tool. However, the model flags the same text twice (items 1 and 3 overlap significantly with the 'dungeons and death camps' passage), which is a minor issue.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 4}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly avoids flagging any quoted text. All flagged passages are from the author's own prose. The quotes from the mother, father, and elder are not flagged. Good compliance with the attribution rule.\", \"false_positive_rate\": \"This is a first-person opinion essay/blog post, not a straight news article. Flagging opinion statements in what is clearly labeled as a personal essay is somewhat questionable - the piece is not pretending to be objective reporting. The 'dungeons and death camps' line is genuinely extreme language worth flagging. The 'ethnocide and cultural genocide' flag is more debatable as this terminology is widely used in scholarship. The Bias by Omission flag is reasonable but debatable for a first-person account. Items 1 and 3 substantially overlap.\", \"false_negative_rate\": \"The model catches the most prominent instances. It could have also flagged 'I call the US American Indian boarding school era America's best kept secret' as opinion presented as fact, or 'Let the truth telling begin' as advocacy language, or the characterization 'Of great hope is Sen. Elizabeth Warren's reintroduction' as showing slant. Some misses but the major instances were caught.\", \"bias_type_accuracy\": \"Item 1 labeled 'Subjective Qualifying Adjectives' for 'dungeons and death camps' - this is more Word Choice or Sensationalism than subjective qualifying adjectives. Item 2 'Opinion Statements Presented as Fact' is reasonable. Item 3 'Sensationalism/Emotionalism' is appropriate. Item 4 'Bias by Omission' is correctly applied. The first label is somewhat off.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:25.788697+00:00",
+  "labeled_lean": "Lean Left"
+}

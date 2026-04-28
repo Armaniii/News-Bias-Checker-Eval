@@ -1,0 +1,48 @@
+{
+  "scenario_id": "eval-a__baseline__article_235",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_235",
+  "model": "gpt-4.1",
+  "tags": [
+    "condition:baseline",
+    "source:The Hill"
+  ],
+  "article_meta": {
+    "title": "Defense Coast Guard denies report it won't classify swastikas, nooses as hate symbols by Filip Timotija 11/20/25 03:23 P",
+    "source": "The Hill",
+    "labeled_lean": "Center",
+    "url": "https://thehill.com/policy/defense/5615799-coast-guard-denies-report-it-wont-classify-swastikas-nooses-as-hate-symbols/amp/?fbclid=IwY2xjawON9mBleHRuA2FlbQIxMABicmlkETFSZVR1a2duZWh2QkZNb3Npc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHr4nl-QgYxQs0C_XszOq7xSbxRiI9rDpMZizFWYNhGGHJQI-30Xmi59icwJ4_aem_VmJpJzPSS1U69mIh8nKt2A",
+    "created_at": "2025-11-22 01:52:33"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: Defense Coast Guard denies report it won't classify swastikas, nooses as hate symbols by Filip Timotija 11/20/25 03:23 P\nSOURCE: The Hill\n\nARTICLE:\n\nDefense Coast Guard denies report it won't classify swastikas, nooses as hate symbols by Filip Timotija 11/20/25 03:23 PM ET The Coast Guard said Thursday a Washington Post report that claimed it will no longer classify swastikas and nooses as hate symbols is \"categorically false.\" \"The claims that the U.S. Coast Guard will no longer classify swastikas, nooses or other extremist imagery as prohibited symbols are categorically false. These symbols have been and remain prohibited in the Coast Guard per policy,\" Adm. Kevin Lunday, acting Coast Guard commandant, said in a statement. The Post reported the branch, part of the Department of Homeland Security (DHS), will classify swastikas, widely recognized as a symbol of the German Nazi Party and linked to the killing of millions of Jews, as \"potentially divisive,\" along with the Confederate flag and nooses, citing documents it obtained. Amazon Prime Big Deal Days Many of Amazon's best Black Friday sales are already live Cross people off your list with these marked down electronics Stock up on hosting essentials while they have Black Friday pricing BestReviews is reader-supported and may earn an affiliate commission. The new policy is set to go into effect Dec. 15, and if the \"potentially divisive\" symbol is reported, supervisors will have to investigate and could direct it to be removed after advising with the legal office, the Post reported. The DHS strongly pushed back on the report, calling it an \"absolute ludicrous lie and unequivocally false.\" \"The @washingtonpost should be embarrassed it published this fake crap,\" DHS spokesperson Tricia McLaughlin said in a Thursday post on social platform X. \"Y'all are just making things up now,\" the DHS said in another post on X. Coast Guard personnel will have 45 days to report a display of swastikas or nooses, according to the new policy, the newspaper reported. According to the branch's 2019 guidance, commanders within the Coast Guard could direct that swastikas, nooses or other emblems be removed even if they are not deemed as a \"potential hate incident.\" \"The following is a non-exhaustive list of symbols whose display, presentation, creation, or depiction would constitute a potential hate incident: a noose, a swastika, supremacist symbols, Confederate symbols or flags, and antiSemitic symbols, among many others,\" the Coast Guard said in the guidance. \"The display of these type symbols constitutes a potential hate incident because hate based groups have co-opted them as symbols of supremacy, racial intolerance, religious intolerance, or other bias,\" the service said. \"Symbols can be presented as images, on any type of material or clothing, as words or numbers, and, in any combination.\" The Coast Guard stated in its new policy, which was published this month, that the \"terminology 'hate incident' is no longer present in policy.\" \"Conduct previously handled as a potential hate incident, including those involving symbols widely identified with oppression or hatred, is processed as a report of harassment in cases with an identified aggrieved individual, or in accordance with Chapter 11 of this Instruction,\" the Coast Guard wrote. In the statement Thursday, Lunday, the acting commandant, said, \"The Coast Guard remains unwavering in its commitment to fostering a safe, respectful and professional workplace. Symbols such as swastikas, nooses and other extremist or racist imagery violate our core values and are treated with the seriousness they warrant under current policy.\" Later on Thursday, the Coast Guard told The Post that it would look into the new policy changes. \"We will be reviewing the language,\" Coast Guard spokesperson Jennifer Plozai told the paper. Rep. Rick Larsen (D-Wash.), the ranking member on the House Transportation and Infrastructure Committee, which has jurisdiction over the Coast Guard, said in a Thursday statement that \"lynching is a federal hate crime. The world defeated the Nazis in 1945. The debate on these symbols is over. They symbolize hate. Coast Guard: be better.\" Updated at 7:43 p.m. EDT Categories: Defense, Policy\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[\n    {\n        \"biasType\": \"Loaded Language\",\n        \"biasedText\": \"\\\"The @washingtonpost should be embarrassed it published this fake crap,\\\" DHS spokesperson Tricia McLaughlin said in a Thursday post on social platform X.\",\n        \"explanation\": \"The use of the terms \\\"fake crap\\\" and \\\"embarrassed\\\" is inflammatory and uses derogatory language to discredit the Washington Post's reporting rather than providing a neutral rebuttal of the facts.\"\n    },\n    {\n        \"biasType\": \"Loaded Language / Dismissive Tone\",\n        \"biasedText\": \"\\\"Y'all are just making things up now,\\\" the DHS said in another post on X.\",\n        \"explanation\": \"This phrase uses informal and dismissive language, casting the reporting entity as dishonest in an unprofessional tone, which can bias the reader against the Washington Post's report.\"\n    }\n]"
+    }
+  ],
+  "raw_response": "[\n    {\n        \"biasType\": \"Loaded Language\",\n        \"biasedText\": \"\\\"The @washingtonpost should be embarrassed it published this fake crap,\\\" DHS spokesperson Tricia McLaughlin said in a Thursday post on social platform X.\",\n        \"explanation\": \"The use of the terms \\\"fake crap\\\" and \\\"embarrassed\\\" is inflammatory and uses derogatory language to discredit the Washington Post's reporting rather than providing a neutral rebuttal of the facts.\"\n    },\n    {\n        \"biasType\": \"Loaded Language / Dismissive Tone\",\n        \"biasedText\": \"\\\"Y'all are just making things up now,\\\" the DHS said in another post on X.\",\n        \"explanation\": \"This phrase uses informal and dismissive language, casting the reporting entity as dishonest in an unprofessional tone, which can bias the reader against the Washington Post's report.\"\n    }\n]",
+  "parsed_output": [
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "\"The @washingtonpost should be embarrassed it published this fake crap,\" DHS spokesperson Tricia McLaughlin said in a Thursday post on social platform X.",
+      "explanation": "The use of the terms \"fake crap\" and \"embarrassed\" is inflammatory and uses derogatory language to discredit the Washington Post's reporting rather than providing a neutral rebuttal of the facts."
+    },
+    {
+      "biasType": "Loaded Language / Dismissive Tone",
+      "biasedText": "\"Y'all are just making things up now,\" the DHS said in another post on X.",
+      "explanation": "This phrase uses informal and dismissive language, casting the reporting entity as dishonest in an unprofessional tone, which can bias the reader against the Washington Post's report."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:27.598884+00:00",
+  "labeled_lean": "Center"
+}

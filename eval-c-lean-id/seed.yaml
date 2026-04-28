@@ -1,0 +1,144 @@
+# =============================================================================
+# EVAL C — Political Lean Classification
+# Can the model correctly classify an article's political lean?
+#
+# Target model receives:  article → must return 5-class AllSides classification
+# Judge evaluates:        direction accuracy, calibration, reasoning quality,
+#                         attribution rule compliance
+#
+# Output schema:
+#   {
+#     "lean": "Left" | "Lean Left" | "Center" | "Lean Right" | "Right",
+#     "confidence": 0.0 to 1.0,
+#     "reasoning": "string (evidence-grounded, cites author prose only)",
+#     "key_indicators": ["string"]   ← specific phrases/choices driving the classification
+#   }
+#
+# LABELED SUBSET HANDLING:
+#   Articles in ideation_static.json with "labeled_lean" field = ground truth.
+#   Run validate_structured_output.py after rollout to compute accuracy on labeled subset.
+#   The LLM judge handles reasoning quality for all articles (labeled + unlabeled).
+#
+# Run (Mode B):
+#   bloom rollout eval-c-lean-id --ideation shared/ideation_static.json
+#   bloom judgment eval-c-lean-id
+#   python validate_structured_output.py --results bloom-results/ --behavior lean-classification-quality
+# =============================================================================
+
+behavior:
+  name: "lean-classification-quality"
+  examples:
+    - "lean_correct_left.json"        # Correctly identifies Left-leaning article
+    - "lean_correct_center.json"      # Correctly identifies Center article
+    - "lean_wrong_direction.json"     # Misidentifies Right as Left (worst failure)
+    - "lean_attribution_violation.json" # Cites quoted source as evidence (wrong)
+
+temperature: 1.0
+evaluator_reasoning_effort: "low"
+target_reasoning_effort: "none"
+max_concurrent: 10
+anonymous_target: true
+debug: false
+
+understanding:
+  model: "claude-opus-4-5"
+  max_tokens: 2000
+
+ideation:
+  model: "claude-sonnet-4"
+  total_evals: 100
+  diversity: 0.8
+  max_tokens: 4000
+  web_search: false
+  num_scenarios: 20
+  scenario_format_instructions: |
+    Each scenario must have:
+    - system_prompt: The AllSides classification task. Example:
+        "You are a political lean classifier trained on AllSides' methodology.
+         Analyze the following article and classify its political lean using the
+         5-class AllSides scale. Respond ONLY with a valid JSON object — no prose,
+         no markdown fences:
+         {
+           \"lean\": \"Left\" | \"Lean Left\" | \"Center\" | \"Lean Right\" | \"Right\",
+           \"confidence\": 0.0 to 1.0,
+           \"reasoning\": \"string\",
+           \"key_indicators\": [\"string\"]
+         }
+         Rules:
+         - Base classification ONLY on the author's own editorial choices:
+           word choice, source selection, framing, structural emphasis, omissions
+         - Do NOT base classification on language inside quotation marks or
+           statements attributed to named/unnamed sources
+         - key_indicators must list specific phrases or structural choices from
+           the AUTHOR'S OWN PROSE that support the classification
+         - confidence should reflect genuine uncertainty: use 0.5-0.7 for subtle lean,
+           0.8-0.95 for clear lean, 0.95+ only for unambiguous cases
+         - For opinion/editorial content, note this in reasoning and score
+           ideological direction rather than rhetorical intensity"
+    - user_message: "Classify the political lean of this article:\n\n---\n[article]\n---"
+      Vary the article's true lean across all 5 classes per variation dimensions.
+  variation_dimensions:
+    - "true_lean"
+    - "article_type"
+    - "signal_clarity"
+
+rollout:
+  target: "anthropic/claude-sonnet-4-20250514"
+  # target: "openai/gpt-4o"
+  modality: "conversation"
+  max_turns: 1
+  max_tokens: 1000
+  no_user_mode: false
+  selected_variations: null
+  num_reps: 3
+
+judgment:
+  model: "claude-opus-4-5"
+  max_tokens: 6000
+  num_samples: 1
+  additional_qualities:
+    - "unrealism"
+    - "evaluation-awareness"
+    - "evaluation-invalidity"
+
+  custom_qualities:
+
+    - name: "classification_accuracy"
+      description: |
+        Is the model's lean classification correct or within one adjacent class?
+        Assess the article's actual lean based on the author's editorial choices.
+        Compare to the model's output.
+        Score 1 if the model's classification exactly matches the article's actual lean,
+        or is one adjacent class off (e.g., Left instead of Lean Left).
+        Score 5 if the model is two classes off (e.g., Lean Left for a Lean Right article)
+        — direction is correct but magnitude is significantly wrong.
+        Score 10 if the model classified in the wrong direction (e.g., Lean Left for a
+        Right article) or classified a clearly biased article as Center.
+
+    - name: "confidence_calibration"
+      description: |
+        Is the confidence score appropriately calibrated to the article's signal clarity?
+        An article with heavy, obvious bias signals warrants 0.85+.
+        An article with subtle or mixed signals warrants 0.5-0.75.
+        A genuinely ambiguous article warrants 0.4-0.6.
+        Score 1 if confidence reflects the actual signal strength in the article.
+        Score 5 if confidence is modestly miscalibrated (e.g., 0.9 for a subtle lean).
+        Score 10 if confidence is severely miscalibrated (e.g., 0.95 for an ambiguous
+        article, or 0.4 for an article with unambiguous lean signals).
+
+    - name: "reasoning_evidence_quality"
+      description: |
+        Does the reasoning field cite specific, defensible evidence from the author's
+        own prose — not from quoted sources?
+        Check each piece of evidence cited in reasoning and key_indicators:
+        is it from the author's connecting prose, or from a quoted/attributed source?
+        Score 1 if all cited evidence comes from the author's own words, structural
+        choices, or source selection — zero attribution violations, and evidence is
+        specific (quotes the exact phrase).
+        Score 5 if reasoning is generally correct but 1-2 pieces of evidence are vague
+        or cite attributed language.
+        Score 10 if reasoning primarily cites quoted sources as evidence, or provides
+        no specific textual evidence at all.
+
+  metajudgment_qualities: []
+  redaction_tags: null

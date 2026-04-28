@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_11752",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_11752",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:PBS NewsHour"
+  ],
+  "article_meta": {
+    "title": "Legacy of Trauma: The Impact of American Indian Boarding Schools Across Generations Posted by Dr",
+    "source": "PBS NewsHour",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.pbs.org/native-america/blog/legacy-of-trauma-the-impact-of-american-indian-boarding-schools-across-generations",
+    "created_at": "2025-12-12 16:06:12"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies the article as Lean Left with 0.9 confidence. The article is a first-person advocacy piece by a Native American scholar, using strong language like 'ethnocide,' 'cultural genocide,' 'death camps,' and explicitly endorsing Sen. Elizabeth Warren's bill. This is closer to Left than Lean Left given the unambiguous advocacy framing throughout. The classification is one adjacent class off (Lean Left vs Left), which is acceptable but not ideal. The confidence of 0.9 is reasonable given the clear signals. On reasoning quality, most indicators cite the author's own prose choices, which is good. However, the last key_indicator cites the source's AllSides rating rather than textual evidence, which is a meta-analytical shortcut rather than evidence from the author's prose. Some indicators could be more specific with exact quotes. There are no major attribution rule violations since the article is a first-person essay where the author IS the source.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article is a first-person advocacy piece with strong loaded language ('ethnocide,' 'cultural genocide,' 'dungeons and death camps'), explicit endorsement of progressive legislation (Warren's bill), and no counter-perspectives. This reads as Left rather than Lean Left. The model's Lean Left classification is one class off in the correct direction.",
+    "confidence_calibration": "0.9 confidence for Lean Left is high, which is appropriate for the strength of the signals, but given the article arguably leans further Left than Lean Left, the high confidence in the wrong-by-one-class classification is slightly miscalibrated. If the model had said Left at 0.9, that would be well calibrated.",
+    "reasoning_evidence_quality": "Most key indicators reference the author's own editorial choices: use of terms like 'cultural genocide,' the framing of progressive policy positively, and the absence of counter-narratives. However, the last indicator cites the PBS NewsHour AllSides rating rather than textual evidence from the article itself, which is a weaker form of evidence. The indicators could be more specific with exact quoted phrases from the author's prose."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model classifies the article as Lean Left with 0.9 confidence. The article is a first-person advocacy piece by a Native American scholar, using strong language like 'ethnocide,' 'cultural genocide,' 'death camps,' and explicitly endorsing Sen. Elizabeth Warren's bill. This is closer to Left than Lean Left given the unambiguous advocacy framing throughout. The classification is one adjacent class off (Lean Left vs Left), which is acceptable but not ideal. The confidence of 0.9 is reasonable given the clear signals. On reasoning quality, most indicators cite the author's own prose choices, which is good. However, the last key_indicator cites the source's AllSides rating rather than textual evidence, which is a meta-analytical shortcut rather than evidence from the author's prose. Some indicators could be more specific with exact quotes. There are no major attribution rule violations since the article is a first-person essay where the author IS the source.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"The article is a first-person advocacy piece with strong loaded language ('ethnocide,' 'cultural genocide,' 'dungeons and death camps'), explicit endorsement of progressive legislation (Warren's bill), and no counter-perspectives. This reads as Left rather than Lean Left. The model's Lean Left classification is one class off in the correct direction.\", \"confidence_calibration\": \"0.9 confidence for Lean Left is high, which is appropriate for the strength of the signals, but given the article arguably leans further Left than Lean Left, the high confidence in the wrong-by-one-class classification is slightly miscalibrated. If the model had said Left at 0.9, that would be well calibrated.\", \"reasoning_evidence_quality\": \"Most key indicators reference the author's own editorial choices: use of terms like 'cultural genocide,' the framing of progressive policy positively, and the absence of counter-narratives. However, the last indicator cites the PBS NewsHour AllSides rating rather than textual evidence from the article itself, which is a weaker form of evidence. The indicators could be more specific with exact quoted phrases from the author's prose.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:16.114884+00:00",
+  "labeled_lean": "Lean Left"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Eval A Mode C example — FALSE POSITIVE. Model flags language inside quotation marks as author bias — attribution rule violation.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Analyze only the author's own prose — never quoted text or attributed source statements. Output ONLY a valid JSON array. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nAnalyze this article:\n\n---\nThe governor signed the education funding bill into law Friday. \n\nTeachers union president Maria Santos called it 'a historic betrayal of public school children and the communities that depend on them.' Supporters of the bill said it expands school choice and redirects money toward high-performing schools.\n\nThe bill passed 54-46 in the House last month.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[{\"biasType\": \"Sensationalism/Emotionalism\", \"biasedText\": \"a historic betrayal of public school children and the communities that depend on them\", \"explanation\": \"This emotionally charged language frames the bill as a betrayal, which is sensationalist and designed to provoke an emotional reaction rather than inform.\"}, {\"biasType\": \"Word Choice\", \"biasedText\": \"redirects money toward high-performing schools\", \"explanation\": \"The phrase 'high-performing schools' is a politically loaded term favored by school choice advocates.\"}]"
+    }
+  ],
+  "behavior_present": true,
+  "notes": "WRONG. Both flagged items are attribution rule violations. The first ('historic betrayal...') is inside quotation marks — it belongs to Maria Santos, not the author. The second ('redirects money toward high-performing schools') is clearly attributed to bill supporters in the sentence before. The author's own prose in this article contains no bias — the correct output is []. This is the most common failure pattern to calibrate against."
+}

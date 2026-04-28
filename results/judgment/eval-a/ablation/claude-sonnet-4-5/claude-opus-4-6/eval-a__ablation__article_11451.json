@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_11451",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_11451",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Trump strategy document revives Monroe Doctrine, slams EuropeBy Idrees Ali, Matt Spetalnick and James MackenzieDecember ",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/business/finance/trump-strategy-document-revives-monroe-doctrine-slams-europe-2025-12-05/",
+    "created_at": "2025-12-11 18:13:12"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model's response is mixed. It correctly identifies some genuine author-prose bias instances but has some questionable flags and misses some clear instances. Let me assess each dimension.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The 'civilizational erasure' flag is borderline - the model acknowledges it comes from the document but flags the author's repeated amplification of it, which is a structural/framing choice. This is defensible but stretches the attribution rule. The other items are genuinely from author prose. Minor issue, not systematic violation.",
+    "false_positive_rate": "'Sweeping' is defensible as a subjective adjective, though it's commonly used in news writing. 'Troubled history' is a reasonable flag. The 'civilizational erasure' flag is questionable since the model is essentially flagging a quoted phrase's repetition rather than author prose per se. The 'Some European commentators' flag for Omission of Source Attribution is reasonable. Overall, 1-2 items are debatable.",
+    "false_negative_rate": "The article contains several other notable author-prose bias instances that were missed: (1) 'Trump has used increasingly racist rhetoric against immigrants of color' - this is a strong editorial judgment presented as fact by the author (Opinion Presented as Fact / Word Choice); (2) 'critics have said Trump's rhetoric evokes modern-day imperialism' with vague attribution; (3) 'dour view' is a subjective characterization; (4) the juxtaposition of the Monroe Doctrine discussion with 'modern-day imperialism' criticism and mentions of Trump's 'racist rhetoric' creates a slant. Missing 'increasingly racist rhetoric' is a significant omission.",
+    "bias_type_accuracy": "The labels applied are generally reasonable. 'Subjective Qualifying Adjectives' for 'sweeping' and 'troubled' are correct. 'Omission of Source Attribution' for the vague commentators reference is correct. The 'Word Choice' label for the civilizational erasure repetition is debatable but defensible if we accept the structural framing argument."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model's response is mixed. It correctly identifies some genuine author-prose bias instances but has some questionable flags and misses some clear instances. Let me assess each dimension.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The 'civilizational erasure' flag is borderline - the model acknowledges it comes from the document but flags the author's repeated amplification of it, which is a structural/framing choice. This is defensible but stretches the attribution rule. The other items are genuinely from author prose. Minor issue, not systematic violation.\", \"false_positive_rate\": \"'Sweeping' is defensible as a subjective adjective, though it's commonly used in news writing. 'Troubled history' is a reasonable flag. The 'civilizational erasure' flag is questionable since the model is essentially flagging a quoted phrase's repetition rather than author prose per se. The 'Some European commentators' flag for Omission of Source Attribution is reasonable. Overall, 1-2 items are debatable.\", \"false_negative_rate\": \"The article contains several other notable author-prose bias instances that were missed: (1) 'Trump has used increasingly racist rhetoric against immigrants of color' - this is a strong editorial judgment presented as fact by the author (Opinion Presented as Fact / Word Choice); (2) 'critics have said Trump's rhetoric evokes modern-day imperialism' with vague attribution; (3) 'dour view' is a subjective characterization; (4) the juxtaposition of the Monroe Doctrine discussion with 'modern-day imperialism' criticism and mentions of Trump's 'racist rhetoric' creates a slant. Missing 'increasingly racist rhetoric' is a significant omission.\", \"bias_type_accuracy\": \"The labels applied are generally reasonable. 'Subjective Qualifying Adjectives' for 'sweeping' and 'troubled' are correct. 'Omission of Source Attribution' for the vague commentators reference is correct. The 'Word Choice' label for the civilizational erasure repetition is debatable but defensible if we accept the structural framing argument.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:21.083211+00:00",
+  "labeled_lean": "Center"
+}

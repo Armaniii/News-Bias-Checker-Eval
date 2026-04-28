@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_50469",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_50469",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why a nation of 1.45 billion wants more children16 December 2024ShareSaveSoutik BiswasIndia correspondentShareSaveAFPLas",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/ce9088men9xo",
+    "created_at": "2026-03-06 19:09:33"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model has a mix of correct identifications and errors. It correctly identifies some genuine author-prose bias (like 'more exaggerated, noises' and 'But guess what?'), but uses non-standard bias type labels. It also partially violates the attribution rule with the Bhagwat item, which mixes quoted text with author prose. The 'aggressive' flagging is defensible as author prose bias.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The third flagged item includes Bhagwat's quoted text ('According to population science, when growth falls below 2.1, a society perishes on its own. Nobody destroys it') alongside the author's own framing ('While Mr Bhagwat's concerns may have some basis, they are not entirely accurate'). The author's framing portion is legitimate to flag, but including the quoted text in the biasedText field is a partial attribution violation. The other items are from author prose.",
+    "false_positive_rate": "Item 1 ('more exaggerated, noises') is a defensible catch of author's subjective characterization. Item 2 ('But guess what?') is defensible as author tone/framing. Item 3 is partially problematic due to the inclusion of quoted text, though the author's commentary is a valid concern. Item 4 ('aggressive') is a defensible word choice flag. Overall, most items have some basis but item 3 is questionable in its framing as 'Source Bias' when the actual author-level issue is more subtle.",
+    "false_negative_rate": "The model caught several instances but may have missed: the framing 'As if the southern states' concerns weren't enough' which adds editorial tone; 'nudged past China' as a word choice issue; the overall structural slant toward presenting the demographic situation as alarming. Some of these are minor, but 'As if the southern states' concerns weren't enough' is a clear editorial interjection that was missed.",
+    "bias_type_accuracy": "The model uses non-standard labels: 'Selection and Omission Bias', 'Framing Bias', 'Source Bias', and 'Loaded Language' instead of the defined types. The correct labels from the provided list would be 'Subjective Qualifying Adjectives' or 'Word Choice' for item 1, 'Spin' or 'Word Choice' for item 2, 'Slant' for item 3, and 'Word Choice' for item 4. Multiple labels are outside the defined taxonomy, which is a significant accuracy issue."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct identifications and errors. It correctly identifies some genuine author-prose bias (like 'more exaggerated, noises' and 'But guess what?'), but uses non-standard bias type labels. It also partially violates the attribution rule with the Bhagwat item, which mixes quoted text with author prose. The 'aggressive' flagging is defensible as author prose bias.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The third flagged item includes Bhagwat's quoted text ('According to population science, when growth falls below 2.1, a society perishes on its own. Nobody destroys it') alongside the author's own framing ('While Mr Bhagwat's concerns may have some basis, they are not entirely accurate'). The author's framing portion is legitimate to flag, but including the quoted text in the biasedText field is a partial attribution violation. The other items are from author prose.\", \"false_positive_rate\": \"Item 1 ('more exaggerated, noises') is a defensible catch of author's subjective characterization. Item 2 ('But guess what?') is defensible as author tone/framing. Item 3 is partially problematic due to the inclusion of quoted text, though the author's commentary is a valid concern. Item 4 ('aggressive') is a defensible word choice flag. Overall, most items have some basis but item 3 is questionable in its framing as 'Source Bias' when the actual author-level issue is more subtle.\", \"false_negative_rate\": \"The model caught several instances but may have missed: the framing 'As if the southern states' concerns weren't enough' which adds editorial tone; 'nudged past China' as a word choice issue; the overall structural slant toward presenting the demographic situation as alarming. Some of these are minor, but 'As if the southern states' concerns weren't enough' is a clear editorial interjection that was missed.\", \"bias_type_accuracy\": \"The model uses non-standard labels: 'Selection and Omission Bias', 'Framing Bias', 'Source Bias', and 'Loaded Language' instead of the defined types. The correct labels from the provided list would be 'Subjective Qualifying Adjectives' or 'Word Choice' for item 1, 'Spin' or 'Word Choice' for item 2, 'Slant' for item 3, and 'Word Choice' for item 4. Multiple labels are outside the defined taxonomy, which is a significant accuracy issue.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:18.412491+00:00",
+  "labeled_lean": "Center"
+}

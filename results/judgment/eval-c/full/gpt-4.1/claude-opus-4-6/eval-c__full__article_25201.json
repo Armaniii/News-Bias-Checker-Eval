@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__full__article_25201",
+  "eval": "eval-c",
+  "condition": "full",
+  "article_id": "article_25201",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:538 (ABC News)"
+  ],
+  "article_meta": {
+    "title": "ABC NewsLiveVideoShowsShopInterest Successfully AddedWe'll notify you here with news aboutTurn on desktop notifications ",
+    "source": "538 (ABC News)",
+    "labeled_lean": "Center",
+    "url": "https://abcnews.go.com/Politics/minnesota-senator-white-house-attempting-cover-good-shooting/story?id=129100690",
+    "created_at": "2026-01-13 14:55:39"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "classification_accuracy": 3,
+    "confidence_calibration": 5,
+    "reasoning_evidence_quality": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies this article as Center with 0.7 confidence, but the article has several structural lean-left signals. The author's own prose choices tilt left: describing Good as 'a U.S. citizen and mother of three' (humanizing framing), 'sparked country-wide protests against ICE presence' (framing ICE as the object of opposition), 'local officials maintain that the protests have been mostly peaceful' (sympathetic protest framing), and the structural dominance of Smith's critical perspective over the administration's brief defense. The article gives Smith extensive space (multiple quoted segments, highlights section) while the administration's position is summarized in two sentences. The correct classification is likely Lean Left. The model's Center classification is one class off in the right direction. Additionally, several key_indicators include quoted/attributed language (e.g., 'attempting to cover up what happened' is Smith's words in quotes, 'domestic terrorism' is Noem's words in quotes), which are attribution violations.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article's actual lean is Lean Left based on source selection imbalance (Smith gets extensive coverage vs. brief administration summary), humanizing framing of the victim ('U.S. citizen and mother of three'), and structural choices that foreground criticism of the administration. The model classified it as Center, which is one adjacent class off.",
+    "confidence_calibration": "0.7 confidence for a Center classification suggests the model sees some ambiguity, but if the article is actually Lean Left, 0.7 confidence for the wrong class is problematic. The signals are moderately clear (structural imbalance, humanizing language, protest-sympathetic framing), so appropriate confidence for a Lean Left classification would be around 0.7-0.8.",
+    "reasoning_evidence_quality": "Multiple key_indicators cite attributed/quoted language: 'attempting to cover up what happened' is inside quotes attributed to Smith; 'domestic terrorism' is attributed to Noem; 'Good was attempting to run over the ICE officer' is attributed to Trump administration officials. The model fails to identify the author's actual editorial choices (humanizing description, structural emphasis, source imbalance) and instead mostly lists paraphrased attributed statements."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model classifies this article as Center with 0.7 confidence, but the article has several structural lean-left signals. The author's own prose choices tilt left: describing Good as 'a U.S. citizen and mother of three' (humanizing framing), 'sparked country-wide protests against ICE presence' (framing ICE as the object of opposition), 'local officials maintain that the protests have been mostly peaceful' (sympathetic protest framing), and the structural dominance of Smith's critical perspective over the administration's brief defense. The article gives Smith extensive space (multiple quoted segments, highlights section) while the administration's position is summarized in two sentences. The correct classification is likely Lean Left. The model's Center classification is one class off in the right direction. Additionally, several key_indicators include quoted/attributed language (e.g., 'attempting to cover up what happened' is Smith's words in quotes, 'domestic terrorism' is Noem's words in quotes), which are attribution violations.\", \"custom_scores\": {\"classification_accuracy\": 3, \"confidence_calibration\": 5, \"reasoning_evidence_quality\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"The article's actual lean is Lean Left based on source selection imbalance (Smith gets extensive coverage vs. brief administration summary), humanizing framing of the victim ('U.S. citizen and mother of three'), and structural choices that foreground criticism of the administration. The model classified it as Center, which is one adjacent class off.\", \"confidence_calibration\": \"0.7 confidence for a Center classification suggests the model sees some ambiguity, but if the article is actually Lean Left, 0.7 confidence for the wrong class is problematic. The signals are moderately clear (structural imbalance, humanizing language, protest-sympathetic framing), so appropriate confidence for a Lean Left classification would be around 0.7-0.8.\", \"reasoning_evidence_quality\": \"Multiple key_indicators cite attributed/quoted language: 'attempting to cover up what happened' is inside quotes attributed to Smith; 'domestic terrorism' is attributed to Noem; 'Good was attempting to run over the ICE officer' is attributed to Trump administration officials. The model fails to identify the author's actual editorial choices (humanizing description, structural emphasis, source imbalance) and instead mostly lists paraphrased attributed statements.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:25.595656+00:00",
+  "labeled_lean": "Center"
+}

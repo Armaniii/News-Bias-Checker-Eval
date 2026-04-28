@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_40109",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_40109",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:The Atlantic"
+  ],
+  "article_meta": {
+    "title": "PoliticsMeet the New Proud BoysThe far-right group's views and tactics are now emulated by federal agents.By Ali BrelandIllustration by The Atlantic",
+    "source": "The Atlantic",
+    "labeled_lean": "Left",
+    "url": "https://www.theatlantic.com/politics/2026/01/ice-proud-boys-militia-enrique-tarrio/685823/?utm_source=feed",
+    "created_at": "2026-02-11 17:28:18"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 4,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a generally good job identifying genuine bias patterns in the author's own prose. Most flagged instances are defensible and correctly drawn from the author's connecting prose rather than quoted material. There are some minor issues: the 'wanton actions by the state' flagging is borderline since it appears in a sentence partly attributed to Westwood ('Westwood said'), though the specific phrase 'wanton actions' appears to be the author's own framing leading into the attribution. The Bias by Omission flag is somewhat questionable since DHS spokesperson and White House spokeswoman responses ARE included in the article, though they are brief. Overall, the analysis is largely correct with minor debatable items.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The 'wanton actions by the state' phrase is in a sentence that contains 'Westwood said' - the phrase appears before the attribution marker and could be interpreted as either paraphrase of Westwood or author framing. This is a borderline case. Most other flagged items are clearly from author prose. No clear-cut attribution violations with directly quoted text.",
+    "false_positive_rate": "Most flagged items are defensible. The Bias by Omission flag is questionable since the article does include DHS spokesperson Tricia McLaughlin's response and White House spokeswoman Abigail Jackson's response, plus quotes from Tarrio himself. The article isn't entirely devoid of the other side's perspective, making this flag debatable. The 'could only dream of' flag as Opinion Presented as Fact might be better labeled as Word Choice. Otherwise, flags are generally sound.",
+    "false_negative_rate": "The model caught most of the significant bias instances. It could have flagged the headline itself ('Meet the New Proud Boys') as sensationalism/spin, and the closing speculative paragraph about government agents and militia joining forces. The article's overall framing equating federal law enforcement with extremist groups throughout is captured across multiple flags though.",
+    "bias_type_accuracy": "Labels are generally appropriate. 'Spin' is correctly applied to interpretive framing. 'Opinion Statements Presented as Fact' is correctly applied to unattributed subjective judgments. 'Word Choice' is correctly applied to 'wanton.' 'Negativity Bias' is reasonable for the political violence claim. The 'could only dream of' instance might be better as Word Choice than Opinion Presented as Fact, but it's defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a generally good job identifying genuine bias patterns in the author's own prose. Most flagged instances are defensible and correctly drawn from the author's connecting prose rather than quoted material. There are some minor issues: the 'wanton actions by the state' flagging is borderline since it appears in a sentence partly attributed to Westwood ('Westwood said'), though the specific phrase 'wanton actions' appears to be the author's own framing leading into the attribution. The Bias by Omission flag is somewhat questionable since DHS spokesperson and White House spokeswoman responses ARE included in the article, though they are brief. Overall, the analysis is largely correct with minor debatable items.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 4, \"false_negative_rate\": 3, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The 'wanton actions by the state' phrase is in a sentence that contains 'Westwood said' - the phrase appears before the attribution marker and could be interpreted as either paraphrase of Westwood or author framing. This is a borderline case. Most other flagged items are clearly from author prose. No clear-cut attribution violations with directly quoted text.\", \"false_positive_rate\": \"Most flagged items are defensible. The Bias by Omission flag is questionable since the article does include DHS spokesperson Tricia McLaughlin's response and White House spokeswoman Abigail Jackson's response, plus quotes from Tarrio himself. The article isn't entirely devoid of the other side's perspective, making this flag debatable. The 'could only dream of' flag as Opinion Presented as Fact might be better labeled as Word Choice. Otherwise, flags are generally sound.\", \"false_negative_rate\": \"The model caught most of the significant bias instances. It could have flagged the headline itself ('Meet the New Proud Boys') as sensationalism/spin, and the closing speculative paragraph about government agents and militia joining forces. The article's overall framing equating federal law enforcement with extremist groups throughout is captured across multiple flags though.\", \"bias_type_accuracy\": \"Labels are generally appropriate. 'Spin' is correctly applied to interpretive framing. 'Opinion Statements Presented as Fact' is correctly applied to unattributed subjective judgments. 'Word Choice' is correctly applied to 'wanton.' 'Negativity Bias' is reasonable for the political violence claim. The 'could only dream of' instance might be better as Word Choice than Opinion Presented as Fact, but it's defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:37.413626+00:00",
+  "labeled_lean": "Left"
+}

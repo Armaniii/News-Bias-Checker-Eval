@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_52697",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_52697",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Morning Wire"
+  ],
+  "article_meta": {
+    "title": "— News —Study Shows Pandemic Saw Rise In Firearm Injuries Among KidsBy Charlotte Pence Bond•Dec 20, 2022 DailyWire.com•F",
+    "source": "Morning Wire",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.dailywire.com/news/study-shows-pandemic-saw-rise-in-firearm-injuries-among-kids",
+    "created_at": "2026-03-15 15:49:53"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 2,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "Content-wise, the model correctly identified genuine author-prose bias with appropriate labels and no attribution violations. However, the response was wrapped in code fences, violating the required output format, which is a significant procedural error.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged phrases are from the author's own prose; no quoted/attributed language was flagged.",
+    "false_positive_rate": "Each flagged item reflects subjective or causation-framing language in the author’s voice and is defensibly biased.",
+    "false_negative_rate": "Minor additional subjective phrasing (e.g., 'much higher') could have been flagged, but major instances were covered.",
+    "bias_type_accuracy": "Labels fit well: causal framing as Unsubstantiated Claims, 'disastrous' as Subjective Qualifying Adjectives, and 'gone up a lot' as Word Choice."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"Content-wise, the model correctly identified genuine author-prose bias with appropriate labels and no attribution violations. However, the response was wrapped in code fences, violating the required output format, which is a significant procedural error.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 2, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged phrases are from the author's own prose; no quoted/attributed language was flagged.\", \"false_positive_rate\": \"Each flagged item reflects subjective or causation-framing language in the author’s voice and is defensibly biased.\", \"false_negative_rate\": \"Minor additional subjective phrasing (e.g., 'much higher') could have been flagged, but major instances were covered.\", \"bias_type_accuracy\": \"Labels fit well: causal framing as Unsubstantiated Claims, 'disastrous' as Subjective Qualifying Adjectives, and 'gone up a lot' as Word Choice.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:48.004748+00:00",
+  "labeled_lean": "Lean Right"
+}

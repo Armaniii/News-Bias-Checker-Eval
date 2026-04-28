@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_2955",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_2955",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Newsweek"
+  ],
+  "article_meta": {
+    "title": "...By Natalie VenegasWeekend ReporterShareNewsweek is a Trust Project memberProtests have erupted across the country ove",
+    "source": "Newsweek",
+    "labeled_lean": "Center",
+    "url": "https://www.newsweek.com/protests-trumps-immigration-policies-erupt-country-2024913",
+    "created_at": "2025-11-30 23:45:15"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 8,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model flagged multiple quoted statements as author bias and overreached on several neutral/attributed lines, while missing clear loaded wording in the author’s prose (e.g., ‘erupted,’ ‘sweeping’). One solid catch was ‘hard-line immigration agenda.’",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Two clear attribution violations: flagged an advocate’s quote and a protester chant as author bias.",
+    "false_positive_rate": "Majority of items were not genuine author-level bias: two were quotes; others were arguable/neutral descriptions.",
+    "false_negative_rate": "Missed notable author-prose biases such as ‘Protests have erupted’ and ‘sweeping raids’.",
+    "bias_type_accuracy": "Labeling for the one solid instance (‘hard-line’) was fine; other labels were debatable or misapplied, but those items were not valid biases to begin with."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model flagged multiple quoted statements as author bias and overreached on several neutral/attributed lines, while missing clear loaded wording in the author’s prose (e.g., ‘erupted,’ ‘sweeping’). One solid catch was ‘hard-line immigration agenda.’\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 8, \"false_negative_rate\": 6, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Two clear attribution violations: flagged an advocate’s quote and a protester chant as author bias.\", \"false_positive_rate\": \"Majority of items were not genuine author-level bias: two were quotes; others were arguable/neutral descriptions.\", \"false_negative_rate\": \"Missed notable author-prose biases such as ‘Protests have erupted’ and ‘sweeping raids’.\", \"bias_type_accuracy\": \"Labeling for the one solid instance (‘hard-line’) was fine; other labels were debatable or misapplied, but those items were not valid biases to begin with.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:51.750033+00:00",
+  "labeled_lean": "Center"
+}

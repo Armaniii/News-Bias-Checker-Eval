@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_53896",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_53896",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Senate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislatio",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/politics/2026/03/16/schumer-save-america-act-despicable-trump-cheat-midterms/",
+    "created_at": "2026-03-17 10:42:59"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 9
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model incorrectly flagged quoted language as author bias, used non-standard bias type labels, and missed at least one clear instance of bias in the author's prose. It did correctly identify a genuine biased phrase in the author's voice and a plausible omission, but overall had notable attribution and labeling issues.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Item 1 flags Schumer’s quoted language, violating the attribution rule. Other items are from author prose/structure.",
+    "false_positive_rate": "One out of three items is a clear false positive due to attribution error; the other two are defensible.",
+    "false_negative_rate": "Missed clear author-prose bias such as 'Schumer continued his rant to reporters,' and potentially other loaded phrasing.",
+    "bias_type_accuracy": "Used non-listed labels ('Loaded Language', 'Framing', 'Selection of Sources') instead of the defined types; multiple mislabels."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model incorrectly flagged quoted language as author bias, used non-standard bias type labels, and missed at least one clear instance of bias in the author's prose. It did correctly identify a genuine biased phrase in the author's voice and a plausible omission, but overall had notable attribution and labeling issues.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 9}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Item 1 flags Schumer’s quoted language, violating the attribution rule. Other items are from author prose/structure.\", \"false_positive_rate\": \"One out of three items is a clear false positive due to attribution error; the other two are defensible.\", \"false_negative_rate\": \"Missed clear author-prose bias such as 'Schumer continued his rant to reporters,' and potentially other loaded phrasing.\", \"bias_type_accuracy\": \"Used non-listed labels ('Loaded Language', 'Framing', 'Selection of Sources') instead of the defined types; multiple mislabels.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:43.634499+00:00",
+  "labeled_lean": "Right"
+}

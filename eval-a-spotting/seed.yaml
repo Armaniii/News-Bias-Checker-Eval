@@ -1,0 +1,114 @@
+# =============================================================================
+# EVAL A — Bias Spotting Quality
+# Can the model correctly identify bias patterns in author prose?
+#
+# Target model receives:  article → must return JSON array of bias instances
+# Judge evaluates:        attribution rule compliance, false positives,
+#                         false negatives, bias type accuracy, schema validity
+#
+# Run (Mode B — your 100 articles):
+#   bloom rollout eval-a-spotting --ideation shared/ideation_static.json
+#   bloom judgment eval-a-spotting
+# =============================================================================
+
+behavior:
+  name: "bias-spotting-quality"
+  examples:
+    - "spotting_correct.json"          # Finds real bias, excludes quotes correctly
+    - "spotting_false_positive.json"   # Flags quoted source language (wrong)
+    - "spotting_missed.json"           # Misses clear spin in author prose (wrong)
+    - "spotting_wrong_type.json"       # Correct text, wrong bias type label (wrong)
+
+temperature: 1.0
+evaluator_reasoning_effort: "low"
+target_reasoning_effort: "none"
+max_concurrent: 10
+anonymous_target: true
+debug: false
+
+understanding:
+  model: "claude-opus-4-5"
+  max_tokens: 2000
+
+ideation:
+  model: "claude-sonnet-4"
+  total_evals: 100
+  diversity: 0.8
+  max_tokens: 4000
+  web_search: false
+  num_scenarios: 20
+  scenario_format_instructions: |
+    Each scenario must have:
+    - system_prompt: bias analysis system prompt with attribution rules and output schema
+    - user_message: bias type vocabulary list + "Analyze this article:" + article text (200-600 words)
+      Article must have clearly distinguishable author prose vs quoted sources.
+      Vary bias density and quote trap density per variation dimensions.
+  variation_dimensions:
+    - "article_bias_density"
+    - "quote_trap_density"
+    - "bias_type_mix"
+    - "article_type"
+
+rollout:
+  target: "anthropic/claude-sonnet-4-20250514"
+  # target: "openai/gpt-4o"
+  modality: "conversation"
+  max_turns: 1
+  max_tokens: 2000
+  no_user_mode: false
+  selected_variations: null
+  num_reps: 3
+
+judgment:
+  model: "claude-opus-4-5"
+  max_tokens: 6000
+  num_samples: 1
+  additional_qualities:
+    - "unrealism"
+    - "evaluation-awareness"
+    - "evaluation-invalidity"
+
+  custom_qualities:
+
+    - name: "attribution_rule_compliance"
+      description: |
+        Did the model correctly avoid flagging quoted or attributed source language as the author's bias?
+        The attribution rule is: text inside quotation marks, extended reproduced statements,
+        and language clearly belonging to a named/unnamed source must never be flagged.
+        Score 1 if zero attribution violations — every flagged item comes from author prose only.
+        Score 5 if 1-2 minor attribution errors but overall pattern is correct.
+        Score 10 if the model systematically flags quoted text, showing the attribution rule was ignored.
+
+    - name: "false_positive_rate"
+      description: |
+        Did the model flag neutral, correctly-attributed, or non-biased language as bias?
+        For each item in the output array, assess whether it is genuinely a bias pattern
+        in the author's own voice. Count items that are overreaching, misidentified, or wrong.
+        Score 1 if all flagged items are defensible genuine bias patterns.
+        Score 5 if 1-3 items are questionable but not clearly wrong.
+        Score 10 if the majority of flagged items are not genuine author-level bias.
+
+    - name: "false_negative_rate"
+      description: |
+        Did the model miss clear bias patterns that exist in the author's own prose?
+        Identify any significant, defensible bias instances in the author's connecting prose
+        that do not appear in the model's output array.
+        Score 1 if all significant instances were caught.
+        Score 5 if 1-2 defensible instances were missed.
+        Score 10 if the model returned [] or near-empty output for an article with multiple
+        clear author-level bias patterns, or missed the most significant instances.
+
+    - name: "bias_type_accuracy"
+      description: |
+        For correctly identified biased text, did the model apply the right bias type label?
+        Valid types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact,
+        Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant,
+        Flawed Logic, Bias by Omission, Omission of Source Attribution,
+        Bias by Story Choice and Placement, Subjective Qualifying Adjectives,
+        Word Choice, Negativity Bias, Elite vs. Populist Bias.
+        Score 1 if all labels are correctly applied or defensibly close.
+        Score 5 if 1-2 labels are debatable but not clearly wrong.
+        Score 10 if multiple labels are clearly wrong, invented, or from outside the defined list.
+
+  metajudgment_qualities: []
+  redaction_tags: null

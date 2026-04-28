@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import json; json.load\\(open\\(''shared/models.json''\\)\\)\")",
+      "Bash(python3:*)",
+      "Bash(zcat /mnt/c/Users/arman/Documents/allsides/bloom-news-eval-v7/bloom-eval/PROD-26-03-19.sql.gz)",
+      "Bash(grep -oP \"^INSERT INTO \\\\`\\(\\\\w+\\)\\\\`\")",
+      "Bash(mysql PROD)",
+      "Bash(mysql PROD -e \"SHOW TABLES;\")",
+      "Bash(mysql:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Read(//tmp/**)",
+      "Bash(pip3 install:*)",
+      "Bash(find /tmp/pip-req-build-* -name \"cli.py\")",
+      "Bash(find /tmp/pip-req-build-* -type f -name *.py)",
+      "Bash(find /mnt/c/Users/arman/Documents/allsides/bloom-news-eval-v7/bloom-eval/eval-* -type f)",
+      "Bash(grep -E \"\\\\.py$\")",
+      "WebSearch",
+      "WebFetch(domain:www.anthropic.com)"
+    ]
+  }
+}

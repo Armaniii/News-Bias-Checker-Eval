@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_14045",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_14045",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why the US needs China's rare earths16 October 2025ShareSaveAyeshea PereraAsia Digital Editor, Singapore ShareSaveGetty ",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/c1drqeev36qo",
+    "created_at": "2025-12-16 22:38:17"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model makes some good identifications but also has notable errors. It correctly identifies 'chokehold' as loaded author language and 'dealt a major blow' as opinion presented as fact. However, it flags a quoted statement from Dr. Harper as Sensationalism/Emotionalism (attribution rule violation), and the Mudslinging/Ad Hominem label for the Greenland/Trump passage is a stretch - that's more factual reporting of Trump's stated positions. The 'adversarial tone' observation is defensible as author-level bias. It misses some instances like 'tightened its grip' (loaded metaphor) but catches the major ones.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The third item flags text from Dr. Harper's quote ('The challenge the US faces is two-fold...alienated...antagonising...hostile actions') - this is clearly attributed speech from Dr. Harper, making it an attribution rule violation. The other items are from author prose.",
+    "false_positive_rate": "The Mudslinging/Ad Hominem flag on the Trump/Greenland passage is questionable - reporting that Trump refused to rule out military force is factual reporting of his public statements, not ad hominem. The Dr. Harper quote flag is a false positive due to attribution error. The other three items (chokehold, major blow, adversarial tone) are defensible.",
+    "false_negative_rate": "The model catches the main instances but misses 'tightened its grip' (loaded metaphor in author prose), and could have flagged the overall Slant of the article which frames China's actions predominantly through a lens of threat. The headline framing 'Why the US needs China's rare earths' could also be flagged. These are moderate misses.",
+    "bias_type_accuracy": "Most labels are reasonable. 'Chokehold' as Subjective Qualifying Adjectives works though Word Choice might be more precise. The Mudslinging/Ad Hominem label for the Trump passage is clearly wrong - even if it were biased, it would be more like Spin or Slant. The Omission of Source Attribution label is defensible. Overall 1-2 labels are debatable or wrong."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model makes some good identifications but also has notable errors. It correctly identifies 'chokehold' as loaded author language and 'dealt a major blow' as opinion presented as fact. However, it flags a quoted statement from Dr. Harper as Sensationalism/Emotionalism (attribution rule violation), and the Mudslinging/Ad Hominem label for the Greenland/Trump passage is a stretch - that's more factual reporting of Trump's stated positions. The 'adversarial tone' observation is defensible as author-level bias. It misses some instances like 'tightened its grip' (loaded metaphor) but catches the major ones.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 5}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The third item flags text from Dr. Harper's quote ('The challenge the US faces is two-fold...alienated...antagonising...hostile actions') - this is clearly attributed speech from Dr. Harper, making it an attribution rule violation. The other items are from author prose.\", \"false_positive_rate\": \"The Mudslinging/Ad Hominem flag on the Trump/Greenland passage is questionable - reporting that Trump refused to rule out military force is factual reporting of his public statements, not ad hominem. The Dr. Harper quote flag is a false positive due to attribution error. The other three items (chokehold, major blow, adversarial tone) are defensible.\", \"false_negative_rate\": \"The model catches the main instances but misses 'tightened its grip' (loaded metaphor in author prose), and could have flagged the overall Slant of the article which frames China's actions predominantly through a lens of threat. The headline framing 'Why the US needs China's rare earths' could also be flagged. These are moderate misses.\", \"bias_type_accuracy\": \"Most labels are reasonable. 'Chokehold' as Subjective Qualifying Adjectives works though Word Choice might be more precise. The Mudslinging/Ad Hominem label for the Trump passage is clearly wrong - even if it were biased, it would be more like Spin or Slant. The Omission of Source Attribution label is defensible. Overall 1-2 labels are debatable or wrong.\"}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:26.257847+00:00",
+  "labeled_lean": "Center"
+}

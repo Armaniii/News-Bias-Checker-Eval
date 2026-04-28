@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_40",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_40",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "POLITICSDonald TrumpAdd TopicTrump accuses six Democratic lawmakers of 'seditious behavior, punishable by death' Cybele ",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/politics/2025/11/20/trump-accuses-democrats-seditious-behavior/87370773007/",
+    "created_at": "2025-11-20 20:54:54"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 2,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 10
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Moderate failures: one attribution violation by including quoted language in a flagged snippet, several missed clear author-prose biases, and incorrect/non-listed bias type labels. The items flagged are mostly genuine author framing but labels are off.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The second item’s biasedText block includes quoted language (“traitors,” “domestic terrorist Democrats,” “HANG THEM...”), violating the rule to avoid flagging quotes.",
+    "false_positive_rate": "Flagged content mostly reflects author’s framing (e.g., “railed,” “cascade of other angry posts”), so few to no pure false positives.",
+    "false_negative_rate": "Missed significant author-prose bias: the section header “Trump’s calls to indict foes materialize” (Spin/Opinion-as-fact), “brutal prison” (Subjective Qualifying Adjectives/Negativity Bias), and “extrajudicial strikes” (loaded legal characterization without clear attribution).",
+    "bias_type_accuracy": "Labels used (“Selection Bias,” “Loaded Language,” “Framing”) are not from the allowed list and misclassify likely types (e.g., should be Spin/Slant/Word Choice)."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"Moderate failures: one attribution violation by including quoted language in a flagged snippet, several missed clear author-prose biases, and incorrect/non-listed bias type labels. The items flagged are mostly genuine author framing but labels are off.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 2, \"false_negative_rate\": 6, \"bias_type_accuracy\": 10}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The second item’s biasedText block includes quoted language (“traitors,” “domestic terrorist Democrats,” “HANG THEM...”), violating the rule to avoid flagging quotes.\", \"false_positive_rate\": \"Flagged content mostly reflects author’s framing (e.g., “railed,” “cascade of other angry posts”), so few to no pure false positives.\", \"false_negative_rate\": \"Missed significant author-prose bias: the section header “Trump’s calls to indict foes materialize” (Spin/Opinion-as-fact), “brutal prison” (Subjective Qualifying Adjectives/Negativity Bias), and “extrajudicial strikes” (loaded legal characterization without clear attribution).\", \"bias_type_accuracy\": \"Labels used (“Selection Bias,” “Loaded Language,” “Framing”) are not from the allowed list and misclassify likely types (e.g., should be Spin/Slant/Word Choice).\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:41.721132+00:00",
+  "labeled_lean": "Lean Left"
+}

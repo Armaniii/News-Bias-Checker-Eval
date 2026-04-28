@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_42404",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_42404",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "President Donald Trump dismissed sex offender Jeffrey Epstein as “disgusting” and decried his procurer, Ghislaine Maxwel",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/politics/2026/02/10/trump-reportedly-called-police-about-disgusting-epstein-in-2006-decried-ghislaine-maxwell-as-evil/",
+    "created_at": "2026-02-15 23:13:45"
+  },
+  "behavior_presence_score": 2,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies genuine bias instances in the author's own prose. All three flagged items are from the author's connecting prose, not from quoted sources. The bias type labels are reasonable and defensible. The model avoids flagging any quoted text. There are a few additional bias instances that could have been flagged (e.g., 'RELEASE THE FILES!' as sensationalism, the overall slant of the article), but the instructions asked for fewer, confident examples, which the model followed.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged items are from the author's own prose. 'whistleblower Trump' is the author's characterization, and the 'simple fact defies' sentence is entirely the author's voice. No quoted text was flagged as author bias.",
+    "false_positive_rate": "All three flagged items are defensible as genuine bias. The 'whistleblower' characterization and the 'lies and falsehoods' sentence are clear examples of author-level bias. Flagging the same sentence twice for both Spin and Opinion Presented as Fact is slightly redundant but both labels are defensible.",
+    "false_negative_rate": "Some additional instances could have been flagged: the overall slant favoring Trump throughout, the 'RELEASE THE FILES!' headline in the related link which is sensationalist, and possibly the framing of the entire article as a vindication narrative. However, the prompt asked for fewer confident examples, so this is a minor issue.",
+    "bias_type_accuracy": "Spin and Opinion Statements Presented as Fact for the 'lies and falsehoods' sentence are both defensible. Word Choice for 'whistleblower' is accurate. One could argue the first instance could also be labeled Slant or Mudslinging, but Spin and Opinion are reasonable choices."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 2, \"reasoning\": \"The model correctly identifies genuine bias instances in the author's own prose. All three flagged items are from the author's connecting prose, not from quoted sources. The bias type labels are reasonable and defensible. The model avoids flagging any quoted text. There are a few additional bias instances that could have been flagged (e.g., 'RELEASE THE FILES!' as sensationalism, the overall slant of the article), but the instructions asked for fewer, confident examples, which the model followed.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 3, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged items are from the author's own prose. 'whistleblower Trump' is the author's characterization, and the 'simple fact defies' sentence is entirely the author's voice. No quoted text was flagged as author bias.\", \"false_positive_rate\": \"All three flagged items are defensible as genuine bias. The 'whistleblower' characterization and the 'lies and falsehoods' sentence are clear examples of author-level bias. Flagging the same sentence twice for both Spin and Opinion Presented as Fact is slightly redundant but both labels are defensible.\", \"false_negative_rate\": \"Some additional instances could have been flagged: the overall slant favoring Trump throughout, the 'RELEASE THE FILES!' headline in the related link which is sensationalist, and possibly the framing of the entire article as a vindication narrative. However, the prompt asked for fewer confident examples, so this is a minor issue.\", \"bias_type_accuracy\": \"Spin and Opinion Statements Presented as Fact for the 'lies and falsehoods' sentence are both defensible. Word Choice for 'whistleblower' is accurate. One could argue the first instance could also be labeled Slant or Mudslinging, but Spin and Opinion are reasonable choices.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.651424+00:00",
+  "labeled_lean": "Right"
+}

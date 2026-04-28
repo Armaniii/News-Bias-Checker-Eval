@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_48954",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_48954",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Newsmax (News)"
+  ],
+  "article_meta": {
+    "title": "Polling analyst Patrick Allocco told Newsmax on Monday that despite wide disparities in early surveys on U.S",
+    "source": "Newsmax (News)",
+    "labeled_lean": "Right",
+    "url": "https://www.newsmax.com/newsmax-tv/patrick-allocco-newsmax-donald-trump/2026/03/02/id/1248068/",
+    "created_at": "2026-03-04 13:55:57"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies this as Right with 0.96 confidence. The article is from Newsmax and contains extensive Newsmax self-promotion, features only a single Republican-sympathetic analyst, and frames the discussion entirely around Republican voter cohesion. The classification as Right is defensible, though Lean Right could also be argued since the analyst content itself is relatively analytical. The confidence at 0.96 is slightly high but not unreasonable given the heavy promotional content. The reasoning has some issues: citing 'Newsmax is a consistently right-leaning media outlet' is source-identity-based rather than prose-based evidence, and some indicators are somewhat vague. However, the model does cite structural/editorial choices like 'absence of left or critical perspectives' and 'focuses on Republican base loyalty.' No clear attribution rule violations—the model doesn't cite quoted language from Allocco as evidence of lean.",
+  "custom_reasoning": {
+    "classification_accuracy": "Right is a defensible classification given Newsmax as source, the entirely one-sided framing featuring only a Republican-sympathetic analyst, no opposing viewpoints, and heavy promotional content for right-leaning programming. Lean Right would also be defensible since the analyst content is somewhat analytical. Within one adjacent class either way.",
+    "confidence_calibration": "0.96 is quite high. While the Newsmax promotional content is clearly right-leaning, the analyst portion is relatively analytical and measured. A confidence of 0.85-0.90 might be more appropriate, but 0.96 isn't severely miscalibrated given the totality of the piece including the heavy promotional tail.",
+    "reasoning_evidence_quality": "The reasoning is somewhat vague and relies partly on outlet identity ('Newsmax is a consistently right-leaning media outlet') rather than specific author prose. Key indicators like 'Positive mentions of Trump and Newsmax programming' and 'Absence of left or critical perspectives' are structural observations but lack specific textual quotes. No attribution rule violations (model doesn't cite Allocco's quotes as lean evidence), but the evidence quality is mediocre—not enough specific author prose is cited."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model classifies this as Right with 0.96 confidence. The article is from Newsmax and contains extensive Newsmax self-promotion, features only a single Republican-sympathetic analyst, and frames the discussion entirely around Republican voter cohesion. The classification as Right is defensible, though Lean Right could also be argued since the analyst content itself is relatively analytical. The confidence at 0.96 is slightly high but not unreasonable given the heavy promotional content. The reasoning has some issues: citing 'Newsmax is a consistently right-leaning media outlet' is source-identity-based rather than prose-based evidence, and some indicators are somewhat vague. However, the model does cite structural/editorial choices like 'absence of left or critical perspectives' and 'focuses on Republican base loyalty.' No clear attribution rule violations—the model doesn't cite quoted language from Allocco as evidence of lean.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Right is a defensible classification given Newsmax as source, the entirely one-sided framing featuring only a Republican-sympathetic analyst, no opposing viewpoints, and heavy promotional content for right-leaning programming. Lean Right would also be defensible since the analyst content is somewhat analytical. Within one adjacent class either way.\", \"confidence_calibration\": \"0.96 is quite high. While the Newsmax promotional content is clearly right-leaning, the analyst portion is relatively analytical and measured. A confidence of 0.85-0.90 might be more appropriate, but 0.96 isn't severely miscalibrated given the totality of the piece including the heavy promotional tail.\", \"reasoning_evidence_quality\": \"The reasoning is somewhat vague and relies partly on outlet identity ('Newsmax is a consistently right-leaning media outlet') rather than specific author prose. Key indicators like 'Positive mentions of Trump and Newsmax programming' and 'Absence of left or critical perspectives' are structural observations but lack specific textual quotes. No attribution rule violations (model doesn't cite Allocco's quotes as lean evidence), but the evidence quality is mediocre—not enough specific author prose is cited.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:19.267532+00:00",
+  "labeled_lean": "Right"
+}

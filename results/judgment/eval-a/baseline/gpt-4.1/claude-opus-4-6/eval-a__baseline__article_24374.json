@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_24374",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_24374",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:New York Post (News)"
+  ],
+  "article_meta": {
+    "title": "US News exclusive ICE agent who opened fire on Renee Good was dragged, hospitalized by illegal migrant driver last year ",
+    "source": "New York Post (News)",
+    "labeled_lean": "Lean Right",
+    "url": "https://nypost.com/2026/01/08/us-news/ice-agent-who-opened-fire-on-renee-good-was-dragged-hospitalized-by-illegal-migrant-driver-last-year/",
+    "created_at": "2026-01-12 06:02:09"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has a mix of correct and incorrect identifications. It commits one clear attribution rule violation (flagging 'mob of agitators' which is from DHS Secretary Noem's statement), uses non-standard bias type labels (Loaded Language, Framing Bias, Authority Bias, Imbalanced Reporting instead of the provided list), and has some questionable flagging decisions. However, it does identify some genuine author-level bias like 'embattled,' 'sky-rocketing,' and 'illegal migrant' choices.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "'mob of agitators' is attributed to DHS Secretary Kristi Noem — this is an attribution rule violation. The Noem/Trump 'self defense' quotes are also attributed language being flagged. The 'modern-day Gestapo' is in quotes attributed to Walz, though the author's 'embattled' framing is fair game. So there are roughly 2 attribution violations.",
+    "false_positive_rate": "Some flagged items are defensible (e.g., 'embattled,' 'sky-rocketing,' 'illegal migrant' as author word choices). But 'mob of agitators' is Noem's language, and the 'Authority Bias' item is somewhat overreaching — presenting official statements is standard journalism. The 'Imbalanced Reporting' item about the defense attorney is questionable since noting that a request for comment wasn't returned is standard journalistic practice. Mixed quality overall.",
+    "false_negative_rate": "The model caught several important instances: 'embattled,' 'sky-rocketing,' loaded word choices like 'illegal migrant,' and the sensationalized statistics. It missed some things like 'a lengthy rap sheet' (informal, loaded language), 'poured gasoline on the long-smoldering tension' (sensationalist metaphor), 'fought back — at times violently' (framing), and 'whopping 8,000% surge' ('whopping' is clearly editorializing). A few defensible misses.",
+    "bias_type_accuracy": "The model uses labels not on the provided list: 'Loaded Language' (should be Word Choice), 'Framing Bias' (should be Spin or Slant), 'Authority Bias' (not on the list at all), 'Imbalanced Reporting' (should be Slant or Bias by Omission). Multiple labels are from outside the defined set, which is a clear error pattern."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect identifications. It commits one clear attribution rule violation (flagging 'mob of agitators' which is from DHS Secretary Noem's statement), uses non-standard bias type labels (Loaded Language, Framing Bias, Authority Bias, Imbalanced Reporting instead of the provided list), and has some questionable flagging decisions. However, it does identify some genuine author-level bias like 'embattled,' 'sky-rocketing,' and 'illegal migrant' choices.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"'mob of agitators' is attributed to DHS Secretary Kristi Noem — this is an attribution rule violation. The Noem/Trump 'self defense' quotes are also attributed language being flagged. The 'modern-day Gestapo' is in quotes attributed to Walz, though the author's 'embattled' framing is fair game. So there are roughly 2 attribution violations.\", \"false_positive_rate\": \"Some flagged items are defensible (e.g., 'embattled,' 'sky-rocketing,' 'illegal migrant' as author word choices). But 'mob of agitators' is Noem's language, and the 'Authority Bias' item is somewhat overreaching — presenting official statements is standard journalism. The 'Imbalanced Reporting' item about the defense attorney is questionable since noting that a request for comment wasn't returned is standard journalistic practice. Mixed quality overall.\", \"false_negative_rate\": \"The model caught several important instances: 'embattled,' 'sky-rocketing,' loaded word choices like 'illegal migrant,' and the sensationalized statistics. It missed some things like 'a lengthy rap sheet' (informal, loaded language), 'poured gasoline on the long-smoldering tension' (sensationalist metaphor), 'fought back — at times violently' (framing), and 'whopping 8,000% surge' ('whopping' is clearly editorializing). A few defensible misses.\", \"bias_type_accuracy\": \"The model uses labels not on the provided list: 'Loaded Language' (should be Word Choice), 'Framing Bias' (should be Spin or Slant), 'Authority Bias' (not on the list at all), 'Imbalanced Reporting' (should be Slant or Bias by Omission). Multiple labels are from outside the defined set, which is a clear error pattern.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:19.454119+00:00",
+  "labeled_lean": "Lean Right"
+}

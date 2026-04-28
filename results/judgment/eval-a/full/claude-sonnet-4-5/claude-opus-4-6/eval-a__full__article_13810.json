@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_13810",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_13810",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:The Federalist"
+  ],
+  "article_meta": {
+    "title": "SCOTUS Pro-Life Center Takes Its Fight Against Democrat Lawfare To The Supreme Court By: Shawn Fleetwood November 21, 20",
+    "source": "The Federalist",
+    "labeled_lean": "Right",
+    "url": "https://thefederalist.com/2025/11/21/pro-life-center-takes-its-fight-against-democrat-lawfare-to-the-supreme-court/",
+    "created_at": "2025-12-16 15:14:10"
+  },
+  "behavior_presence_score": 2,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a strong job identifying genuine bias patterns in the author's own prose. All flagged items are from the author's connecting prose, not from quoted sources. The bias type labels are mostly correct. There are minor quibbles but overall this is a high-quality analysis.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All six flagged items come from the author's own prose: headline text, the author's characterization 'seemingly political inquiry,' the author's use of 'Democrat Attorney General,' the author's framing of the allegations, and the author's description 'candid mother.' No quoted text was flagged. Perfect attribution rule compliance.",
+    "false_positive_rate": "Nearly all items are defensible. 'lawfare' and 'Democrat Lawfare' in the headline are clearly the author's loaded word choices. 'The seemingly political inquiry' is editorializing. 'Democrat Attorney General' is a known politically charged usage. 'candid mother' is a subjective adjective. The Bias by Omission flag is also defensible since the article lacks any perspective from the AG's office or complainants. One could argue 'lawfare' and 'Democrat Lawfare' overlap somewhat, but both are defensible as separate instances.",
+    "false_negative_rate": "The model caught most major instances. It could have also flagged the overall slant of the article - it's structured almost entirely around the pro-life center's perspective with no substantive counterargument from the AG's office. The phrase 'fight back against' could also be flagged as loaded author prose. The tag 'pro-life' is consistently used rather than 'anti-abortion,' which some might consider word choice bias, though this is debatable. Minor misses.",
+    "bias_type_accuracy": "Labels are well-applied. 'Word Choice' for 'lawfare' and 'Democrat' usage is correct. 'Slant' for 'seemingly political' could also be 'Spin' or 'Opinion Statements Presented as Fact' but Slant is defensible. 'Bias by Omission' is correctly applied for the missing AG perspective. 'Subjective Qualifying Adjectives' for 'candid' is correct."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 2, \"reasoning\": \"The model does a strong job identifying genuine bias patterns in the author's own prose. All flagged items are from the author's connecting prose, not from quoted sources. The bias type labels are mostly correct. There are minor quibbles but overall this is a high-quality analysis.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 3, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All six flagged items come from the author's own prose: headline text, the author's characterization 'seemingly political inquiry,' the author's use of 'Democrat Attorney General,' the author's framing of the allegations, and the author's description 'candid mother.' No quoted text was flagged. Perfect attribution rule compliance.\", \"false_positive_rate\": \"Nearly all items are defensible. 'lawfare' and 'Democrat Lawfare' in the headline are clearly the author's loaded word choices. 'The seemingly political inquiry' is editorializing. 'Democrat Attorney General' is a known politically charged usage. 'candid mother' is a subjective adjective. The Bias by Omission flag is also defensible since the article lacks any perspective from the AG's office or complainants. One could argue 'lawfare' and 'Democrat Lawfare' overlap somewhat, but both are defensible as separate instances.\", \"false_negative_rate\": \"The model caught most major instances. It could have also flagged the overall slant of the article - it's structured almost entirely around the pro-life center's perspective with no substantive counterargument from the AG's office. The phrase 'fight back against' could also be flagged as loaded author prose. The tag 'pro-life' is consistently used rather than 'anti-abortion,' which some might consider word choice bias, though this is debatable. Minor misses.\", \"bias_type_accuracy\": \"Labels are well-applied. 'Word Choice' for 'lawfare' and 'Democrat' usage is correct. 'Slant' for 'seemingly political' could also be 'Spin' or 'Opinion Statements Presented as Fact' but Slant is defensible. 'Bias by Omission' is correctly applied for the missing AG perspective. 'Subjective Qualifying Adjectives' for 'candid' is correct.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:30.719489+00:00",
+  "labeled_lean": "Right"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_51589",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_51589",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:New York Post (News)"
+  ],
+  "article_meta": {
+    "title": "Metro An open letter from the heart of Iran to America – Don’t give up on us By California Post Staff Published March 7, 2026, 7:11 p.m",
+    "source": "New York Post (News)",
+    "labeled_lean": "Lean Right",
+    "url": "https://nypost.com/2026/03/07/us-news/an-open-letter-from-the-heart-of-iran-to-america-dont-give-up-on-us/",
+    "created_at": "2026-03-09 20:56:02"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "This is a complex case. The article is presented as an 'open letter' — essentially a first-person opinion piece/letter from an Iranian citizen ('Omid'), published by California Post Staff. The entire article is effectively attributed content from a named source (Omid). However, by choosing to publish this as a news article under their staff byline, the publication makes editorial choices that could constitute bias. The model flags many instances from the letter's prose. The key question is whether this first-person narrative should be treated as 'author prose' or 'attributed source language.' Since it's published under 'California Post Staff' and presented as the publication's content (not in quotation marks), it exists in a gray area. The model identifies genuine bias patterns in the text, but many could be considered the voice of the letter-writer rather than the publication's editorial prose. The bias type labels are generally reasonable. The model does miss the meta-level bias (Bias by Story Choice and Placement) of publishing this one-sided letter as news content.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "This is genuinely ambiguous. The article is an 'open letter' from 'Omid' published by staff. The end note says 'Omid spoke to the Post from Tehran via friends in California.' This makes the entire letter attributed content from a source. However, it's not in quotation marks and is presented as the publication's own content under their byline. The model treats the text as author prose, which is defensible but debatable. Some flagged items like Ahmadinejad quotes are closer to source language. Not a clear-cut violation but not fully compliant either.",
+    "false_positive_rate": "Several flagged items are defensible as bias patterns in the published text. However, given this is an open letter format, some items (emotional language, personal opinions) are expected genre conventions rather than journalistic bias. The 'Sensationalism' and 'Slant' flags are reasonable for news publication context. Some items like the 'terrorist Ayatollah' flag are defensible.",
+    "false_negative_rate": "The model misses the important meta-level 'Bias by Story Choice and Placement' — publishing a one-sided emotional appeal as a news article is itself a significant editorial choice. The model also doesn't flag the framing that presents Trump's military action entirely positively as 'help' without any counterpoint or context about international law, geopolitical consequences, etc.",
+    "bias_type_accuracy": "Most labels are reasonable. 'Sensationalism/Emotionalism' for the emotional language is correct. 'Slant' for one-sided presentation is appropriate. 'Mind Reading' for claiming to know what most 1979 revolutionaries think is well-applied. 'Unsubstantiated Claims' for the 30,000 figure is correct. 'Elite vs. Populist Bias' is a stretch but defensible. Overall reasonable labeling."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"This is a complex case. The article is presented as an 'open letter' — essentially a first-person opinion piece/letter from an Iranian citizen ('Omid'), published by California Post Staff. The entire article is effectively attributed content from a named source (Omid). However, by choosing to publish this as a news article under their staff byline, the publication makes editorial choices that could constitute bias. The model flags many instances from the letter's prose. The key question is whether this first-person narrative should be treated as 'author prose' or 'attributed source language.' Since it's published under 'California Post Staff' and presented as the publication's content (not in quotation marks), it exists in a gray area. The model identifies genuine bias patterns in the text, but many could be considered the voice of the letter-writer rather than the publication's editorial prose. The bias type labels are generally reasonable. The model does miss the meta-level bias (Bias by Story Choice and Placement) of publishing this one-sided letter as news content.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"This is genuinely ambiguous. The article is an 'open letter' from 'Omid' published by staff. The end note says 'Omid spoke to the Post from Tehran via friends in California.' This makes the entire letter attributed content from a source. However, it's not in quotation marks and is presented as the publication's own content under their byline. The model treats the text as author prose, which is defensible but debatable. Some flagged items like Ahmadinejad quotes are closer to source language. Not a clear-cut violation but not fully compliant either.\", \"false_positive_rate\": \"Several flagged items are defensible as bias patterns in the published text. However, given this is an open letter format, some items (emotional language, personal opinions) are expected genre conventions rather than journalistic bias. The 'Sensationalism' and 'Slant' flags are reasonable for news publication context. Some items like the 'terrorist Ayatollah' flag are defensible.\", \"false_negative_rate\": \"The model misses the important meta-level 'Bias by Story Choice and Placement' — publishing a one-sided emotional appeal as a news article is itself a significant editorial choice. The model also doesn't flag the framing that presents Trump's military action entirely positively as 'help' without any counterpoint or context about international law, geopolitical consequences, etc.\", \"bias_type_accuracy\": \"Most labels are reasonable. 'Sensationalism/Emotionalism' for the emotional language is correct. 'Slant' for one-sided presentation is appropriate. 'Mind Reading' for claiming to know what most 1979 revolutionaries think is well-applied. 'Unsubstantiated Claims' for the 30,000 figure is correct. 'Elite vs. Populist Bias' is a stretch but defensible. Overall reasonable labeling.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:29.677877+00:00",
+  "labeled_lean": "Lean Right"
+}

@@ -1,0 +1,48 @@
+{
+  "scenario_id": "eval-c__ablation__article_53896",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_53896",
+  "model": "gpt-4.1",
+  "tags": [
+    "condition:ablation",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Senate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislatio",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/politics/2026/03/16/schumer-save-america-act-despicable-trump-cheat-midterms/",
+    "created_at": "2026-03-17 10:42:59"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a political lean classifier. Classify the article's political lean using the 5-class AllSides scale. Respond ONLY with a valid JSON object — no prose, no markdown fences:\n{\n  \"lean\": \"Left\"|\"Lean Left\"|\"Center\"|\"Lean Right\"|\"Right\",\n  \"confidence\": 0.0 to 1.0,\n  \"reasoning\": \"string\",\n  \"key_indicators\": [\"string\"]\n}\nScale:\n  Left: strong consistent left-leaning editorial choices\n  Lean Left: moderate left tilt, some balance present\n  Center: balanced, neither side consistently favored\n  Lean Right: moderate right tilt, some balance present\n  Right: strong consistent right-leaning editorial choices\nConfidence: 0.5-0.7 subtle lean, 0.8-0.95 clear lean, 0.95+ unambiguous."
+    },
+    {
+      "role": "user",
+      "content": "Classify the political lean of this article:\n\n---\nHEADLINE: Senate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislatio\nSOURCE: Breitbart Fact Check\n\nARTICLE:\n\nSenate Minority Leader Chuck Schumer (D-NY) called the SAVE America Act “one of the most despicable pieces of legislation” he has seen ahead of the bill being brought to the floor for a vote this week. Speaking to reporters on a Sunday phone call, Schumer claimed that President Donald Trump and Senate Republicans are attempting to “disenfranchise millions of Americans and undermine democracy by pushing this despicable SAVE Act,” also called the Safeguarding American Voter Eligibility Act. He also called the election integrity bill “one of the most despicable pieces of legislation I’ve come across in the many years I’ve been a legislator.” “Nothing is more important than defeating this dagger to the heart of our democracy,” the Democrat leader told reporters. After weeks of dragging his feet on the voter ID bill, Senate Majority Leader John Thune finally said the act will be voted on this week, CNBC reported. However, the act is likely to fail due to Thune’s unwillingness to amend the filibuster in the Senate, which currently requires a 60-vote threshold to pass legislation. Schumer continued his rant to reporters, saying, “Donald Trump believes he’s going to lose the election. He knows his numbers are in the gutter.” “And so what does he want to do? Well, he wants to cheat. He wants to steal the election like he did in 2021 in a different way,” he claimed. He added that Senate Democrats do not know exactly what Thune will bring to the floor in the coming days, but they are ready to counter it. “We don’t yet know what Thune is doing, what he will do exactly, but we’re prepared for every possible scenario,” the New York senator said. “My caucus really feels strongly that this would be a horror, you know, one of the worst things that’s happened in the history of this country in terms of allowing people to vote.” Olivia Rondeau is a politics reporter for Breitbart News based in Washington, DC. Find her on X\\/Twitter and Instagram.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "{\n  \"lean\": \"Right\",\n  \"confidence\": 0.95,\n  \"reasoning\": \"The article is published by Breitbart, a source known for its strong right-leaning editorial stance. The reporting highlights Democratic opposition to the SAVE America Act but does so with choice of words such as 'Schumer continued his rant' signaling dismissiveness toward the Democratic perspective. Additionally, the coverage frames Schumer’s criticisms as exaggerated and provides minimal context or Democratic viewpoints other than direct quotes that are negatively described. There is also no presentation of counterarguments or justifications from the Democratic side, which reflects one-sided reporting consistent with a strong right-leaning bias.\",\n  \"key_indicators\": [\"Source is Breitbart (Right)\", \"Describes Schumer's speech as a 'rant'\", \"Lacks Democratic perspective/context beyond quotes\", \"Minimizes/undercuts opposition arguments\", \"Presents Republican legislative effort favorably\"]\n}"
+    }
+  ],
+  "raw_response": "{\n  \"lean\": \"Right\",\n  \"confidence\": 0.95,\n  \"reasoning\": \"The article is published by Breitbart, a source known for its strong right-leaning editorial stance. The reporting highlights Democratic opposition to the SAVE America Act but does so with choice of words such as 'Schumer continued his rant' signaling dismissiveness toward the Democratic perspective. Additionally, the coverage frames Schumer’s criticisms as exaggerated and provides minimal context or Democratic viewpoints other than direct quotes that are negatively described. There is also no presentation of counterarguments or justifications from the Democratic side, which reflects one-sided reporting consistent with a strong right-leaning bias.\",\n  \"key_indicators\": [\"Source is Breitbart (Right)\", \"Describes Schumer's speech as a 'rant'\", \"Lacks Democratic perspective/context beyond quotes\", \"Minimizes/undercuts opposition arguments\", \"Presents Republican legislative effort favorably\"]\n}",
+  "parsed_output": {
+    "lean": "Right",
+    "confidence": 0.95,
+    "reasoning": "The article is published by Breitbart, a source known for its strong right-leaning editorial stance. The reporting highlights Democratic opposition to the SAVE America Act but does so with choice of words such as 'Schumer continued his rant' signaling dismissiveness toward the Democratic perspective. Additionally, the coverage frames Schumer’s criticisms as exaggerated and provides minimal context or Democratic viewpoints other than direct quotes that are negatively described. There is also no presentation of counterarguments or justifications from the Democratic side, which reflects one-sided reporting consistent with a strong right-leaning bias.",
+    "key_indicators": [
+      "Source is Breitbart (Right)",
+      "Describes Schumer's speech as a 'rant'",
+      "Lacks Democratic perspective/context beyond quotes",
+      "Minimizes/undercuts opposition arguments",
+      "Presents Republican legislative effort favorably"
+    ]
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:45.084434+00:00",
+  "labeled_lean": "Right"
+}

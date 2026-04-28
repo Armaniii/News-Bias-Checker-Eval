@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_52968",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_52968",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:CBS News (Online)"
+  ],
+  "article_meta": {
+    "title": "MoneyWatch Can TrumpRx help you save money on drugs? Here's what experts say",
+    "source": "CBS News (Online)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.cbsnews.com/news/trumprx-drug-prices-cheaper/",
+    "created_at": "2026-03-15 22:21:18"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model returned an empty array for an article that is largely balanced but contains some arguable author-level bias instances. The article is relatively well-sourced and balanced, presenting both the White House's perspective and expert critics. However, there are some subtle author-level framing choices that could be flagged. The word 'drawback' is the author's own characterization (not attributed to anyone), which represents a judgment call. The structural framing gives disproportionate space to criticisms versus White House claims. The phrase 'could undermine its value to consumers' in the author's prose frames the expert criticism in a particular direction. These are relatively subtle, and the article is mostly straightforward reporting, so returning [] is not egregiously wrong but misses some defensible instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model returned an empty array, so there are zero attribution violations.",
+    "false_positive_rate": "No items were flagged, so there are zero false positives.",
+    "false_negative_rate": "The article contains some defensible author-level bias instances: (1) 'A drawback of TrumpRx' - author's own word 'drawback' is a subjective characterization (Word Choice/Subjective Qualifying Adjectives); (2) 'could undermine its value to consumers' - author's framing in their own prose presents a negative slant; (3) The structural balance leans toward criticism - multiple expert critics given extensive space while the White House gets limited response. However, these are relatively subtle and the article is mostly straightforward consumer reporting. Missing these is a moderate failure.",
+    "bias_type_accuracy": "No labels were applied, so no wrong labels to evaluate."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model returned an empty array for an article that is largely balanced but contains some arguable author-level bias instances. The article is relatively well-sourced and balanced, presenting both the White House's perspective and expert critics. However, there are some subtle author-level framing choices that could be flagged. The word 'drawback' is the author's own characterization (not attributed to anyone), which represents a judgment call. The structural framing gives disproportionate space to criticisms versus White House claims. The phrase 'could undermine its value to consumers' in the author's prose frames the expert criticism in a particular direction. These are relatively subtle, and the article is mostly straightforward reporting, so returning [] is not egregiously wrong but misses some defensible instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 5, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model returned an empty array, so there are zero attribution violations.\", \"false_positive_rate\": \"No items were flagged, so there are zero false positives.\", \"false_negative_rate\": \"The article contains some defensible author-level bias instances: (1) 'A drawback of TrumpRx' - author's own word 'drawback' is a subjective characterization (Word Choice/Subjective Qualifying Adjectives); (2) 'could undermine its value to consumers' - author's framing in their own prose presents a negative slant; (3) The structural balance leans toward criticism - multiple expert critics given extensive space while the White House gets limited response. However, these are relatively subtle and the article is mostly straightforward consumer reporting. Missing these is a moderate failure.\", \"bias_type_accuracy\": \"No labels were applied, so no wrong labels to evaluate.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.807231+00:00",
+  "labeled_lean": "Lean Left"
+}

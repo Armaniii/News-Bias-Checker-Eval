@@ -1,0 +1,58 @@
+{
+  "scenario_id": "eval-a__baseline__article_25752",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_25752",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:baseline",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "Venezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At le",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/venezuela-releases-four-american-citizens-from-prison-following-military-operation",
+    "created_at": "2026-01-14 13:51:19"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: Venezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At le\nSOURCE: Brit Hume\n\nARTICLE:\n\nVenezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At least four Americans were freed by Venezuela's interim government in the first known release since a US military operation captured President Nicolás Maduro By Michael Sinkewicz Fox News Published January 13, 2026 10:55pm EST s Flipboard Comments Print Email Add Fox News on Google close Video NEW: Americans urged to LEAVE Venezuela amid security concerns Fox News correspondent Madeleine Rivera shares details on the State Department's plea for U.S. citizens to leave Venezuela amid a transition of power following the capture of Nicolás Maduro. The interim government in Venezuela has released at least four U.S. citizens who were imprisoned under President Nicolás Maduro's regime, Fox News confirmed. The release marks the first known release of Americans in the South American country since the U.S. military completed an operation to capture Maduro, who is now facing federal drug trafficking charges in New York.\"We welcome the release of detained Americans in Venezuela,\" a State Department official said Tuesday. \"This is an important step in the right direction by the interim authorities.\" TRUMP SIGNS ORDER TO PROTECT VENEZUELA OIL REVENUE HELD IN US ACCOUNTS Venezuelans celebrate after U.S. President Donald Trump announced that Venezuelan President Nicolás Maduro had been captured and flown out of the country in Santiago, Chile, Saturday, Jan. 3, 2026. (Esteban Felix/AP Photo) Venezuela's interim government has reported that 116 prisoners have been released, although only about 70 have been verified by the non-governmental organization Justicia, Encuentro y Perdón, according to Bloomberg.National Assembly President Jorge Rodríguez said prisoner releases would continue, according to the outlet.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"following military operation...since a US military operation captured President Nicolás Maduro\",\n    \"explanation\": \"The article frames a hypothetical military capture of a sitting president as an established fact without providing context about legality, international law implications, or competing perspectives on this unprecedented action. This framing normalizes what would be an extraordinary military intervention.\"\n  },\n  {\n    \"biasType\": \"Omission Bias\",\n    \"biasedText\": \"The entire article\",\n    \"explanation\": \"The article omits critical information such as: the legal basis for the military operation, international reaction, whether Congress authorized military action, civilian casualties, Venezuelan sovereignty concerns, and alternative diplomatic solutions that may have been attempted. These omissions present an incomplete picture of a complex geopolitical situation.\"\n  },\n  {\n    \"biasType\": \"Source Bias\",\n    \"biasedText\": \"Only State Department and pro-interim government sources are quoted\",\n    \"explanation\": \"The article exclusively cites U.S. government officials and interim government supporters without including perspectives from international organizations, legal experts, critics of military intervention, or Venezuelan citizens affected by the operation. This creates a one-sided narrative.\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"Maduro's regime\",\n    \"explanation\": \"The use of 'regime' rather than 'government' or 'administration' is politically charged language that delegitimizes Maduro's government. While Maduro's government has been criticized internationally, the terminology choice reflects editorial bias rather than neutral reporting.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"following military operation...since a US military operation captured President Nicolás Maduro\",\n    \"explanation\": \"The article frames a hypothetical military capture of a sitting president as an established fact without providing context about legality, international law implications, or competing perspectives on this unprecedented action. This framing normalizes what would be an extraordinary military intervention.\"\n  },\n  {\n    \"biasType\": \"Omission Bias\",\n    \"biasedText\": \"The entire article\",\n    \"explanation\": \"The article omits critical information such as: the legal basis for the military operation, international reaction, whether Congress authorized military action, civilian casualties, Venezuelan sovereignty concerns, and alternative diplomatic solutions that may have been attempted. These omissions present an incomplete picture of a complex geopolitical situation.\"\n  },\n  {\n    \"biasType\": \"Source Bias\",\n    \"biasedText\": \"Only State Department and pro-interim government sources are quoted\",\n    \"explanation\": \"The article exclusively cites U.S. government officials and interim government supporters without including perspectives from international organizations, legal experts, critics of military intervention, or Venezuelan citizens affected by the operation. This creates a one-sided narrative.\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"Maduro's regime\",\n    \"explanation\": \"The use of 'regime' rather than 'government' or 'administration' is politically charged language that delegitimizes Maduro's government. While Maduro's government has been criticized internationally, the terminology choice reflects editorial bias rather than neutral reporting.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Framing Bias",
+      "biasedText": "following military operation...since a US military operation captured President Nicolás Maduro",
+      "explanation": "The article frames a hypothetical military capture of a sitting president as an established fact without providing context about legality, international law implications, or competing perspectives on this unprecedented action. This framing normalizes what would be an extraordinary military intervention."
+    },
+    {
+      "biasType": "Omission Bias",
+      "biasedText": "The entire article",
+      "explanation": "The article omits critical information such as: the legal basis for the military operation, international reaction, whether Congress authorized military action, civilian casualties, Venezuelan sovereignty concerns, and alternative diplomatic solutions that may have been attempted. These omissions present an incomplete picture of a complex geopolitical situation."
+    },
+    {
+      "biasType": "Source Bias",
+      "biasedText": "Only State Department and pro-interim government sources are quoted",
+      "explanation": "The article exclusively cites U.S. government officials and interim government supporters without including perspectives from international organizations, legal experts, critics of military intervention, or Venezuelan citizens affected by the operation. This creates a one-sided narrative."
+    },
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "Maduro's regime",
+      "explanation": "The use of 'regime' rather than 'government' or 'administration' is politically charged language that delegitimizes Maduro's government. While Maduro's government has been criticized internationally, the terminology choice reflects editorial bias rather than neutral reporting."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:07.753769+00:00",
+  "labeled_lean": "Lean Right"
+}

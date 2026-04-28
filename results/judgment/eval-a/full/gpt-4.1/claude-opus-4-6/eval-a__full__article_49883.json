@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_49883",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_49883",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:The Federalist"
+  ],
+  "article_meta": {
+    "title": "Image CreditBy: Linda N",
+    "source": "The Federalist",
+    "labeled_lean": "Right",
+    "url": "https://thefederalist.com/2014/08/26/why-conservatives-should-care-about-urban-farming/",
+    "created_at": "2026-03-05 19:40:08"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model correctly identifies bias instances in the author's own prose and avoids flagging quoted text. This is an opinion/commentary piece from The Federalist, so identifying opinion statements is appropriate. The model correctly identifies several genuine instances of author bias. However, there are some nuances: this is clearly an opinion piece/essay rather than a news article, which makes 'Opinion Statements Presented as Fact' less impactful as a finding since the entire piece is opinion. The model doesn't flag some other instances and some flagged items overlap. No attribution rule violations occur.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly avoids flagging any quoted text. The NPR quote and all attributed statements are properly excluded. All flagged items come from the author's own prose.",
+    "false_positive_rate": "The flagged items are mostly defensible as author-level bias patterns. The 'ugly squares of concrete' is a genuine subjective judgment. The 'conservative implications' framing is genuinely loaded. Items 2 and 3 overlap significantly (same text flagged twice with different types), which is somewhat redundant but not a false positive per se. For an opinion piece, some of these are expected, but they are still valid bias identifications.",
+    "false_negative_rate": "The model misses some instances: 'less state-facilitated sort of philanthropy' is loaded word choice with political framing; 'wimpiness and negligence' in the author's prose (though partly attributed to 'many people'); the overall slant of the piece framing urban farming exclusively through a conservative lens could be flagged as Slant. Also 'barren concrete landscapes' and 'something productive and beautiful' contain subjective qualifying adjectives.",
+    "bias_type_accuracy": "Most labels are reasonable. 'Opinion Statements Presented as Fact' is appropriate for the factual-sounding claims. 'Spin' and 'Word Choice' for the conservative framing are defensible, though some overlap. The distinction between Spin and Word Choice for the same passage is debatable but not clearly wrong."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies bias instances in the author's own prose and avoids flagging quoted text. This is an opinion/commentary piece from The Federalist, so identifying opinion statements is appropriate. The model correctly identifies several genuine instances of author bias. However, there are some nuances: this is clearly an opinion piece/essay rather than a news article, which makes 'Opinion Statements Presented as Fact' less impactful as a finding since the entire piece is opinion. The model doesn't flag some other instances and some flagged items overlap. No attribution rule violations occur.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly avoids flagging any quoted text. The NPR quote and all attributed statements are properly excluded. All flagged items come from the author's own prose.\", \"false_positive_rate\": \"The flagged items are mostly defensible as author-level bias patterns. The 'ugly squares of concrete' is a genuine subjective judgment. The 'conservative implications' framing is genuinely loaded. Items 2 and 3 overlap significantly (same text flagged twice with different types), which is somewhat redundant but not a false positive per se. For an opinion piece, some of these are expected, but they are still valid bias identifications.\", \"false_negative_rate\": \"The model misses some instances: 'less state-facilitated sort of philanthropy' is loaded word choice with political framing; 'wimpiness and negligence' in the author's prose (though partly attributed to 'many people'); the overall slant of the piece framing urban farming exclusively through a conservative lens could be flagged as Slant. Also 'barren concrete landscapes' and 'something productive and beautiful' contain subjective qualifying adjectives.\", \"bias_type_accuracy\": \"Most labels are reasonable. 'Opinion Statements Presented as Fact' is appropriate for the factual-sounding claims. 'Spin' and 'Word Choice' for the conservative framing are defensible, though some overlap. The distinction between Spin and Word Choice for the same passage is debatable but not clearly wrong.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.029091+00:00",
+  "labeled_lean": "Right"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_45576",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_45576",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Washington Examiner"
+  ],
+  "article_meta": {
+    "title": "President Donald Trump’s mass deportation operation is expected to ramp up in 2026 as newly hired military lawyers-turne",
+    "source": "Washington Examiner",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.washingtonexaminer.com/policy/immigration/4471631/why-trump-changes-immigration-courts-ramp-up-deportations/",
+    "created_at": "2026-02-27 01:29:45"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model makes 2 clear attribution rule violations by flagging quoted text from Austin Kocher as author bias (items 2 and 3). However, it correctly identifies 2 genuine author-prose bias instances (items 1 and 4). It also misses some potential bias instances in author prose. The bias type labels are mostly reasonable for the items that are correctly identified.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Items 2 and 3 are both from Austin Kocher's quoted/attributed statements ('Kocher wrote in a post'). These are clearly attributed to a named source and should not have been flagged as author bias. This is a significant attribution rule violation affecting half the output.",
+    "false_positive_rate": "Items 1 ('messaging twist') and 4 ('impossible numbers game') are genuine author-prose bias instances and defensible flags. Items 2 and 3 are attribution violations - the text belongs to Kocher, not the author. So 2 out of 4 items are false positives due to attribution errors.",
+    "false_negative_rate": "The model caught 'messaging twist' and 'impossible numbers game' which are good catches. It could have also flagged 'mass deportation operation' in the opening (loaded framing), 'expeditiously reviewing' (positive spin on speed), or the overall slant of the article structure. Some misses but the major author-prose instances were partially captured.",
+    "bias_type_accuracy": "For the correctly identified items: 'messaging twist' as Slant is reasonable (could also be Word Choice). 'Impossible numbers game' as Subjective Qualifying Adjectives is defensible. The labels for the incorrectly flagged quoted text (items 2-3) are somewhat appropriate for the text itself but irrelevant since they shouldn't have been flagged at all."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model makes 2 clear attribution rule violations by flagging quoted text from Austin Kocher as author bias (items 2 and 3). However, it correctly identifies 2 genuine author-prose bias instances (items 1 and 4). It also misses some potential bias instances in author prose. The bias type labels are mostly reasonable for the items that are correctly identified.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Items 2 and 3 are both from Austin Kocher's quoted/attributed statements ('Kocher wrote in a post'). These are clearly attributed to a named source and should not have been flagged as author bias. This is a significant attribution rule violation affecting half the output.\", \"false_positive_rate\": \"Items 1 ('messaging twist') and 4 ('impossible numbers game') are genuine author-prose bias instances and defensible flags. Items 2 and 3 are attribution violations - the text belongs to Kocher, not the author. So 2 out of 4 items are false positives due to attribution errors.\", \"false_negative_rate\": \"The model caught 'messaging twist' and 'impossible numbers game' which are good catches. It could have also flagged 'mass deportation operation' in the opening (loaded framing), 'expeditiously reviewing' (positive spin on speed), or the overall slant of the article structure. Some misses but the major author-prose instances were partially captured.\", \"bias_type_accuracy\": \"For the correctly identified items: 'messaging twist' as Slant is reasonable (could also be Word Choice). 'Impossible numbers game' as Subjective Qualifying Adjectives is defensible. The labels for the incorrectly flagged quoted text (items 2-3) are somewhat appropriate for the text itself but irrelevant since they shouldn't have been flagged at all.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:29.093614+00:00",
+  "labeled_lean": "Lean Right"
+}

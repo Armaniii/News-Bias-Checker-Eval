@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_14045",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_14045",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why the US needs China's rare earths16 October 2025ShareSaveAyeshea PereraAsia Digital Editor, Singapore ShareSaveGetty ",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/c1drqeev36qo",
+    "created_at": "2025-12-16 22:38:17"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has a mix of correct and incorrect identifications. It correctly flags 'chokehold' as biased author prose (Word Choice). However, it commits an attribution rule violation by flagging Dr. Harper's quoted text as the author's bias (item 2). It uses non-standard bias type labels ('Loaded Language', 'Personification Bias', 'Framing Bias', 'Imbalance in Representation') instead of the defined types. Some flagged items are debatable. It also misses some clear bias instances like 'tightened its grip' and 'dealt a major blow' in the author's own prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Item 2 flags text that is clearly a direct quote from Dr. Harper ('The challenge the US faces is two-fold...antagonising many nations...through tariffs and other hostile actions'). This is an attribution rule violation - the language belongs to a named source. The other items are from the author's own prose, so not all are violations, but this is a notable error.",
+    "false_positive_rate": "Item 1 ('chokehold') is a defensible flag. Item 2 is a quoted source - false positive via attribution violation. Item 3 ('taking control') is somewhat defensible as author framing, though 'taking control' may simply be accurate reporting of Trump's stated intentions. Item 4 ('adversarial tone') is defensible as author framing. Item 5 ('Washington has accused China of betrayal') - 'betrayal' here is attributed to Washington's accusation, which makes this borderline. Overall about 2-3 items are questionable.",
+    "false_negative_rate": "The model missed several clear bias instances in author prose: 'tightened its grip' (Word Choice - metaphorical language implying threatening control), 'dealt a major blow' (Sensationalism), 'precious metal' (technically rare earths aren't precious metals - could be misleading), 'hit the US hard' (Word Choice). Also missed 'These might have been places that the US could have sourced some of its rare earth exports from, but the adversarial tone Trump has struck...' as Spin/Slant. Some clear instances were missed.",
+    "bias_type_accuracy": "The model used non-standard labels: 'Word Choice Bias' instead of 'Word Choice', 'Loaded Language' (not in the defined list), 'Personification Bias' (not in the defined list), 'Framing Bias' (not in the defined list - closest would be Spin or Slant), 'Imbalance in Representation' (not in the defined list - closest would be Slant or Bias by Omission). Multiple labels are from outside the provided taxonomy."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect identifications. It correctly flags 'chokehold' as biased author prose (Word Choice). However, it commits an attribution rule violation by flagging Dr. Harper's quoted text as the author's bias (item 2). It uses non-standard bias type labels ('Loaded Language', 'Personification Bias', 'Framing Bias', 'Imbalance in Representation') instead of the defined types. Some flagged items are debatable. It also misses some clear bias instances like 'tightened its grip' and 'dealt a major blow' in the author's own prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Item 2 flags text that is clearly a direct quote from Dr. Harper ('The challenge the US faces is two-fold...antagonising many nations...through tariffs and other hostile actions'). This is an attribution rule violation - the language belongs to a named source. The other items are from the author's own prose, so not all are violations, but this is a notable error.\", \"false_positive_rate\": \"Item 1 ('chokehold') is a defensible flag. Item 2 is a quoted source - false positive via attribution violation. Item 3 ('taking control') is somewhat defensible as author framing, though 'taking control' may simply be accurate reporting of Trump's stated intentions. Item 4 ('adversarial tone') is defensible as author framing. Item 5 ('Washington has accused China of betrayal') - 'betrayal' here is attributed to Washington's accusation, which makes this borderline. Overall about 2-3 items are questionable.\", \"false_negative_rate\": \"The model missed several clear bias instances in author prose: 'tightened its grip' (Word Choice - metaphorical language implying threatening control), 'dealt a major blow' (Sensationalism), 'precious metal' (technically rare earths aren't precious metals - could be misleading), 'hit the US hard' (Word Choice). Also missed 'These might have been places that the US could have sourced some of its rare earth exports from, but the adversarial tone Trump has struck...' as Spin/Slant. Some clear instances were missed.\", \"bias_type_accuracy\": \"The model used non-standard labels: 'Word Choice Bias' instead of 'Word Choice', 'Loaded Language' (not in the defined list), 'Personification Bias' (not in the defined list), 'Framing Bias' (not in the defined list - closest would be Spin or Slant), 'Imbalance in Representation' (not in the defined list - closest would be Slant or Bias by Omission). Multiple labels are from outside the provided taxonomy.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:19.138885+00:00",
+  "labeled_lean": "Center"
+}

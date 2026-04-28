@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_41908",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_41908",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Item 1 of 7 Texas State Troopers line up during a protest at the South Texas Family Residential Center, where Adrian Con",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/legal/government/courts-have-ruled-4400-times-that-ice-jailed-people-illegally-it-hasnt-stopped-2026-02-14/",
+    "created_at": "2026-02-15 00:43:55"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model identifies three instances, all from the author's own prose (no attribution rule violations). The flagged items are defensible but debatable in quality. 'Sweeping legal rebuke' and 'immigration crackdown' are arguably loaded author word choices that could be flagged more precisely. The 'None had criminal records' as Slant is a reasonable catch. The 'sheer scale threatens to clog' from the summary bullets is borderline - it's arguably the author's editorial framing. Some clear bias instances were missed, like 'immigration crackdown' as Word Choice, 'jailing people indefinitely' as Word Choice (vs. 'detaining'), and the selective human-interest framing emphasizing sympathetic cases.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged items are from the author's own prose - the summary bullets, the author's connecting narrative, and the author's editorial insertion. No quoted text was flagged as author bias.",
+    "false_positive_rate": "The first item ('sweeping legal rebuke' + 'jailing people indefinitely') is defensible as Negativity Bias though the characterization is somewhat arguable - 'sweeping legal rebuke' could be seen as factual given the 4,400 rulings. The 'sheer scale threatens to clog' is from summary bullets which are author-generated editorial framing. 'None had criminal records' as Slant is reasonable. Overall 1-2 items are somewhat questionable.",
+    "false_negative_rate": "The model missed some clear author-level bias: 'immigration crackdown' is loaded Word Choice; 'mass-deportation campaign' in author prose is loaded; the selective choice of sympathetic human-interest cases (5-year-old boy, 18-year-old student, hospital worker) without balancing with cases where detention may be justified constitutes Slant; 'driving while brown' is presented without author pushback though it is attributed.",
+    "bias_type_accuracy": "Negativity Bias for the first item is defensible but 'Word Choice' or 'Spin' might be more precise for 'sweeping legal rebuke' and 'crackdown.' Sensationalism for the summary bullet is reasonable. Slant for 'None had criminal records' is well-applied. Labels are in the right neighborhood but not always the most precise."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies three instances, all from the author's own prose (no attribution rule violations). The flagged items are defensible but debatable in quality. 'Sweeping legal rebuke' and 'immigration crackdown' are arguably loaded author word choices that could be flagged more precisely. The 'None had criminal records' as Slant is a reasonable catch. The 'sheer scale threatens to clog' from the summary bullets is borderline - it's arguably the author's editorial framing. Some clear bias instances were missed, like 'immigration crackdown' as Word Choice, 'jailing people indefinitely' as Word Choice (vs. 'detaining'), and the selective human-interest framing emphasizing sympathetic cases.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged items are from the author's own prose - the summary bullets, the author's connecting narrative, and the author's editorial insertion. No quoted text was flagged as author bias.\", \"false_positive_rate\": \"The first item ('sweeping legal rebuke' + 'jailing people indefinitely') is defensible as Negativity Bias though the characterization is somewhat arguable - 'sweeping legal rebuke' could be seen as factual given the 4,400 rulings. The 'sheer scale threatens to clog' is from summary bullets which are author-generated editorial framing. 'None had criminal records' as Slant is reasonable. Overall 1-2 items are somewhat questionable.\", \"false_negative_rate\": \"The model missed some clear author-level bias: 'immigration crackdown' is loaded Word Choice; 'mass-deportation campaign' in author prose is loaded; the selective choice of sympathetic human-interest cases (5-year-old boy, 18-year-old student, hospital worker) without balancing with cases where detention may be justified constitutes Slant; 'driving while brown' is presented without author pushback though it is attributed.\", \"bias_type_accuracy\": \"Negativity Bias for the first item is defensible but 'Word Choice' or 'Spin' might be more precise for 'sweeping legal rebuke' and 'crackdown.' Sensationalism for the summary bullet is reasonable. Slant for 'None had criminal records' is well-applied. Labels are in the right neighborhood but not always the most precise.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:38.226610+00:00",
+  "labeled_lean": "Center"
+}

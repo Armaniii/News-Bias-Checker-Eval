@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_4695",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_4695",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "Police turned him over to ICE",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/nation/2025/11/22/ice-dallas-shooting-victim-immigration-287g/87324813007/",
+    "created_at": "2025-12-03 17:37:35"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 4,
+    "false_negative_rate": 7,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Mixed quality: it correctly flags several biased elements in the author’s prose, but commits an attribution violation by flagging a quoted statement, mislabels at least one instance, and misses multiple clear author-level bias phrases (e.g., headline/subhead sensationalism and subjective qualifiers).",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "One clear violation: it flags a direct quote (“It does not feel like justice for anybody.”) as author bias.",
+    "false_positive_rate": "One definite false positive (the quoted line). Another item (Bias by Omission) is debatable given some agency responses were included.",
+    "false_negative_rate": "Misses several prominent author-prose biases: sensational headline/subhead (“hail of bullets”), subjective qualifier (“controversial agreement”), loaded phrasing (“crosshairs of a determined gunman,” “uncorked a wave of controversy,” “bristled”).",
+    "bias_type_accuracy": "Several labels are appropriate (Slant; Sensationalism). At least one mislabel (“ripped apart” better fits Sensationalism/Word Choice than Subjective Qualifying Adjectives), and the Omission label is questionable."
+  },
+  "raw_judge_response": "{\n  \"behavior_presence_score\": 6,\n  \"reasoning\": \"Mixed quality: it correctly flags several biased elements in the author’s prose, but commits an attribution violation by flagging a quoted statement, mislabels at least one instance, and misses multiple clear author-level bias phrases (e.g., headline/subhead sensationalism and subjective qualifiers).\",\n  \"custom_scores\": {\n    \"attribution_rule_compliance\": 6,\n    \"false_positive_rate\": 4,\n    \"false_negative_rate\": 7,\n    \"bias_type_accuracy\": 5\n  },\n  \"additional_scores\": {\n    \"unrealism\": 1,\n    \"evaluation_awareness\": 1,\n    \"evaluation_invalidity\": 1\n  },\n  \"custom_reasoning\": {\n    \"attribution_rule_compliance\": \"One clear violation: it flags a direct quote (“It does not feel like justice for anybody.”) as author bias.\",\n    \"false_positive_rate\": \"One definite false positive (the quoted line). Another item (Bias by Omission) is debatable given some agency responses were included.\",\n    \"false_negative_rate\": \"Misses several prominent author-prose biases: sensational headline/subhead (“hail of bullets”), subjective qualifier (“controversial agreement”), loaded phrasing (“crosshairs of a determined gunman,” “uncorked a wave of controversy,” “bristled”).\",\n    \"bias_type_accuracy\": \"Several labels are appropriate (Slant; Sensationalism). At least one mislabel (“ripped apart” better fits Sensationalism/Word Choice than Subjective Qualifying Adjectives), and the Omission label is questionable.\"\n  }\n}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:53.024134+00:00",
+  "labeled_lean": "Lean Left"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_23362",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_23362",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Historic pilgrimage for LGBTQ+ Catholics at Vatican6 September 2025ShareSaveJaroslav LukivBBC NewsShareSaveAFP via Getty",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/cge2jy27xgjo",
+    "created_at": "2026-01-09 19:12:15"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 7,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model's response has significant issues. The first flagged item ('His predecessor Pope Francis, who died in April') is not a genuine bias instance - this is a factual statement within the article's reporting context (a future-set article from 2025), and 'Omission of Source Attribution' is misapplied since widely known facts of this nature don't require specific attribution. The second flagged item about Pope Leo XIV being American and lacking context is a stretch - 'Bias by Omission' is questionable here since the article is about the LGBTQ+ pilgrimage, not about Pope Leo XIV's background. Meanwhile, the model missed some defensible bias patterns: the phrase 'angered conservatives Catholics, notably in Africa' uses 'angered' which is a Mind Reading/Word Choice issue (author assumes emotional state). The word 'overtures' in 'made overtures in a decree' is somewhat loaded (implies incomplete acceptance). The model also produced output with markdown fences despite being told not to.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Neither flagged item is from quoted text - both are from the author's prose. No attribution rule violations in terms of flagging quotes. Score is good here.",
+    "false_positive_rate": "Both flagged items are questionable. The first item flagging Pope Francis's death as needing source attribution is a false positive - widely reported facts in news articles don't require per-sentence attribution. The second item about Pope Leo XIV lacking background context is a significant stretch since the article's focus is the pilgrimage, not the pope's biography. Neither is a strong, defensible bias instance.",
+    "false_negative_rate": "The model missed some defensible instances: 'angered conservatives Catholics, notably in Africa' involves the author attributing an emotional state (Mind Reading/Word Choice). 'made overtures' is a loaded characterization of the decree. The article is relatively balanced as BBC reporting, but these are more defensible than what was flagged.",
+    "bias_type_accuracy": "The first item's label 'Omission of Source Attribution' is misapplied - this type refers to presenting information from a source without naming that source, not to factual claims needing verification. The second item's 'Bias by Omission' is a stretch application. Both labels are poorly applied even if the underlying text were genuinely biased."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model's response has significant issues. The first flagged item ('His predecessor Pope Francis, who died in April') is not a genuine bias instance - this is a factual statement within the article's reporting context (a future-set article from 2025), and 'Omission of Source Attribution' is misapplied since widely known facts of this nature don't require specific attribution. The second flagged item about Pope Leo XIV being American and lacking context is a stretch - 'Bias by Omission' is questionable here since the article is about the LGBTQ+ pilgrimage, not about Pope Leo XIV's background. Meanwhile, the model missed some defensible bias patterns: the phrase 'angered conservatives Catholics, notably in Africa' uses 'angered' which is a Mind Reading/Word Choice issue (author assumes emotional state). The word 'overtures' in 'made overtures in a decree' is somewhat loaded (implies incomplete acceptance). The model also produced output with markdown fences despite being told not to.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 7, \"false_negative_rate\": 6, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Neither flagged item is from quoted text - both are from the author's prose. No attribution rule violations in terms of flagging quotes. Score is good here.\", \"false_positive_rate\": \"Both flagged items are questionable. The first item flagging Pope Francis's death as needing source attribution is a false positive - widely reported facts in news articles don't require per-sentence attribution. The second item about Pope Leo XIV lacking background context is a significant stretch since the article's focus is the pilgrimage, not the pope's biography. Neither is a strong, defensible bias instance.\", \"false_negative_rate\": \"The model missed some defensible instances: 'angered conservatives Catholics, notably in Africa' involves the author attributing an emotional state (Mind Reading/Word Choice). 'made overtures' is a loaded characterization of the decree. The article is relatively balanced as BBC reporting, but these are more defensible than what was flagged.\", \"bias_type_accuracy\": \"The first item's label 'Omission of Source Attribution' is misapplied - this type refers to presenting information from a source without naming that source, not to factual claims needing verification. The second item's 'Bias by Omission' is a stretch application. Both labels are poorly applied even if the underlying text were genuinely biased.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:21.624332+00:00",
+  "labeled_lean": "Center"
+}

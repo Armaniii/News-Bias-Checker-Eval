@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_18619",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_18619",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Fox Business"
+  ],
+  "article_meta": {
+    "title": "Christmas travelers left stranded as airports see mass flight cancelations",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxbusiness.com/lifestyle/christmas-travelers-left-stranded-airports-see-mass-flight-cancelations-delays",
+    "created_at": "2025-12-29 14:51:24"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies author-prose bias and avoids flagging quoted text. The flagged instances are all from the author's own voice. However, some flagged items are debatable - 'mass cancellations and delays' is arguably factual given the numbers provided (637 cancellations), and the sensationalism flags on 'travel chaos' and 'disastrous rain storm' are defensible but borderline. The 'ho-ho-horrible' flag is strong and correct. The model misses some items like the headline's 'left stranded' which is dramatic framing, and the 'Misery Map' usage (though that's the actual name of FlightAware's tool). Overall, the model does a reasonable job but has some questionable flags.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged instances are from the author's own prose. The Danniel Sermone quote was correctly excluded. No attribution rule violations.",
+    "false_positive_rate": "The 'ho-ho-horrible' flag is strong. 'Travel chaos' and 'disastrous' are defensible. However, 'mass cancellations and delays' is questionable - with 637 cancellations, 'mass' may be factually appropriate rather than sensationalized. The 'not spared' flag is somewhat overreaching.",
+    "false_negative_rate": "The model caught the main instances. It could have flagged 'left stranded' in the headline as sensational (travelers may have been delayed, not necessarily stranded), and 'barreling through the northeast' as dramatic word choice. The repeated use of 'chaos' (used multiple times) could be flagged more systematically as word choice bias.",
+    "bias_type_accuracy": "The 'ho-ho-horrible' flag as Spin is correct. The Sensationalism labels for 'travel chaos' and 'disastrous' are defensible though Word Choice might also apply. Labels are generally in the right ballpark."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies author-prose bias and avoids flagging quoted text. The flagged instances are all from the author's own voice. However, some flagged items are debatable - 'mass cancellations and delays' is arguably factual given the numbers provided (637 cancellations), and the sensationalism flags on 'travel chaos' and 'disastrous rain storm' are defensible but borderline. The 'ho-ho-horrible' flag is strong and correct. The model misses some items like the headline's 'left stranded' which is dramatic framing, and the 'Misery Map' usage (though that's the actual name of FlightAware's tool). Overall, the model does a reasonable job but has some questionable flags.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged instances are from the author's own prose. The Danniel Sermone quote was correctly excluded. No attribution rule violations.\", \"false_positive_rate\": \"The 'ho-ho-horrible' flag is strong. 'Travel chaos' and 'disastrous' are defensible. However, 'mass cancellations and delays' is questionable - with 637 cancellations, 'mass' may be factually appropriate rather than sensationalized. The 'not spared' flag is somewhat overreaching.\", \"false_negative_rate\": \"The model caught the main instances. It could have flagged 'left stranded' in the headline as sensational (travelers may have been delayed, not necessarily stranded), and 'barreling through the northeast' as dramatic word choice. The repeated use of 'chaos' (used multiple times) could be flagged more systematically as word choice bias.\", \"bias_type_accuracy\": \"The 'ho-ho-horrible' flag as Spin is correct. The Sensationalism labels for 'travel chaos' and 'disastrous' are defensible though Word Choice might also apply. Labels are generally in the right ballpark.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.458614+00:00",
+  "labeled_lean": "Lean Right"
+}

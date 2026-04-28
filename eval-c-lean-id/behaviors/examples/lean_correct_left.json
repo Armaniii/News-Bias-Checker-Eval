@@ -1,0 +1,19 @@
+{
+  "description": "Eval C Mode C example — CORRECT Left classification. Model correctly identifies Left lean from author prose only, appropriate confidence, no attribution violations.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a political lean classifier. Classify using the 5-class AllSides scale. Respond ONLY with valid JSON: {\"lean\": \"Left\"|\"Lean Left\"|\"Center\"|\"Lean Right\"|\"Right\", \"confidence\": 0.0-1.0, \"reasoning\": \"string\", \"key_indicators\": [\"string\"]}. Base classification ONLY on the author's own editorial choices — not quoted text."
+    },
+    {
+      "role": "user",
+      "content": "Classify the political lean of this article:\n\n---\nThe Republican-backed austerity budget rammed through Congress Friday will gut social safety net programs that millions of vulnerable Americans depend on, slashing food assistance and housing support to fund tax breaks for the ultra-wealthy.\n\nProgressive advocates called the measure 'a declaration of war on the poor.' Sen. James Okafor, one of three Republicans who voted against the bill, said he could not support cuts of this magnitude.\n\nThe White House celebrated the vote as a fiscal responsibility milestone.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"lean\": \"Left\", \"confidence\": 0.92, \"reasoning\": \"The author's own prose consistently uses language that frames the bill negatively from a left-leaning perspective. The author's choice of verbs and descriptors — not the quoted sources — drive this classification.\", \"key_indicators\": [\"'Republican-backed austerity budget rammed through' — author's own framing uses loaded verb and partisan label\", \"'gut social safety net programs that millions of vulnerable Americans depend on' — author's own characterization of the impact, not attributed to any source\", \"'to fund tax breaks for the ultra-wealthy' — author's own causal framing, presenting this as the bill's purpose\", \"Source selection: progressive advocates get a prominent direct quote; White House response is given one neutral sentence at the end\"]}"
+    }
+  ],
+  "behavior_present": false,
+  "notes": "CORRECT. The model correctly identifies Left lean with appropriate confidence. All key_indicators cite the author's own prose: 'rammed through,' 'gut social safety net,' 'fund tax breaks for the ultra-wealthy' are all the author's language. The progressive quote is correctly excluded from key_indicators but the structural choice to feature it prominently IS cited as an author choice. The White House's quote is also correctly excluded."
+}

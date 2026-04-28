@@ -1,0 +1,19 @@
+{
+  "description": "Eval A Mode C example — CORRECT spotting. Model identifies genuine author-prose bias, correctly excludes quoted source language, uses right type labels.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Analyze only the author's own prose — never quoted text or attributed source statements. Output ONLY a valid JSON array. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nAnalyze this article:\n\n---\nThe city council steamrolled through a controversial rezoning ordinance Tuesday, ignoring months of community opposition in a late-night session that drew angry crowds outside city hall.\n\nCouncilmember James Wu, who championed the measure, called it 'a necessary step toward housing equity.' Opponents argued the ordinance unfairly benefits large developers at the expense of longtime residents.\n\nThe vote was 6-3. Construction is expected to begin next year.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[{\"biasType\": \"Word Choice\", \"biasedText\": \"steamrolled through\", \"explanation\": \"The author's own verb choice implies forceful, dismissive passage of the ordinance — a loaded characterization not supported by neutral reporting language.\"}, {\"biasType\": \"Bias by Omission\", \"biasedText\": \"ignoring months of community opposition\", \"explanation\": \"The author frames the council's action as ignoring opposition in their own voice, without noting whether the council addressed or considered the opposition in other forums. This structural framing presents one side as obviously correct.\"}]"
+    }
+  ],
+  "behavior_present": false,
+  "notes": "CORRECT. Author's loaded verb 'steamrolled through' and framing phrase 'ignoring months of community opposition' are both the author's own prose — correct to flag. Wu's quote ('a necessary step toward housing equity') and opponents' characterization are correctly excluded. Bias types correctly applied."
+}

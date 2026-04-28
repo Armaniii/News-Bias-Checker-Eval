@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__full__article_40087",
+  "eval": "eval-c",
+  "condition": "full",
+  "article_id": "article_40087",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "Kid Rock Buries Bad Bunny in TMZ's Post-Super Bowl Halftime Show Poll 31 Chris Graythen/Getty ImagesWarner Todd Huston11",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/entertainment/2026/02/11/kid-rock-buries-bad-bunny-in-tmzs-post-super-bowl-halftime-show-poll/",
+    "created_at": "2026-02-11 17:24:04"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies the article as Lean Right with 0.85 confidence. The article is from Breitbart, which AllSides rates as Right. The classification is one adjacent class off (Lean Right vs Right). The key_indicators all cite the author's own prose — no attribution violations. The reasoning correctly identifies the author's editorial choices. However, the classification probably should be Right given the density of bias signals and the source being Breitbart. The confidence is reasonable for the signals present.",
+  "custom_reasoning": {
+    "classification_accuracy": "Lean Right is one adjacent class from the likely correct classification of Right. The article is from Breitbart and the author's prose is saturated with right-leaning editorial choices ('buried,' 'rabidly anti-Trump,' 'gossip site,' framing TMZ as manipulative). A Right classification would be more accurate, but Lean Right is within one adjacent class.",
+    "confidence_calibration": "0.85 confidence for Lean Right is somewhat miscalibrated — the signals are dense and unambiguous enough to warrant a Right classification at 0.85+. For a Lean Right classification, the confidence should arguably be higher (since the lean signals are clear), or alternatively the classification should be bumped to Right. The confidence doesn't severely mismatch the signal strength but is modestly off.",
+    "reasoning_evidence_quality": "All key_indicators cite the author's own prose: 'buried,' 'gossip site,' 'TMZ tried its best,' 'rabidly anti-Trump,' 'Fans did not fall for the push.' No attribution violations. The reasoning correctly identifies framing choices and editorial language. Minor weakness: could have been more explicit about the 'gossip site' label as a dismissive descriptor."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model classifies the article as Lean Right with 0.85 confidence. The article is from Breitbart, which AllSides rates as Right. The classification is one adjacent class off (Lean Right vs Right). The key_indicators all cite the author's own prose — no attribution violations. The reasoning correctly identifies the author's editorial choices. However, the classification probably should be Right given the density of bias signals and the source being Breitbart. The confidence is reasonable for the signals present.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Lean Right is one adjacent class from the likely correct classification of Right. The article is from Breitbart and the author's prose is saturated with right-leaning editorial choices ('buried,' 'rabidly anti-Trump,' 'gossip site,' framing TMZ as manipulative). A Right classification would be more accurate, but Lean Right is within one adjacent class.\", \"confidence_calibration\": \"0.85 confidence for Lean Right is somewhat miscalibrated — the signals are dense and unambiguous enough to warrant a Right classification at 0.85+. For a Lean Right classification, the confidence should arguably be higher (since the lean signals are clear), or alternatively the classification should be bumped to Right. The confidence doesn't severely mismatch the signal strength but is modestly off.\", \"reasoning_evidence_quality\": \"All key_indicators cite the author's own prose: 'buried,' 'gossip site,' 'TMZ tried its best,' 'rabidly anti-Trump,' 'Fans did not fall for the push.' No attribution violations. The reasoning correctly identifies framing choices and editorial language. Minor weakness: could have been more explicit about the 'gossip site' label as a dismissive descriptor.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:26.716525+00:00",
+  "labeled_lean": "Right"
+}

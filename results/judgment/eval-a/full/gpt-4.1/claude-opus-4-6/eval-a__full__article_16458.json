@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_16458",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_16458",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:The Hill"
+  ],
+  "article_meta": {
+    "title": "Senate Democrats renew government shutdown threat as tensions flare with Trump by Alexander Bolton 12/22/25 06:00 AM ET ",
+    "source": "The Hill",
+    "labeled_lean": "Center",
+    "url": "https://thehill.com/homenews/senate/5657834-senate-democrats-threaten-government-shutdown/amp/",
+    "created_at": "2025-12-22 21:42:11"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies two instances of author-level bias without flagging any quoted text. Both flagged items are from the author's own prose. The bias type labels are reasonable though slightly debatable. However, the model misses several other instances of author bias, such as 'tensions flare' in the headline (sensationalism/word choice), 'threw a stick of dynamite' is quoted so correctly excluded, but the author's characterization 'which provides data critical to assessing climate change' is an editorializing parenthetical that could be flagged. The phrase 'jam Senate Democrats' near the end is also the author's loaded verb choice. The model also misses 'resulting in more than 20 million Americans seeing substantially higher health care costs next year' which presents a contested prediction as fact.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Both flagged items are clearly from the author's own prose, not from quoted or attributed source language. No attribution rule violations.",
+    "false_positive_rate": "The 'bombshell' flagging is clearly defensible as author bias. The 'slant' flagging about the shutdown political success is reasonable but somewhat debatable — the author is reporting facts (polling data, approval ratings) but the framing/prominence does favor the Democratic narrative. Both are defensible but the second one could be seen as straightforward reporting.",
+    "false_negative_rate": "The model misses several instances: 'tensions flare' (sensationalism in headline), 'jam Senate Democrats' (loaded word choice by author), 'which provides data critical to assessing climate change' (editorializing parenthetical), and potentially 'resulting in more than 20 million Americans seeing substantially higher health care costs next year' (presenting contested projection as fact). These are moderate misses.",
+    "bias_type_accuracy": "The 'Slant' label for the shutdown success paragraph is reasonable. The 'Opinion Statements Presented as Fact' for the bombshell paragraph is defensible but 'Word Choice' or 'Sensationalism/Emotionalism' might be more precise for 'bombshell'. The labels are close but not perfectly precise."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies two instances of author-level bias without flagging any quoted text. Both flagged items are from the author's own prose. The bias type labels are reasonable though slightly debatable. However, the model misses several other instances of author bias, such as 'tensions flare' in the headline (sensationalism/word choice), 'threw a stick of dynamite' is quoted so correctly excluded, but the author's characterization 'which provides data critical to assessing climate change' is an editorializing parenthetical that could be flagged. The phrase 'jam Senate Democrats' near the end is also the author's loaded verb choice. The model also misses 'resulting in more than 20 million Americans seeing substantially higher health care costs next year' which presents a contested prediction as fact.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Both flagged items are clearly from the author's own prose, not from quoted or attributed source language. No attribution rule violations.\", \"false_positive_rate\": \"The 'bombshell' flagging is clearly defensible as author bias. The 'slant' flagging about the shutdown political success is reasonable but somewhat debatable — the author is reporting facts (polling data, approval ratings) but the framing/prominence does favor the Democratic narrative. Both are defensible but the second one could be seen as straightforward reporting.\", \"false_negative_rate\": \"The model misses several instances: 'tensions flare' (sensationalism in headline), 'jam Senate Democrats' (loaded word choice by author), 'which provides data critical to assessing climate change' (editorializing parenthetical), and potentially 'resulting in more than 20 million Americans seeing substantially higher health care costs next year' (presenting contested projection as fact). These are moderate misses.\", \"bias_type_accuracy\": \"The 'Slant' label for the shutdown success paragraph is reasonable. The 'Opinion Statements Presented as Fact' for the bombshell paragraph is defensible but 'Word Choice' or 'Sensationalism/Emotionalism' might be more precise for 'bombshell'. The labels are close but not perfectly precise.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.379685+00:00",
+  "labeled_lean": "Center"
+}

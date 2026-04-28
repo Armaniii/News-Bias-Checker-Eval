@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_42780",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_42780",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Politico"
+  ],
+  "article_meta": {
+    "title": "Facebook X Ukrainian President Volodymyr Zelenskyy and CNN’s Clarissa Ward on the state of the war | The Conversation 02",
+    "source": "Politico",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.politico.com/news/2026/03/06/democrats-james-talarico-donors-spending-texas-00815690",
+    "created_at": "2026-03-11 18:57:34"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "No attribution violations and two clearly biased author phrases were correctly flagged, but the model missed several other clear instances of loaded author prose and included one marginal/overstated item.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged text comes from the author’s prose, not from quotations or attributed statements.",
+    "false_positive_rate": "“Democrats have long dreamed of turning Texas blue” is a mild narrative flourish and arguably neutral context; flagging it as Spin is somewhat overreaching. The other two items are solid.",
+    "false_negative_rate": "Missed multiple clear author-level biases: e.g., “staggering price tag,” “easily dispatched,” “stubbornly low approval rating,” “struggling mightily,” labeling Cornyn a “moderate” without attribution, and “Republicans… scoff at the idea.”",
+    "bias_type_accuracy": "Labels applied appropriately: subjective qualifiers for “scandal-ridden MAGA darling,” word choice for “appeared laughable,” and a defensible Spin label for the ‘dreamed of’ framing."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"No attribution violations and two clearly biased author phrases were correctly flagged, but the model missed several other clear instances of loaded author prose and included one marginal/overstated item.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 6, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged text comes from the author’s prose, not from quotations or attributed statements.\", \"false_positive_rate\": \"“Democrats have long dreamed of turning Texas blue” is a mild narrative flourish and arguably neutral context; flagging it as Spin is somewhat overreaching. The other two items are solid.\", \"false_negative_rate\": \"Missed multiple clear author-level biases: e.g., “staggering price tag,” “easily dispatched,” “stubbornly low approval rating,” “struggling mightily,” labeling Cornyn a “moderate” without attribution, and “Republicans… scoff at the idea.”\", \"bias_type_accuracy\": \"Labels applied appropriately: subjective qualifiers for “scandal-ridden MAGA darling,” word choice for “appeared laughable,” and a defensible Spin label for the ‘dreamed of’ framing.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:52.605558+00:00",
+  "labeled_lean": "Lean Left"
+}

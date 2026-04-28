@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_14742",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_14742",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "4 Republicans defy Speaker Johnson to force House vote on extending ACA subsidies The Associated PressAP17 Dec 2025 Four",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/news/4-republicans-defy-speaker-johnson-to-force-house-vote-on-extending-aca-subsidies/",
+    "created_at": "2025-12-18 00:51:44"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies one genuine bias instance in the author's own prose ('stunning move' and 'soaring monthly premiums that millions of people will soon endure' are indeed the author's own loaded language). It correctly avoids flagging any quoted text. However, it misses some other potential bias instances in the author's prose, though the instruction to be conservative ('present fewer, confident examples') partially justifies this.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly flags only author prose. No quoted or attributed text is flagged. All quotes from Fitzpatrick, Johnson, Lawler, Jeffries, and Thune are properly excluded.",
+    "false_positive_rate": "The flagged instance is defensible. 'Stunning move' is clearly editorializing, and 'soaring monthly premiums that millions of people will soon endure' uses emotionally loaded language. The combination in one sentence is a legitimate flag. Slightly debatable whether the entire sentence should be one flag, but reasonable.",
+    "false_negative_rate": "The model misses several potential instances: (1) 'defy' in the headline is a loaded word choice implying rebellion; (2) 'broke with' could be seen as loaded framing; (3) 'the magic number of 218' is informal/editorializing; (4) 'The revolt against GOP leadership' uses the loaded word 'revolt'; (5) 'an arduous climb' is editorializing about prospects. Some of these are debatable but 'revolt' and 'defy' are fairly clear instances of loaded word choice by the author. However, since this is an AP article reproduced on Breitbart, some editorial choices may be standard AP style. Still, at least 1-2 clear additional instances were missed.",
+    "bias_type_accuracy": "Sensationalism and Emotionalism is a defensible label for 'stunning move' and the emotional framing of premiums. However, 'Word Choice' might be more precise for 'stunning' specifically. The combined flag covering the whole sentence works reasonably well under Sensationalism, though it blends what could be separate bias types."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies one genuine bias instance in the author's own prose ('stunning move' and 'soaring monthly premiums that millions of people will soon endure' are indeed the author's own loaded language). It correctly avoids flagging any quoted text. However, it misses some other potential bias instances in the author's prose, though the instruction to be conservative ('present fewer, confident examples') partially justifies this.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 5, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly flags only author prose. No quoted or attributed text is flagged. All quotes from Fitzpatrick, Johnson, Lawler, Jeffries, and Thune are properly excluded.\", \"false_positive_rate\": \"The flagged instance is defensible. 'Stunning move' is clearly editorializing, and 'soaring monthly premiums that millions of people will soon endure' uses emotionally loaded language. The combination in one sentence is a legitimate flag. Slightly debatable whether the entire sentence should be one flag, but reasonable.\", \"false_negative_rate\": \"The model misses several potential instances: (1) 'defy' in the headline is a loaded word choice implying rebellion; (2) 'broke with' could be seen as loaded framing; (3) 'the magic number of 218' is informal/editorializing; (4) 'The revolt against GOP leadership' uses the loaded word 'revolt'; (5) 'an arduous climb' is editorializing about prospects. Some of these are debatable but 'revolt' and 'defy' are fairly clear instances of loaded word choice by the author. However, since this is an AP article reproduced on Breitbart, some editorial choices may be standard AP style. Still, at least 1-2 clear additional instances were missed.\", \"bias_type_accuracy\": \"Sensationalism and Emotionalism is a defensible label for 'stunning move' and the emotional framing of premiums. However, 'Word Choice' might be more precise for 'stunning' specifically. The combined flag covering the whole sentence works reasonably well under Sensationalism, though it blends what could be separate bias types.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.294997+00:00",
+  "labeled_lean": "Right"
+}

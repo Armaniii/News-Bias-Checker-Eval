@@ -1,0 +1,19 @@
+{
+  "description": "Eval A Mode C example — MISSED BIAS. Model returns [] for an article containing multiple clear bias instances in the author's own prose.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Analyze only the author's own prose — never quoted text or attributed source statements. Output ONLY a valid JSON array. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nAnalyze this article:\n\n---\nThe reckless tax cut bill pushed through by Republicans last week will inevitably explode the deficit and leave working families paying the price for years to come, budget experts warn.\n\nSen. Patricia Okafor, the bill's sponsor, defended the measure. 'This will put money back in the pockets of hardworking Americans,' she said.\n\nThe nonpartisan Congressional Budget Office is expected to release its score next week.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[]"
+    }
+  ],
+  "behavior_present": true,
+  "notes": "WRONG — missed multiple clear bias instances in the author's own prose. Should have flagged: (1) 'reckless tax cut bill' — Subjective Qualifying Adjective, author's own framing; (2) 'pushed through by Republicans' — Spin, loaded verb implying improper process; (3) 'will inevitably explode the deficit' — Opinion Statements Presented as Fact, author presents a contested economic prediction as certain; (4) 'leave working families paying the price' — Sensationalism/Emotionalism, author's own rhetorical framing. The model correctly excluded Sen. Okafor's quote but then failed to flag any of the author's own loaded prose."
+}

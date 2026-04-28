@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_55340",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_55340",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:NBC News Digital"
+  ],
+  "article_meta": {
+    "title": "ShareAdd NBC News to GoogleMarch 4, 2026, 6:41 PM ESTBy Angela YangListen to this article with a free account00:0000:00N",
+    "source": "NBC News Digital",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nbcnews.com/tech/tech-news/roblox-lawsuit-nebraska-attorney-general-what-to-know-rcna261733",
+    "created_at": "2026-03-19 14:25:24"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model returned an empty array for an article that contains some arguable but not overwhelming author-level bias. The article is largely well-sourced and balanced, including Roblox's response. However, there are a few instances where the author's own prose choices could be flagged: (1) 'exploits children' in the lede is the author's paraphrase of the lawsuit's claims but presented without hedging language like 'allegedly' - though it does say 'alleging'; (2) 'Roblox has also struggled to regulate inappropriate user-made games' - 'struggled' is an interpretive verb in the author's own voice; (3) The structural emphasis on negative cases (kidnapping, sexual assault, suicide) with relatively less space for Roblox's safety measures could constitute Slant or Negativity Bias. However, the article does include substantial Roblox response and safety measures. The empty array is defensible but misses some subtle instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model returned an empty array, so there are zero attribution rule violations.",
+    "false_positive_rate": "No items were flagged, so there are no false positives.",
+    "false_negative_rate": "The model missed some arguable but defensible instances: 'exploits children' as author paraphrase (though 'alleging' does hedge it), 'struggled to regulate' as an interpretive verb choice (Word Choice/Spin), and the overall structural emphasis on negative outcomes with relatively less prominence for safety measures (potential Slant/Negativity Bias). These are moderate misses - the article is relatively balanced but has some author-prose bias worth noting.",
+    "bias_type_accuracy": "No items were flagged, so type accuracy is not applicable. Scored 1 by default."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model returned an empty array for an article that contains some arguable but not overwhelming author-level bias. The article is largely well-sourced and balanced, including Roblox's response. However, there are a few instances where the author's own prose choices could be flagged: (1) 'exploits children' in the lede is the author's paraphrase of the lawsuit's claims but presented without hedging language like 'allegedly' - though it does say 'alleging'; (2) 'Roblox has also struggled to regulate inappropriate user-made games' - 'struggled' is an interpretive verb in the author's own voice; (3) The structural emphasis on negative cases (kidnapping, sexual assault, suicide) with relatively less space for Roblox's safety measures could constitute Slant or Negativity Bias. However, the article does include substantial Roblox response and safety measures. The empty array is defensible but misses some subtle instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 5, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model returned an empty array, so there are zero attribution rule violations.\", \"false_positive_rate\": \"No items were flagged, so there are no false positives.\", \"false_negative_rate\": \"The model missed some arguable but defensible instances: 'exploits children' as author paraphrase (though 'alleging' does hedge it), 'struggled to regulate' as an interpretive verb choice (Word Choice/Spin), and the overall structural emphasis on negative outcomes with relatively less prominence for safety measures (potential Slant/Negativity Bias). These are moderate misses - the article is relatively balanced but has some author-prose bias worth noting.\", \"bias_type_accuracy\": \"No items were flagged, so type accuracy is not applicable. Scored 1 by default.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.480199+00:00",
+  "labeled_lean": "Lean Left"
+}

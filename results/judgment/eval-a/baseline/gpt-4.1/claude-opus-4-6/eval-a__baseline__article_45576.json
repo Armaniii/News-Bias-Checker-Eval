@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_45576",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_45576",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Washington Examiner"
+  ],
+  "article_meta": {
+    "title": "President Donald Trump’s mass deportation operation is expected to ramp up in 2026 as newly hired military lawyers-turne",
+    "source": "Washington Examiner",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.washingtonexaminer.com/policy/immigration/4471631/why-trump-changes-immigration-courts-ramp-up-deportations/",
+    "created_at": "2026-02-27 01:29:45"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 8,
+    "false_positive_rate": 7,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model commits multiple attribution rule violations by flagging quoted/attributed text as author bias. Items 4 and 5 are direct quotes from Austin Kocher, and item 6 is attributed to Charles Kuck. The model also uses non-standard bias type labels ('Loaded Language', 'Framing', 'Appeal to Authority/Expert Selection', 'Loaded Language/Implicit Criticism') that don't match the defined list. Meanwhile, some genuine author-prose bias instances like 'mass deportation operation' and 'messaging twist' are defensibly flagged but with wrong labels. The model also misses some author-level bias patterns.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Items 4 and 5 are direct quotes from Austin Kocher (clearly attributed and in quotation marks). Item 6 paraphrases Charles Kuck's attributed statement ('Kuck insisted that...'). These are clear attribution rule violations — 3 out of 6 flagged items violate the rule.",
+    "false_positive_rate": "Items 4, 5, and 6 are attribution violations and thus false positives. Item 3 (expert selection) is debatable — the author actually properly disclosed the organization's advocacy position, which is good practice rather than bias. Items 1 and 2 have some merit as author-prose bias but are arguable. Overall, majority of items are questionable or wrong.",
+    "false_negative_rate": "The model did catch 'messaging twist' and 'mass deportation operation' which are defensible author-prose items. However, it missed potential bias in phrases like 'expeditiously reviewing' and the overall framing/slant of the article. Some instances were caught but with wrong attribution.",
+    "bias_type_accuracy": "Multiple labels used are not from the defined list: 'Loaded Language' (should be 'Word Choice'), 'Framing' (should be 'Spin' or 'Slant'), 'Appeal to Authority/Expert Selection' (not on the list), 'Loaded Language/Implicit Criticism' (not on the list), 'Opinion Presented as Fact' (close to but not exactly 'Opinion Statements Presented as Fact'). Systematic use of non-standard labels."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model commits multiple attribution rule violations by flagging quoted/attributed text as author bias. Items 4 and 5 are direct quotes from Austin Kocher, and item 6 is attributed to Charles Kuck. The model also uses non-standard bias type labels ('Loaded Language', 'Framing', 'Appeal to Authority/Expert Selection', 'Loaded Language/Implicit Criticism') that don't match the defined list. Meanwhile, some genuine author-prose bias instances like 'mass deportation operation' and 'messaging twist' are defensibly flagged but with wrong labels. The model also misses some author-level bias patterns.\", \"custom_scores\": {\"attribution_rule_compliance\": 8, \"false_positive_rate\": 7, \"false_negative_rate\": 5, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Items 4 and 5 are direct quotes from Austin Kocher (clearly attributed and in quotation marks). Item 6 paraphrases Charles Kuck's attributed statement ('Kuck insisted that...'). These are clear attribution rule violations — 3 out of 6 flagged items violate the rule.\", \"false_positive_rate\": \"Items 4, 5, and 6 are attribution violations and thus false positives. Item 3 (expert selection) is debatable — the author actually properly disclosed the organization's advocacy position, which is good practice rather than bias. Items 1 and 2 have some merit as author-prose bias but are arguable. Overall, majority of items are questionable or wrong.\", \"false_negative_rate\": \"The model did catch 'messaging twist' and 'mass deportation operation' which are defensible author-prose items. However, it missed potential bias in phrases like 'expeditiously reviewing' and the overall framing/slant of the article. Some instances were caught but with wrong attribution.\", \"bias_type_accuracy\": \"Multiple labels used are not from the defined list: 'Loaded Language' (should be 'Word Choice'), 'Framing' (should be 'Spin' or 'Slant'), 'Appeal to Authority/Expert Selection' (not on the list), 'Loaded Language/Implicit Criticism' (not on the list), 'Opinion Presented as Fact' (close to but not exactly 'Opinion Statements Presented as Fact'). Systematic use of non-standard labels.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.362102+00:00",
+  "labeled_lean": "Lean Right"
+}

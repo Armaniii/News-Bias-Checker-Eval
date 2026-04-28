@@ -1,0 +1,70 @@
+# =============================================================================
+# EVAL A SWEEP — Bias Spotting
+# Grid: 2 target models × 2 judge families = 4 runs per condition
+#
+# Run once per prompt condition:
+#   wandb sweep eval-a-spotting/sweep.yaml
+#   bloom sweep eval-a-spotting --ideation shared/ideation_baseline.json
+#   [repeat for ablation and full]
+#
+# Full comparison (12 runs total):
+#   for condition in baseline ablation full; do
+#     wandb sweep eval-a-spotting/sweep.yaml --name "eval-a-${condition}"
+#     bloom sweep eval-a-spotting --ideation shared/ideation_${condition}.json
+#   done
+# =============================================================================
+
+name: "eval-a-spotting"
+program: bloom.py
+method: grid
+
+metric:
+  name: average_behavior_presence_score
+  goal: minimize           # lower = better (fewer bias spotting failures)
+
+parameters:
+
+  # ── Target models (what we're testing) ──────────────────────────────────────
+  rollout.target:
+    values:
+      - "anthropic/claude-sonnet-4-20250514"
+      - "openai/gpt-4o"
+
+  # ── Judge models (two different families for cross-validation) ───────────────
+  # If Claude-judged and GPT-judged rankings agree → result is credible
+  # If they disagree → investigate judge bias before reporting
+  judgment.model:
+    values:
+      - "claude-opus-4-5"            # Family 1: Anthropic
+      - "openai/gpt-4o"              # Family 2: OpenAI
+
+  # ── Fixed params ─────────────────────────────────────────────────────────────
+  behavior.name:
+    value: "bias-spotting-quality"
+
+  temperature:
+    value: 1.0
+
+  anonymous_target:
+    value: true                      # Hide model identity from judge
+
+  rollout.modality:
+    value: "conversation"
+
+  rollout.max_turns:
+    value: 1
+
+  rollout.num_reps:
+    value: 3
+
+  evaluator_reasoning_effort:
+    value: "low"
+
+  target_reasoning_effort:
+    value: "none"
+
+  judgment.additional_qualities:
+    value:
+      - "unrealism"
+      - "evaluation-awareness"
+      - "evaluation-invalidity"

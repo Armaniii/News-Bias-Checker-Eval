@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_41908",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_41908",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Item 1 of 7 Texas State Troopers line up during a protest at the South Texas Family Residential Center, where Adrian Con",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/legal/government/courts-have-ruled-4400-times-that-ice-jailed-people-illegally-it-hasnt-stopped-2026-02-14/",
+    "created_at": "2026-02-15 00:43:55"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model has several issues: (1) attribution rule violations - 'driving while brown' is attributed language from lawyer Carrie Peltier, and the judge's quote is attributed text; (2) uses non-standard bias type labels like 'Loaded Language', 'Loaded Language/Appeal to Emotion', 'Imbalance in Sources', 'Imbalance in Coverage', 'Allegation without Evidence' instead of the defined taxonomy; (3) misses some author-level bias patterns while flagging some questionable items. However, it does identify some defensible concerns like 'mass-deportation campaign' as author word choice and structural slant issues.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "'Driving while brown' is clearly attributed to lawyer Peltier ('Peltier said they were stopped for...'). The judge's quote 'It is appalling...' is inside quotation marks and attributed to Judge Johnston. Both are attribution rule violations. The item about 'None had criminal records' and 'mass-deportation campaign' are legitimately author prose.",
+    "false_positive_rate": "'Mass-deportation campaign' is defensible as author word choice bias. 'None had criminal records' is a defensible observation about author framing/slant. But 'driving while brown' and the judge quote are misattributed. The 'alleged without providing evidence' item is more debatable - the author is accurately reporting that no evidence was provided, but the framing could be seen as slanted. Overall about 2-3 items are questionable or wrong.",
+    "false_negative_rate": "The model missed some author-level bias: 'sweeping legal rebuke' is loaded author language; the article's heavy emphasis on sympathetic individual stories (5-year-old boy, 18-year-old student, hospital worker) represents structural slant; 'jailing people indefinitely' is loaded framing; 'crackdown' is a loaded word choice. Some of these are significant misses.",
+    "bias_type_accuracy": "The model uses labels outside the defined taxonomy: 'Loaded Language', 'Loaded Language/Appeal to Emotion', 'Imbalance in Sources', 'Imbalance in Coverage', 'Allegation without Evidence' are not in the provided list. The correct labels would be 'Word Choice', 'Slant', 'Unsubstantiated Claims' etc. This is a systematic labeling failure."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model has several issues: (1) attribution rule violations - 'driving while brown' is attributed language from lawyer Carrie Peltier, and the judge's quote is attributed text; (2) uses non-standard bias type labels like 'Loaded Language', 'Loaded Language/Appeal to Emotion', 'Imbalance in Sources', 'Imbalance in Coverage', 'Allegation without Evidence' instead of the defined taxonomy; (3) misses some author-level bias patterns while flagging some questionable items. However, it does identify some defensible concerns like 'mass-deportation campaign' as author word choice and structural slant issues.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 8}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"'Driving while brown' is clearly attributed to lawyer Peltier ('Peltier said they were stopped for...'). The judge's quote 'It is appalling...' is inside quotation marks and attributed to Judge Johnston. Both are attribution rule violations. The item about 'None had criminal records' and 'mass-deportation campaign' are legitimately author prose.\", \"false_positive_rate\": \"'Mass-deportation campaign' is defensible as author word choice bias. 'None had criminal records' is a defensible observation about author framing/slant. But 'driving while brown' and the judge quote are misattributed. The 'alleged without providing evidence' item is more debatable - the author is accurately reporting that no evidence was provided, but the framing could be seen as slanted. Overall about 2-3 items are questionable or wrong.\", \"false_negative_rate\": \"The model missed some author-level bias: 'sweeping legal rebuke' is loaded author language; the article's heavy emphasis on sympathetic individual stories (5-year-old boy, 18-year-old student, hospital worker) represents structural slant; 'jailing people indefinitely' is loaded framing; 'crackdown' is a loaded word choice. Some of these are significant misses.\", \"bias_type_accuracy\": \"The model uses labels outside the defined taxonomy: 'Loaded Language', 'Loaded Language/Appeal to Emotion', 'Imbalance in Sources', 'Imbalance in Coverage', 'Allegation without Evidence' are not in the provided list. The correct labels would be 'Word Choice', 'Slant', 'Unsubstantiated Claims' etc. This is a systematic labeling failure.\"}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.174793+00:00",
+  "labeled_lean": "Center"
+}

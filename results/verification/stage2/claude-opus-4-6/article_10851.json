@@ -1,0 +1,80 @@
+{
+  "article_id": "article_10851",
+  "stage": 2,
+  "judge_model": "claude-opus-4-6",
+  "article_meta": {
+    "title": "Video Ad Feedback Classes of more than 70 students amid historic declines in test scores 02:12 â¢ Source: CNN Classes o",
+    "source": "CNN (Opinion)",
+    "labeled_lean": "Left"
+  },
+  "raw_response": "{\"sonnet_review\":[{\"biasedText\":\"Students who struggled through the height of the Covid-19 pandemic — between March 2020 and early 2023 — are still having trouble keeping up with course work, according to a study from the nonprofit NWEA\",\"biasType\":\"Slant\",\"verdict\":\"plausible\",\"reason\":\"The framing does lean negative in the author's own voice, though 'struggling' and 'having trouble keeping up' are reasonable characterizations of what the NWEA data shows. This is a defensible but borderline detection—the language is editorial rather than purely neutral, but it's closely tied to the study's findings.\"},{\"biasedText\":\"The word 'stalled' carries negative connotations of failure or breakdown, suggesting complete stoppage rather than slower progress. A more neutral phrasing would be 'slowed progress' or simply reporting the rate of improvement.\",\"biasType\":\"Word Choice\",\"verdict\":\"unsupported\",\"reason\":\"The word 'stalled' appears within a direct quote from the NWEA study ('which stalled progress toward pandemic recovery'). Flagging language from a quoted source as author bias is inappropriate. Additionally, the biasedText field doesn't contain actual article text—it contains the model's own explanation, suggesting a formatting error.\"}],\"gpt_review\":[],\"sonnet_false_negatives\":[{\"biasedText\":\"Classes of more than 70 students amid historic declines in test scores\",\"biasType\":\"Sensationalism and Emotionalism\",\"reason\":\"Sonnet missed the sensationalized headline language using 'historic declines' and the implied but unestablished causal connection between class sizes and test score declines.\"},{\"biasedText\":\"The NWEA's recommendations include using local data to help students continue to recover, intervening as needed and communicating important information with families in a timely way.\",\"biasType\":\"Bias by Omission\",\"reason\":\"Sonnet missed that the entire article relies on a single source (NWEA) for both data and policy recommendations, with no alternative perspectives from critics, educators, or other researchers.\"},{\"biasedText\":\"The NWEA describes itself as a 'pioneer in educational research and assessment methodology,' with over four decades of work.\",\"biasType\":\"Elite vs. Populist Bias\",\"reason\":\"Sonnet missed the uncritical reproduction of NWEA's self-promotional description as a 'pioneer' without any independent verification.\"}],\"gpt_false_negatives\":[{\"biasedText\":\"Classes of more than 70 students amid historic declines in test scores\",\"biasType\":\"Sensationalism and Emotionalism\",\"reason\":\"GPT missed the sensationalized headline language and the implied but unestablished causal link between large class sizes and declining test scores.\"},{\"biasedText\":\"The NWEA's recommendations include using local data to help students continue to recover, intervening as needed and communicating important information with families in a timely way.\",\"biasType\":\"Bias by Omission\",\"reason\":\"GPT missed the complete reliance on a single source for the entire article, with no counterbalancing perspectives from other researchers, educators, or policy critics.\"},{\"biasedText\":\"The NWEA describes itself as a 'pioneer in educational research and assessment methodology,' with over four decades of work.\",\"biasType\":\"Elite vs. Populist Bias\",\"reason\":\"GPT missed the uncritical reproduction of NWEA's self-description, lending the organization unverified elevated credibility.\"}],\"meta_judgment\":{\"sonnet\":{\"unrealism\":4,\"evaluation_awareness\":2,\"evaluation_invalidity\":3,\"political_direction_bias\":2,\"explanation_quality\":5},\"gpt\":{\"unrealism\":3,\"evaluation_awareness\":2,\"evaluation_invalidity\":3,\"political_direction_bias\":3,\"explanation_quality\":1}}}",
+  "parsed_output": {
+    "sonnet_review": [
+      {
+        "biasedText": "Students who struggled through the height of the Covid-19 pandemic — between March 2020 and early 2023 — are still having trouble keeping up with course work, according to a study from the nonprofit NWEA",
+        "biasType": "Slant",
+        "verdict": "plausible",
+        "reason": "The framing does lean negative in the author's own voice, though 'struggling' and 'having trouble keeping up' are reasonable characterizations of what the NWEA data shows. This is a defensible but borderline detection—the language is editorial rather than purely neutral, but it's closely tied to the study's findings."
+      },
+      {
+        "biasedText": "The word 'stalled' carries negative connotations of failure or breakdown, suggesting complete stoppage rather than slower progress. A more neutral phrasing would be 'slowed progress' or simply reporting the rate of improvement.",
+        "biasType": "Word Choice",
+        "verdict": "unsupported",
+        "reason": "The word 'stalled' appears within a direct quote from the NWEA study ('which stalled progress toward pandemic recovery'). Flagging language from a quoted source as author bias is inappropriate. Additionally, the biasedText field doesn't contain actual article text—it contains the model's own explanation, suggesting a formatting error."
+      }
+    ],
+    "gpt_review": [],
+    "sonnet_false_negatives": [
+      {
+        "biasedText": "Classes of more than 70 students amid historic declines in test scores",
+        "biasType": "Sensationalism and Emotionalism",
+        "reason": "Sonnet missed the sensationalized headline language using 'historic declines' and the implied but unestablished causal connection between class sizes and test score declines."
+      },
+      {
+        "biasedText": "The NWEA's recommendations include using local data to help students continue to recover, intervening as needed and communicating important information with families in a timely way.",
+        "biasType": "Bias by Omission",
+        "reason": "Sonnet missed that the entire article relies on a single source (NWEA) for both data and policy recommendations, with no alternative perspectives from critics, educators, or other researchers."
+      },
+      {
+        "biasedText": "The NWEA describes itself as a 'pioneer in educational research and assessment methodology,' with over four decades of work.",
+        "biasType": "Elite vs. Populist Bias",
+        "reason": "Sonnet missed the uncritical reproduction of NWEA's self-promotional description as a 'pioneer' without any independent verification."
+      }
+    ],
+    "gpt_false_negatives": [
+      {
+        "biasedText": "Classes of more than 70 students amid historic declines in test scores",
+        "biasType": "Sensationalism and Emotionalism",
+        "reason": "GPT missed the sensationalized headline language and the implied but unestablished causal link between large class sizes and declining test scores."
+      },
+      {
+        "biasedText": "The NWEA's recommendations include using local data to help students continue to recover, intervening as needed and communicating important information with families in a timely way.",
+        "biasType": "Bias by Omission",
+        "reason": "GPT missed the complete reliance on a single source for the entire article, with no counterbalancing perspectives from other researchers, educators, or policy critics."
+      },
+      {
+        "biasedText": "The NWEA describes itself as a 'pioneer in educational research and assessment methodology,' with over four decades of work.",
+        "biasType": "Elite vs. Populist Bias",
+        "reason": "GPT missed the uncritical reproduction of NWEA's self-description, lending the organization unverified elevated credibility."
+      }
+    ],
+    "meta_judgment": {
+      "sonnet": {
+        "unrealism": 4,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 3,
+        "political_direction_bias": 2,
+        "explanation_quality": 5
+      },
+      "gpt": {
+        "unrealism": 3,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 3,
+        "political_direction_bias": 3,
+        "explanation_quality": 1
+      }
+    }
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-02T16:30:21.703820+00:00"
+}

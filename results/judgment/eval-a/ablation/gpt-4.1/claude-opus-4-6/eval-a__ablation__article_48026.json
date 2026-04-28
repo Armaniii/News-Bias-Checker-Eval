@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_48026",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_48026",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Atlantic"
+  ],
+  "article_meta": {
+    "title": "IdeasWhat History Says Will Happen Next in IranMilitant groups have become more violent, specifically against civilians,",
+    "source": "The Atlantic",
+    "labeled_lean": "Left",
+    "url": "https://www.theatlantic.com/ideas/archive/2020/01/will-irans-militant-proxies-go-on-a-terrorist-rampage/604576/",
+    "created_at": "2026-03-03 05:34:26"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model identifies three instances. Let me evaluate each: (1) 'Leadership decapitation promotes terrorism...' - This is the author's own prose and is arguably an opinion presented as fact, though it's an op-ed/analysis piece where this is expected. The flagging is defensible but borderline since the author is an academic summarizing his own research. (2) 'sprawling violent network' - This is genuinely the author's own prose and uses loaded descriptive language. Defensible flag. (3) 'Many militant groups have also become less restrained...' flagged as Omission of Source Attribution - This is borderline; the author does provide examples immediately after, and as an academic writing about his own research, this is a topic sentence for a well-sourced paragraph. This flag is somewhat questionable. No attribution rule violations (no quoted text flagged). The article is an opinion/analysis piece by an academic, which makes bias identification trickier - the entire piece is opinion by design. The model missed some potentially more significant instances and flagged some questionable ones.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "No attribution rule violations. All three flagged instances are from the author's own prose, not from quoted text. The model correctly avoided flagging numerous quotes from gang members, Nasrallah, Dehghan, Trump, etc.",
+    "false_positive_rate": "The flags are defensible but borderline. 'sprawling violent network' is reasonably flagged. The 'Leadership decapitation promotes terrorism' claim is the author's academic thesis being presented assertively - defensible but this is an analysis/opinion piece. The 'Omission of Source Attribution' flag is the weakest - the author provides attribution in the very next sentences. Overall, 1-2 items are questionable.",
+    "false_negative_rate": "The article is an opinion/analysis piece, making bias identification complex. Some potentially missable items: 'Not for nothing' is informal author editorializing; 'undisciplined hotheads' is loaded author language (though paraphrasing a source); the framing of the entire article presents the author's academic thesis as authoritative. The model caught some things but missed others like 'undisciplined hotheads' and the overall slant of the piece.",
+    "bias_type_accuracy": "The labels are mostly defensible. 'Opinion Statements Presented as Fact' for the leadership decapitation claim is reasonable. 'Subjective Qualifying Adjectives' for 'sprawling violent network' is appropriate. 'Omission of Source Attribution' for the broad claim is the weakest label - it's more of an 'Opinion Statements Presented as Fact' situation since attribution follows shortly after."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model identifies three instances. Let me evaluate each: (1) 'Leadership decapitation promotes terrorism...' - This is the author's own prose and is arguably an opinion presented as fact, though it's an op-ed/analysis piece where this is expected. The flagging is defensible but borderline since the author is an academic summarizing his own research. (2) 'sprawling violent network' - This is genuinely the author's own prose and uses loaded descriptive language. Defensible flag. (3) 'Many militant groups have also become less restrained...' flagged as Omission of Source Attribution - This is borderline; the author does provide examples immediately after, and as an academic writing about his own research, this is a topic sentence for a well-sourced paragraph. This flag is somewhat questionable. No attribution rule violations (no quoted text flagged). The article is an opinion/analysis piece by an academic, which makes bias identification trickier - the entire piece is opinion by design. The model missed some potentially more significant instances and flagged some questionable ones.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"No attribution rule violations. All three flagged instances are from the author's own prose, not from quoted text. The model correctly avoided flagging numerous quotes from gang members, Nasrallah, Dehghan, Trump, etc.\", \"false_positive_rate\": \"The flags are defensible but borderline. 'sprawling violent network' is reasonably flagged. The 'Leadership decapitation promotes terrorism' claim is the author's academic thesis being presented assertively - defensible but this is an analysis/opinion piece. The 'Omission of Source Attribution' flag is the weakest - the author provides attribution in the very next sentences. Overall, 1-2 items are questionable.\", \"false_negative_rate\": \"The article is an opinion/analysis piece, making bias identification complex. Some potentially missable items: 'Not for nothing' is informal author editorializing; 'undisciplined hotheads' is loaded author language (though paraphrasing a source); the framing of the entire article presents the author's academic thesis as authoritative. The model caught some things but missed others like 'undisciplined hotheads' and the overall slant of the piece.\", \"bias_type_accuracy\": \"The labels are mostly defensible. 'Opinion Statements Presented as Fact' for the leadership decapitation claim is reasonable. 'Subjective Qualifying Adjectives' for 'sprawling violent network' is appropriate. 'Omission of Source Attribution' for the broad claim is the weakest label - it's more of an 'Opinion Statements Presented as Fact' situation since attribution follows shortly after.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:29.345218+00:00",
+  "labeled_lean": "Left"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_9195",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_9195",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Forbes"
+  ],
+  "article_meta": {
+    "title": "BusinessNetflix Will Acquire Warner Bros",
+    "source": "Forbes",
+    "labeled_lean": "Center",
+    "url": "https://www.forbes.com/sites/siladityaray/2025/12/05/netflix-will-acquire-warner-bros-in-83-billion-deal-discovery-will-be-split-off/",
+    "created_at": "2025-12-08 13:35:23"
+  },
+  "behavior_presence_score": 8,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 8,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 10
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model's response has multiple serious problems. First, it uses bias type labels that are not from the defined list ('Factual Inconsistency/Misinformation', 'Lack of Source Attribution', 'Headline-Article Discrepancy', 'Omission Bias'). Second, the first flagged item appears to be the model questioning whether the article is real/fabricated rather than analyzing bias in the author's prose - this is not a bias analysis task but a fact-checking judgment. Third, the article itself is relatively straightforward news reporting with minimal author-level bias. The model invented concerns about fabrication rather than analyzing actual bias patterns. The $83B vs $82.7B discrepancy is a legitimate observation but labeled with a non-standard type. The omission point has some merit but is labeled incorrectly. Overall, the model fundamentally misunderstood the task by questioning the article's veracity rather than analyzing bias patterns in the author's prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model doesn't flag quoted text per se, but the first item includes text that references a press statement. The 'press statement' language is somewhat attributed. Minor attribution issues but not systematic quoting violations.",
+    "false_positive_rate": "The first item (fabrication claim) is not a bias analysis - it's fact-checking, which is outside the scope. The second item flags source attribution but the article does reference sources (Deadline, CNN, Bloomberg). The headline discrepancy is a minor legitimate observation but not really author bias. The omission point has some merit but is overstated. Most flagged items are not genuine author-level bias patterns.",
+    "false_negative_rate": "The article is relatively neutral news reporting, but there are some potential bias instances the model could have caught - 'bidding war' could be Word Choice (dramatic framing), 'streaming giant' is a Subjective Qualifying Adjective. The model missed these while flagging non-bias issues.",
+    "bias_type_accuracy": "All four bias type labels used are NOT from the defined list. 'Factual Inconsistency/Misinformation', 'Lack of Source Attribution', 'Headline-Article Discrepancy', and 'Omission Bias' are all invented labels. The defined list includes 'Omission of Source Attribution' and 'Bias by Omission' which are close but not what the model used. This is a systematic failure to use the correct taxonomy."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 8, \"reasoning\": \"The model's response has multiple serious problems. First, it uses bias type labels that are not from the defined list ('Factual Inconsistency/Misinformation', 'Lack of Source Attribution', 'Headline-Article Discrepancy', 'Omission Bias'). Second, the first flagged item appears to be the model questioning whether the article is real/fabricated rather than analyzing bias in the author's prose - this is not a bias analysis task but a fact-checking judgment. Third, the article itself is relatively straightforward news reporting with minimal author-level bias. The model invented concerns about fabrication rather than analyzing actual bias patterns. The $83B vs $82.7B discrepancy is a legitimate observation but labeled with a non-standard type. The omission point has some merit but is labeled incorrectly. Overall, the model fundamentally misunderstood the task by questioning the article's veracity rather than analyzing bias patterns in the author's prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 8, \"false_negative_rate\": 6, \"bias_type_accuracy\": 10}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model doesn't flag quoted text per se, but the first item includes text that references a press statement. The 'press statement' language is somewhat attributed. Minor attribution issues but not systematic quoting violations.\", \"false_positive_rate\": \"The first item (fabrication claim) is not a bias analysis - it's fact-checking, which is outside the scope. The second item flags source attribution but the article does reference sources (Deadline, CNN, Bloomberg). The headline discrepancy is a minor legitimate observation but not really author bias. The omission point has some merit but is overstated. Most flagged items are not genuine author-level bias patterns.\", \"false_negative_rate\": \"The article is relatively neutral news reporting, but there are some potential bias instances the model could have caught - 'bidding war' could be Word Choice (dramatic framing), 'streaming giant' is a Subjective Qualifying Adjective. The model missed these while flagging non-bias issues.\", \"bias_type_accuracy\": \"All four bias type labels used are NOT from the defined list. 'Factual Inconsistency/Misinformation', 'Lack of Source Attribution', 'Headline-Article Discrepancy', and 'Omission Bias' are all invented labels. The defined list includes 'Omission of Source Attribution' and 'Bias by Omission' which are close but not what the model used. This is a systematic failure to use the correct taxonomy.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:18.790710+00:00",
+  "labeled_lean": "Center"
+}

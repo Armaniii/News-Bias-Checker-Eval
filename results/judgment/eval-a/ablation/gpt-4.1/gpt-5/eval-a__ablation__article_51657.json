@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_51657",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_51657",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Politico"
+  ],
+  "article_meta": {
+    "title": "Cartoon Carousel The nation’s cartoonists on the week in politics Every week political cartoonists throughout the countr",
+    "source": "Politico",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.politico.com/news/magazine/2025/11/09/the-real-mastermind-of-mccarthyism-wasnt-who-you-think-00643929",
+    "created_at": "2026-03-12 15:05:56"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model flagged genuine instances from the author’s prose with no attribution violations and mostly appropriate labels, but it missed multiple clear additional bias instances present throughout the piece.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged passages are in the author’s voice; no quoted or attributed source language was flagged.",
+    "false_positive_rate": "Flagged items are defensible author-level bias (sweeping assertions, loaded metaphors/adjectives, evaluative framing).",
+    "false_negative_rate": "Missed several clear instances in author prose such as: ‘Democrats and Republicans ... complete agreement: McCarthyism is back,’ ‘infamous speech,’ ‘media frenzy,’ ‘drunken haze,’ ‘unscrupulous investigations,’ and ‘repackaged ... as a political weapon.’",
+    "bias_type_accuracy": "Labels are generally appropriate (opinion-as-fact, unsubstantiated claims, emotionalism, subjective adjectives, slant/spin), though some could arguably be Word Choice/Subjective Adjectives instead of Slant or Unsubstantiated."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model flagged genuine instances from the author’s prose with no attribution violations and mostly appropriate labels, but it missed multiple clear additional bias instances present throughout the piece.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 6, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged passages are in the author’s voice; no quoted or attributed source language was flagged.\", \"false_positive_rate\": \"Flagged items are defensible author-level bias (sweeping assertions, loaded metaphors/adjectives, evaluative framing).\", \"false_negative_rate\": \"Missed several clear instances in author prose such as: ‘Democrats and Republicans ... complete agreement: McCarthyism is back,’ ‘infamous speech,’ ‘media frenzy,’ ‘drunken haze,’ ‘unscrupulous investigations,’ and ‘repackaged ... as a political weapon.’\", \"bias_type_accuracy\": \"Labels are generally appropriate (opinion-as-fact, unsubstantiated claims, emotionalism, subjective adjectives, slant/spin), though some could arguably be Word Choice/Subjective Adjectives instead of Slant or Unsubstantiated.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:53.627151+00:00",
+  "labeled_lean": "Lean Left"
+}

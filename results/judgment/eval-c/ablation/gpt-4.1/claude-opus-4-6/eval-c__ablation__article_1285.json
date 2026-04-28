@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_1285",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_1285",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Ukraine expected to give up land, some arms under US peace plan, sources sayBy Tom Balmforth and Anastasiia MalenkoNovem",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/world/europe/ukraines-zelenskiy-set-talks-turkey-new-peace-drive-2025-11-19/",
+    "created_at": "2025-11-24 22:01:07"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies this Reuters article as Center, which is appropriate for a wire service article that presents multiple perspectives without editorializing. However, the reasoning is somewhat generic and lacks specific textual evidence from the author's prose. The key_indicators are vague descriptions rather than specific quotes from the author's language.",
+  "custom_reasoning": {
+    "classification_accuracy": "Center is correct for this Reuters wire article. The author's prose uses neutral verbs ('signalled,' 'said,' 'reported'), presents multiple perspectives (US, Ukraine, Russia, European diplomats), and does not editorialize. Some subtle editorial choices exist (e.g., 'major setback for Kyiv,' 'push Kyiv into a corner' from a European diplomat, noting Russia's demands without framing them negatively), but overall the article is balanced Center reporting.",
+    "confidence_calibration": "0.85 is somewhat high for a Center classification. Center articles with genuinely balanced signals typically warrant 0.70-0.80 confidence. There are some subtle editorial choices that could be read as slightly sympathetic to Ukraine (e.g., 'major setback for Kyiv,' structural emphasis on Ukrainian perspective), but these are mild. 0.85 slightly overstates the clarity of the center signal.",
+    "reasoning_evidence_quality": "The reasoning is correct in direction but lacks specific textual evidence. None of the key_indicators quote specific phrases from the author's prose. They are all general descriptions ('Reports factual claims,' 'Includes perspectives,' 'Does not editorialize'). The model should have cited specific neutral verbs, structural choices, or parallel treatment of sources. No attribution violations are present, but the evidence is vague rather than grounded in specific author language."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies this Reuters article as Center, which is appropriate for a wire service article that presents multiple perspectives without editorializing. However, the reasoning is somewhat generic and lacks specific textual evidence from the author's prose. The key_indicators are vague descriptions rather than specific quotes from the author's language.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Center is correct for this Reuters wire article. The author's prose uses neutral verbs ('signalled,' 'said,' 'reported'), presents multiple perspectives (US, Ukraine, Russia, European diplomats), and does not editorialize. Some subtle editorial choices exist (e.g., 'major setback for Kyiv,' 'push Kyiv into a corner' from a European diplomat, noting Russia's demands without framing them negatively), but overall the article is balanced Center reporting.\", \"confidence_calibration\": \"0.85 is somewhat high for a Center classification. Center articles with genuinely balanced signals typically warrant 0.70-0.80 confidence. There are some subtle editorial choices that could be read as slightly sympathetic to Ukraine (e.g., 'major setback for Kyiv,' structural emphasis on Ukrainian perspective), but these are mild. 0.85 slightly overstates the clarity of the center signal.\", \"reasoning_evidence_quality\": \"The reasoning is correct in direction but lacks specific textual evidence. None of the key_indicators quote specific phrases from the author's prose. They are all general descriptions ('Reports factual claims,' 'Includes perspectives,' 'Does not editorialize'). The model should have cited specific neutral verbs, structural choices, or parallel treatment of sources. No attribution violations are present, but the evidence is vague rather than grounded in specific author language.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:16.198553+00:00",
+  "labeled_lean": "Center"
+}

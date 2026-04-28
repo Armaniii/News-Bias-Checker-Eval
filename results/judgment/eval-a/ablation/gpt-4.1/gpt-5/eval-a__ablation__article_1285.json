@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_1285",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_1285",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Ukraine expected to give up land, some arms under US peace plan, sources sayBy Tom Balmforth and Anastasiia MalenkoNovem",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/world/europe/ukraines-zelenskiy-set-talks-turkey-new-peace-drive-2025-11-19/",
+    "created_at": "2025-11-24 22:01:07"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 8,
+    "false_negative_rate": 2,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "No attribution violations and it correctly flagged a clear evaluative phrase, but it included two false positives (mislabeling anonymous sourcing as Omission of Source Attribution and calling a neutral subheading Slant). Label accuracy is mixed.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged items came from author prose or subheadings; no quoted or attributed source language was flagged.",
+    "false_positive_rate": "Two of three items are not genuine author-level bias: the sentence with anonymous sources is properly attributed, and the subheading is a fair summary rather than slanted framing.",
+    "false_negative_rate": "The main clear bias ('major setback') was caught; no significant additional author-level bias was clearly missed.",
+    "bias_type_accuracy": "The first item’s label (Spin) is defensible; the second misapplies 'Omission of Source Attribution', and the third’s 'Slant' label is questionable."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"No attribution violations and it correctly flagged a clear evaluative phrase, but it included two false positives (mislabeling anonymous sourcing as Omission of Source Attribution and calling a neutral subheading Slant). Label accuracy is mixed.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 8, \"false_negative_rate\": 2, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged items came from author prose or subheadings; no quoted or attributed source language was flagged.\", \"false_positive_rate\": \"Two of three items are not genuine author-level bias: the sentence with anonymous sources is properly attributed, and the subheading is a fair summary rather than slanted framing.\", \"false_negative_rate\": \"The main clear bias ('major setback') was caught; no significant additional author-level bias was clearly missed.\", \"bias_type_accuracy\": \"The first item’s label (Spin) is defensible; the second misapplies 'Omission of Source Attribution', and the third’s 'Slant' label is questionable.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:49.034151+00:00",
+  "labeled_lean": "Center"
+}

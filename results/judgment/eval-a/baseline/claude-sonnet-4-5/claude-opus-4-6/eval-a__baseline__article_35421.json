@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_35421",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_35421",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:538 (ABC News)"
+  ],
+  "article_meta": {
+    "title": "ABC NewsLiveVideoShowsShopInterest Successfully AddedWe'll notify you here with news aboutTurn on desktop notifications ",
+    "source": "538 (ABC News)",
+    "labeled_lean": "Center",
+    "url": "https://abcnews.go.com/Politics/trump-voters-feel-us-strikes-venezuela-action-iran/story?id=129173823",
+    "created_at": "2026-02-02 13:23:47"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 9
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model exhibits several failure patterns. It uses bias type labels not from the defined list (Framing Bias, False Balance, Omission Bias, Uncritical Repetition, Source Selection Bias instead of the valid types). Some flagged items are questionable or overreaching. However, the model does correctly avoid flagging quoted text as author bias, which is good. The article is largely a reporting piece that interviews Trump voters and includes polling data, so some of the model's critiques about sample selection have merit but are mislabeled.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly avoids flagging any quoted text from voters or officials as author bias. All flagged items come from author prose or structural choices. Minor issue: one item flags 'The entire article interviews only Trump voters' which is a structural observation, not a text excerpt, but it's still about author choices not quotes.",
+    "false_positive_rate": "Several items are questionable. The 'further America's interests in the world's safety' framing criticism has some merit but is debatable - the article does present this as what supporters say. The 'False Balance' claim is contradicted by the article itself which includes dissenting Trump voters and polling data showing opposition. The 'capture of Venezuelan President Nicolas Maduro' criticism about missing context has some validity. The 'uncritical repetition' item is a stretch since the article does note the Venezuelan denial. The source selection criticism ignores that the article explicitly states it's interviewing Trump voters and provides broader polling data.",
+    "false_negative_rate": "The model catches some legitimate concerns about framing but misses or mislabels them. The phrase 'further America's interests in the world's safety' could be seen as Spin. The article's focus on Trump voter perspectives is a defensible Slant observation. Overall, the model identifies some real issues but with wrong labels.",
+    "bias_type_accuracy": "All five bias type labels used are outside the defined list: 'Framing Bias', 'False Balance', 'Omission Bias', 'Uncritical Repetition', and 'Source Selection Bias' are not among the 15 valid types. The correct labels would have been Spin, Slant, Bias by Omission, etc. This is a systematic failure in type labeling."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model exhibits several failure patterns. It uses bias type labels not from the defined list (Framing Bias, False Balance, Omission Bias, Uncritical Repetition, Source Selection Bias instead of the valid types). Some flagged items are questionable or overreaching. However, the model does correctly avoid flagging quoted text as author bias, which is good. The article is largely a reporting piece that interviews Trump voters and includes polling data, so some of the model's critiques about sample selection have merit but are mislabeled.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 9}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly avoids flagging any quoted text from voters or officials as author bias. All flagged items come from author prose or structural choices. Minor issue: one item flags 'The entire article interviews only Trump voters' which is a structural observation, not a text excerpt, but it's still about author choices not quotes.\", \"false_positive_rate\": \"Several items are questionable. The 'further America's interests in the world's safety' framing criticism has some merit but is debatable - the article does present this as what supporters say. The 'False Balance' claim is contradicted by the article itself which includes dissenting Trump voters and polling data showing opposition. The 'capture of Venezuelan President Nicolas Maduro' criticism about missing context has some validity. The 'uncritical repetition' item is a stretch since the article does note the Venezuelan denial. The source selection criticism ignores that the article explicitly states it's interviewing Trump voters and provides broader polling data.\", \"false_negative_rate\": \"The model catches some legitimate concerns about framing but misses or mislabels them. The phrase 'further America's interests in the world's safety' could be seen as Spin. The article's focus on Trump voter perspectives is a defensible Slant observation. Overall, the model identifies some real issues but with wrong labels.\", \"bias_type_accuracy\": \"All five bias type labels used are outside the defined list: 'Framing Bias', 'False Balance', 'Omission Bias', 'Uncritical Repetition', and 'Source Selection Bias' are not among the 15 valid types. The correct labels would have been Spin, Slant, Bias by Omission, etc. This is a systematic failure in type labeling.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:16.811844+00:00",
+  "labeled_lean": "Center"
+}

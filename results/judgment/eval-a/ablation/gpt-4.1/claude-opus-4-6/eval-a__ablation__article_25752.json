@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_25752",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_25752",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "Venezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At le",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/venezuela-releases-four-american-citizens-from-prison-following-military-operation",
+    "created_at": "2026-01-14 13:51:19"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model identifies two items in author prose. The 'regime' flagging is defensible as Word Choice bias - it's a loaded term in the author's own prose. The 'Omission of Source Attribution' flag is somewhat questionable but not unreasonable - Fox News confirms but the primary source is unclear. No attribution rule violations occur (no quoted text is flagged). However, the model misses some potential bias instances, and the first flag is borderline.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Neither flagged item is from quoted text or attributed source language. The State Department quote and Jorge Rodríguez's attributed statement are correctly excluded. Perfect compliance with attribution rule.",
+    "false_positive_rate": "The 'regime' flag is defensible - it is indeed a loaded word choice in the author's own prose. The 'Omission of Source Attribution' flag is more questionable - Fox News confirming something is a form of attribution, though the criticism about lacking primary source detail has some merit. One item is strong, one is borderline.",
+    "false_negative_rate": "The article is relatively straightforward news reporting. There could be arguments for Slant in the overall framing (heavy focus on US military operation framing, use of 'captured' repeatedly). The article's structure somewhat favors a particular narrative. But this is a fairly neutral news piece and the model caught the most notable instance (regime). Minor misses at most.",
+    "bias_type_accuracy": "Word Choice for 'regime' is correctly applied. Omission of Source Attribution for the Fox News confirmation sentence is a reasonable label for the concern being raised. Both labels are defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies two items in author prose. The 'regime' flagging is defensible as Word Choice bias - it's a loaded term in the author's own prose. The 'Omission of Source Attribution' flag is somewhat questionable but not unreasonable - Fox News confirms but the primary source is unclear. No attribution rule violations occur (no quoted text is flagged). However, the model misses some potential bias instances, and the first flag is borderline.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Neither flagged item is from quoted text or attributed source language. The State Department quote and Jorge Rodríguez's attributed statement are correctly excluded. Perfect compliance with attribution rule.\", \"false_positive_rate\": \"The 'regime' flag is defensible - it is indeed a loaded word choice in the author's own prose. The 'Omission of Source Attribution' flag is more questionable - Fox News confirming something is a form of attribution, though the criticism about lacking primary source detail has some merit. One item is strong, one is borderline.\", \"false_negative_rate\": \"The article is relatively straightforward news reporting. There could be arguments for Slant in the overall framing (heavy focus on US military operation framing, use of 'captured' repeatedly). The article's structure somewhat favors a particular narrative. But this is a fairly neutral news piece and the model caught the most notable instance (regime). Minor misses at most.\", \"bias_type_accuracy\": \"Word Choice for 'regime' is correctly applied. Omission of Source Attribution for the Fox News confirmation sentence is a reasonable label for the concern being raised. Both labels are defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:27.399564+00:00",
+  "labeled_lean": "Lean Right"
+}

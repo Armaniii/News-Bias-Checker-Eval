@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_40",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_40",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "POLITICSDonald TrumpAdd TopicTrump accuses six Democratic lawmakers of 'seditious behavior, punishable by death' Cybele ",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/politics/2025/11/20/trump-accuses-democrats-seditious-behavior/87370773007/",
+    "created_at": "2025-11-20 20:54:54"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 9
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model exhibits several problems: it uses bias type labels not in the defined list ('Framing Bias', 'Selection and Omission Bias', 'False Balance', 'Labeling Bias'), some flagged items are questionable as genuine author-level bias, and it misses some clearer instances of author bias. However, some of the underlying observations have merit even if mislabeled.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Item 3 partially flags Leavitt's attributed statements ('inspire chaos, incite violence and disrupt the chain of command') - these are clearly attributed to the press secretary, not the author's prose. The 'But' connector is author prose but the substantive content flagged belongs to the source. Item 1 flags the headline which reproduces Trump's quoted language. Items 2 and 4 are more defensibly author prose.",
+    "false_positive_rate": "Item 1 (headline) is somewhat defensible as an editorial framing choice but headlines often summarize the key news. Item 2 has some merit as a Bias by Omission observation. Item 3 conflates source language with author framing. Item 4 ('foes') is arguably defensible as author word choice, though 'foes' is a common journalistic shorthand. Several items are questionable.",
+    "false_negative_rate": "The model missed some clearer instances: 'extrajudicial strikes' is loaded author word choice; 'a cascade of other angry posts' uses subjective characterization; 'Trump has frequently used his Truth Social platform to call for his enemies to be charged and tried' uses 'enemies' (similar to 'foes' which was flagged); 'brutal prison' is a subjective qualifying adjective in author prose; 'Trump roundly celebrated' is interpretive author language.",
+    "bias_type_accuracy": "All four bias type labels used ('Framing Bias', 'Selection and Omission Bias', 'False Balance', 'Labeling Bias') are NOT in the defined list of valid types. The closest valid types would be Slant, Bias by Omission, Slant/Bias by Omission, and Word Choice respectively. This is a systematic failure to use the provided taxonomy."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model exhibits several problems: it uses bias type labels not in the defined list ('Framing Bias', 'Selection and Omission Bias', 'False Balance', 'Labeling Bias'), some flagged items are questionable as genuine author-level bias, and it misses some clearer instances of author bias. However, some of the underlying observations have merit even if mislabeled.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 9}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Item 3 partially flags Leavitt's attributed statements ('inspire chaos, incite violence and disrupt the chain of command') - these are clearly attributed to the press secretary, not the author's prose. The 'But' connector is author prose but the substantive content flagged belongs to the source. Item 1 flags the headline which reproduces Trump's quoted language. Items 2 and 4 are more defensibly author prose.\", \"false_positive_rate\": \"Item 1 (headline) is somewhat defensible as an editorial framing choice but headlines often summarize the key news. Item 2 has some merit as a Bias by Omission observation. Item 3 conflates source language with author framing. Item 4 ('foes') is arguably defensible as author word choice, though 'foes' is a common journalistic shorthand. Several items are questionable.\", \"false_negative_rate\": \"The model missed some clearer instances: 'extrajudicial strikes' is loaded author word choice; 'a cascade of other angry posts' uses subjective characterization; 'Trump has frequently used his Truth Social platform to call for his enemies to be charged and tried' uses 'enemies' (similar to 'foes' which was flagged); 'brutal prison' is a subjective qualifying adjective in author prose; 'Trump roundly celebrated' is interpretive author language.\", \"bias_type_accuracy\": \"All four bias type labels used ('Framing Bias', 'Selection and Omission Bias', 'False Balance', 'Labeling Bias') are NOT in the defined list of valid types. The closest valid types would be Slant, Bias by Omission, Slant/Bias by Omission, and Word Choice respectively. This is a systematic failure to use the provided taxonomy.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:17.059672+00:00",
+  "labeled_lean": "Lean Left"
+}

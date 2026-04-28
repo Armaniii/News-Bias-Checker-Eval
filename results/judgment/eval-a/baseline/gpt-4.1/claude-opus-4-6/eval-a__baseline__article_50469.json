@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_50469",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_50469",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why a nation of 1.45 billion wants more children16 December 2024ShareSaveSoutik BiswasIndia correspondentShareSaveAFPLas",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/ce9088men9xo",
+    "created_at": "2026-03-06 19:09:33"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model identifies some genuine bias instances in the author's prose and correctly avoids flagging quoted text. However, it uses non-standard bias type labels ('Loaded Language' and 'Implicit Bias/Favoring Demographers' Perspectives' are not in the defined list), and misses some additional bias instances. The first two flagged items are defensible as author-level bias but mislabeled. The third item is more debatable - it identifies a framing/slant issue but uses an invented label.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged items come from the author's own prose, not from quoted sources. No attribution rule violations.",
+    "false_positive_rate": "The first two items ('But guess what?' and 'exaggerated noises') are defensible as genuine author-level bias. The third item about demographers is somewhat defensible as a framing/slant issue but is borderline - the author is summarizing expert opinion, which is standard journalism. So 1-2 items are questionable.",
+    "false_negative_rate": "The model missed several potential bias instances: 'aggressive family welfare programmes' (Word Choice), 'As if the southern states' concerns weren't enough' (Spin/conversational editorializing), 'India is getting old before getting rich' presented without quotes in author framing, the overall Slant of the article favoring the demographic crisis narrative. Some of these are significant omissions.",
+    "bias_type_accuracy": "Two of the three labels used ('Loaded Language' twice) are not in the defined bias type list - these should have been 'Word Choice' or 'Sensationalism/Emotionalism' or 'Subjective Qualifying Adjectives'. The third label 'Implicit Bias/Favoring Demographers' Perspectives' is completely invented and not on the list - it should have been 'Slant' or 'Opinion Statements Presented as Fact'. Multiple clearly wrong labels."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model identifies some genuine bias instances in the author's prose and correctly avoids flagging quoted text. However, it uses non-standard bias type labels ('Loaded Language' and 'Implicit Bias/Favoring Demographers' Perspectives' are not in the defined list), and misses some additional bias instances. The first two flagged items are defensible as author-level bias but mislabeled. The third item is more debatable - it identifies a framing/slant issue but uses an invented label.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 7}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged items come from the author's own prose, not from quoted sources. No attribution rule violations.\", \"false_positive_rate\": \"The first two items ('But guess what?' and 'exaggerated noises') are defensible as genuine author-level bias. The third item about demographers is somewhat defensible as a framing/slant issue but is borderline - the author is summarizing expert opinion, which is standard journalism. So 1-2 items are questionable.\", \"false_negative_rate\": \"The model missed several potential bias instances: 'aggressive family welfare programmes' (Word Choice), 'As if the southern states' concerns weren't enough' (Spin/conversational editorializing), 'India is getting old before getting rich' presented without quotes in author framing, the overall Slant of the article favoring the demographic crisis narrative. Some of these are significant omissions.\", \"bias_type_accuracy\": \"Two of the three labels used ('Loaded Language' twice) are not in the defined bias type list - these should have been 'Word Choice' or 'Sensationalism/Emotionalism' or 'Subjective Qualifying Adjectives'. The third label 'Implicit Bias/Favoring Demographers' Perspectives' is completely invented and not on the list - it should have been 'Slant' or 'Opinion Statements Presented as Fact'. Multiple clearly wrong labels.\"}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.611762+00:00",
+  "labeled_lean": "Center"
+}

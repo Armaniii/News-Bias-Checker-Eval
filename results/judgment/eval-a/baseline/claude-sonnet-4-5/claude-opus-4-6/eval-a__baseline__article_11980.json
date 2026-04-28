@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_11980",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_11980",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Newsmax (News)"
+  ],
+  "article_meta": {
+    "title": "Border czar Tom Homan on Thursday invited Catholic leadership to watch him and U.S",
+    "source": "Newsmax (News)",
+    "labeled_lean": "Right",
+    "url": "https://www.newsmax.com/newsfront/border-czar-tom-homan/2025/12/12/id/1238057/",
+    "created_at": "2025-12-12 18:12:53"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model exhibits several problems: (1) uses bias type labels not from the approved list ('Framing Bias', 'Selection and Omission Bias', 'Lack of Attribution/Verification' are not valid types), (2) some flags are questionable or overreaching, (3) some valid observations about slant/omission exist but are mislabeled, (4) the output includes markdown fences despite instructions not to. However, it does avoid flagging quoted text as author bias, which is good.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model generally avoids flagging quoted text. Homan's claims are noted as unchallenged rather than flagged as his bias. The 'similarly' flag is about author prose. One item (#2 and #6) flags structural omission rather than quoted text. Minor issue: item #4 includes quoted text ('around 600,000') but the flag is about the author's failure to verify, not the quote itself. Overall good compliance.",
+    "false_positive_rate": "Several items are questionable: (1) 'border czar' is widely used across media and may not constitute bias; (3) 'similarly' is a stretch - it's a normal transitional word; (5) 'heated' is somewhat loaded but defensible. Items #2 and #6 about omission/slant are more defensible observations about the article's structure. Overall mixed quality.",
+    "false_negative_rate": "The model catches the structural slant favoring Homan's perspective and the lack of independent verification of claims. It misses some word choice issues like 'save lives' presented without attribution in author prose, and the uncritical framing of Homan's claims about children in 'forced labor' and 'forced sexual slavery' which are presented with dramatic language. The overall slant observation is present but some specific instances were missed.",
+    "bias_type_accuracy": "Major problems with type labels. 'Framing Bias', 'Selection and Omission Bias', and 'Lack of Attribution/Verification' are NOT on the approved list. The correct labels would be: Slant or Word Choice for 'border czar', Slant or Bias by Omission for structural imbalance, Word Choice for 'similarly', Omission of Source Attribution for unverified claims, Sensationalism/Emotionalism or Word Choice for 'heated'. Multiple labels are clearly from outside the defined list."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model exhibits several problems: (1) uses bias type labels not from the approved list ('Framing Bias', 'Selection and Omission Bias', 'Lack of Attribution/Verification' are not valid types), (2) some flags are questionable or overreaching, (3) some valid observations about slant/omission exist but are mislabeled, (4) the output includes markdown fences despite instructions not to. However, it does avoid flagging quoted text as author bias, which is good.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model generally avoids flagging quoted text. Homan's claims are noted as unchallenged rather than flagged as his bias. The 'similarly' flag is about author prose. One item (#2 and #6) flags structural omission rather than quoted text. Minor issue: item #4 includes quoted text ('around 600,000') but the flag is about the author's failure to verify, not the quote itself. Overall good compliance.\", \"false_positive_rate\": \"Several items are questionable: (1) 'border czar' is widely used across media and may not constitute bias; (3) 'similarly' is a stretch - it's a normal transitional word; (5) 'heated' is somewhat loaded but defensible. Items #2 and #6 about omission/slant are more defensible observations about the article's structure. Overall mixed quality.\", \"false_negative_rate\": \"The model catches the structural slant favoring Homan's perspective and the lack of independent verification of claims. It misses some word choice issues like 'save lives' presented without attribution in author prose, and the uncritical framing of Homan's claims about children in 'forced labor' and 'forced sexual slavery' which are presented with dramatic language. The overall slant observation is present but some specific instances were missed.\", \"bias_type_accuracy\": \"Major problems with type labels. 'Framing Bias', 'Selection and Omission Bias', and 'Lack of Attribution/Verification' are NOT on the approved list. The correct labels would be: Slant or Word Choice for 'border czar', Slant or Bias by Omission for structural imbalance, Word Choice for 'similarly', Omission of Source Attribution for unverified claims, Sensationalism/Emotionalism or Word Choice for 'heated'. Multiple labels are clearly from outside the defined list.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:14.860087+00:00",
+  "labeled_lean": "Right"
+}

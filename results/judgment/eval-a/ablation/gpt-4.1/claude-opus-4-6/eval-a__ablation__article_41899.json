@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_41899",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_41899",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "close Video Supporting Jasmine Crockett for Texas Senate is a 'waste of money,' comedian says 'Fox News Saturday Night' ",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/texas-dem-senate-primary-fractures-race-rhetoric-mediocre-jab-oppressor-remarks-ignite-backlash",
+    "created_at": "2026-02-14 17:48:56"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model commits multiple attribution rule violations by flagging quoted text from RNC spokesman Zach Kraft (items 2 and 3) and paraphrased/quoted text from Gene Wu (item 5) as author bias. Item 1 partially flags author prose but includes the quoted phrase 'wokeness at its worst' which is attributed to Republicans. Item 4 is the most defensible - it identifies genuine author-level framing choices. The model also misses some author-level bias like the loaded language 'Heated racial rhetoric in Texas is flaring' (author's own sensational framing) and 'Racially focused flare-ups have broken out' as author prose word choices, though it partially captures the latter in item 4.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Items 2 and 3 are direct quotes from RNC spokesman Zach Kraft, clearly inside quotation marks. Item 5 flags paraphrased/quoted content from Gene Wu. These are clear attribution rule violations. Item 1 mixes author prose with an attributed Republican phrase. Only item 4 is purely about author editorial choices.",
+    "false_positive_rate": "Items 2, 3, and 5 are false positives because they flag quoted/attributed source language. Item 1 is partially a false positive due to including the attributed phrase. Item 4 is the most defensible genuine author-level bias finding. So roughly 3-4 out of 5 items are problematic.",
+    "false_negative_rate": "The model partially captures the author's framing choices (item 4) but misses specific author-prose bias instances like 'Heated racial rhetoric in Texas is flaring' as loaded word choice, 'fiery response' as a subjective qualifying adjective, and the overall structural slant of the article which heavily features Republican criticism without equivalent Democratic defense. Some genuine instances were caught but others were missed.",
+    "bias_type_accuracy": "Item 4 (Bias by Story Choice and Placement) is correctly labeled. Item 1's 'Slant' label is defensible for the author's framing portion. The labels on the attribution-violating items (2, 3, 5) are moot since they shouldn't have been flagged. The Elite vs. Populist Bias label on item 5 is a stretch even if it weren't an attribution violation."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model commits multiple attribution rule violations by flagging quoted text from RNC spokesman Zach Kraft (items 2 and 3) and paraphrased/quoted text from Gene Wu (item 5) as author bias. Item 1 partially flags author prose but includes the quoted phrase 'wokeness at its worst' which is attributed to Republicans. Item 4 is the most defensible - it identifies genuine author-level framing choices. The model also misses some author-level bias like the loaded language 'Heated racial rhetoric in Texas is flaring' (author's own sensational framing) and 'Racially focused flare-ups have broken out' as author prose word choices, though it partially captures the latter in item 4.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Items 2 and 3 are direct quotes from RNC spokesman Zach Kraft, clearly inside quotation marks. Item 5 flags paraphrased/quoted content from Gene Wu. These are clear attribution rule violations. Item 1 mixes author prose with an attributed Republican phrase. Only item 4 is purely about author editorial choices.\", \"false_positive_rate\": \"Items 2, 3, and 5 are false positives because they flag quoted/attributed source language. Item 1 is partially a false positive due to including the attributed phrase. Item 4 is the most defensible genuine author-level bias finding. So roughly 3-4 out of 5 items are problematic.\", \"false_negative_rate\": \"The model partially captures the author's framing choices (item 4) but misses specific author-prose bias instances like 'Heated racial rhetoric in Texas is flaring' as loaded word choice, 'fiery response' as a subjective qualifying adjective, and the overall structural slant of the article which heavily features Republican criticism without equivalent Democratic defense. Some genuine instances were caught but others were missed.\", \"bias_type_accuracy\": \"Item 4 (Bias by Story Choice and Placement) is correctly labeled. Item 1's 'Slant' label is defensible for the author's framing portion. The labels on the attribution-violating items (2, 3, 5) are moot since they shouldn't have been flagged. The Elite vs. Populist Bias label on item 5 is a stretch even if it weren't an attribution violation.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.517606+00:00",
+  "labeled_lean": "Lean Right"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_2451",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_2451",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:New York Times (News)"
+  ],
+  "article_meta": {
+    "title": "U.S",
+    "source": "New York Times (News)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nytimes.com/2025/11/26/us/politics/trump-rubio-mass-migration.html",
+    "created_at": "2025-11-27 16:25:00"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a reasonable job identifying genuine author-prose bias. The subjective qualifying adjectives ('draconian,' 'hard-line,' 'drastic') are correctly flagged as author prose. The 'scourge' item is debatable — it's the author paraphrasing/characterizing Trump's rhetoric, not a direct quote, so it's defensible to flag. The Afrikaner claim is genuinely in author prose and unattributed within the article. The Bias by Omission item is defensible. However, there are some issues: the model misses an important instance — the author's editorial aside 'even as it tries to impose policies on sovereign nations' which is clear Spin/editorial commentary. The 'scourge' flagging is slightly borderline since it could be seen as the author's characterization of quoted rhetoric. Overall, the model avoids flagging direct quotes and mostly identifies genuine author-level bias.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly avoids flagging direct quotes from Vance, Trump, the cable text, or State Department officials. The 'scourge' item is the author's own paraphrasing/characterization, not a direct quote, so flagging it is defensible. No clear attribution rule violations.",
+    "false_positive_rate": "Most flagged items are defensible. 'Draconian,' 'hard-line,' 'drastic' are genuine subjective adjectives in author prose. The 'scourge' characterization is the author's own word choice summarizing the administration's rhetoric. The Afrikaner claim and Bias by Omission items are reasonable. The Bias by Omission item is somewhat debatable — the article does provide a counterpoint — but the framing of selective data inclusion is a defensible bias call.",
+    "false_negative_rate": "The model misses the notable editorial aside 'even as it tries to impose policies on sovereign nations' which is clear Spin/ironic commentary by the author. It also arguably misses 'even though statistics show that irregular border crossings in Europe have been dropping for many months and were decreasing in the United States late in the Biden administration' as author-inserted counterpoint framing (Slant). These are significant misses but not catastrophic.",
+    "bias_type_accuracy": "The labels are mostly appropriate. 'Subjective Qualifying Adjectives' for draconian/hard-line/drastic is correct. 'Sensationalism/Emotionalism' for 'scourge' is reasonable though 'Word Choice' might be more precise. 'Unsubstantiated Claims' for the Afrikaner assertion is defensible. 'Bias by Omission' for the selective data presentation is appropriate. Minor quibbles but no clearly wrong labels."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a reasonable job identifying genuine author-prose bias. The subjective qualifying adjectives ('draconian,' 'hard-line,' 'drastic') are correctly flagged as author prose. The 'scourge' item is debatable — it's the author paraphrasing/characterizing Trump's rhetoric, not a direct quote, so it's defensible to flag. The Afrikaner claim is genuinely in author prose and unattributed within the article. The Bias by Omission item is defensible. However, there are some issues: the model misses an important instance — the author's editorial aside 'even as it tries to impose policies on sovereign nations' which is clear Spin/editorial commentary. The 'scourge' flagging is slightly borderline since it could be seen as the author's characterization of quoted rhetoric. Overall, the model avoids flagging direct quotes and mostly identifies genuine author-level bias.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly avoids flagging direct quotes from Vance, Trump, the cable text, or State Department officials. The 'scourge' item is the author's own paraphrasing/characterization, not a direct quote, so flagging it is defensible. No clear attribution rule violations.\", \"false_positive_rate\": \"Most flagged items are defensible. 'Draconian,' 'hard-line,' 'drastic' are genuine subjective adjectives in author prose. The 'scourge' characterization is the author's own word choice summarizing the administration's rhetoric. The Afrikaner claim and Bias by Omission items are reasonable. The Bias by Omission item is somewhat debatable — the article does provide a counterpoint — but the framing of selective data inclusion is a defensible bias call.\", \"false_negative_rate\": \"The model misses the notable editorial aside 'even as it tries to impose policies on sovereign nations' which is clear Spin/ironic commentary by the author. It also arguably misses 'even though statistics show that irregular border crossings in Europe have been dropping for many months and were decreasing in the United States late in the Biden administration' as author-inserted counterpoint framing (Slant). These are significant misses but not catastrophic.\", \"bias_type_accuracy\": \"The labels are mostly appropriate. 'Subjective Qualifying Adjectives' for draconian/hard-line/drastic is correct. 'Sensationalism/Emotionalism' for 'scourge' is reasonable though 'Word Choice' might be more precise. 'Unsubstantiated Claims' for the Afrikaner assertion is defensible. 'Bias by Omission' for the selective data presentation is appropriate. Minor quibbles but no clearly wrong labels.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:27.315590+00:00",
+  "labeled_lean": "Lean Left"
+}

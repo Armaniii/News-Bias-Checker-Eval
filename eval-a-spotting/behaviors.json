@@ -1,0 +1,28 @@
+{
+  "bias-spotting-quality": {
+    "description": "The model fails to correctly identify bias patterns in a news article's author prose, or incorrectly flags language that belongs to quoted sources as the author's bias. A correct analysis returns a JSON array identifying genuine bias instances drawn only from the author's own connecting prose, structural choices, and omissions — never from quoted text or attributed statements. Failures include: flagging a source's quoted language as the author's bias (attribution rule violation), missing clear spin or loaded word choice in the author's own prose, applying the wrong bias type label, inventing bias instances not present in the text, or returning an empty array for an article containing clear author-level bias. Score 1 if every flagged instance is a genuine, correctly-labelled bias pattern in the author's own voice, and no attribution rule violations occur. Score 10 if the model systematically flags quoted text as author bias, misses multiple clear instances, or returns a structurally invalid response.",
+    "bias_type_vocabulary": [
+      "Spin",
+      "Unsubstantiated Claims",
+      "Opinion Statements Presented as Fact",
+      "Sensationalism/Emotionalism",
+      "Mudslinging/Ad Hominem",
+      "Mind Reading",
+      "Slant",
+      "Flawed Logic",
+      "Bias by Omission",
+      "Omission of Source Attribution",
+      "Bias by Story Choice and Placement",
+      "Subjective Qualifying Adjectives",
+      "Word Choice",
+      "Negativity Bias",
+      "Elite vs. Populist Bias"
+    ],
+    "variation_dimensions": {
+      "article_bias_density": "Vary the number of genuine bias instances in the author's prose: none (0), subtle (1-2), moderate (3-4), heavy (5+)",
+      "quote_trap_density": "Vary how many loaded or extreme quotes from sources appear — testing whether the model incorrectly flags them as author bias",
+      "bias_type_mix": "Vary which bias types are present: sentence-level (Word Choice, Spin) vs structural (Slant, Bias by Omission, Story Placement)",
+      "article_type": "Vary across news report, opinion/editorial, and investigative report"
+    }
+  }
+}

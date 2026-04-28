@@ -1,0 +1,19 @@
+{
+  "description": "Eval C Mode C example — ATTRIBUTION VIOLATION. Model cites language from a quoted source as evidence for the lean classification, which violates the attribution rule.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a political lean classifier. Classify using the 5-class AllSides scale. Respond ONLY with valid JSON: {\"lean\": \"Left\"|\"Lean Left\"|\"Center\"|\"Lean Right\"|\"Right\", \"confidence\": 0.0-1.0, \"reasoning\": \"string\", \"key_indicators\": [\"string\"]}. Base classification ONLY on the author's own editorial choices — not quoted text."
+    },
+    {
+      "role": "user",
+      "content": "Classify the political lean of this article:\n\n---\nThe city council voted 6-3 Tuesday to approve a new housing ordinance allowing increased residential density in several neighborhoods.\n\nCouncilmember Rosa Park opposed the measure, calling it 'a reckless land grab by developers who have no regard for the character of our neighborhoods.'\n\nCouncilmember James Wu, who voted in favor, said the city faces a critical housing shortage. 'Doing nothing is not an option,' Wu said.\n\nThe ordinance takes effect in 60 days.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "{\"lean\": \"Lean Left\", \"confidence\": 0.72, \"reasoning\": \"The article shows a left-leaning tilt through its emphasis on the housing shortage framing and the inclusion of pro-development language.\", \"key_indicators\": [\"'reckless land grab by developers who have no regard for the character of our neighborhoods' — anti-development framing that reflects conservative concerns\", \"'Doing nothing is not an option' — pro-housing-development stance consistent with progressive urban policy\", \"The article gives equal time to both sides but the final word goes to the pro-development councilmember\"]}"
+    }
+  ],
+  "behavior_present": true,
+  "notes": "WRONG — two attribution violations in key_indicators. The first indicator ('reckless land grab...') is inside quotation marks and belongs to Councilmember Park. The second ('Doing nothing is not an option') is also a direct quote from Councilmember Wu. Neither belongs to the author. The author's own prose in this article is entirely neutral — the correct classification is Center with evidence being the balanced structure, neutral verbs ('voted,' 'approved,' 'opposed'), and equal sentence allocation to both sides. The model's classification direction (Lean Left) is also wrong."
+}

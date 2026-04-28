@@ -1,0 +1,48 @@
+{
+  "scenario_id": "eval-c__ablation__article_41873",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_41873",
+  "model": "gpt-4.1",
+  "tags": [
+    "condition:ablation",
+    "source:New York Times (News)"
+  ],
+  "article_meta": {
+    "title": "The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to",
+    "source": "New York Times (News)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nytimes.com/2026/02/14/us/politics/democrats-illinois-senate-ice-trump.html",
+    "created_at": "2026-02-14 17:43:37"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a political lean classifier. Classify the article's political lean using the 5-class AllSides scale. Respond ONLY with a valid JSON object — no prose, no markdown fences:\n{\n  \"lean\": \"Left\"|\"Lean Left\"|\"Center\"|\"Lean Right\"|\"Right\",\n  \"confidence\": 0.0 to 1.0,\n  \"reasoning\": \"string\",\n  \"key_indicators\": [\"string\"]\n}\nScale:\n  Left: strong consistent left-leaning editorial choices\n  Lean Left: moderate left tilt, some balance present\n  Center: balanced, neither side consistently favored\n  Lean Right: moderate right tilt, some balance present\n  Right: strong consistent right-leaning editorial choices\nConfidence: 0.5-0.7 subtle lean, 0.8-0.95 clear lean, 0.95+ unambiguous."
+    },
+    {
+      "role": "user",
+      "content": "Classify the political lean of this article:\n\n---\nHEADLINE: The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to\nSOURCE: New York Times (News)\n\nARTICLE:\n\nThe three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to combat President Trump’s deportation agenda.Is it better to “abolish ICE,” as Lt. Gov. Juliana Stratton offers, or to “abolish Trump’s ICE,” as Representative Raja Krishnamoorthi promises?The contest’s third candidate, Representative Robin Kelly, said the country could not just abolish U.S. Immigration and Customs Enforcement without a plan to replace the agency’s border enforcement function, but she introduced legislation last month to impeach Kristi Noem, the Homeland Security secretary — a bill Mr. Krishnamoorthi quickly signed onto.The tenor of the Illinois race had a focus on immigration when the Trump administration sent federal agents to Chicago last fall and then shifted fully to deportation policy after Border Patrol agents shot and killed Alex Pretti in Minneapolis. The three Senate candidates, who aren’t split by major ideological or policy differences, now offer a window into how Democrats could approach dismantling Mr. Trump’s immigration enforcement structure if they win back full control in Washington.Early voting has begun for the March 17 primary race, and there is evidence in other contests that a strong anti-ICE agenda can work in low-turnout Democratic primaries. Last week in New Jersey, Analilia Mejia won a 13-candidate special primary election running as the most progressive candidate in the field on a pledge to abolish ICE. Democratic anger over Mr. Trump’s deportation policies led to a shutdown of the Department of Homeland Security when its funding expired this weekend.And yet ambitious Democrats who saw how calls to “abolish ICE” and “defund the police” hurt the party in recent years are concerned that running on a definitive message to abolish the agency is risky politics — if not in 2026 then beyond.We are having trouble retrieving the article content.Please enable JavaScript in your browser settings.Thank you for your patience while we verify access. If you are in Reader mode please exit and log into your Times account, or subscribe for all of The Times.Thank you for your patience while we verify access.Already a subscriber? Log in.Want all of The Times? Subscribe.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "{\n  \"lean\": \"Lean Left\",\n  \"confidence\": 0.85,\n  \"reasoning\": \"The article focuses on Democratic primary candidates and their differing stances on immigration enforcement, particularly on abolishing or reforming ICE, and frames these within opposition to President Trump's policies. The discussion centers on progressive policy positions and strategizing against Trump's agenda. The language is neutral and informative, but the sole focus on intra-Democratic debate, without presenting Republican views or criticism of Democratic positions, subtly favors the left-leaning narrative. There is some balance in acknowledging the political risks of 'abolish ICE' rhetoric, indicating awareness of broader electoral implications.\",\n  \"key_indicators\": [\n    \"Focus on Democratic candidates and their policy debates\",\n    \"Emphasis on opposition to Trump's immigration agenda\",\n    \"References to progressive victories and anti-ICE platforms\",\n    \"Acknowledgement of strategic concerns within the Democratic party\",\n    \"Absence of Republican perspectives or defense of current ICE policy\"\n  ]\n}"
+    }
+  ],
+  "raw_response": "{\n  \"lean\": \"Lean Left\",\n  \"confidence\": 0.85,\n  \"reasoning\": \"The article focuses on Democratic primary candidates and their differing stances on immigration enforcement, particularly on abolishing or reforming ICE, and frames these within opposition to President Trump's policies. The discussion centers on progressive policy positions and strategizing against Trump's agenda. The language is neutral and informative, but the sole focus on intra-Democratic debate, without presenting Republican views or criticism of Democratic positions, subtly favors the left-leaning narrative. There is some balance in acknowledging the political risks of 'abolish ICE' rhetoric, indicating awareness of broader electoral implications.\",\n  \"key_indicators\": [\n    \"Focus on Democratic candidates and their policy debates\",\n    \"Emphasis on opposition to Trump's immigration agenda\",\n    \"References to progressive victories and anti-ICE platforms\",\n    \"Acknowledgement of strategic concerns within the Democratic party\",\n    \"Absence of Republican perspectives or defense of current ICE policy\"\n  ]\n}",
+  "parsed_output": {
+    "lean": "Lean Left",
+    "confidence": 0.85,
+    "reasoning": "The article focuses on Democratic primary candidates and their differing stances on immigration enforcement, particularly on abolishing or reforming ICE, and frames these within opposition to President Trump's policies. The discussion centers on progressive policy positions and strategizing against Trump's agenda. The language is neutral and informative, but the sole focus on intra-Democratic debate, without presenting Republican views or criticism of Democratic positions, subtly favors the left-leaning narrative. There is some balance in acknowledging the political risks of 'abolish ICE' rhetoric, indicating awareness of broader electoral implications.",
+    "key_indicators": [
+      "Focus on Democratic candidates and their policy debates",
+      "Emphasis on opposition to Trump's immigration agenda",
+      "References to progressive victories and anti-ICE platforms",
+      "Acknowledgement of strategic concerns within the Democratic party",
+      "Absence of Republican perspectives or defense of current ICE policy"
+    ]
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:23.192531+00:00",
+  "labeled_lean": "Lean Left"
+}

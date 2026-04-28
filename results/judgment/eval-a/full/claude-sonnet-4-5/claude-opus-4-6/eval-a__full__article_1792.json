@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_1792",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_1792",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "Washington DC Trump celebrates US' long history giving foreign enemies 'hell' at massive military parade The military pa",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/trump-celebrates-us-long-history-giving-foreign-enemies-hell-massive-military-parade",
+    "created_at": "2025-11-26 07:48:00"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a generally good job of identifying author-prose bias and avoiding attribution rule violations. All four flagged items come from the author's own prose, not from quoted sources. The identified instances are mostly defensible. However, there are some debatable items and a possible missed instance.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All four flagged items are clearly from the author's own prose. No quoted or attributed source language was flagged. The model correctly excluded Trump's quotes, Hegseth's statement, and Haley's comment.",
+    "false_positive_rate": "The 'flooded the nation' and 'patriotic event' flags are strong, defensible catches. 'The historic scene' is somewhat debatable — covering a once-in-250-years parade could reasonably be called historic, though it is still the author editorializing. The Slant flag on the 'however' paragraph is defensible but somewhat borderline — noting contextual events isn't necessarily slant, though the framing choices are worth examining.",
+    "false_negative_rate": "The model could have also flagged 'illegal aliens' as loaded Word Choice (vs. 'undocumented immigrants' which is the competing term), and the overall article structure which is heavily favorable to the administration with most sources being administration officials (potential Slant or Elite bias). The 'massive military parade' in the headline could be flagged. Also 'people that hate our country' appears in a Trump quote so correctly excluded, but the author's framing around it could be examined.",
+    "bias_type_accuracy": "The labels are mostly correct. 'Word Choice' for 'flooded' is accurate. 'Subjective Qualifying Adjectives' for 'patriotic' and 'historic' are correct. The 'Slant' label for the contextual paragraph is debatable — it could be argued either way whether this is slant or just providing context, but the label choice is defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a generally good job of identifying author-prose bias and avoiding attribution rule violations. All four flagged items come from the author's own prose, not from quoted sources. The identified instances are mostly defensible. However, there are some debatable items and a possible missed instance.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All four flagged items are clearly from the author's own prose. No quoted or attributed source language was flagged. The model correctly excluded Trump's quotes, Hegseth's statement, and Haley's comment.\", \"false_positive_rate\": \"The 'flooded the nation' and 'patriotic event' flags are strong, defensible catches. 'The historic scene' is somewhat debatable — covering a once-in-250-years parade could reasonably be called historic, though it is still the author editorializing. The Slant flag on the 'however' paragraph is defensible but somewhat borderline — noting contextual events isn't necessarily slant, though the framing choices are worth examining.\", \"false_negative_rate\": \"The model could have also flagged 'illegal aliens' as loaded Word Choice (vs. 'undocumented immigrants' which is the competing term), and the overall article structure which is heavily favorable to the administration with most sources being administration officials (potential Slant or Elite bias). The 'massive military parade' in the headline could be flagged. Also 'people that hate our country' appears in a Trump quote so correctly excluded, but the author's framing around it could be examined.\", \"bias_type_accuracy\": \"The labels are mostly correct. 'Word Choice' for 'flooded' is accurate. 'Subjective Qualifying Adjectives' for 'patriotic' and 'historic' are correct. The 'Slant' label for the contextual paragraph is debatable — it could be argued either way whether this is slant or just providing context, but the label choice is defensible.\"}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:31.077028+00:00",
+  "labeled_lean": "Lean Right"
+}

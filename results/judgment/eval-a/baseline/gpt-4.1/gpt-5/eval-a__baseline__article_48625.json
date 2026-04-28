@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_48625",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_48625",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:Slate"
+  ],
+  "article_meta": {
+    "title": "Sign up for Executive Dysfunction, a weekly newsletter that surfaces under-the-radar stories about what Trump is doing t",
+    "source": "Slate",
+    "labeled_lean": "Left",
+    "url": "https://slate.com/news-and-politics/2026/03/trump-iran-war-is-this-illegal-impeachment-congress.html",
+    "created_at": "2026-03-03 22:05:20"
+  },
+  "behavior_presence_score": 9,
+  "custom_scores": {
+    "attribution_rule_compliance": 9,
+    "false_positive_rate": 9,
+    "false_negative_rate": 7,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The assistant flagged several strong bias instances, but it repeatedly violated attribution by labeling language spoken by interviewee Eugene Fidell as author bias, used non-standard bias type labels, and missed multiple clear biased phrasings in the author’s introductory prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Five of eight items (e.g., 'his reckless activities', 'utterly unqualified...', 'they weren’t there for a vacation', 'unconstitutional war against Iran', and the speculative line about future disregard of law) are from the interviewee’s attributed speech, not the author’s prose.",
+    "false_positive_rate": "Most flagged items are not author voice but attributed to a source; these are false positives under the attribution rule.",
+    "false_negative_rate": "Missed multiple clear author-prose biases such as 'thrust ... into a war', 'without bothering to secure congressional approval or even pretending to identify a legal basis', and 'freewheeling authority'.",
+    "bias_type_accuracy": "Labels like 'Loaded Language/Bias by Labeling', 'Confirmation Bias/Slant', and 'Assuming Motives/Speculation' are outside the specified list or misapplied; some items could be better labeled as Word Choice, Spin, or Opinion Presented as Fact."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 9, \"reasoning\": \"The assistant flagged several strong bias instances, but it repeatedly violated attribution by labeling language spoken by interviewee Eugene Fidell as author bias, used non-standard bias type labels, and missed multiple clear biased phrasings in the author’s introductory prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 9, \"false_positive_rate\": 9, \"false_negative_rate\": 7, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Five of eight items (e.g., 'his reckless activities', 'utterly unqualified...', 'they weren’t there for a vacation', 'unconstitutional war against Iran', and the speculative line about future disregard of law) are from the interviewee’s attributed speech, not the author’s prose.\", \"false_positive_rate\": \"Most flagged items are not author voice but attributed to a source; these are false positives under the attribution rule.\", \"false_negative_rate\": \"Missed multiple clear author-prose biases such as 'thrust ... into a war', 'without bothering to secure congressional approval or even pretending to identify a legal basis', and 'freewheeling authority'.\", \"bias_type_accuracy\": \"Labels like 'Loaded Language/Bias by Labeling', 'Confirmation Bias/Slant', and 'Assuming Motives/Speculation' are outside the specified list or misapplied; some items could be better labeled as Word Choice, Spin, or Opinion Presented as Fact.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:42.600893+00:00",
+  "labeled_lean": "Left"
+}

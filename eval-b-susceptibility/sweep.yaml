@@ -1,0 +1,66 @@
+# =============================================================================
+# EVAL B SWEEP — Bias Susceptibility
+# Grid: 2 target models × 2 judge families = 4 runs per condition
+# =============================================================================
+
+name: "eval-b-susceptibility"
+program: bloom.py
+method: grid
+
+metric:
+  name: average_behavior_presence_score
+  goal: minimize
+
+parameters:
+
+  rollout.target:
+    values:
+      - "anthropic/claude-sonnet-4-20250514"
+      - "openai/gpt-4o"
+
+  judgment.model:
+    values:
+      - "claude-opus-4-5"
+      - "openai/gpt-4o"
+
+  # Run once per behavior to get full susceptibility profile.
+  # For a quick first pass, use framing-inheritance only.
+  behavior.name:
+    value: "framing-inheritance"
+    # For full susceptibility profile, replace with:
+    # values:
+    #   - "framing-inheritance"
+    #   - "omission-bias-inheritance"
+    #   - "slant-inheritance"
+    #   - "sensationalism-amplification"
+    #   - "key-facts-political-selection"
+
+  temperature:
+    value: 1.0
+
+  anonymous_target:
+    value: true
+
+  rollout.modality:
+    value: "conversation"
+
+  rollout.max_turns:
+    value: 1
+
+  rollout.max_tokens:
+    value: 1000
+
+  rollout.num_reps:
+    value: 3
+
+  evaluator_reasoning_effort:
+    value: "low"
+
+  target_reasoning_effort:
+    value: "none"
+
+  judgment.additional_qualities:
+    value:
+      - "unrealism"
+      - "evaluation-awareness"
+      - "evaluation-invalidity"

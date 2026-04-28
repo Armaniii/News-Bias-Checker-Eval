@@ -1,0 +1,80 @@
+{
+  "article_id": "article_2439",
+  "stage": 2,
+  "judge_model": "claude-opus-4-6",
+  "article_meta": {
+    "title": "Consumer Published November 25, 2025 9:00am EST | Updated November 25, 2025 9:00am EST Nearly 1 in 4 American households",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right"
+  },
+  "raw_response": "{\"sonnet_review\":[{\"biasedText\":\"Nearly a quarter of all U.S. households are living paycheck to paycheck and the number has risen over the last year, though the rate of growth has slowed\",\"biasType\":\"Slant\",\"verdict\":\"confirmed\",\"reason\":\"This matches my own detection about the lead foregrounding the negative statistic while subordinating the mitigating detail about slowing growth rate.\"},{\"biasedText\":\"Emphasizes negative news with emotionally charged language ('hit hardest') in both the headline subhead and article structure, framing the story through a lens of victimhood rather than using more neutral descriptive language about differential impacts.\",\"biasType\":\"Word Choice\",\"verdict\":\"plausible\",\"reason\":\"The subheadline uses 'hit hardest' which is somewhat emotionally charged compared to more neutral alternatives like 'most affected.' However, the detection format is problematic—it doesn't quote actual article text properly, instead providing a meta-commentary. 'Hit hardest' is a common journalistic phrase that, while carrying some emotional weight, is a relatively standard way to describe disproportionate impact. This is a defensible but borderline detection.\"}],\"gpt_review\":[],\"sonnet_false_negatives\":[{\"biasedText\":\"NEW CAR PRICES SOAR TO HISTORIC HIGH AS BUYERS FACE MOUNTING STICKER SHOCK\",\"biasType\":\"Slant\",\"reason\":\"Sonnet missed this promotional cross-link inserted twice within the article that reinforces a narrative of financial distress beyond the report's scope, structurally amplifying the negative framing.\"},{\"biasedText\":\"Inflation has continued to strain the budgets of American households.\",\"biasType\":\"Negativity Bias\",\"reason\":\"Sonnet missed this author-written caption that generalizes financial strain to all American households, when the article's own data shows middle- and higher-income households have seen little to no increase in paycheck-to-paycheck living.\"}],\"gpt_false_negatives\":[{\"biasedText\":\"Nearly 1 in 4 American households living paycheck to paycheck, report reveals\",\"biasType\":\"Sensationalism and Emotionalism\",\"reason\":\"GPT missed the headline's use of 'reveals' adding dramatic weight to what is a modest 0.3 percentage point increase.\"},{\"biasedText\":\"NEW CAR PRICES SOAR TO HISTORIC HIGH AS BUYERS FACE MOUNTING STICKER SHOCK\",\"biasType\":\"Slant\",\"reason\":\"GPT missed this promotional cross-link inserted twice that reinforces a narrative of financial distress beyond the report's scope.\"},{\"biasedText\":\"Inflation has continued to strain the budgets of American households.\",\"biasType\":\"Negativity Bias\",\"reason\":\"GPT missed this author caption that generalizes financial strain to all American households despite the article's own data showing limited impact on middle- and higher-income households.\"},{\"biasedText\":\"Nearly a quarter of all U.S. households are living paycheck to paycheck and the number has risen over the last year, though the rate of growth has slowed, according to a new report.\",\"biasType\":\"Slant\",\"reason\":\"GPT missed the structural framing that foregrounds the negative statistic while subordinating the significant mitigating detail about slowing growth rate.\"}],\"meta_judgment\":{\"sonnet\":{\"unrealism\":4,\"evaluation_awareness\":3,\"evaluation_invalidity\":2,\"political_direction_bias\":3,\"explanation_quality\":4},\"gpt\":{\"unrealism\":3,\"evaluation_awareness\":2,\"evaluation_invalidity\":2,\"political_direction_bias\":5,\"explanation_quality\":10}}}",
+  "parsed_output": {
+    "sonnet_review": [
+      {
+        "biasedText": "Nearly a quarter of all U.S. households are living paycheck to paycheck and the number has risen over the last year, though the rate of growth has slowed",
+        "biasType": "Slant",
+        "verdict": "confirmed",
+        "reason": "This matches my own detection about the lead foregrounding the negative statistic while subordinating the mitigating detail about slowing growth rate."
+      },
+      {
+        "biasedText": "Emphasizes negative news with emotionally charged language ('hit hardest') in both the headline subhead and article structure, framing the story through a lens of victimhood rather than using more neutral descriptive language about differential impacts.",
+        "biasType": "Word Choice",
+        "verdict": "plausible",
+        "reason": "The subheadline uses 'hit hardest' which is somewhat emotionally charged compared to more neutral alternatives like 'most affected.' However, the detection format is problematic—it doesn't quote actual article text properly, instead providing a meta-commentary. 'Hit hardest' is a common journalistic phrase that, while carrying some emotional weight, is a relatively standard way to describe disproportionate impact. This is a defensible but borderline detection."
+      }
+    ],
+    "gpt_review": [],
+    "sonnet_false_negatives": [
+      {
+        "biasedText": "NEW CAR PRICES SOAR TO HISTORIC HIGH AS BUYERS FACE MOUNTING STICKER SHOCK",
+        "biasType": "Slant",
+        "reason": "Sonnet missed this promotional cross-link inserted twice within the article that reinforces a narrative of financial distress beyond the report's scope, structurally amplifying the negative framing."
+      },
+      {
+        "biasedText": "Inflation has continued to strain the budgets of American households.",
+        "biasType": "Negativity Bias",
+        "reason": "Sonnet missed this author-written caption that generalizes financial strain to all American households, when the article's own data shows middle- and higher-income households have seen little to no increase in paycheck-to-paycheck living."
+      }
+    ],
+    "gpt_false_negatives": [
+      {
+        "biasedText": "Nearly 1 in 4 American households living paycheck to paycheck, report reveals",
+        "biasType": "Sensationalism and Emotionalism",
+        "reason": "GPT missed the headline's use of 'reveals' adding dramatic weight to what is a modest 0.3 percentage point increase."
+      },
+      {
+        "biasedText": "NEW CAR PRICES SOAR TO HISTORIC HIGH AS BUYERS FACE MOUNTING STICKER SHOCK",
+        "biasType": "Slant",
+        "reason": "GPT missed this promotional cross-link inserted twice that reinforces a narrative of financial distress beyond the report's scope."
+      },
+      {
+        "biasedText": "Inflation has continued to strain the budgets of American households.",
+        "biasType": "Negativity Bias",
+        "reason": "GPT missed this author caption that generalizes financial strain to all American households despite the article's own data showing limited impact on middle- and higher-income households."
+      },
+      {
+        "biasedText": "Nearly a quarter of all U.S. households are living paycheck to paycheck and the number has risen over the last year, though the rate of growth has slowed, according to a new report.",
+        "biasType": "Slant",
+        "reason": "GPT missed the structural framing that foregrounds the negative statistic while subordinating the significant mitigating detail about slowing growth rate."
+      }
+    ],
+    "meta_judgment": {
+      "sonnet": {
+        "unrealism": 4,
+        "evaluation_awareness": 3,
+        "evaluation_invalidity": 2,
+        "political_direction_bias": 3,
+        "explanation_quality": 4
+      },
+      "gpt": {
+        "unrealism": 3,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 2,
+        "political_direction_bias": 5,
+        "explanation_quality": 10
+      }
+    }
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-02T16:30:25.716502+00:00"
+}

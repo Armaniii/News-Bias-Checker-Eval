@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_230",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_230",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "Federal immigration officers board an elevator with respondents at immigration court in New York on 17 November 2025",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/us-news/2025/nov/21/fbi-signal-group-chat-immigration",
+    "created_at": "2025-11-21 22:08:11"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has a mix of correct and incorrect identifications. The first item ('spied on') is a genuine author-prose bias identification with correct labeling. However, items 2 and 4 involve attributed source language from Spencer Reynolds, which is an attribution rule violation. Item 3 (Bias by Omission) is a defensible observation about the author's framing, though it's borderline. The model also misses some potential bias instances like the author's characterization of ICE actions as 'deportation traps' (though this is attributed to AP), and the overall slant/framing of the piece which heavily favors the activists' perspective. The 'spied' identification is strong, but the attribution violations and missed instances reduce quality.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Items 2 and 4 both involve language from Spencer Reynolds, a named source whose statements are clearly attributed. The model even acknowledges in item 2 that it is 'attributed to Reynolds' yet still flags it. Item 4 similarly presents Reynolds' comparison as author bias when it's clearly Reynolds' own statement. These are attribution rule violations.",
+    "false_positive_rate": "Item 1 ('spied') is a strong, defensible identification of author word choice bias. Item 3 is somewhat defensible as author framing/omission. Items 2 and 4 flag attributed source language rather than genuine author-level bias, making them false positives from an attribution perspective.",
+    "false_negative_rate": "The model caught the important 'spied' word choice. However, it could have flagged additional author-level bias such as the overall Slant of the piece (heavily weighted toward activist perspectives with limited government defense), the author's framing that courtwatch efforts 'have been non-violent' presented as established fact, or the characterization of 'deportation traps' in the author's own connecting prose. Some of these are debatable but the overall slant of the article is notable.",
+    "bias_type_accuracy": "Item 1's 'Word Choice' label is correct. Item 3's 'Bias by Omission' label is reasonable for the observation made. Items 2 and 4 shouldn't have been flagged at all due to attribution violations, but if they were author prose, the labels would be somewhat defensible though debatable."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect identifications. The first item ('spied on') is a genuine author-prose bias identification with correct labeling. However, items 2 and 4 involve attributed source language from Spencer Reynolds, which is an attribution rule violation. Item 3 (Bias by Omission) is a defensible observation about the author's framing, though it's borderline. The model also misses some potential bias instances like the author's characterization of ICE actions as 'deportation traps' (though this is attributed to AP), and the overall slant/framing of the piece which heavily favors the activists' perspective. The 'spied' identification is strong, but the attribution violations and missed instances reduce quality.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Items 2 and 4 both involve language from Spencer Reynolds, a named source whose statements are clearly attributed. The model even acknowledges in item 2 that it is 'attributed to Reynolds' yet still flags it. Item 4 similarly presents Reynolds' comparison as author bias when it's clearly Reynolds' own statement. These are attribution rule violations.\", \"false_positive_rate\": \"Item 1 ('spied') is a strong, defensible identification of author word choice bias. Item 3 is somewhat defensible as author framing/omission. Items 2 and 4 flag attributed source language rather than genuine author-level bias, making them false positives from an attribution perspective.\", \"false_negative_rate\": \"The model caught the important 'spied' word choice. However, it could have flagged additional author-level bias such as the overall Slant of the piece (heavily weighted toward activist perspectives with limited government defense), the author's framing that courtwatch efforts 'have been non-violent' presented as established fact, or the characterization of 'deportation traps' in the author's own connecting prose. Some of these are debatable but the overall slant of the article is notable.\", \"bias_type_accuracy\": \"Item 1's 'Word Choice' label is correct. Item 3's 'Bias by Omission' label is reasonable for the observation made. Items 2 and 4 shouldn't have been flagged at all due to attribution violations, but if they were author prose, the labels would be somewhat defensible though debatable.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:21.603230+00:00",
+  "labeled_lean": "Left"
+}

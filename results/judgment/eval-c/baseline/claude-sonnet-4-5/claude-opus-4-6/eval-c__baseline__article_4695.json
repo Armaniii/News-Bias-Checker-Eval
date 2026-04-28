@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__baseline__article_4695",
+  "eval": "eval-c",
+  "condition": "baseline",
+  "article_id": "article_4695",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "Police turned him over to ICE",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/nation/2025/11/22/ice-dallas-shooting-victim-immigration-287g/87324813007/",
+    "created_at": "2025-12-03 17:37:35"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 2,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly classifies the article as Left with reasonable confidence. However, several key_indicators are vague summaries rather than specific textual citations, and one indicator ('mass detention and mass deportation machine') is actually a quote from Lena Graber, an immigration attorney, not the author's own prose — this is an attribution violation. Most other indicators correctly identify authorial choices like narrative structure, source selection, and sympathetic framing, though they lack specific textual quotes from the author's prose.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article's actual lean is Left or Lean Left based on the author's sympathetic narrative framing centered on the immigrant family, critical examination of ICE/287(g), heavy source selection from immigration advocates, and emotional storytelling. The model classified it as Left, which is correct or at most one class off.",
+    "confidence_calibration": "0.85 confidence is appropriate for an article with strong, clear bias signals throughout — extensive sympathetic narrative framing, critical institutional examination, and heavily skewed source selection. The signals are clear enough to warrant high confidence.",
+    "reasoning_evidence_quality": "The reasoning correctly identifies authorial choices like narrative structure, source selection imbalance, and sympathetic framing. However, key_indicators are mostly vague summaries rather than specific quoted phrases from the author's prose. One indicator — 'mass detention and mass deportation machine' — is a direct quote from Lena Graber (a quoted source), violating the attribution rule. The indicators would be stronger if they cited specific author prose like 'cavorting with his four children' or 'hung over them like a cloud.'"
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model correctly classifies the article as Left with reasonable confidence. However, several key_indicators are vague summaries rather than specific textual citations, and one indicator ('mass detention and mass deportation machine') is actually a quote from Lena Graber, an immigration attorney, not the author's own prose — this is an attribution violation. Most other indicators correctly identify authorial choices like narrative structure, source selection, and sympathetic framing, though they lack specific textual quotes from the author's prose.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 2, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"The article's actual lean is Left or Lean Left based on the author's sympathetic narrative framing centered on the immigrant family, critical examination of ICE/287(g), heavy source selection from immigration advocates, and emotional storytelling. The model classified it as Left, which is correct or at most one class off.\", \"confidence_calibration\": \"0.85 confidence is appropriate for an article with strong, clear bias signals throughout — extensive sympathetic narrative framing, critical institutional examination, and heavily skewed source selection. The signals are clear enough to warrant high confidence.\", \"reasoning_evidence_quality\": \"The reasoning correctly identifies authorial choices like narrative structure, source selection imbalance, and sympathetic framing. However, key_indicators are mostly vague summaries rather than specific quoted phrases from the author's prose. One indicator — 'mass detention and mass deportation machine' — is a direct quote from Lena Graber (a quoted source), violating the attribution rule. The indicators would be stronger if they cited specific author prose like 'cavorting with his four children' or 'hung over them like a cloud.'\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:05.348207+00:00",
+  "labeled_lean": "Lean Left"
+}

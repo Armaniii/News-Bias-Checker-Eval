@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_11451",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_11451",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Trump strategy document revives Monroe Doctrine, slams EuropeBy Idrees Ali, Matt Spetalnick and James MackenzieDecember ",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/business/finance/trump-strategy-document-revives-monroe-doctrine-slams-europe-2025-12-05/",
+    "created_at": "2025-12-11 18:13:12"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model does a generally good job of identifying author-prose bias and avoiding quoted text. All four flagged items come from the author's own prose, not from quoted sources. The identifications are mostly defensible, though some are stronger than others. There are a few missed instances and some debatable type labels.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All four flagged items are from the author's own prose. No quoted text or attributed source language was flagged. The model correctly avoided flagging the numerous document quotes and source quotes in the article.",
+    "false_positive_rate": "Most items are defensible. The 'vague terms' flag (#2) is somewhat questionable - describing Trump's statements as 'vague' could be seen as factual characterization rather than bias, though 'retaking' and 'annexing' as author word choices are arguable. The summary bullet point flag (#1) is reasonable. The 'troubled history' (#3) and 'racist rhetoric' (#4) are strong catches.",
+    "false_negative_rate": "The model missed some potential instances: 'the latest - and clearest - expression' is author editorial commentary; 'critics have said Trump's rhetoric evokes modern-day imperialism' uses unattributed critics; 'Trump has a history of making positive and admiring comments about Russian President Vladimir Putin that have long prompted criticism that he is soft on Russia' contains author framing that implies Trump is too favorable to Putin. The 'dour view' characterization is also author editorializing. These are moderate misses.",
+    "bias_type_accuracy": "The labels are mostly reasonable. 'Spin' for the summary bullet is defensible. 'Opinion Statements Presented as Fact' for 'troubled history' is correct. 'Slant' for the racist rhetoric characterization is defensible though 'Opinion Statements Presented as Fact' might be more precise. The second 'Spin' label for 'vague terms' is somewhat debatable. Overall the labels are close but not perfectly precise."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a generally good job of identifying author-prose bias and avoiding quoted text. All four flagged items come from the author's own prose, not from quoted sources. The identifications are mostly defensible, though some are stronger than others. There are a few missed instances and some debatable type labels.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All four flagged items are from the author's own prose. No quoted text or attributed source language was flagged. The model correctly avoided flagging the numerous document quotes and source quotes in the article.\", \"false_positive_rate\": \"Most items are defensible. The 'vague terms' flag (#2) is somewhat questionable - describing Trump's statements as 'vague' could be seen as factual characterization rather than bias, though 'retaking' and 'annexing' as author word choices are arguable. The summary bullet point flag (#1) is reasonable. The 'troubled history' (#3) and 'racist rhetoric' (#4) are strong catches.\", \"false_negative_rate\": \"The model missed some potential instances: 'the latest - and clearest - expression' is author editorial commentary; 'critics have said Trump's rhetoric evokes modern-day imperialism' uses unattributed critics; 'Trump has a history of making positive and admiring comments about Russian President Vladimir Putin that have long prompted criticism that he is soft on Russia' contains author framing that implies Trump is too favorable to Putin. The 'dour view' characterization is also author editorializing. These are moderate misses.\", \"bias_type_accuracy\": \"The labels are mostly reasonable. 'Spin' for the summary bullet is defensible. 'Opinion Statements Presented as Fact' for 'troubled history' is correct. 'Slant' for the racist rhetoric characterization is defensible though 'Opinion Statements Presented as Fact' might be more precise. The second 'Spin' label for 'vague terms' is somewhat debatable. Overall the labels are close but not perfectly precise.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:34.791890+00:00",
+  "labeled_lean": "Center"
+}

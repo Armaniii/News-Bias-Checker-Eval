@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_53000",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_53000",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Forbes"
+  ],
+  "article_meta": {
+    "title": "Witness Giving Oath During TrialgettyWomen are not believed, one legal whitepaper finds",
+    "source": "Forbes",
+    "labeled_lean": "Center",
+    "url": "https://www.forbes.com/sites/patriciafersch/2023/04/05/gender-bias-in-the-courts-women-are-not-believed/",
+    "created_at": "2026-03-16 04:30:17"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model does a reasonable job identifying bias patterns in the author's own prose. Most flagged items are genuinely from the author's voice and represent defensible bias instances. However, there are some issues: the first item flags text that appears to be from a quoted whitepaper (it's in the headline/subheadline and presented as a finding), and some items could be debated. The model correctly avoids flagging clearly quoted material from sources like Joan Meier or the court studies. The bias type labels are mostly appropriate, though some could be more precise. The article is essentially an opinion/advocacy piece presented as news, and the model catches several key instances of the author presenting opinions as facts.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The first flagged item ('women telling stories of abuse by their male partners are simply not believed') is actually from a quoted whitepaper - it appears in quotation marks in the article's opening. This is a minor attribution violation. The remaining items are all from the author's own prose. The model mostly respects the attribution rule but makes this one error.",
+    "false_positive_rate": "Most flagged items are defensible. The fifth item about family courts receiving little public scrutiny uses 'may enable' which is actually a hedged statement rather than a strong opinion presented as fact - this is a borderline call. The Amber Heard/Depp example flagged as Slant is defensible but could be seen as the author citing a real case. Overall, most items are genuine bias instances.",
+    "false_negative_rate": "The model misses some instances: the reference to fiction novels (Woman in the Window, Girl on the Train) as evidence with 'There is a lesson here in listening to women in court and believing them' is explicit advocacy. The article also has significant Bias by Omission - no counterarguments or alternative perspectives are presented. The 'abuses perpetrated on women' and 'struggles they face coming forward to tell their truths' (with 'truths' in scare quotes) at the end is also notable. Some of these are caught implicitly but a few clear instances are missed.",
+    "bias_type_accuracy": "The labels are mostly appropriate. 'Opinion Statements Presented as Fact' is correctly applied to most items. The 'Slant' label for the Heard/Depp paragraph is defensible. The 'Spin' label for 'long-standing cultural tendency' is reasonable though 'Subjective Qualifying Adjectives' or 'Word Choice' might also apply. No clearly wrong labels."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a reasonable job identifying bias patterns in the author's own prose. Most flagged items are genuinely from the author's voice and represent defensible bias instances. However, there are some issues: the first item flags text that appears to be from a quoted whitepaper (it's in the headline/subheadline and presented as a finding), and some items could be debated. The model correctly avoids flagging clearly quoted material from sources like Joan Meier or the court studies. The bias type labels are mostly appropriate, though some could be more precise. The article is essentially an opinion/advocacy piece presented as news, and the model catches several key instances of the author presenting opinions as facts.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The first flagged item ('women telling stories of abuse by their male partners are simply not believed') is actually from a quoted whitepaper - it appears in quotation marks in the article's opening. This is a minor attribution violation. The remaining items are all from the author's own prose. The model mostly respects the attribution rule but makes this one error.\", \"false_positive_rate\": \"Most flagged items are defensible. The fifth item about family courts receiving little public scrutiny uses 'may enable' which is actually a hedged statement rather than a strong opinion presented as fact - this is a borderline call. The Amber Heard/Depp example flagged as Slant is defensible but could be seen as the author citing a real case. Overall, most items are genuine bias instances.\", \"false_negative_rate\": \"The model misses some instances: the reference to fiction novels (Woman in the Window, Girl on the Train) as evidence with 'There is a lesson here in listening to women in court and believing them' is explicit advocacy. The article also has significant Bias by Omission - no counterarguments or alternative perspectives are presented. The 'abuses perpetrated on women' and 'struggles they face coming forward to tell their truths' (with 'truths' in scare quotes) at the end is also notable. Some of these are caught implicitly but a few clear instances are missed.\", \"bias_type_accuracy\": \"The labels are mostly appropriate. 'Opinion Statements Presented as Fact' is correctly applied to most items. The 'Slant' label for the Heard/Depp paragraph is defensible. The 'Spin' label for 'long-standing cultural tendency' is reasonable though 'Subjective Qualifying Adjectives' or 'Word Choice' might also apply. No clearly wrong labels.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.354552+00:00",
+  "labeled_lean": "Center"
+}

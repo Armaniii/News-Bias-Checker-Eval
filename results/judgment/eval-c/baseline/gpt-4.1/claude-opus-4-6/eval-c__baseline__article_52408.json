@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__baseline__article_52408",
+  "eval": "eval-c",
+  "condition": "baseline",
+  "article_id": "article_52408",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Fox Business"
+  ],
+  "article_meta": {
+    "title": "close video GasBuddy expert says claims the US will see 'massive spike' in gas prices are 'erroneous' Patrick De Haan, G",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxbusiness.com/economy/iran-threatens-200-oil-barrels-us-prepares-massive-release-emergency-petroleum-reserves",
+    "created_at": "2026-03-14 01:17:32"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 6
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies the article as Lean Right, which is a reasonable classification given Fox Business's editorial tendencies and the article's framing. However, there are several issues: (1) The first key_indicator cites the source identity rather than specific author prose choices, which is lazy reasoning. (2) Some indicators are vague ('Positive framing of Trump administration actions') without quoting specific author language. (3) The indicator citing 'terrorist proxies' is actually from a quoted statement by Energy Secretary Chris Wright, which is an attribution violation. (4) 'GOP headache' comes from an embedded headline/link, not the article's authorial prose. The reasoning is partially valid but lacks the specificity required and contains attribution issues.",
+  "custom_reasoning": {
+    "classification_accuracy": "Lean Right is a reasonable classification for this Fox Business article, which frames Trump administration actions positively and uses language sympathetic to the administration's narrative on Iran and energy security. The actual lean is Lean Right or Right, so this is within one class at worst.",
+    "confidence_calibration": "0.7 is somewhat low for an article with fairly clear lean signals - the Fox Business framing, positive portrayal of Trump's energy policy response, and the 'America's energy security is as strong as ever' narrative structure all point clearly Lean Right. A confidence of 0.75-0.85 would be more appropriate.",
+    "reasoning_evidence_quality": "Multiple issues: (1) 'Source is Fox Business/Fox News' is source identity, not author prose analysis. (2) 'terrorist proxies' is from Energy Secretary Wright's quoted statement - attribution violation. (3) 'Positive framing of Trump administration actions' and 'Highlighting U.S. energy/security strength under Trump' are vague without specific author prose quotes. (4) 'GOP headache' is from an embedded link headline, not the article's authorial connecting prose. The reasoning lacks specific quotes from the author's own words."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model classifies the article as Lean Right, which is a reasonable classification given Fox Business's editorial tendencies and the article's framing. However, there are several issues: (1) The first key_indicator cites the source identity rather than specific author prose choices, which is lazy reasoning. (2) Some indicators are vague ('Positive framing of Trump administration actions') without quoting specific author language. (3) The indicator citing 'terrorist proxies' is actually from a quoted statement by Energy Secretary Chris Wright, which is an attribution violation. (4) 'GOP headache' comes from an embedded headline/link, not the article's authorial prose. The reasoning is partially valid but lacks the specificity required and contains attribution issues.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 6}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Lean Right is a reasonable classification for this Fox Business article, which frames Trump administration actions positively and uses language sympathetic to the administration's narrative on Iran and energy security. The actual lean is Lean Right or Right, so this is within one class at worst.\", \"confidence_calibration\": \"0.7 is somewhat low for an article with fairly clear lean signals - the Fox Business framing, positive portrayal of Trump's energy policy response, and the 'America's energy security is as strong as ever' narrative structure all point clearly Lean Right. A confidence of 0.75-0.85 would be more appropriate.\", \"reasoning_evidence_quality\": \"Multiple issues: (1) 'Source is Fox Business/Fox News' is source identity, not author prose analysis. (2) 'terrorist proxies' is from Energy Secretary Wright's quoted statement - attribution violation. (3) 'Positive framing of Trump administration actions' and 'Highlighting U.S. energy/security strength under Trump' are vague without specific author prose quotes. (4) 'GOP headache' is from an embedded link headline, not the article's authorial connecting prose. The reasoning lacks specific quotes from the author's own words.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:11.796727+00:00",
+  "labeled_lean": "Lean Right"
+}

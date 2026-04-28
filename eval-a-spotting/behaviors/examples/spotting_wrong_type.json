@@ -1,0 +1,19 @@
+{
+  "description": "Eval A Mode C example — WRONG TYPE. Model identifies genuinely biased text but applies incorrect bias type labels.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Analyze only the author's own prose — never quoted text or attributed source statements. Output ONLY a valid JSON array. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nAnalyze this article:\n\n---\nThe senator clearly wants to derail the climate bill before the election, which is why he scheduled the procedural vote for the same day as the committee hearing on infrastructure spending.\n\nSen. Mark Davis said he was simply following committee rules. Climate advocates called the scheduling a deliberate tactic to suppress the vote.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "[{\"biasType\": \"Unsubstantiated Claims\", \"biasedText\": \"The senator clearly wants to derail the climate bill before the election\", \"explanation\": \"This claim about the senator's motivations lacks supporting evidence.\"}, {\"biasType\": \"Bias by Omission\", \"biasedText\": \"which is why he scheduled the procedural vote for the same day as the committee hearing\", \"explanation\": \"The author omits alternative explanations for the scheduling decision.\"}]"
+    }
+  ],
+  "behavior_present": true,
+  "notes": "PARTIALLY WRONG — both phrases are genuinely in the author's own prose and worth flagging, but the type labels are wrong. 'The senator clearly wants to derail...' is Mind Reading (author assumes knowledge of the senator's intentions), not Unsubstantiated Claims. 'which is why he scheduled...' is also Mind Reading (author states causal intent as fact) and/or Flawed Logic (post hoc causation), not Bias by Omission. Bias by Omission refers to omitting an entire perspective from the article, not omitting alternative explanations for one event."
+}

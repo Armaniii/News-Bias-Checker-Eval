@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_43169",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_43169",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "Once upon a time, school students would submit an essay, and teachers would mark it",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/australia-news/2026/feb/23/ai-chatbots-schools-education-australian-students-paper",
+    "created_at": "2026-02-23 02:15:43"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 5,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has a mix of correct and incorrect identifications. It correctly flags 'innovative ways' as a subjective qualifying adjective in author prose and 'interrogate'/'Enter Thinking Mode' as spin. However, it commits an attribution rule violation by flagging Catt's quoted text as sensationalism, and the 'Omission of Source Attribution' flag is questionable since the teachers' concerns are attributed to the TALIS survey mentioned in the preceding paragraph. There are also some missed instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model flags Catt's direct quote ('If we don't act deliberately now...') as Sensationalism/Emotionalism. While the model's explanation mentions 'quotations chosen' suggesting editorial choice, the biasedText is the quote itself, which is an attribution rule violation. The explanation tries to frame it as editorial selection bias (Slant) but labels it as the quote's language being emotive.",
+    "false_positive_rate": "The Catt quote flagging is a false positive (attribution violation). The 'Omission of Source Attribution' flag is questionable - the TALIS survey is referenced in the preceding paragraph and the sentence summarizes its findings, so attribution exists in context. The 'innovative ways' and 'interrogate/Enter Thinking Mode' flags are defensible.",
+    "false_negative_rate": "The model caught the 'innovative ways' subjective adjective and the spin in the opening. It missed the repeated use of 'innovative' (appears twice - also in 'But while AI is being rolled out at Australian schools in innovative ways'), and possibly the overall positive framing/slant toward AI adoption. The article's structure heavily favors pro-AI voices, which could be flagged as Slant. These are moderate misses.",
+    "bias_type_accuracy": "The 'Spin' label for the opening is defensible. 'Subjective Qualifying Adjectives' for 'innovative ways' is correct. The Sensationalism label on Catt's quote is wrong both because it's a quote and because the concept is more about editorial selection (Slant). The 'Omission of Source Attribution' label is debatable - technically attribution exists via the TALIS reference."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect identifications. It correctly flags 'innovative ways' as a subjective qualifying adjective in author prose and 'interrogate'/'Enter Thinking Mode' as spin. However, it commits an attribution rule violation by flagging Catt's quoted text as sensationalism, and the 'Omission of Source Attribution' flag is questionable since the teachers' concerns are attributed to the TALIS survey mentioned in the preceding paragraph. There are also some missed instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 5, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model flags Catt's direct quote ('If we don't act deliberately now...') as Sensationalism/Emotionalism. While the model's explanation mentions 'quotations chosen' suggesting editorial choice, the biasedText is the quote itself, which is an attribution rule violation. The explanation tries to frame it as editorial selection bias (Slant) but labels it as the quote's language being emotive.\", \"false_positive_rate\": \"The Catt quote flagging is a false positive (attribution violation). The 'Omission of Source Attribution' flag is questionable - the TALIS survey is referenced in the preceding paragraph and the sentence summarizes its findings, so attribution exists in context. The 'innovative ways' and 'interrogate/Enter Thinking Mode' flags are defensible.\", \"false_negative_rate\": \"The model caught the 'innovative ways' subjective adjective and the spin in the opening. It missed the repeated use of 'innovative' (appears twice - also in 'But while AI is being rolled out at Australian schools in innovative ways'), and possibly the overall positive framing/slant toward AI adoption. The article's structure heavily favors pro-AI voices, which could be flagged as Slant. These are moderate misses.\", \"bias_type_accuracy\": \"The 'Spin' label for the opening is defensible. 'Subjective Qualifying Adjectives' for 'innovative ways' is correct. The Sensationalism label on Catt's quote is wrong both because it's a quote and because the concept is more about editorial selection (Slant). The 'Omission of Source Attribution' label is debatable - technically attribution exists via the TALIS reference.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.937247+00:00",
+  "labeled_lean": "Left"
+}

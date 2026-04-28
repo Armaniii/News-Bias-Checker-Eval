@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_42780",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_42780",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:full",
+    "source:Politico"
+  ],
+  "article_meta": {
+    "title": "Facebook X Ukrainian President Volodymyr Zelenskyy and CNN’s Clarissa Ward on the state of the war | The Conversation 02",
+    "source": "Politico",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.politico.com/news/2026/03/06/democrats-james-talarico-donors-spending-texas-00815690",
+    "created_at": "2026-03-11 18:57:34"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Good attribution discipline and several genuine author-prose spin phrases correctly flagged, but multiple clear author-level bias instances were missed and one label is misapplied.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged items are from the author's prose, not quotes or extended reproduced statements.",
+    "false_positive_rate": "Flagged phrases like 'dim,' 'poured cold water,' 'dreamed,' and 'laughable' are defensible examples of spin/loaded wording in the author’s voice; the 'moderate incumbent' clause contains subjective labeling, though bundled with neutral facts.",
+    "false_negative_rate": "Missed prominent author-level loaded descriptors such as 'a scandal-ridden MAGA darling,' 'staggering price tag,' 'Republicans... scoff at the idea,' and 'struggling mightily'—all clear in the author’s prose.",
+    "bias_type_accuracy": "Most labels fit Spin, but labeling the 'moderate incumbent' sentence as Slant is off; it’s better classified as Subjective Qualifying Adjectives or Opinion Presented as Fact."
+  },
+  "raw_judge_response": "{\n  \"behavior_presence_score\": 5,\n  \"reasoning\": \"Good attribution discipline and several genuine author-prose spin phrases correctly flagged, but multiple clear author-level bias instances were missed and one label is misapplied.\",\n  \"custom_scores\": {\n    \"attribution_rule_compliance\": 1,\n    \"false_positive_rate\": 2,\n    \"false_negative_rate\": 6,\n    \"bias_type_accuracy\": 4\n  },\n  \"additional_scores\": {\n    \"unrealism\": 1,\n    \"evaluation_awareness\": 1,\n    \"evaluation_invalidity\": 1\n  },\n  \"custom_reasoning\": {\n    \"attribution_rule_compliance\": \"All flagged items are from the author's prose, not quotes or extended reproduced statements.\",\n    \"false_positive_rate\": \"Flagged phrases like 'dim,' 'poured cold water,' 'dreamed,' and 'laughable' are defensible examples of spin/loaded wording in the author’s voice; the 'moderate incumbent' clause contains subjective labeling, though bundled with neutral facts.\",\n    \"false_negative_rate\": \"Missed prominent author-level loaded descriptors such as 'a scandal-ridden MAGA darling,' 'staggering price tag,' 'Republicans... scoff at the idea,' and 'struggling mightily'—all clear in the author’s prose.\",\n    \"bias_type_accuracy\": \"Most labels fit Spin, but labeling the 'moderate incumbent' sentence as Slant is off; it’s better classified as Subjective Qualifying Adjectives or Opinion Presented as Fact.\"\n  }\n}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:57.168325+00:00",
+  "labeled_lean": "Lean Left"
+}

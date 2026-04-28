@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_42780",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_42780",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Politico"
+  ],
+  "article_meta": {
+    "title": "Facebook X Ukrainian President Volodymyr Zelenskyy and CNN’s Clarissa Ward on the state of the war | The Conversation 02",
+    "source": "Politico",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.politico.com/news/2026/03/06/democrats-james-talarico-donors-spending-texas-00815690",
+    "created_at": "2026-03-11 18:57:34"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model identifies three instances from the author's own prose, correctly avoiding quoted text. The flagged items are defensible but vary in strength. 'scandal-ridden MAGA darling' is genuinely loaded author prose and well-identified. 'appeared laughable' is arguably just descriptive context rather than bias. 'Democrats have long dreamed' is a borderline call - it's a common journalistic framing that could be seen as slightly dismissive but is fairly standard language. No attribution rule violations occurred. Some potential misses exist - e.g., 'poured cold water' as a loaded metaphor, 'struggling mightily' as subjective language, and possibly the overall Slant toward framing this through a Democratic strategic lens. The bias type labels are reasonable though 'Spin' for 'dreamed' is debatable.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged instances come from the author's own prose. No quoted text or attributed statements were flagged. Perfect compliance with the attribution rule.",
+    "false_positive_rate": "'scandal-ridden MAGA darling' is a strong, defensible flag. 'appeared laughable' is somewhat defensible but could be read as neutral descriptive framing given the context. 'Democrats have long dreamed' is a weak flag - this is fairly standard journalistic language. About 1 of 3 items is questionable.",
+    "false_negative_rate": "The model missed some potential bias instances: 'poured cold water' (loaded metaphor), 'struggling mightily' (subjective characterization), the overall slant/framing of the article heavily through Democratic strategic concerns, and possibly 'stubbornly low approval rating' which attributes intentionality to a poll number. These are moderate misses.",
+    "bias_type_accuracy": "'Subjective Qualifying Adjectives' for 'scandal-ridden MAGA darling' is correct. 'Word Choice' for 'appeared laughable' is reasonable if you accept the flag. 'Spin' for 'dreamed of turning Texas blue' is debatable - 'Word Choice' might be more precise. Labels are generally in the right neighborhood."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies three instances from the author's own prose, correctly avoiding quoted text. The flagged items are defensible but vary in strength. 'scandal-ridden MAGA darling' is genuinely loaded author prose and well-identified. 'appeared laughable' is arguably just descriptive context rather than bias. 'Democrats have long dreamed' is a borderline call - it's a common journalistic framing that could be seen as slightly dismissive but is fairly standard language. No attribution rule violations occurred. Some potential misses exist - e.g., 'poured cold water' as a loaded metaphor, 'struggling mightily' as subjective language, and possibly the overall Slant toward framing this through a Democratic strategic lens. The bias type labels are reasonable though 'Spin' for 'dreamed' is debatable.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged instances come from the author's own prose. No quoted text or attributed statements were flagged. Perfect compliance with the attribution rule.\", \"false_positive_rate\": \"'scandal-ridden MAGA darling' is a strong, defensible flag. 'appeared laughable' is somewhat defensible but could be read as neutral descriptive framing given the context. 'Democrats have long dreamed' is a weak flag - this is fairly standard journalistic language. About 1 of 3 items is questionable.\", \"false_negative_rate\": \"The model missed some potential bias instances: 'poured cold water' (loaded metaphor), 'struggling mightily' (subjective characterization), the overall slant/framing of the article heavily through Democratic strategic concerns, and possibly 'stubbornly low approval rating' which attributes intentionality to a poll number. These are moderate misses.\", \"bias_type_accuracy\": \"'Subjective Qualifying Adjectives' for 'scandal-ridden MAGA darling' is correct. 'Word Choice' for 'appeared laughable' is reasonable if you accept the flag. 'Spin' for 'dreamed of turning Texas blue' is debatable - 'Word Choice' might be more precise. Labels are generally in the right neighborhood.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.755477+00:00",
+  "labeled_lean": "Lean Left"
+}

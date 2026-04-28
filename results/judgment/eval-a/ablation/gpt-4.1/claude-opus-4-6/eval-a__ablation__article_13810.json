@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_13810",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_13810",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Federalist"
+  ],
+  "article_meta": {
+    "title": "SCOTUS Pro-Life Center Takes Its Fight Against Democrat Lawfare To The Supreme Court By: Shawn Fleetwood November 21, 20",
+    "source": "The Federalist",
+    "labeled_lean": "Right",
+    "url": "https://thefederalist.com/2025/11/21/pro-life-center-takes-its-fight-against-democrat-lawfare-to-the-supreme-court/",
+    "created_at": "2025-12-16 15:14:10"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model has a mix of correct and incorrect identifications. It correctly flags 'seemingly political inquiry' as author prose bias (Slant), which is a genuine author-level bias instance. However, it commits attribution rule violations on several items: 'can bully us' is inside a quote from Aimee Huber, 'overtly hostile to the mission of pregnancy centers' is attributed to Lincoln Wilson's remarks, and 'attempt for him to harass and persecute First Choice' is from Wilson's quoted speech. 'fight back against New Jersey Democrats' lawfare' is in the author's own prose and is a defensible flag. The model also misses other author-level bias instances like the overall framing/slant of the article which only presents pro-life center perspectives sympathetically, and the use of 'pro-life' rather than 'anti-abortion' as a consistent framing choice, and 'Democrat Attorney General' (using 'Democrat' as adjective rather than 'Democratic' is a known partisan word choice).",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Three of five flagged items are attribution rule violations: 'can bully us' is from Huber's direct quote, 'overtly hostile to the mission of pregnancy centers' is attributed to Wilson's remarks at the press conference, and 'attempt for him to harass and persecute First Choice' is Wilson's quoted speech. Only 'fight back against New Jersey Democrats' lawfare' and 'seemingly political inquiry' are genuinely author prose.",
+    "false_positive_rate": "Of the 5 flagged items, 3 are attribution violations (false positives as author bias). The 2 author-prose items are defensible flags. So majority of items have issues.",
+    "false_negative_rate": "The model caught 'seemingly political' and 'lawfare' which are significant. But it missed other author-level bias like the overall one-sided structure (no independent legal experts or opposing viewpoint beyond brief factual description), use of 'Democrat' as adjective (partisan word choice), and the sympathetic framing throughout including the client testimonial placement.",
+    "bias_type_accuracy": "For the correctly identified author-prose items, 'Spin' for 'fight back against lawfare' is reasonable, and 'Slant' for 'seemingly political inquiry' is appropriate. These labels are defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect identifications. It correctly flags 'seemingly political inquiry' as author prose bias (Slant), which is a genuine author-level bias instance. However, it commits attribution rule violations on several items: 'can bully us' is inside a quote from Aimee Huber, 'overtly hostile to the mission of pregnancy centers' is attributed to Lincoln Wilson's remarks, and 'attempt for him to harass and persecute First Choice' is from Wilson's quoted speech. 'fight back against New Jersey Democrats' lawfare' is in the author's own prose and is a defensible flag. The model also misses other author-level bias instances like the overall framing/slant of the article which only presents pro-life center perspectives sympathetically, and the use of 'pro-life' rather than 'anti-abortion' as a consistent framing choice, and 'Democrat Attorney General' (using 'Democrat' as adjective rather than 'Democratic' is a known partisan word choice).\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Three of five flagged items are attribution rule violations: 'can bully us' is from Huber's direct quote, 'overtly hostile to the mission of pregnancy centers' is attributed to Wilson's remarks at the press conference, and 'attempt for him to harass and persecute First Choice' is Wilson's quoted speech. Only 'fight back against New Jersey Democrats' lawfare' and 'seemingly political inquiry' are genuinely author prose.\", \"false_positive_rate\": \"Of the 5 flagged items, 3 are attribution violations (false positives as author bias). The 2 author-prose items are defensible flags. So majority of items have issues.\", \"false_negative_rate\": \"The model caught 'seemingly political' and 'lawfare' which are significant. But it missed other author-level bias like the overall one-sided structure (no independent legal experts or opposing viewpoint beyond brief factual description), use of 'Democrat' as adjective (partisan word choice), and the sympathetic framing throughout including the client testimonial placement.\", \"bias_type_accuracy\": \"For the correctly identified author-prose items, 'Spin' for 'fight back against lawfare' is reasonable, and 'Slant' for 'seemingly political inquiry' is appropriate. These labels are defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:26.075485+00:00",
+  "labeled_lean": "Right"
+}

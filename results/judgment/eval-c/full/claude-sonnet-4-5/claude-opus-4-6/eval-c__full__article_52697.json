@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__full__article_52697",
+  "eval": "eval-c",
+  "condition": "full",
+  "article_id": "article_52697",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Morning Wire"
+  ],
+  "article_meta": {
+    "title": "— News —Study Shows Pandemic Saw Rise In Firearm Injuries Among KidsBy Charlotte Pence Bond•Dec 20, 2022 DailyWire.com•F",
+    "source": "Morning Wire",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.dailywire.com/news/study-shows-pandemic-saw-rise-in-firearm-injuries-among-kids",
+    "created_at": "2026-03-15 15:49:53"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "classification_accuracy": 3,
+    "confidence_calibration": 4,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies this Daily Wire article as Center with 0.75 confidence. The article is from a Right-leaning outlet (Daily Wire), and while the article's own prose is relatively straightforward in reporting study findings, there are some subtle editorial choices worth noting. The author's phrase 'another disastrous effect of the pandemic' frames the issue as a pandemic consequence rather than a gun access issue, which is a subtly right-leaning framing choice (shifting focus from firearms to pandemic policies). The closing reference to Kaiser Family Foundation noting 'the pandemic and the policies enacted as a result appear to have had a negative impact on children' frames government pandemic policies as harmful - a right-leaning framing. However, the article also reproduces data about firearms being the leading cause of death for children, which is typically a left-leaning talking point. Overall, the article leans slightly right in its framing (pandemic-caused, not gun-access-caused), but a Center classification is arguably within one adjacent class of Lean Right. The model has some minor issues: one key_indicator cites quoted text ('in 2020... firearms were the number one cause of death'), and another cites study methodology language rather than the author's own prose.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article is from Daily Wire, a Right-leaning outlet. The author's framing choices subtly lean right: framing firearm injuries as a 'pandemic effect' rather than a gun access issue, and closing with pandemic policy critique. A Lean Right classification would be most accurate. Center is one class off from Lean Right, so this is a moderate error but not a wrong-direction error.",
+    "confidence_calibration": "0.75 confidence for a Center classification is somewhat high given the mixed signals. The article has subtle right-leaning framing that should create more uncertainty about a Center call. If Center were correct, 0.75 would be reasonable, but since the actual lean is likely Lean Right, the high confidence in the wrong adjacent class is modestly miscalibrated.",
+    "reasoning_evidence_quality": "The model correctly identifies 'another disastrous effect of the pandemic on kids' as author prose. However, one key_indicator ('Data show that in 2020... firearms were the number one cause of death for children ages 1-19') includes quoted/attributed text from the Kaiser Family Foundation. Another indicator cites study methodology language. The reasoning discussion is generally sound but has 1-2 attribution boundary issues."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model classifies this Daily Wire article as Center with 0.75 confidence. The article is from a Right-leaning outlet (Daily Wire), and while the article's own prose is relatively straightforward in reporting study findings, there are some subtle editorial choices worth noting. The author's phrase 'another disastrous effect of the pandemic' frames the issue as a pandemic consequence rather than a gun access issue, which is a subtly right-leaning framing choice (shifting focus from firearms to pandemic policies). The closing reference to Kaiser Family Foundation noting 'the pandemic and the policies enacted as a result appear to have had a negative impact on children' frames government pandemic policies as harmful - a right-leaning framing. However, the article also reproduces data about firearms being the leading cause of death for children, which is typically a left-leaning talking point. Overall, the article leans slightly right in its framing (pandemic-caused, not gun-access-caused), but a Center classification is arguably within one adjacent class of Lean Right. The model has some minor issues: one key_indicator cites quoted text ('in 2020... firearms were the number one cause of death'), and another cites study methodology language rather than the author's own prose.\", \"custom_scores\": {\"classification_accuracy\": 3, \"confidence_calibration\": 4, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"The article is from Daily Wire, a Right-leaning outlet. The author's framing choices subtly lean right: framing firearm injuries as a 'pandemic effect' rather than a gun access issue, and closing with pandemic policy critique. A Lean Right classification would be most accurate. Center is one class off from Lean Right, so this is a moderate error but not a wrong-direction error.\", \"confidence_calibration\": \"0.75 confidence for a Center classification is somewhat high given the mixed signals. The article has subtle right-leaning framing that should create more uncertainty about a Center call. If Center were correct, 0.75 would be reasonable, but since the actual lean is likely Lean Right, the high confidence in the wrong adjacent class is modestly miscalibrated.\", \"reasoning_evidence_quality\": \"The model correctly identifies 'another disastrous effect of the pandemic on kids' as author prose. However, one key_indicator ('Data show that in 2020... firearms were the number one cause of death for children ages 1-19') includes quoted/attributed text from the Kaiser Family Foundation. Another indicator cites study methodology language. The reasoning discussion is generally sound but has 1-2 attribution boundary issues.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:23.737414+00:00",
+  "labeled_lean": "Lean Right"
+}

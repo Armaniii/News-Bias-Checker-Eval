@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_40277",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_40277",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:The Federalist"
+  ],
+  "article_meta": {
+    "title": "Elections Unsealed Court Docs Show The FBI Probing Possible Election Crimes In Fulton County By: M.D",
+    "source": "The Federalist",
+    "labeled_lean": "Right",
+    "url": "https://thefederalist.com/2026/02/11/unsealed-court-docs-show-the-fbi-probing-possible-election-crimes-in-fulton-county/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=unsealed-court-docs-show-the-fbi-probing-possible-election-crimes-in-fulton-county",
+    "created_at": "2026-02-11 19:27:52"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 3,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a reasonable job identifying genuine bias in the author's prose, which is heavily opinionated in this Federalist article. Most flagged items are legitimately from the author's own voice. However, there are some issues: one item flags a quoted statement (Favorito's quote), the bias type labels don't match the predefined list (using invented types like 'Loaded Language', 'Pejorative Language/Ad Hominem', 'Loaded Language/Name-calling' instead of the specified categories), and there are minor issues with some explanations.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "One flagged item ('The evidence in the FBI search warrant affidavit is exactly the evidence we have all uncovered...') is a direct quote from Garland Favorito, attributed with 'said in an interview with The Federalist.' This is an attribution rule violation. The other flagged items are legitimately from the author's own prose.",
+    "false_positive_rate": "Most flagged items are genuinely biased author prose - 'propaganda press', 'Trump-hating publication', 'runs cover', the editorializing 'nothing to hide' sentence, and the 'funneled/infiltrating' language are all defensible bias identifications. The Favorito quote is a false positive. Overall, most items are valid.",
+    "false_negative_rate": "The model caught many of the major bias instances. It could have also flagged 'Fulton County apologists' (author's loaded characterization of Democrats), 'attack on election questioners' (loaded framing of WaPo coverage), and the overall slant/framing. Some significant instances were missed but the major ones were caught.",
+    "bias_type_accuracy": "The model uses invented/combined bias type labels not from the predefined list: 'Loaded Language', 'Loaded Language/Name-calling', 'Pejorative Language/Ad Hominem', 'Loaded Language/Implied Bias', 'Loaded Language/Pejorative Labeling', 'Bias by Omission/One-sided Reporting', 'Loaded Language/Editorializing'. The predefined list includes Word Choice, Mudslinging/Ad Hominem, Slant, Bias by Omission, Spin, etc. While the concepts are similar, the actual labels don't match the specified taxonomy, which is a systematic labeling error."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a reasonable job identifying genuine bias in the author's prose, which is heavily opinionated in this Federalist article. Most flagged items are legitimately from the author's own voice. However, there are some issues: one item flags a quoted statement (Favorito's quote), the bias type labels don't match the predefined list (using invented types like 'Loaded Language', 'Pejorative Language/Ad Hominem', 'Loaded Language/Name-calling' instead of the specified categories), and there are minor issues with some explanations.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 3, \"false_negative_rate\": 3, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"One flagged item ('The evidence in the FBI search warrant affidavit is exactly the evidence we have all uncovered...') is a direct quote from Garland Favorito, attributed with 'said in an interview with The Federalist.' This is an attribution rule violation. The other flagged items are legitimately from the author's own prose.\", \"false_positive_rate\": \"Most flagged items are genuinely biased author prose - 'propaganda press', 'Trump-hating publication', 'runs cover', the editorializing 'nothing to hide' sentence, and the 'funneled/infiltrating' language are all defensible bias identifications. The Favorito quote is a false positive. Overall, most items are valid.\", \"false_negative_rate\": \"The model caught many of the major bias instances. It could have also flagged 'Fulton County apologists' (author's loaded characterization of Democrats), 'attack on election questioners' (loaded framing of WaPo coverage), and the overall slant/framing. Some significant instances were missed but the major ones were caught.\", \"bias_type_accuracy\": \"The model uses invented/combined bias type labels not from the predefined list: 'Loaded Language', 'Loaded Language/Name-calling', 'Pejorative Language/Ad Hominem', 'Loaded Language/Implied Bias', 'Loaded Language/Pejorative Labeling', 'Bias by Omission/One-sided Reporting', 'Loaded Language/Editorializing'. The predefined list includes Word Choice, Mudslinging/Ad Hominem, Slant, Bias by Omission, Spin, etc. While the concepts are similar, the actual labels don't match the specified taxonomy, which is a systematic labeling error.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:20.087181+00:00",
+  "labeled_lean": "Right"
+}

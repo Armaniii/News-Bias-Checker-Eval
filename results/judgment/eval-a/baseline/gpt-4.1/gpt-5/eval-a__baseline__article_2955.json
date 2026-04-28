@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_2955",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_2955",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:Newsweek"
+  ],
+  "article_meta": {
+    "title": "...By Natalie VenegasWeekend ReporterShareNewsweek is a Trust Project memberProtests have erupted across the country ove",
+    "source": "Newsweek",
+    "labeled_lean": "Center",
+    "url": "https://www.newsweek.com/protests-trumps-immigration-policies-erupt-country-2024913",
+    "created_at": "2025-11-30 23:45:15"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 3,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "Mixed performance: it correctly flags some author-prose loaded wording and framing, but commits a clear attribution violation by citing quoted passages as bias, uses non-standard/incorrect bias labels, and misses additional loaded phrasing elsewhere in the author’s prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "One major violation: the second item’s biasedText consists largely of quoted source language, which must not be flagged as author bias.",
+    "false_positive_rate": "Most flagged items correspond to genuine bias patterns in author prose (e.g., ‘hard-line’, negative framing). The imbalance claim is plausible, though presented via quotes.",
+    "false_negative_rate": "Misses several notable author-level loaded terms and framing, e.g., ‘erupted’, ‘crackdown’/‘sweeping raids’ instances elsewhere, and ‘brace for the impact’.",
+    "bias_type_accuracy": "Used labels outside the allowed set (‘Loaded Language’, ‘Framing’, ‘Selection Bias’, ‘Imbalance in Source Quotation’) and some mismatches with the appropriate categories (e.g., Word Choice/Slant/Bias by Story Choice)."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"Mixed performance: it correctly flags some author-prose loaded wording and framing, but commits a clear attribution violation by citing quoted passages as bias, uses non-standard/incorrect bias labels, and misses additional loaded phrasing elsewhere in the author’s prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 3, \"false_negative_rate\": 5, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"One major violation: the second item’s biasedText consists largely of quoted source language, which must not be flagged as author bias.\", \"false_positive_rate\": \"Most flagged items correspond to genuine bias patterns in author prose (e.g., ‘hard-line’, negative framing). The imbalance claim is plausible, though presented via quotes.\", \"false_negative_rate\": \"Misses several notable author-level loaded terms and framing, e.g., ‘erupted’, ‘crackdown’/‘sweeping raids’ instances elsewhere, and ‘brace for the impact’.\", \"bias_type_accuracy\": \"Used labels outside the allowed set (‘Loaded Language’, ‘Framing’, ‘Selection Bias’, ‘Imbalance in Source Quotation’) and some mismatches with the appropriate categories (e.g., Word Choice/Slant/Bias by Story Choice).\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:41.197543+00:00",
+  "labeled_lean": "Center"
+}

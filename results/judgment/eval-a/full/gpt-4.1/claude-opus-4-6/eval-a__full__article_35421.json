@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_35421",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_35421",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:538 (ABC News)"
+  ],
+  "article_meta": {
+    "title": "ABC NewsLiveVideoShowsShopInterest Successfully AddedWe'll notify you here with news aboutTurn on desktop notifications ",
+    "source": "538 (ABC News)",
+    "labeled_lean": "Center",
+    "url": "https://abcnews.go.com/Politics/trump-voters-feel-us-strikes-venezuela-action-iran/story?id=129173823",
+    "created_at": "2026-02-02 13:23:47"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model returned an empty array for an article that has some arguable but not overwhelming bias instances in the author's prose. The article is largely a balanced piece featuring multiple voter perspectives and polling data. However, there are some potential author-level bias instances that could be flagged: (1) 'further America's interests in the world's safety' - this is the author's framing that presents military action in a positive light (Spin/Word Choice); (2) The structural choice to lead with the supportive voter quote in the headline/subhead ('He's doing the right things') could be considered Slant. However, the article does include dissenting voices and polling data showing opposition, so these are relatively mild. The empty array is defensible but misses at least one or two arguable instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model returned an empty array, so there are zero attribution rule violations. No quoted text was flagged.",
+    "false_positive_rate": "No items were flagged, so there are zero false positives.",
+    "false_negative_rate": "The article contains some arguable author-level bias: the framing 'further America's interests in the world's safety through action in Venezuela and potential military intervention' is author prose that frames military actions in a particular way. The headline selection of a supportive quote could be considered Slant. However, the article is fairly balanced overall with multiple viewpoints and polling data, so the empty array is defensible though not perfect.",
+    "bias_type_accuracy": "No bias types were assigned since the output was empty, so no incorrect labels were applied."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model returned an empty array for an article that has some arguable but not overwhelming bias instances in the author's prose. The article is largely a balanced piece featuring multiple voter perspectives and polling data. However, there are some potential author-level bias instances that could be flagged: (1) 'further America's interests in the world's safety' - this is the author's framing that presents military action in a positive light (Spin/Word Choice); (2) The structural choice to lead with the supportive voter quote in the headline/subhead ('He's doing the right things') could be considered Slant. However, the article does include dissenting voices and polling data showing opposition, so these are relatively mild. The empty array is defensible but misses at least one or two arguable instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 4, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model returned an empty array, so there are zero attribution rule violations. No quoted text was flagged.\", \"false_positive_rate\": \"No items were flagged, so there are zero false positives.\", \"false_negative_rate\": \"The article contains some arguable author-level bias: the framing 'further America's interests in the world's safety through action in Venezuela and potential military intervention' is author prose that frames military actions in a particular way. The headline selection of a supportive quote could be considered Slant. However, the article is fairly balanced overall with multiple viewpoints and polling data, so the empty array is defensible though not perfect.\", \"bias_type_accuracy\": \"No bias types were assigned since the output was empty, so no incorrect labels were applied.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:36.315797+00:00",
+  "labeled_lean": "Center"
+}

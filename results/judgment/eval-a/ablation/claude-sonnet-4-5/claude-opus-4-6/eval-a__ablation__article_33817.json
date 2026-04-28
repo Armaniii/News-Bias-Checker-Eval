@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_33817",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_33817",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "Iranians block a street during a protest in Tehran, Iran on 9 January 2026",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/global-development/2026/jan/29/iran-doctors-arrested-treating-injured-protesters",
+    "created_at": "2026-01-29 20:55:54"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model's response has a mix of issues. Let me analyze each flagged item: (1) The 'tens of thousands injured' / 'brutal crackdown' item flags author prose, which is legitimate - the author does use 'brutal crackdown' without attribution and 'tens of thousands' without clear sourcing in that sentence. However, the bias type could be debated. (2) The second item about unconfirmed charges is questionable - pointing out that charges haven't been confirmed is actually balanced reporting, not bias. The model is essentially criticizing the article for being transparent about uncertainty, which is a false positive. (3) The third item flags a quote from Hossein Raeesi, a human rights lawyer - this is attributed language ('said Hossein Raeesi'), which is an attribution rule violation. The model also missed some clear author-level bias: 'brutal crackdown' is a loaded word choice by the author, and the overall framing/slant of the article heavily presents one perspective. The article's lede uses 'brutal crackdown on anti-regime protests' which contains loaded language in the author's own voice.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Item 3 flags text that is a direct quote attributed to Hossein Raeesi ('said Hossein Raeesi, an Iranian human rights lawyer living in exile'). This is a clear attribution rule violation. Items 1 and 2 are from author prose, so those are acceptable on attribution grounds.",
+    "false_positive_rate": "Item 2 is a false positive - the sentence noting authorities haven't confirmed charges is actually a sign of balanced reporting, not bias. Flagging it as 'Unsubstantiated Claims' mischaracterizes what the author is doing. Item 3 flags quoted/attributed language which shouldn't have been flagged at all. Item 1 has some merit regarding the sourcing of 'tens of thousands.'",
+    "false_negative_rate": "The model missed the clearly loaded author word choice 'brutal crackdown' which is editorializing in the author's own voice. It also missed 'anti-regime protests' as potentially loaded framing (though this is more debatable). The overall slant of the article - presenting almost exclusively one side's perspective with sympathetic framing - could also have been flagged.",
+    "bias_type_accuracy": "Item 1's 'Omission of Source Attribution' is reasonable for the unsourced figure. Item 2's 'Unsubstantiated Claims' label is misapplied - the author is being transparent, not making unsubstantiated claims. Item 3's 'Opinion Statements Presented as Fact' is debatable but the text is attributed, so the label issue is secondary to the attribution violation."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model's response has a mix of issues. Let me analyze each flagged item: (1) The 'tens of thousands injured' / 'brutal crackdown' item flags author prose, which is legitimate - the author does use 'brutal crackdown' without attribution and 'tens of thousands' without clear sourcing in that sentence. However, the bias type could be debated. (2) The second item about unconfirmed charges is questionable - pointing out that charges haven't been confirmed is actually balanced reporting, not bias. The model is essentially criticizing the article for being transparent about uncertainty, which is a false positive. (3) The third item flags a quote from Hossein Raeesi, a human rights lawyer - this is attributed language ('said Hossein Raeesi'), which is an attribution rule violation. The model also missed some clear author-level bias: 'brutal crackdown' is a loaded word choice by the author, and the overall framing/slant of the article heavily presents one perspective. The article's lede uses 'brutal crackdown on anti-regime protests' which contains loaded language in the author's own voice.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Item 3 flags text that is a direct quote attributed to Hossein Raeesi ('said Hossein Raeesi, an Iranian human rights lawyer living in exile'). This is a clear attribution rule violation. Items 1 and 2 are from author prose, so those are acceptable on attribution grounds.\", \"false_positive_rate\": \"Item 2 is a false positive - the sentence noting authorities haven't confirmed charges is actually a sign of balanced reporting, not bias. Flagging it as 'Unsubstantiated Claims' mischaracterizes what the author is doing. Item 3 flags quoted/attributed language which shouldn't have been flagged at all. Item 1 has some merit regarding the sourcing of 'tens of thousands.'\", \"false_negative_rate\": \"The model missed the clearly loaded author word choice 'brutal crackdown' which is editorializing in the author's own voice. It also missed 'anti-regime protests' as potentially loaded framing (though this is more debatable). The overall slant of the article - presenting almost exclusively one side's perspective with sympathetic framing - could also have been flagged.\", \"bias_type_accuracy\": \"Item 1's 'Omission of Source Attribution' is reasonable for the unsourced figure. Item 2's 'Unsubstantiated Claims' label is misapplied - the author is being transparent, not making unsubstantiated claims. Item 3's 'Opinion Statements Presented as Fact' is debatable but the text is attributed, so the label issue is secondary to the attribution violation.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:22.631407+00:00",
+  "labeled_lean": "Left"
+}

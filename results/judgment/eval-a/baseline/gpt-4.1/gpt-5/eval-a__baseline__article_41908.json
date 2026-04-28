@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_41908",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_41908",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:Reuters"
+  ],
+  "article_meta": {
+    "title": "Item 1 of 7 Texas State Troopers line up during a protest at the South Texas Family Residential Center, where Adrian Con",
+    "source": "Reuters",
+    "labeled_lean": "Center",
+    "url": "https://www.reuters.com/legal/government/courts-have-ruled-4400-times-that-ice-jailed-people-illegally-it-hasnt-stopped-2026-02-14/",
+    "created_at": "2026-02-15 00:43:55"
+  },
+  "behavior_presence_score": 8,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 9,
+    "false_negative_rate": 8,
+    "bias_type_accuracy": 10
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model violated attribution by flagging quoted language, used non-listed/incorrect bias labels, produced several false positives, and missed multiple clear author-prose bias instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Flagged quoted phrases ('driving while brown'; judge’s 'It is appalling...') as author bias, breaching attribution rules.",
+    "false_positive_rate": "Several flagged items are not genuine author-level bias or are neutral facts presented as bias (e.g., 'None had criminal records', noting lack of evidence).",
+    "false_negative_rate": "Missed clear author-prose bias like 'sweeping legal rebuke', 'immigration crackdown', 'SOARING NUMBER OF IMMIGRANT DETAINEES', 'drive to lock up more immigrants', and 'sheer scale... threatens to clog the judicial system.'",
+    "bias_type_accuracy": "Used non-allowed labels ('Loaded Language', 'Appeal to Emotion', 'Imbalance in Sources/Coverage', 'Allegation without Evidence') instead of the specified types (e.g., Word Choice, Slant, Sensationalism)."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 8, \"reasoning\": \"The model violated attribution by flagging quoted language, used non-listed/incorrect bias labels, produced several false positives, and missed multiple clear author-prose bias instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 9, \"false_negative_rate\": 8, \"bias_type_accuracy\": 10}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Flagged quoted phrases ('driving while brown'; judge’s 'It is appalling...') as author bias, breaching attribution rules.\", \"false_positive_rate\": \"Several flagged items are not genuine author-level bias or are neutral facts presented as bias (e.g., 'None had criminal records', noting lack of evidence).\", \"false_negative_rate\": \"Missed clear author-prose bias like 'sweeping legal rebuke', 'immigration crackdown', 'SOARING NUMBER OF IMMIGRANT DETAINEES', 'drive to lock up more immigrants', and 'sheer scale... threatens to clog the judicial system.'\", \"bias_type_accuracy\": \"Used non-allowed labels ('Loaded Language', 'Appeal to Emotion', 'Imbalance in Sources/Coverage', 'Allegation without Evidence') instead of the specified types (e.g., Word Choice, Slant, Sensationalism).\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:42.081874+00:00",
+  "labeled_lean": "Center"
+}

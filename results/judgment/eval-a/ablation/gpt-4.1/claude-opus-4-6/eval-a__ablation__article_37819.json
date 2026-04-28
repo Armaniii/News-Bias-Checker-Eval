@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_37819",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_37819",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Consider This from NPR"
+  ],
+  "article_meta": {
+    "title": "Iran and US set for talks in Oman over nuclear program after Tehran shaken by nationwide protests Iran and the United St",
+    "source": "Consider This from NPR",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.npr.org/2026/02/06/g-s1-108952/iran-and-us-set-for-talks-in-oman-over-nuclear-program",
+    "created_at": "2026-02-06 16:40:15"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model identifies two instances from the author's own prose, both focused on the same sentence. The flagged text is genuinely author prose (not quoted material), so no attribution rule violations. The 'bloody crackdown' flagging as Sensationalism/Emotionalism is defensible - it's loaded language in the author's voice. The Omission of Source Attribution flag is also defensible since the article claims thousands killed and tens of thousands arrested without citing specific sources (though 'reportedly' is used). However, the model misses several other bias instances: 'turned to ash' (loaded metaphor/Word Choice), 'decimated' used multiple times (Word Choice), 'Iran's theocracy' repeated framing (Word Choice/Slant), 'strong-arming' in Pavia's quote is quoted so correctly excluded, 'a 68-year-old billionaire New York real estate mogul and longtime friend to Trump' (Subjective Qualifying Adjectives for Witkoff), the historical digression about Operation Eagle Claw and 'Iran's theocracy long has portrayed the mission as God defeating the Americans' (Slant), and 'But whether attacks could be enough to force Iran to change its ways — or potentially topple its government — remains far from a sure thing' which frames regime change as a legitimate option (Spin/Slant). The model caught some genuine instances but missed several others.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Both flagged instances come from the author's own prose, not from quoted text or attributed statements. No attribution rule violations.",
+    "false_positive_rate": "Both flagged items are defensible. 'Bloody crackdown' is emotionally loaded author prose, and the lack of sourcing for casualty figures is a real issue. Slightly generous interpretation but both are reasonable flags.",
+    "false_negative_rate": "The model missed several instances: 'turned to ash' (loaded metaphor), repeated use of 'decimated', 'theocracy' as a framing choice, the Witkoff description with 'billionaire New York real estate mogul', and the extended historical digression about Operation Eagle Claw which adds editorial color. These are defensible bias instances that were not caught.",
+    "bias_type_accuracy": "Sensationalism/Emotionalism for 'bloody crackdown' is appropriate. Omission of Source Attribution for unsourced casualty claims is also correctly labeled. Both type labels are defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies two instances from the author's own prose, both focused on the same sentence. The flagged text is genuinely author prose (not quoted material), so no attribution rule violations. The 'bloody crackdown' flagging as Sensationalism/Emotionalism is defensible - it's loaded language in the author's voice. The Omission of Source Attribution flag is also defensible since the article claims thousands killed and tens of thousands arrested without citing specific sources (though 'reportedly' is used). However, the model misses several other bias instances: 'turned to ash' (loaded metaphor/Word Choice), 'decimated' used multiple times (Word Choice), 'Iran's theocracy' repeated framing (Word Choice/Slant), 'strong-arming' in Pavia's quote is quoted so correctly excluded, 'a 68-year-old billionaire New York real estate mogul and longtime friend to Trump' (Subjective Qualifying Adjectives for Witkoff), the historical digression about Operation Eagle Claw and 'Iran's theocracy long has portrayed the mission as God defeating the Americans' (Slant), and 'But whether attacks could be enough to force Iran to change its ways — or potentially topple its government — remains far from a sure thing' which frames regime change as a legitimate option (Spin/Slant). The model caught some genuine instances but missed several others.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 5, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Both flagged instances come from the author's own prose, not from quoted text or attributed statements. No attribution rule violations.\", \"false_positive_rate\": \"Both flagged items are defensible. 'Bloody crackdown' is emotionally loaded author prose, and the lack of sourcing for casualty figures is a real issue. Slightly generous interpretation but both are reasonable flags.\", \"false_negative_rate\": \"The model missed several instances: 'turned to ash' (loaded metaphor), repeated use of 'decimated', 'theocracy' as a framing choice, the Witkoff description with 'billionaire New York real estate mogul', and the extended historical digression about Operation Eagle Claw which adds editorial color. These are defensible bias instances that were not caught.\", \"bias_type_accuracy\": \"Sensationalism/Emotionalism for 'bloody crackdown' is appropriate. Omission of Source Attribution for unsourced casualty claims is also correctly labeled. Both type labels are defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.084854+00:00",
+  "labeled_lean": "Lean Left"
+}

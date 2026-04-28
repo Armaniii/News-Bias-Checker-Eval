@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_2952",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_2952",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Associated Press"
+  ],
+  "article_meta": {
+    "title": "Marchers protesting planned deportations block major freeway in Los Angeles 1 of 18 | Thousands of people protesting mas",
+    "source": "Associated Press",
+    "labeled_lean": "Left",
+    "url": "https://apnews.com/article/immigration-ice-protests-los-angeles-california-dallas-ecf1afef642ffff40117f88641c8605f",
+    "created_at": "2025-11-30 23:21:14"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 4
+  },
+  "reasoning": "The model has several issues. First, it uses bias type labels not in the defined list ('Framing Bias', 'Omission Bias', 'Labeling Bias' instead of proper labels like 'Word Choice', 'Bias by Omission', 'Slant'). Second, some flagged items are questionable. The article is primarily a photo gallery with minimal author prose, making this a challenging evaluation. Let me assess each item: (1) 'mass deportations' - this is arguably loaded language but 'mass deportations' was a term Trump himself used, so flagging it is debatable. (2) The spray painting caption - this is a photo caption describing what's in the image, which is arguably neutral description, not bias. The omission argument is somewhat defensible but weak. (3) Freeway blocking omission - this is a more defensible bias by omission claim. (4) 'calling for immigration reform' - this is actually the photo caption language, and arguably a reasonable observation about framing, though debatable. The model also wraps output in markdown fences despite instructions saying not to.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model doesn't flag any quoted source language since there are essentially no quotes in this article. The photo captions are AP-authored descriptions, so flagging them as author prose is defensible. Minor issue: the spray painting caption is descriptive photo metadata, not really editorial prose, but it's not a quoted source violation.",
+    "false_positive_rate": "Item 1 ('mass deportations planned by President Donald Trump') is debatable - Trump himself used this term, so calling it biased framing is questionable. Item 2 (spray painting caption) is a stretch - it's a factual photo description. Item 3 (freeway blocking omission) is the most defensible. Item 4 ('calling for immigration reform') is somewhat defensible as a framing choice but debatable. Overall, some items are overreaching.",
+    "false_negative_rate": "The article is mostly a photo gallery with very minimal author prose, so there aren't many clear bias instances to catch. The model identified the most defensible ones (omission of impact/consequences, potential framing). The article's 'Slant' in only presenting the protesters' perspective without any government or opposing viewpoint could have been more clearly flagged.",
+    "bias_type_accuracy": "The model uses 'Framing Bias', 'Omission Bias', and 'Labeling Bias' - none of which are in the defined list. These should have been 'Word Choice' or 'Spin', 'Bias by Omission', and 'Slant' or 'Word Choice' respectively. This is a significant labeling failure across all four items."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model has several issues. First, it uses bias type labels not in the defined list ('Framing Bias', 'Omission Bias', 'Labeling Bias' instead of proper labels like 'Word Choice', 'Bias by Omission', 'Slant'). Second, some flagged items are questionable. The article is primarily a photo gallery with minimal author prose, making this a challenging evaluation. Let me assess each item: (1) 'mass deportations' - this is arguably loaded language but 'mass deportations' was a term Trump himself used, so flagging it is debatable. (2) The spray painting caption - this is a photo caption describing what's in the image, which is arguably neutral description, not bias. The omission argument is somewhat defensible but weak. (3) Freeway blocking omission - this is a more defensible bias by omission claim. (4) 'calling for immigration reform' - this is actually the photo caption language, and arguably a reasonable observation about framing, though debatable. The model also wraps output in markdown fences despite instructions saying not to.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 4}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model doesn't flag any quoted source language since there are essentially no quotes in this article. The photo captions are AP-authored descriptions, so flagging them as author prose is defensible. Minor issue: the spray painting caption is descriptive photo metadata, not really editorial prose, but it's not a quoted source violation.\", \"false_positive_rate\": \"Item 1 ('mass deportations planned by President Donald Trump') is debatable - Trump himself used this term, so calling it biased framing is questionable. Item 2 (spray painting caption) is a stretch - it's a factual photo description. Item 3 (freeway blocking omission) is the most defensible. Item 4 ('calling for immigration reform') is somewhat defensible as a framing choice but debatable. Overall, some items are overreaching.\", \"false_negative_rate\": \"The article is mostly a photo gallery with very minimal author prose, so there aren't many clear bias instances to catch. The model identified the most defensible ones (omission of impact/consequences, potential framing). The article's 'Slant' in only presenting the protesters' perspective without any government or opposing viewpoint could have been more clearly flagged.\", \"bias_type_accuracy\": \"The model uses 'Framing Bias', 'Omission Bias', and 'Labeling Bias' - none of which are in the defined list. These should have been 'Word Choice' or 'Spin', 'Bias by Omission', and 'Slant' or 'Word Choice' respectively. This is a significant labeling failure across all four items.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:16.573097+00:00",
+  "labeled_lean": "Left"
+}

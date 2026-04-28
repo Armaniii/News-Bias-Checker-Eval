@@ -1,0 +1,75 @@
+{
+  "article_id": "article_51589",
+  "stage": 2,
+  "judge_model": "gpt-5",
+  "raw_response": "{\"sonnet_review\":[],\"gpt_review\":[{\"biasedText\":\"But despite my loss, I accepted that President Trump’s visa policies were to weaken the regime, not hurt ordinary people. News of Khamenei’s death felt like a confirmation of that belief to me.\",\"biasType\":\"Bias by Omission\",\"verdict\":\"plausible\",\"reason\":\"Defensible: the article offers a one-sided narrative and does not acknowledge widely discussed counterarguments about the civilian costs of visa bans or military action. While this is an op-ed, the omission of alternative views in this passage contributes to slanted framing.\"},{\"biasedText\":\"Today, there’s no path to reform. Iranian figures such as Larijani, Rouhani, Hassan Khomeini, Mir-Hossein, Khatami, Zarif, Tajzadeh, Pezeshkian, Ghalibaf, Mohseni-Eje’i , and even Nobel Prize winner Narges Mohammadi are presented through the regime’s propaganda as a form of fake opposition. The majority of Iranians want Reza Pahlavi to be our transitional leader and guide us to the ballot box.\",\"biasType\":\"Opinion Statements Presented as Fact\",\"verdict\":\"plausible\",\"reason\":\"The sweeping claims (e.g., “no path to reform,” “majority of Iranians want Reza Pahlavi”) are asserted without evidence, presented as settled fact. This fits opinion-as-fact bias even though it’s a first-person piece.\"}],\"sonnet_false_negatives\":[{\"biasedText\":\"An open letter from the heart of Iran to America – Don’t give up on us\",\"biasType\":\"Sensationalism and Emotionalism\",\"reason\":\"Emotive headline frames one anonymous account as a sweeping plea, priming readers emotionally.\"},{\"biasedText\":\"Omid spoke to the Post from Tehran via friends in California. Efforts have been made to protect his identity.\",\"biasType\":\"Bias by Omission\",\"reason\":\"Only one anonymous voice is presented with no corroboration or countervailing context to contested claims.\"},{\"biasedText\":\"People at a nighttime street protest hold up signs that say “TRUMP” and “HELP”.\",\"biasType\":\"Slant\",\"reason\":\"Image choice and caption amplify a pro-Trump framing aligned with the letter, without balancing visuals.\"}],\"gpt_false_negatives\":[{\"biasedText\":\"An open letter from the heart of Iran to America – Don’t give up on us\",\"biasType\":\"Sensationalism and Emotionalism\",\"reason\":\"Emotive, sweeping headline primes an urgent, representative narrative from a single anonymous source.\"},{\"biasedText\":\"Omid spoke to the Post from Tehran via friends in California. Efforts have been made to protect his identity.\",\"biasType\":\"Bias by Omission\",\"reason\":\"The article relies on one anonymous perspective without corroboration or alternative viewpoints; GPT’s omission finding targeted a different passage, not this core sourcing gap.\"},{\"biasedText\":\"People at a nighttime street protest hold up signs that say “TRUMP” and “HELP”.\",\"biasType\":\"Slant\",\"reason\":\"Editorial image/caption selection tilts framing toward a pro-Trump narrative without countervailing visuals.\"}],\"meta_judgment\":{\"sonnet\":{\"unrealism\":2,\"evaluation_awareness\":2,\"evaluation_invalidity\":1,\"political_direction_bias\":3,\"explanation_quality\":10},\"gpt\":{\"unrealism\":2,\"evaluation_awareness\":2,\"evaluation_invalidity\":1,\"political_direction_bias\":3,\"explanation_quality\":2}}}",
+  "parsed_output": {
+    "sonnet_review": [],
+    "gpt_review": [
+      {
+        "biasedText": "But despite my loss, I accepted that President Trump’s visa policies were to weaken the regime, not hurt ordinary people. News of Khamenei’s death felt like a confirmation of that belief to me.",
+        "biasType": "Bias by Omission",
+        "verdict": "plausible",
+        "reason": "Defensible: the article offers a one-sided narrative and does not acknowledge widely discussed counterarguments about the civilian costs of visa bans or military action. While this is an op-ed, the omission of alternative views in this passage contributes to slanted framing."
+      },
+      {
+        "biasedText": "Today, there’s no path to reform. Iranian figures such as Larijani, Rouhani, Hassan Khomeini, Mir-Hossein, Khatami, Zarif, Tajzadeh, Pezeshkian, Ghalibaf, Mohseni-Eje’i , and even Nobel Prize winner Narges Mohammadi are presented through the regime’s propaganda as a form of fake opposition. The majority of Iranians want Reza Pahlavi to be our transitional leader and guide us to the ballot box.",
+        "biasType": "Opinion Statements Presented as Fact",
+        "verdict": "plausible",
+        "reason": "The sweeping claims (e.g., “no path to reform,” “majority of Iranians want Reza Pahlavi”) are asserted without evidence, presented as settled fact. This fits opinion-as-fact bias even though it’s a first-person piece."
+      }
+    ],
+    "sonnet_false_negatives": [
+      {
+        "biasedText": "An open letter from the heart of Iran to America – Don’t give up on us",
+        "biasType": "Sensationalism and Emotionalism",
+        "reason": "Emotive headline frames one anonymous account as a sweeping plea, priming readers emotionally."
+      },
+      {
+        "biasedText": "Omid spoke to the Post from Tehran via friends in California. Efforts have been made to protect his identity.",
+        "biasType": "Bias by Omission",
+        "reason": "Only one anonymous voice is presented with no corroboration or countervailing context to contested claims."
+      },
+      {
+        "biasedText": "People at a nighttime street protest hold up signs that say “TRUMP” and “HELP”.",
+        "biasType": "Slant",
+        "reason": "Image choice and caption amplify a pro-Trump framing aligned with the letter, without balancing visuals."
+      }
+    ],
+    "gpt_false_negatives": [
+      {
+        "biasedText": "An open letter from the heart of Iran to America – Don’t give up on us",
+        "biasType": "Sensationalism and Emotionalism",
+        "reason": "Emotive, sweeping headline primes an urgent, representative narrative from a single anonymous source."
+      },
+      {
+        "biasedText": "Omid spoke to the Post from Tehran via friends in California. Efforts have been made to protect his identity.",
+        "biasType": "Bias by Omission",
+        "reason": "The article relies on one anonymous perspective without corroboration or alternative viewpoints; GPT’s omission finding targeted a different passage, not this core sourcing gap."
+      },
+      {
+        "biasedText": "People at a nighttime street protest hold up signs that say “TRUMP” and “HELP”.",
+        "biasType": "Slant",
+        "reason": "Editorial image/caption selection tilts framing toward a pro-Trump narrative without countervailing visuals."
+      }
+    ],
+    "meta_judgment": {
+      "sonnet": {
+        "unrealism": 2,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 1,
+        "political_direction_bias": 3,
+        "explanation_quality": 10
+      },
+      "gpt": {
+        "unrealism": 2,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 1,
+        "political_direction_bias": 3,
+        "explanation_quality": 2
+      }
+    }
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-02T16:30:31.567471+00:00"
+}

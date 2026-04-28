@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__full__article_4695",
+  "eval": "eval-c",
+  "condition": "full",
+  "article_id": "article_4695",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "Police turned him over to ICE",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/nation/2025/11/22/ice-dallas-shooting-victim-immigration-287g/87324813007/",
+    "created_at": "2025-12-03 17:37:35"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 2,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies the article as Left-leaning with reasonable confidence, and much of the reasoning is sound. However, several key_indicators violate the attribution rule by citing quoted source language (e.g., Allen's 'That breaks my heart,' Graber's 'mass detention and mass deportation machine,' Gauffeny's 'That made me upset'). The model also cites some genuine author prose choices. The classification direction is correct and the confidence is reasonable.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article's actual lean is Left or Lean Left. The author's prose extensively humanizes the immigrant subject, uses emotionally loaded language ('cavorting,' 'giddily,' 'ripped apart,' 'ensnared'), and structurally foregrounds immigration enforcement criticism while minimizing pro-enforcement perspectives. The model's Left classification is correct or at worst one class off.",
+    "confidence_calibration": "0.85 confidence is appropriate for an article with this many clear directional bias signals in the author's own prose. The humanizing narrative structure, loaded word choices, and one-sided source selection are all clear and consistent.",
+    "reasoning_evidence_quality": "The reasoning correctly identifies several author prose choices (headline framing, 'cavorting,' 'giddily,' 'ripped apart,' 'ensnared,' structural contrast between 'heralded...But...bristled'). However, multiple key_indicators include quoted source language: 'That breaks my heart...That does not feel like justice for anybody' (Allen quote), 'it's part of the mass detention and mass deportation machine' (Graber quote), 'That made me upset...I don't get him until he passes away' (Gauffeny quote), 'ICE officials had been frustratingly quiet' includes attributed paraphrase. This is a moderate attribution rule violation."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model correctly identifies the article as Left-leaning with reasonable confidence, and much of the reasoning is sound. However, several key_indicators violate the attribution rule by citing quoted source language (e.g., Allen's 'That breaks my heart,' Graber's 'mass detention and mass deportation machine,' Gauffeny's 'That made me upset'). The model also cites some genuine author prose choices. The classification direction is correct and the confidence is reasonable.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 2, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"The article's actual lean is Left or Lean Left. The author's prose extensively humanizes the immigrant subject, uses emotionally loaded language ('cavorting,' 'giddily,' 'ripped apart,' 'ensnared'), and structurally foregrounds immigration enforcement criticism while minimizing pro-enforcement perspectives. The model's Left classification is correct or at worst one class off.\", \"confidence_calibration\": \"0.85 confidence is appropriate for an article with this many clear directional bias signals in the author's own prose. The humanizing narrative structure, loaded word choices, and one-sided source selection are all clear and consistent.\", \"reasoning_evidence_quality\": \"The reasoning correctly identifies several author prose choices (headline framing, 'cavorting,' 'giddily,' 'ripped apart,' 'ensnared,' structural contrast between 'heralded...But...bristled'). However, multiple key_indicators include quoted source language: 'That breaks my heart...That does not feel like justice for anybody' (Allen quote), 'it's part of the mass detention and mass deportation machine' (Graber quote), 'That made me upset...I don't get him until he passes away' (Gauffeny quote), 'ICE officials had been frustratingly quiet' includes attributed paraphrase. This is a moderate attribution rule violation.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:27.779188+00:00",
+  "labeled_lean": "Lean Left"
+}

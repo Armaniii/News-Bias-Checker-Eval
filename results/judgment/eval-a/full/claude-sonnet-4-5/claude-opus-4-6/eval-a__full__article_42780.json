@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_42780",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_42780",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Politico"
+  ],
+  "article_meta": {
+    "title": "Facebook X Ukrainian President Volodymyr Zelenskyy and CNN’s Clarissa Ward on the state of the war | The Conversation 02",
+    "source": "Politico",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.politico.com/news/2026/03/06/democrats-james-talarico-donors-spending-texas-00815690",
+    "created_at": "2026-03-11 18:57:34"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model correctly avoids flagging any quoted text as author bias - all flagged items come from the author's own prose. The identified instances are mostly defensible, though some are debatable. The model catches several genuine instances of loaded language in the author's prose. However, some flagged items are more characteristic of feature journalism style than clear bias, and the 'moderate incumbent' flagging as Slant is a reasonable catch. The model also wraps output in markdown fences despite instructions not to.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All five flagged items come from the author's own prose. No quoted text or attributed statements are flagged. Perfect compliance with the attribution rule.",
+    "false_positive_rate": "Some flagged items are debatable. 'dim' and 'poured cold water on' are somewhat common journalistic expressions, though they are interpretive. 'dreamed' is a mild choice that could be seen as standard language. 'laughable' is a stronger case for genuine bias. The 'moderate incumbent' flagging is defensible. Overall, 1-2 items feel like overreaches for a political analysis piece where some interpretive language is standard.",
+    "false_negative_rate": "The model missed some potentially biased author prose: 'scandal-ridden MAGA darling' describing Paxton is a strong case of Subjective Qualifying Adjectives/Word Choice in the author's own voice. 'a social media star and prolific grassroots fundraiser' describing Talarico with positive framing could also be flagged. The 'struggling mightily' phrase is also interpretive. Missing 'scandal-ridden MAGA darling' is a significant omission.",
+    "bias_type_accuracy": "Spin is applied to most items, which is defensible for interpretive language choices. The Slant label for the 'moderate incumbent' description is reasonable but could also be Subjective Qualifying Adjectives. Labels are generally defensible but not always the most precise choice."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly avoids flagging any quoted text as author bias - all flagged items come from the author's own prose. The identified instances are mostly defensible, though some are debatable. The model catches several genuine instances of loaded language in the author's prose. However, some flagged items are more characteristic of feature journalism style than clear bias, and the 'moderate incumbent' flagging as Slant is a reasonable catch. The model also wraps output in markdown fences despite instructions not to.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All five flagged items come from the author's own prose. No quoted text or attributed statements are flagged. Perfect compliance with the attribution rule.\", \"false_positive_rate\": \"Some flagged items are debatable. 'dim' and 'poured cold water on' are somewhat common journalistic expressions, though they are interpretive. 'dreamed' is a mild choice that could be seen as standard language. 'laughable' is a stronger case for genuine bias. The 'moderate incumbent' flagging is defensible. Overall, 1-2 items feel like overreaches for a political analysis piece where some interpretive language is standard.\", \"false_negative_rate\": \"The model missed some potentially biased author prose: 'scandal-ridden MAGA darling' describing Paxton is a strong case of Subjective Qualifying Adjectives/Word Choice in the author's own voice. 'a social media star and prolific grassroots fundraiser' describing Talarico with positive framing could also be flagged. The 'struggling mightily' phrase is also interpretive. Missing 'scandal-ridden MAGA darling' is a significant omission.\", \"bias_type_accuracy\": \"Spin is applied to most items, which is defensible for interpretive language choices. The Slant label for the 'moderate incumbent' description is reasonable but could also be Subjective Qualifying Adjectives. Labels are generally defensible but not always the most precise choice.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:33.141976+00:00",
+  "labeled_lean": "Lean Left"
+}

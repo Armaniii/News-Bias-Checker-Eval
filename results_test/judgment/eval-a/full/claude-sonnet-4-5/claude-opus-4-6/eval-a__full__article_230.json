@@ -1,0 +1,45 @@
+{
+  "scenario_id": "eval-a__full__article_230",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_230",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "Federal immigration officers board an elevator with respondents at immigration court in New York on 17 November 2025",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/us-news/2025/nov/21/fbi-signal-group-chat-immigration",
+    "created_at": "2025-11-21 22:08:11"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 2
+  },
+  "reasoning": "The model identifies some genuine bias patterns but makes one attribution error and misses some instances. The 'spied' flagging is a strong, defensible call on author word choice. The slant analysis is thoughtful and well-reasoned. However, 'powerful national security agencies' is from Spencer Reynolds' quote, not the author's prose - this is an attribution rule violation. The model misses some other instances like the author's editorial note that the FBI memo 'did not provide any further details' and 'offered no specifics or evidence' which frames the FBI characterization as baseless in the author's own voice.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "'powerful national security agencies' appears within Spencer Reynolds' quoted speech ('The US government is turning these powerful national security agencies towards critics...'). This is an attribution rule violation. The other two flagged items are from the author's own prose.",
+    "false_positive_rate": "The 'spied' flagging is strong and defensible. The Slant analysis is well-reasoned and defensible. The 'powerful national security agencies' is a false positive because it's from a source quote. So 1 of 3 items is a false positive.",
+    "false_negative_rate": "The model caught some key instances but missed others. The author's framing 'offered no specifics or evidence to explain why the FBI characterized them as anarchist violent extremists' is editorializing in the author's voice. The phrase 'deportation traps' used by the author (attributed to AP but adopted into the author's narrative) could be flagged. The overall structural framing choices beyond what was noted in the Slant item could have been explored more.",
+    "bias_type_accuracy": "Word Choice for 'spied' is correct. Slant for the structural imbalance is appropriate. The mislabeled item ('powerful national security agencies') would have been Subjective Qualifying Adjectives if it were author prose, but since it's from a quote, the type accuracy is moot for that item."
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies some genuine bias patterns but makes one attribution error and misses some instances. The 'spied' flagging is a strong, defensible call on author word choice. The slant analysis is thoughtful and well-reasoned. However, 'powerful national security agencies' is from Spencer Reynolds' quote, not the author's prose - this is an attribution rule violation. The model misses some other instances like the author's editorial note that the FBI memo 'did not provide any further details' and 'offered no specifics or evidence' which frames the FBI characterization as baseless in the author's own voice.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"'powerful national security agencies' appears within Spencer Reynolds' quoted speech ('The US government is turning these powerful national security agencies towards critics...'). This is an attribution rule violation. The other two flagged items are from the author's own prose.\", \"false_positive_rate\": \"The 'spied' flagging is strong and defensible. The Slant analysis is well-reasoned and defensible. The 'powerful national security agencies' is a false positive because it's from a source quote. So 1 of 3 items is a false positive.\", \"false_negative_rate\": \"The model caught some key instances but missed others. The author's framing 'offered no specifics or evidence to explain why the FBI characterized them as anarchist violent extremists' is editorializing in the author's voice. The phrase 'deportation traps' used by the author (attributed to AP but adopted into the author's narrative) could be flagged. The overall structural framing choices beyond what was noted in the Slant item could have been explored more.\", \"bias_type_accuracy\": \"Word Choice for 'spied' is correct. Slant for the structural imbalance is appropriate. The mislabeled item ('powerful national security agencies') would have been Subjective Qualifying Adjectives if it were author prose, but since it's from a quote, the type accuracy is moot for that item.\"}}",
+  "parse_error": null,
+  "rollout_file": "rollout/eval-a/full/claude-sonnet-4-5/eval-a__full__article_230.json",
+  "timestamp": "2026-04-01T20:27:31.136327+00:00",
+  "labeled_lean": "Left"
+}

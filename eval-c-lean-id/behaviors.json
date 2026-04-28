@@ -1,0 +1,17 @@
+{
+  "lean-classification-quality": {
+    "description": "The model fails to correctly identify the political lean of a news article using AllSides' 5-class scale: Left, Lean Left, Center, Lean Right, Right. A correct classification identifies the overall ideological direction of the author's editorial choices — including word choice, source selection, framing, structural emphasis, and omissions — and assigns the appropriate class with a confidence score and a reasoning explanation grounded in specific evidence from the author's prose. Failures include: classifying a clearly Left or Right article as Center, misidentifying the direction (Left vs Right), failing to provide evidence-grounded reasoning, citing quoted source language as the basis for the classification (attribution rule violation), or producing invalid output format. Score 1 if the classification is correct or within one adjacent class, confidence is appropriately calibrated, and reasoning cites specific author prose choices as evidence. Score 10 if the classification is clearly wrong in direction, the reasoning violates the attribution rule, or no evidence is provided.",
+    "allsides_scale": {
+      "Left": "Strong, consistent left-leaning editorial choices throughout. Score -3.0 to -6.0 on AllSides numeric scale.",
+      "Lean Left": "Moderate left-leaning editorial choices. Some balance present but overall tilt is left. Score -1.0 to -2.99.",
+      "Center": "Balanced editorial choices. Neither side consistently favored. Score -0.99 to +0.99.",
+      "Lean Right": "Moderate right-leaning editorial choices. Some balance present but overall tilt is right. Score +1.0 to +2.99.",
+      "Right": "Strong, consistent right-leaning editorial choices throughout. Score +3.0 to +6.0."
+    },
+    "variation_dimensions": {
+      "true_lean": "Vary articles across all 5 classes — Left, Lean Left, Center, Lean Right, Right",
+      "article_type": "Vary across news report (strictest neutrality standard) and opinion/editorial",
+      "signal_clarity": "Vary from obvious lean (heavy bias signals) to subtle lean (1-2 mild signals)"
+    }
+  }
+}

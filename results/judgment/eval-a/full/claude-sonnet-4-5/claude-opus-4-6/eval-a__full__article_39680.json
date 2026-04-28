@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_39680",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_39680",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Slate"
+  ],
+  "article_meta": {
+    "title": "Politics Why Minnesotans Still Haven't Backed Down From Fighting ICE It's freezing",
+    "source": "Slate",
+    "labeled_lean": "Left",
+    "url": "https://slate.com/news-and-politics/2026/02/minneapolis-ice-activists-immigration-trump.html?via=rss",
+    "created_at": "2026-02-11 11:05:14"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a reasonable job identifying genuine author-prose bias in this heavily opinionated piece. Most flagged items are defensible. There are some minor issues: the 'Slant' item uses fabricated text rather than quoting the article directly, and the last item could arguably be 'Bias by Omission' rather than just 'Slant'. The attribution rule is generally respected - all flagged items come from the author's own prose. However, there are some nuances worth noting.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged items are from the author's own prose. No quoted text from sources is flagged as author bias. The model correctly identified that 'secret police,' 'bastards,' 'ravenous,' etc. are all the author's own language choices.",
+    "false_positive_rate": "Most flagged items are defensible. 'violent entertainment for a ravenous national audience' is genuinely the author's loaded language. 'bastards' is clearly pejorative author language. 'secret police coming to abduct them' is the author's own framing. The headline language is the author's. All are reasonable flags. The Slant item uses a summary description rather than actual article text, which is slightly problematic but the observation itself is valid.",
+    "false_negative_rate": "The model caught many key instances but could have also flagged: 'Police in riot gear stood menacingly' (the word 'menacingly' is a subjective characterization by the author), 'Just as roadkill summons vultures, so too does human misery summon journalists' (author's loaded metaphor), and the author explicitly breaking journalistic neutrality by taking the whistle. Some additional loaded phrases in author prose were missed but the major ones were caught.",
+    "bias_type_accuracy": "Most labels are defensible. 'Sensationalism and Emotionalism' for the headline is correct. 'Word Choice' for 'secret police/abduct/disappear' is correct. 'Subjective Qualifying Adjectives' for 'bastards' could more precisely be 'Word Choice' or even 'Mudslinging/Ad Hominem' but is defensible. The Slant item describes structural one-sidedness which is more precisely 'Bias by Omission' since no alternative viewpoint appears at all (per the definitions given). 'Negativity Bias' for the ICE killing claim is reasonable but could also be 'Unsubstantiated Claims' or 'Opinion Statements Presented as Fact.'"
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a reasonable job identifying genuine author-prose bias in this heavily opinionated piece. Most flagged items are defensible. There are some minor issues: the 'Slant' item uses fabricated text rather than quoting the article directly, and the last item could arguably be 'Bias by Omission' rather than just 'Slant'. The attribution rule is generally respected - all flagged items come from the author's own prose. However, there are some nuances worth noting.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 3, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged items are from the author's own prose. No quoted text from sources is flagged as author bias. The model correctly identified that 'secret police,' 'bastards,' 'ravenous,' etc. are all the author's own language choices.\", \"false_positive_rate\": \"Most flagged items are defensible. 'violent entertainment for a ravenous national audience' is genuinely the author's loaded language. 'bastards' is clearly pejorative author language. 'secret police coming to abduct them' is the author's own framing. The headline language is the author's. All are reasonable flags. The Slant item uses a summary description rather than actual article text, which is slightly problematic but the observation itself is valid.\", \"false_negative_rate\": \"The model caught many key instances but could have also flagged: 'Police in riot gear stood menacingly' (the word 'menacingly' is a subjective characterization by the author), 'Just as roadkill summons vultures, so too does human misery summon journalists' (author's loaded metaphor), and the author explicitly breaking journalistic neutrality by taking the whistle. Some additional loaded phrases in author prose were missed but the major ones were caught.\", \"bias_type_accuracy\": \"Most labels are defensible. 'Sensationalism and Emotionalism' for the headline is correct. 'Word Choice' for 'secret police/abduct/disappear' is correct. 'Subjective Qualifying Adjectives' for 'bastards' could more precisely be 'Word Choice' or even 'Mudslinging/Ad Hominem' but is defensible. The Slant item describes structural one-sidedness which is more precisely 'Bias by Omission' since no alternative viewpoint appears at all (per the definitions given). 'Negativity Bias' for the ICE killing claim is reasonable but could also be 'Unsubstantiated Claims' or 'Opinion Statements Presented as Fact.'\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:32.741802+00:00",
+  "labeled_lean": "Left"
+}

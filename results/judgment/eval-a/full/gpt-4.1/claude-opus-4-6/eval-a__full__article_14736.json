@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_14736",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_14736",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Forgotten Fact Checks (National Review)"
+  ],
+  "article_meta": {
+    "title": "News Law & the Courts Black Lives Matter Director Spent Millions in Donations on Homes, Shopping, Vacations, Indictment ",
+    "source": "Forgotten Fact Checks (National Review)",
+    "labeled_lean": "Right",
+    "url": "https://www.nationalreview.com/news/black-lives-matter-director-spent-millions-in-donations-on-homes-shopping-vacations-indictment-alleges/amp/",
+    "created_at": "2025-12-17 22:29:00"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a reasonable job overall. It correctly avoids flagging quoted text and identifies genuine author-level bias patterns. The 'spending spree' and broader framing language are defensible flags from the author's own prose. The Bias by Omission flag is also defensible - no defense perspective appears anywhere in the article. However, there are some issues: the Negativity Bias flag and the Spin flag overlap significantly (both flagging essentially the same sentence), and some additional bias instances could have been flagged (e.g., 'personal indulgences' is a loaded author phrase, the headline's framing, 'only one third' framing). The bias type labels are mostly reasonable though the distinction between the first two flags is weak.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly avoids flagging any quoted text. All flagged items come from the author's own prose or structural choices. No attribution rule violations.",
+    "false_positive_rate": "The 'spending spree' / 'very little oversight' flag is defensible as author spin. The Negativity Bias flag on the same sentence is somewhat redundant but not wrong per se. The Bias by Omission flag is defensible. However, flagging two overlapping instances on essentially the same text inflates the count slightly.",
+    "false_negative_rate": "The model misses some defensible instances: 'personal indulgences' is a loaded author phrase (could be Word Choice or Subjective Qualifying Adjectives), 'only one third of the organization's $90 million in revenue was used to fund the charity' presents a contested characterization as fact. The overall slant of the article aggregating multiple BLM-related scandals to build a pattern could also be flagged more explicitly.",
+    "bias_type_accuracy": "Negativity Bias for the broader sentence is defensible but somewhat generic. Spin for 'spending spree' is reasonable. Bias by Omission is correctly applied - no defense perspective appears in the article. The labels are mostly reasonable, though one could argue the first instance is more Slant than Negativity Bias."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a reasonable job overall. It correctly avoids flagging quoted text and identifies genuine author-level bias patterns. The 'spending spree' and broader framing language are defensible flags from the author's own prose. The Bias by Omission flag is also defensible - no defense perspective appears anywhere in the article. However, there are some issues: the Negativity Bias flag and the Spin flag overlap significantly (both flagging essentially the same sentence), and some additional bias instances could have been flagged (e.g., 'personal indulgences' is a loaded author phrase, the headline's framing, 'only one third' framing). The bias type labels are mostly reasonable though the distinction between the first two flags is weak.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly avoids flagging any quoted text. All flagged items come from the author's own prose or structural choices. No attribution rule violations.\", \"false_positive_rate\": \"The 'spending spree' / 'very little oversight' flag is defensible as author spin. The Negativity Bias flag on the same sentence is somewhat redundant but not wrong per se. The Bias by Omission flag is defensible. However, flagging two overlapping instances on essentially the same text inflates the count slightly.\", \"false_negative_rate\": \"The model misses some defensible instances: 'personal indulgences' is a loaded author phrase (could be Word Choice or Subjective Qualifying Adjectives), 'only one third of the organization's $90 million in revenue was used to fund the charity' presents a contested characterization as fact. The overall slant of the article aggregating multiple BLM-related scandals to build a pattern could also be flagged more explicitly.\", \"bias_type_accuracy\": \"Negativity Bias for the broader sentence is defensible but somewhat generic. Spin for 'spending spree' is reasonable. Bias by Omission is correctly applied - no defense perspective appears in the article. The labels are mostly reasonable, though one could argue the first instance is more Slant than Negativity Bias.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.241712+00:00",
+  "labeled_lean": "Right"
+}

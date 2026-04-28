@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__full__article_2439",
+  "eval": "eval-c",
+  "condition": "full",
+  "article_id": "article_2439",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Fox Business"
+  ],
+  "article_meta": {
+    "title": "| Updated November 25, 2025 9:00am EST Nearly 1 in 4 American households",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxbusiness.com/economy/nearly-1-4-american-households-living-paycheck-paycheck-report-reveals",
+    "created_at": "2025-11-27 09:06:16"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "classification_accuracy": 2,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies as Lean Right with 0.75 confidence. The article is from Fox Business, which AllSides rates as Lean Right. The classification direction is plausible but the reasoning is somewhat strained - the model argues economic distress framing is inherently right-leaning critique of the current administration, which is a reasonable but debatable interpretation. There's an attribution rule violation: 'some families are really struggling to' is from a quoted source (Wadford). The other key_indicators are from author/editor prose (headlines, subheadlines, connecting text). The confidence is reasonable for a subtle lean.",
+  "custom_reasoning": {
+    "classification_accuracy": "Lean Right is plausible for a Fox Business article that frames economic conditions negatively through selective data presentation and omission of broader economic context or administration responses. The article could also be classified as Center given its data-driven, relatively neutral language. Lean Right is within one adjacent class of Center, so this is acceptable.",
+    "confidence_calibration": "0.75 for what is arguably a subtle lean is slightly high but not severely miscalibrated. The signals are mostly structural (source selection, omissions) rather than overt language bias. 0.55-0.65 might be more appropriate.",
+    "reasoning_evidence_quality": "Three of four key_indicators cite author/editor prose (headline, subheadline, connecting text). However, 'some families are really struggling to' is clearly from Wadford's quoted speech, which is an attribution rule violation. The reasoning itself is generally well-constructed but the logic connecting economic distress framing to right-leaning bias is somewhat convoluted."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model classifies as Lean Right with 0.75 confidence. The article is from Fox Business, which AllSides rates as Lean Right. The classification direction is plausible but the reasoning is somewhat strained - the model argues economic distress framing is inherently right-leaning critique of the current administration, which is a reasonable but debatable interpretation. There's an attribution rule violation: 'some families are really struggling to' is from a quoted source (Wadford). The other key_indicators are from author/editor prose (headlines, subheadlines, connecting text). The confidence is reasonable for a subtle lean.\", \"custom_scores\": {\"classification_accuracy\": 2, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Lean Right is plausible for a Fox Business article that frames economic conditions negatively through selective data presentation and omission of broader economic context or administration responses. The article could also be classified as Center given its data-driven, relatively neutral language. Lean Right is within one adjacent class of Center, so this is acceptable.\", \"confidence_calibration\": \"0.75 for what is arguably a subtle lean is slightly high but not severely miscalibrated. The signals are mostly structural (source selection, omissions) rather than overt language bias. 0.55-0.65 might be more appropriate.\", \"reasoning_evidence_quality\": \"Three of four key_indicators cite author/editor prose (headline, subheadline, connecting text). However, 'some families are really struggling to' is clearly from Wadford's quoted speech, which is an attribution rule violation. The reasoning itself is generally well-constructed but the logic connecting economic distress framing to right-leaning bias is somewhat convoluted.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:21.265282+00:00",
+  "labeled_lean": "Lean Right"
+}

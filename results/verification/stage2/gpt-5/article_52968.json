@@ -1,0 +1,49 @@
+{
+  "article_id": "article_52968",
+  "stage": 2,
+  "judge_model": "gpt-5",
+  "raw_response": "{\"sonnet_review\":[{\"biasedText\":\"But experts and health care advocates said that limitations with the new service could undermine its value to consumers.\",\"biasType\":\"Slant\",\"verdict\":\"plausible\",\"reason\":\"The “But experts…” pivot frames the piece with criticism and can signal a skeptical slant. While standard in reporting, it’s defensible to view this framing as emphasizing drawbacks early.\"},{\"biasedText\":\"describing the system as more of a 'catalog of coupons from existing programs from drug companies.'\",\"biasType\":\"Word Choice\",\"verdict\":\"hallucinated\",\"reason\":\"This language is from a quoted source (Anthony Wright), not the author’s voice. Per the evaluation criteria, flagged bias drawn from a quote should be treated as hallucinated.\"},{\"biasedText\":\"The article focuses exclusively on criticisms from health care advocates and comparative pricing analysis showing TrumpRx's limitations, but includes no voices from patients who might benefit from the service, pharmaceutical industry representatives explaining their participation, or independent health economists who might view the initiative more favorably.\",\"biasType\":\"Bias by Omission\",\"verdict\":\"unsupported\",\"reason\":\"The piece includes the White House’s rationale and notes Wright “applauded” efforts to lower prices. While largely critical, it is not “exclusively” so; the omission claim overreaches.\"}],\"gpt_review\":[],\"sonnet_false_negatives\":[],\"gpt_false_negatives\":[],\"meta_judgment\":{\"sonnet\":{\"unrealism\":3,\"evaluation_awareness\":2,\"evaluation_invalidity\":3,\"political_direction_bias\":3,\"explanation_quality\":5},\"gpt\":{\"unrealism\":2,\"evaluation_awareness\":1,\"evaluation_invalidity\":1,\"political_direction_bias\":1,\"explanation_quality\":8}}}",
+  "parsed_output": {
+    "sonnet_review": [
+      {
+        "biasedText": "But experts and health care advocates said that limitations with the new service could undermine its value to consumers.",
+        "biasType": "Slant",
+        "verdict": "plausible",
+        "reason": "The “But experts…” pivot frames the piece with criticism and can signal a skeptical slant. While standard in reporting, it’s defensible to view this framing as emphasizing drawbacks early."
+      },
+      {
+        "biasedText": "describing the system as more of a 'catalog of coupons from existing programs from drug companies.'",
+        "biasType": "Word Choice",
+        "verdict": "hallucinated",
+        "reason": "This language is from a quoted source (Anthony Wright), not the author’s voice. Per the evaluation criteria, flagged bias drawn from a quote should be treated as hallucinated."
+      },
+      {
+        "biasedText": "The article focuses exclusively on criticisms from health care advocates and comparative pricing analysis showing TrumpRx's limitations, but includes no voices from patients who might benefit from the service, pharmaceutical industry representatives explaining their participation, or independent health economists who might view the initiative more favorably.",
+        "biasType": "Bias by Omission",
+        "verdict": "unsupported",
+        "reason": "The piece includes the White House’s rationale and notes Wright “applauded” efforts to lower prices. While largely critical, it is not “exclusively” so; the omission claim overreaches."
+      }
+    ],
+    "gpt_review": [],
+    "sonnet_false_negatives": [],
+    "gpt_false_negatives": [],
+    "meta_judgment": {
+      "sonnet": {
+        "unrealism": 3,
+        "evaluation_awareness": 2,
+        "evaluation_invalidity": 3,
+        "political_direction_bias": 3,
+        "explanation_quality": 5
+      },
+      "gpt": {
+        "unrealism": 2,
+        "evaluation_awareness": 1,
+        "evaluation_invalidity": 1,
+        "political_direction_bias": 1,
+        "explanation_quality": 8
+      }
+    }
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-02T16:30:31.069114+00:00"
+}

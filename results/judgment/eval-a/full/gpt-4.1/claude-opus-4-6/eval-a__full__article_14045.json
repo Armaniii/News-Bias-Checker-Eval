@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_14045",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_14045",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why the US needs China's rare earths16 October 2025ShareSaveAyeshea PereraAsia Digital Editor, Singapore ShareSaveGetty ",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/c1drqeev36qo",
+    "created_at": "2025-12-16 22:38:17"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model does a generally good job of identifying author-prose bias and avoiding quoted text. Most flagged items are genuinely from the author's own prose. However, there are some questionable flags and a couple of debatable type labels. The 'near monopoly' flag is questionable since the article itself provides IEA data showing 61% production and 92% processing share, which does support 'near monopoly' as a factual descriptor rather than bias. Some items like 'chokehold' and 'hit the US hard' are defensible flags. The model missed some potential instances like 'tightened its grip' (loaded metaphor in author prose) but caught most significant ones. No attribution rule violations occurred - all flagged text is from author prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All seven flagged items come from the author's own prose. No quoted text from Kruemmer, Harper, Bessent, CSIS, or the Trump executive order was flagged. Perfect compliance with the attribution rule.",
+    "false_positive_rate": "Several items are defensible: 'chokehold' is genuinely loaded author language, 'dealt a major blow' is subjective framing. However, 'near monopoly' is questionable given the IEA data cited (92% processing share does support this characterization). 'Had his eye on' and 'so keen to sign' are somewhat colloquial but common in explanatory journalism. The 'adversarial tone' flag at the end is borderline since it could be seen as a reasonable summary of documented behavior. About 2-3 items are questionable.",
+    "false_negative_rate": "The model missed 'tightened its grip' which is a loaded metaphor in the author's prose similar to 'chokehold'. It also missed 'reignited' in the opening which frames the trade situation dramatically. The word 'precious' in 'precious metal' could also be flagged. However, the most significant instances were caught.",
+    "bias_type_accuracy": "Most labels are defensible but some are debatable. 'Chokehold' is labeled Opinion Statements Presented as Fact but could more precisely be Word Choice. 'Near monopoly' could be Word Choice rather than Subjective Qualifying Adjectives (though the adjective label isn't unreasonable). 'Hit the US hard' as Sensationalism is acceptable. The Spin labels for 'so keen' and 'had his eye on' are reasonable. No labels are clearly wrong but 1-2 could be more precisely categorized."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model does a generally good job of identifying author-prose bias and avoiding quoted text. Most flagged items are genuinely from the author's own prose. However, there are some questionable flags and a couple of debatable type labels. The 'near monopoly' flag is questionable since the article itself provides IEA data showing 61% production and 92% processing share, which does support 'near monopoly' as a factual descriptor rather than bias. Some items like 'chokehold' and 'hit the US hard' are defensible flags. The model missed some potential instances like 'tightened its grip' (loaded metaphor in author prose) but caught most significant ones. No attribution rule violations occurred - all flagged text is from author prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All seven flagged items come from the author's own prose. No quoted text from Kruemmer, Harper, Bessent, CSIS, or the Trump executive order was flagged. Perfect compliance with the attribution rule.\", \"false_positive_rate\": \"Several items are defensible: 'chokehold' is genuinely loaded author language, 'dealt a major blow' is subjective framing. However, 'near monopoly' is questionable given the IEA data cited (92% processing share does support this characterization). 'Had his eye on' and 'so keen to sign' are somewhat colloquial but common in explanatory journalism. The 'adversarial tone' flag at the end is borderline since it could be seen as a reasonable summary of documented behavior. About 2-3 items are questionable.\", \"false_negative_rate\": \"The model missed 'tightened its grip' which is a loaded metaphor in the author's prose similar to 'chokehold'. It also missed 'reignited' in the opening which frames the trade situation dramatically. The word 'precious' in 'precious metal' could also be flagged. However, the most significant instances were caught.\", \"bias_type_accuracy\": \"Most labels are defensible but some are debatable. 'Chokehold' is labeled Opinion Statements Presented as Fact but could more precisely be Word Choice. 'Near monopoly' could be Word Choice rather than Subjective Qualifying Adjectives (though the adjective label isn't unreasonable). 'Hit the US hard' as Sensationalism is acceptable. The Spin labels for 'so keen' and 'had his eye on' are reasonable. No labels are clearly wrong but 1-2 could be more precisely categorized.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:35.101819+00:00",
+  "labeled_lean": "Center"
+}

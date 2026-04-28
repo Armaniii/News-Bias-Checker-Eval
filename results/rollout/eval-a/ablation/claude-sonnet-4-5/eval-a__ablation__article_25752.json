@@ -1,0 +1,53 @@
+{
+  "scenario_id": "eval-a__ablation__article_25752",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_25752",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:ablation",
+    "source:Brit Hume"
+  ],
+  "article_meta": {
+    "title": "Venezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At le",
+    "source": "Brit Hume",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxnews.com/politics/venezuela-releases-four-american-citizens-from-prison-following-military-operation",
+    "created_at": "2026-01-14 13:51:19"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Output ONLY a valid JSON array. No prose, no markdown fences. Empty array [] if no bias found. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nBe cautious — present fewer, confident examples rather than more uncertain ones.\n\nAnalyze this article:\n\n---\nHEADLINE: Venezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At le\nSOURCE: Brit Hume\n\nARTICLE:\n\nVenezuelan Political Crisis Venezuela releases multiple American citizens from prison following military operation At least four Americans were freed by Venezuela's interim government in the first known release since a US military operation captured President Nicolás Maduro By Michael Sinkewicz Fox News Published January 13, 2026 10:55pm EST s Flipboard Comments Print Email Add Fox News on Google close Video NEW: Americans urged to LEAVE Venezuela amid security concerns Fox News correspondent Madeleine Rivera shares details on the State Department's plea for U.S. citizens to leave Venezuela amid a transition of power following the capture of Nicolás Maduro. The interim government in Venezuela has released at least four U.S. citizens who were imprisoned under President Nicolás Maduro's regime, Fox News confirmed. The release marks the first known release of Americans in the South American country since the U.S. military completed an operation to capture Maduro, who is now facing federal drug trafficking charges in New York.\"We welcome the release of detained Americans in Venezuela,\" a State Department official said Tuesday. \"This is an important step in the right direction by the interim authorities.\" TRUMP SIGNS ORDER TO PROTECT VENEZUELA OIL REVENUE HELD IN US ACCOUNTS Venezuelans celebrate after U.S. President Donald Trump announced that Venezuelan President Nicolás Maduro had been captured and flown out of the country in Santiago, Chile, Saturday, Jan. 3, 2026. (Esteban Felix/AP Photo) Venezuela's interim government has reported that 116 prisoners have been released, although only about 70 have been verified by the non-governmental organization Justicia, Encuentro y Perdón, according to Bloomberg.National Assembly President Jorge Rodríguez said prisoner releases would continue, according to the outlet.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Unsubstantiated Claims\",\n    \"biasedText\": \"since the U.S. military completed an operation to capture Maduro\",\n    \"explanation\": \"This presents a significant military operation as established fact without providing evidence, official confirmation, or details about how such an operation would have been conducted or authorized.\"\n  },\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"Venezuela's interim government has reported that 116 prisoners have been released, although only about 70 have been verified\",\n    \"explanation\": \"While Bloomberg is cited at the end, the specific claims about prisoner numbers lack direct attribution in the sentence itself, making it unclear who verified the 70 prisoners or the reliability of these figures.\"\n  },\n  {\n    \"biasType\": \"Bias by Omission\",\n    \"biasedText\": \"The interim government in Venezuela has released at least four U.S. citizens\",\n    \"explanation\": \"The article does not explain the legal or political basis for this 'interim government,' who leads it, how it came to power, or whether it has international recognition—critical context for understanding the legitimacy of the situation.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Unsubstantiated Claims\",\n    \"biasedText\": \"since the U.S. military completed an operation to capture Maduro\",\n    \"explanation\": \"This presents a significant military operation as established fact without providing evidence, official confirmation, or details about how such an operation would have been conducted or authorized.\"\n  },\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"Venezuela's interim government has reported that 116 prisoners have been released, although only about 70 have been verified\",\n    \"explanation\": \"While Bloomberg is cited at the end, the specific claims about prisoner numbers lack direct attribution in the sentence itself, making it unclear who verified the 70 prisoners or the reliability of these figures.\"\n  },\n  {\n    \"biasType\": \"Bias by Omission\",\n    \"biasedText\": \"The interim government in Venezuela has released at least four U.S. citizens\",\n    \"explanation\": \"The article does not explain the legal or political basis for this 'interim government,' who leads it, how it came to power, or whether it has international recognition—critical context for understanding the legitimacy of the situation.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Unsubstantiated Claims",
+      "biasedText": "since the U.S. military completed an operation to capture Maduro",
+      "explanation": "This presents a significant military operation as established fact without providing evidence, official confirmation, or details about how such an operation would have been conducted or authorized."
+    },
+    {
+      "biasType": "Omission of Source Attribution",
+      "biasedText": "Venezuela's interim government has reported that 116 prisoners have been released, although only about 70 have been verified",
+      "explanation": "While Bloomberg is cited at the end, the specific claims about prisoner numbers lack direct attribution in the sentence itself, making it unclear who verified the 70 prisoners or the reliability of these figures."
+    },
+    {
+      "biasType": "Bias by Omission",
+      "biasedText": "The interim government in Venezuela has released at least four U.S. citizens",
+      "explanation": "The article does not explain the legal or political basis for this 'interim government,' who leads it, how it came to power, or whether it has international recognition—critical context for understanding the legitimacy of the situation."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:07.771142+00:00",
+  "labeled_lean": "Lean Right"
+}

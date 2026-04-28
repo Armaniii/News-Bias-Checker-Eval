@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_25190",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_25190",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:CNN (Opinion)"
+  ],
+  "article_meta": {
+    "title": "Federal Reserve Chair Jerome Powell on June 25, 2025, in Washington, DC",
+    "source": "CNN (Opinion)",
+    "labeled_lean": "Left",
+    "url": "https://www.cnn.com/2026/01/13/business/powell-trump-us-economy",
+    "created_at": "2026-01-13 13:56:50"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies Lean Left lean, which is appropriate for this CNN Opinion piece. The confidence of 0.75 is reasonable though could be slightly higher given the clear editorial choices. The reasoning mostly cites author prose choices, though a couple indicators blur the line between author framing and quoted/attributed language. Overall a solid classification with minor issues.",
+  "custom_reasoning": {
+    "classification_accuracy": "Lean Left is appropriate for this CNN Opinion article. The author's prose consistently frames Powell sympathetically and Trump as threatening, while including some balance. Left or Lean Left are both defensible; Lean Left is accurate given there is some balance with Trump allies' quotes included.",
+    "confidence_calibration": "0.75 is slightly low for an article with fairly clear editorial lean signals. This is a CNN Opinion piece with multiple loaded author word choices ('stunning,' 'remarkable show of defiance,' 'relentless pressure campaign,' 'whims'). A confidence of 0.80-0.85 would be more appropriate, but 0.75 is not severely miscalibrated.",
+    "reasoning_evidence_quality": "Most indicators cite the author's own prose choices: 'remarkable show of defiance,' 'stunning,' 'relentless pressure campaign,' 'whims,' 'backfiring spectacularly.' However, some indicators are slightly vague — e.g., 'integrity' and 'unwavering commitment' come from the central bankers' statement (attributed source), not the author's prose directly, though the author chose to include them prominently. The indicator about 'threats' and 'intimidation' partially references Powell's quoted language. These are minor attribution concerns but not systematic violations."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies Lean Left lean, which is appropriate for this CNN Opinion piece. The confidence of 0.75 is reasonable though could be slightly higher given the clear editorial choices. The reasoning mostly cites author prose choices, though a couple indicators blur the line between author framing and quoted/attributed language. Overall a solid classification with minor issues.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Lean Left is appropriate for this CNN Opinion article. The author's prose consistently frames Powell sympathetically and Trump as threatening, while including some balance. Left or Lean Left are both defensible; Lean Left is accurate given there is some balance with Trump allies' quotes included.\", \"confidence_calibration\": \"0.75 is slightly low for an article with fairly clear editorial lean signals. This is a CNN Opinion piece with multiple loaded author word choices ('stunning,' 'remarkable show of defiance,' 'relentless pressure campaign,' 'whims'). A confidence of 0.80-0.85 would be more appropriate, but 0.75 is not severely miscalibrated.\", \"reasoning_evidence_quality\": \"Most indicators cite the author's own prose choices: 'remarkable show of defiance,' 'stunning,' 'relentless pressure campaign,' 'whims,' 'backfiring spectacularly.' However, some indicators are slightly vague — e.g., 'integrity' and 'unwavering commitment' come from the central bankers' statement (attributed source), not the author's prose directly, though the author chose to include them prominently. The indicator about 'threats' and 'intimidation' partially references Powell's quoted language. These are minor attribution concerns but not systematic violations.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:13.743656+00:00",
+  "labeled_lean": "Left"
+}

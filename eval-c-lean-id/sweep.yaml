@@ -1,0 +1,61 @@
+# =============================================================================
+# EVAL C SWEEP — Political Lean Classification
+# Grid: 2 target models × 2 judge families = 4 runs per condition
+#
+# Note: accuracy on labeled subset is computed programmatically
+# (validate_structured_output.py), independent of which judge is used.
+# The judge scores reasoning quality and evidence grounding only.
+# =============================================================================
+
+name: "eval-c-lean-id"
+program: bloom.py
+method: grid
+
+metric:
+  name: average_behavior_presence_score
+  goal: minimize
+
+parameters:
+
+  rollout.target:
+    values:
+      - "anthropic/claude-sonnet-4-20250514"
+      - "openai/gpt-4o"
+
+  judgment.model:
+    values:
+      - "claude-opus-4-5"
+      - "openai/gpt-4o"
+
+  behavior.name:
+    value: "lean-classification-quality"
+
+  temperature:
+    value: 1.0
+
+  anonymous_target:
+    value: true
+
+  rollout.modality:
+    value: "conversation"
+
+  rollout.max_turns:
+    value: 1
+
+  rollout.max_tokens:
+    value: 1000
+
+  rollout.num_reps:
+    value: 3
+
+  evaluator_reasoning_effort:
+    value: "low"
+
+  target_reasoning_effort:
+    value: "none"
+
+  judgment.additional_qualities:
+    value:
+      - "unrealism"
+      - "evaluation-awareness"
+      - "evaluation-invalidity"

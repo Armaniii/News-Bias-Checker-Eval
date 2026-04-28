@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_43171",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_43171",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Newsmax (News)"
+  ],
+  "article_meta": {
+    "title": "A California judge scolded members of Mark Zuckerberg's legal team after they showed up to a Los Angeles courtroom weari",
+    "source": "Newsmax (News)",
+    "labeled_lean": "Right",
+    "url": "https://www.newsmax.com/us/mark-zuckerberg-meta-smart/2026/02/19/id/1246758/",
+    "created_at": "2026-02-23 02:47:34"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 3,
+    "reasoning_evidence_quality": 6
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model classifies as Lean Right with 0.85 confidence. The article is from Newsmax, which is typically rated Right by AllSides. The article itself is fairly straightforward reporting but carries some editorial choices - 'extraordinary misstep,' 'high-stakes trial,' 'strike at the heart of the national debate over Big Tech's influence on America's youth' - that frame the story in a way critical of Big Tech, which aligns with right-leaning framing. The classification of Lean Right is one class off from Right (Newsmax's typical rating), which is acceptable. However, the reasoning has significant issues: it relies heavily on source reputation rather than specific textual evidence from the author's prose, and some of the 'key_indicators' are vague or cite general framing rather than specific phrases. The reasoning also attributes 'extraordinary misstep' as an editorial choice when it's actually a quote from Jacob Ward (attribution violation). The confidence of 0.85 seems reasonable for a Newsmax article that is relatively straight news reporting.",
+  "custom_reasoning": {
+    "classification_accuracy": "Lean Right is one adjacent class from Right (Newsmax's AllSides rating). The article's actual editorial choices are relatively restrained for Newsmax, so Lean Right is defensible and within one class of the expected rating.",
+    "confidence_calibration": "0.85 confidence for what is fairly standard news reporting from a known right-leaning outlet seems slightly high. The article doesn't have heavy editorial language - it's mostly factual reporting with some framing choices. A confidence of 0.65-0.75 might be more appropriate for the subtle lean signals present in the author's own prose.",
+    "reasoning_evidence_quality": "The reasoning relies heavily on source reputation ('originates from Newsmax') rather than specific textual evidence from the author's prose. The key_indicators are vague ('Focus on negative incident,' 'Emphasis on privacy') rather than citing specific author phrases. The model doesn't quote specific author language like 'strike at the heart of the national debate over Big Tech's influence on America's youth' which would be legitimate author prose evidence. It also doesn't distinguish between quoted source language and author language."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model classifies as Lean Right with 0.85 confidence. The article is from Newsmax, which is typically rated Right by AllSides. The article itself is fairly straightforward reporting but carries some editorial choices - 'extraordinary misstep,' 'high-stakes trial,' 'strike at the heart of the national debate over Big Tech's influence on America's youth' - that frame the story in a way critical of Big Tech, which aligns with right-leaning framing. The classification of Lean Right is one class off from Right (Newsmax's typical rating), which is acceptable. However, the reasoning has significant issues: it relies heavily on source reputation rather than specific textual evidence from the author's prose, and some of the 'key_indicators' are vague or cite general framing rather than specific phrases. The reasoning also attributes 'extraordinary misstep' as an editorial choice when it's actually a quote from Jacob Ward (attribution violation). The confidence of 0.85 seems reasonable for a Newsmax article that is relatively straight news reporting.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 3, \"reasoning_evidence_quality\": 6}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Lean Right is one adjacent class from Right (Newsmax's AllSides rating). The article's actual editorial choices are relatively restrained for Newsmax, so Lean Right is defensible and within one class of the expected rating.\", \"confidence_calibration\": \"0.85 confidence for what is fairly standard news reporting from a known right-leaning outlet seems slightly high. The article doesn't have heavy editorial language - it's mostly factual reporting with some framing choices. A confidence of 0.65-0.75 might be more appropriate for the subtle lean signals present in the author's own prose.\", \"reasoning_evidence_quality\": \"The reasoning relies heavily on source reputation ('originates from Newsmax') rather than specific textual evidence from the author's prose. The key_indicators are vague ('Focus on negative incident,' 'Emphasis on privacy') rather than citing specific author phrases. The model doesn't quote specific author language like 'strike at the heart of the national debate over Big Tech's influence on America's youth' which would be legitimate author prose evidence. It also doesn't distinguish between quoted source language and author language.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:18.826114+00:00",
+  "labeled_lean": "Right"
+}

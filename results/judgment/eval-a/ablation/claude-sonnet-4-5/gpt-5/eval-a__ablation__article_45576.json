@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_45576",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_45576",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Washington Examiner"
+  ],
+  "article_meta": {
+    "title": "President Donald Trump’s mass deportation operation is expected to ramp up in 2026 as newly hired military lawyers-turne",
+    "source": "Washington Examiner",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.washingtonexaminer.com/policy/immigration/4471631/why-trump-changes-immigration-courts-ramp-up-deportations/",
+    "created_at": "2026-02-27 01:29:45"
+  },
+  "behavior_presence_score": 9,
+  "custom_scores": {
+    "attribution_rule_compliance": 8,
+    "false_positive_rate": 9,
+    "false_negative_rate": 8,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 7
+  },
+  "reasoning": "The model committed multiple attribution violations by flagging quoted/source-attributed language as author bias, produced several weak/incorrect bias flags from neutral author prose, and missed clear bias instances in the author's own framing. It also violated output format by using code fences.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Two flagged items are direct quotes or clearly attributed (Kocher quote and EOIR 'deportation judges' term), violating the attribution rule.",
+    "false_positive_rate": "Most flagged items are not genuine author-level bias: two are quotes; the statistic about denial rates is neutral; the 'first year focused on' sentence is descriptive.",
+    "false_negative_rate": "Missed clear author-prose bias such as the headline phrase 'mass deportation operation,' repeated use of 'illegal immigrants,' and the metaphor 'impossible numbers game.'",
+    "bias_type_accuracy": "Labels applied to questionable items (e.g., Bias by Omission for a raw statistic; Slant for a neutral description). Even where label could fit, the text was sourced/quoted, not author voice."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 9, \"reasoning\": \"The model committed multiple attribution violations by flagging quoted/source-attributed language as author bias, produced several weak/incorrect bias flags from neutral author prose, and missed clear bias instances in the author's own framing. It also violated output format by using code fences.\", \"custom_scores\": {\"attribution_rule_compliance\": 8, \"false_positive_rate\": 9, \"false_negative_rate\": 8, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 7}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Two flagged items are direct quotes or clearly attributed (Kocher quote and EOIR 'deportation judges' term), violating the attribution rule.\", \"false_positive_rate\": \"Most flagged items are not genuine author-level bias: two are quotes; the statistic about denial rates is neutral; the 'first year focused on' sentence is descriptive.\", \"false_negative_rate\": \"Missed clear author-prose bias such as the headline phrase 'mass deportation operation,' repeated use of 'illegal immigrants,' and the metaphor 'impossible numbers game.'\", \"bias_type_accuracy\": \"Labels applied to questionable items (e.g., Bias by Omission for a raw statistic; Slant for a neutral description). Even where label could fit, the text was sourced/quoted, not author voice.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:46.757024+00:00",
+  "labeled_lean": "Lean Right"
+}

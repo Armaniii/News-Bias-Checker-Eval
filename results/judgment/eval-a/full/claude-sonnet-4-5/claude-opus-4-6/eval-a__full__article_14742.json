@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_14742",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_14742",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "4 Republicans defy Speaker Johnson to force House vote on extending ACA subsidies The Associated PressAP17 Dec 2025 Four",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/news/4-republicans-defy-speaker-johnson-to-force-house-vote-on-extending-aca-subsidies/",
+    "created_at": "2025-12-18 00:51:44"
+  },
+  "behavior_presence_score": 2,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 2
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies genuine bias instances in the author's own prose without flagging any quoted text. The three flagged items are all defensible: 'stunning' is indeed a subjective adjective in author prose, 'soaring...endure' contains loaded word choice, and the slant observation about structural emphasis is reasonable. No attribution rule violations occur. The bias type labels are appropriate. There might be a minor debate about whether 'soaring' is truly biased vs. commonly used journalistic shorthand, but overall these are solid identifications. The model could potentially have flagged 'defy' in the headline or 'revolt' in the subhead as author word choice, but these are minor misses at most since 'defy' and 'revolt' are borderline.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged instances are from the author's own prose. No quoted text was flagged. The model correctly excluded multiple quotes from Fitzpatrick, Johnson, Jeffries, Lawler, and Thune.",
+    "false_positive_rate": "All three items are defensible. 'Stunning' is clearly a subjective adjective. 'Soaring...endure' contains loaded language. The slant observation is reasonable though somewhat debatable in its specifics.",
+    "false_negative_rate": "The model could have flagged 'defy' in the headline as loaded word choice (vs. 'break with' or 'oppose'), and the author's use of 'revolt' as a section header. Also 'pushed ahead' appears twice as author framing with negative connotation. These are minor misses but defensible additions.",
+    "bias_type_accuracy": "Labels are well-applied. 'Stunning' as Subjective Qualifying Adjective is correct. 'Soaring...endure' as Word Choice is correct. The Slant label for structural emphasis is appropriate and correctly defined per the instructions."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 2, \"reasoning\": \"The model correctly identifies genuine bias instances in the author's own prose without flagging any quoted text. The three flagged items are all defensible: 'stunning' is indeed a subjective adjective in author prose, 'soaring...endure' contains loaded word choice, and the slant observation about structural emphasis is reasonable. No attribution rule violations occur. The bias type labels are appropriate. There might be a minor debate about whether 'soaring' is truly biased vs. commonly used journalistic shorthand, but overall these are solid identifications. The model could potentially have flagged 'defy' in the headline or 'revolt' in the subhead as author word choice, but these are minor misses at most since 'defy' and 'revolt' are borderline.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 3, \"bias_type_accuracy\": 2}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged instances are from the author's own prose. No quoted text was flagged. The model correctly excluded multiple quotes from Fitzpatrick, Johnson, Jeffries, Lawler, and Thune.\", \"false_positive_rate\": \"All three items are defensible. 'Stunning' is clearly a subjective adjective. 'Soaring...endure' contains loaded language. The slant observation is reasonable though somewhat debatable in its specifics.\", \"false_negative_rate\": \"The model could have flagged 'defy' in the headline as loaded word choice (vs. 'break with' or 'oppose'), and the author's use of 'revolt' as a section header. Also 'pushed ahead' appears twice as author framing with negative connotation. These are minor misses but defensible additions.\", \"bias_type_accuracy\": \"Labels are well-applied. 'Stunning' as Subjective Qualifying Adjective is correct. 'Soaring...endure' as Word Choice is correct. The Slant label for structural emphasis is appropriate and correctly defined per the instructions.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:30.938207+00:00",
+  "labeled_lean": "Right"
+}

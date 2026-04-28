@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_8401",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_8401",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Washington Post"
+  ],
+  "article_meta": {
+    "title": "Democracy Dies in DarknessBusinessFuture of WorkEconomyEconomic PolicyMediaPersonal FinanceTechnologyBusiness of Climate",
+    "source": "Washington Post",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.washingtonpost.com/investigations/interactive/2025/tyler-robinson-charlie-kirk-shooting/",
+    "created_at": "2025-12-17 19:53:18"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 3,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model attempts to identify bias in author prose and avoids flagging quoted text directly, which is good. However, several of the flagged items are debatable or problematic. The first item about 'Bias by Story Choice and Placement' is a structural observation that's defensible but the 'biasedText' is not actual text from the article - it's a summary description. The second item about Kirk's characterization has some merit as a Slant observation but the biasedText includes attributed language ('accused of bigotry and bullying by some students and civil rights groups' is attributed). The third item about Bias by Omission is somewhat defensible but questionable - the article does extensively explore Robinson's background which implicitly addresses the claim. The fourth item about Word Choice is actually a reasonable structural observation about how the author juxtaposes Cox's statement with friends' disagreement, though calling it 'Word Choice' is debatable - it's more of a Slant/Spin issue. The model misses some potential bias instances like the humanizing framing choices in author prose.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The second flagged item includes 'accused of bigotry and bullying by some students and civil rights groups' which is attributed language. The fourth item includes Cox's quote. However, the model is arguably flagging the author's structural choices around these attributed statements rather than the quotes themselves. This is a borderline area - the model is mixing author framing with attributed content.",
+    "false_positive_rate": "Item 1 is defensible as a structural bias observation but uses a summary rather than actual article text. Item 2 has merit but mixes attributed language. Item 3 is questionable - the article does implicitly address the radicalization claim through its extensive investigation. Item 4 is a reasonable observation about juxtaposition but the bias type is wrong. Overall, the items are partially defensible but several are stretches.",
+    "false_negative_rate": "The model catches some significant structural choices. It could have flagged 'brand of Christian conservatism' as Word Choice (the word 'brand' has commercial/pejorative connotations), or the detailed humanizing prose about Robinson's gaming habits and friendships as Slant. The extensive humanization of a murder suspect through author prose choices is arguably the most significant bias pattern and while the model touches on it, it could have been more precise.",
+    "bias_type_accuracy": "Item 1 'Bias by Story Choice and Placement' is defensible for the structural observation. Item 2 'Slant' is reasonable but could also be Negativity Bias. Item 3 'Bias by Omission' is defensible. Item 4 is labeled 'Word Choice' but is really more about Slant or Spin - the structural juxtaposition isn't a word choice issue. Labels are roughly in the right area but not precise."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model attempts to identify bias in author prose and avoids flagging quoted text directly, which is good. However, several of the flagged items are debatable or problematic. The first item about 'Bias by Story Choice and Placement' is a structural observation that's defensible but the 'biasedText' is not actual text from the article - it's a summary description. The second item about Kirk's characterization has some merit as a Slant observation but the biasedText includes attributed language ('accused of bigotry and bullying by some students and civil rights groups' is attributed). The third item about Bias by Omission is somewhat defensible but questionable - the article does extensively explore Robinson's background which implicitly addresses the claim. The fourth item about Word Choice is actually a reasonable structural observation about how the author juxtaposes Cox's statement with friends' disagreement, though calling it 'Word Choice' is debatable - it's more of a Slant/Spin issue. The model misses some potential bias instances like the humanizing framing choices in author prose.\", \"custom_scores\": {\"attribution_rule_compliance\": 3, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The second flagged item includes 'accused of bigotry and bullying by some students and civil rights groups' which is attributed language. The fourth item includes Cox's quote. However, the model is arguably flagging the author's structural choices around these attributed statements rather than the quotes themselves. This is a borderline area - the model is mixing author framing with attributed content.\", \"false_positive_rate\": \"Item 1 is defensible as a structural bias observation but uses a summary rather than actual article text. Item 2 has merit but mixes attributed language. Item 3 is questionable - the article does implicitly address the radicalization claim through its extensive investigation. Item 4 is a reasonable observation about juxtaposition but the bias type is wrong. Overall, the items are partially defensible but several are stretches.\", \"false_negative_rate\": \"The model catches some significant structural choices. It could have flagged 'brand of Christian conservatism' as Word Choice (the word 'brand' has commercial/pejorative connotations), or the detailed humanizing prose about Robinson's gaming habits and friendships as Slant. The extensive humanization of a murder suspect through author prose choices is arguably the most significant bias pattern and while the model touches on it, it could have been more precise.\", \"bias_type_accuracy\": \"Item 1 'Bias by Story Choice and Placement' is defensible for the structural observation. Item 2 'Slant' is reasonable but could also be Negativity Bias. Item 3 'Bias by Omission' is defensible. Item 4 is labeled 'Word Choice' but is really more about Slant or Spin - the structural juxtaposition isn't a word choice issue. Labels are roughly in the right area but not precise.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:25.426557+00:00",
+  "labeled_lean": "Lean Left"
+}

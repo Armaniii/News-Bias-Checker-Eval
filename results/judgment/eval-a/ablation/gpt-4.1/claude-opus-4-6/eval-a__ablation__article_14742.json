@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_14742",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_14742",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Breitbart Fact Check"
+  ],
+  "article_meta": {
+    "title": "4 Republicans defy Speaker Johnson to force House vote on extending ACA subsidies The Associated PressAP17 Dec 2025 Four",
+    "source": "Breitbart Fact Check",
+    "labeled_lean": "Right",
+    "url": "https://www.breitbart.com/news/4-republicans-defy-speaker-johnson-to-force-house-vote-on-extending-aca-subsidies/",
+    "created_at": "2025-12-18 00:51:44"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 2,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model identifies two instances. The first ('stunning move' and 'soaring monthly premiums that millions of people will soon endure') is a legitimate catch of author-prose bias — 'stunning' is subjective editorializing and 'soaring' + 'endure' are loaded word choices. The second flagging of 'assailed' is more debatable. While 'assailed' is a somewhat strong verb, it's used in a clause that is attributing a position to the conservative wing ('which has assailed the subsidies as propping up a failed marketplace'). The word 'assailed' is the author's own verb choice to describe conservatives' criticism, so it is technically author prose and could be flagged. However, 'propping up a failed marketplace' is the attributed position of conservatives, not the author's view. The model correctly isolates 'assailed' as the biased element. There are some missed instances: 'broke with' / 'defy' in headline/lede could be flagged as Word Choice (implies rebellion framing), and 'the revolt against GOP leadership' uses the loaded term 'revolt.' The phrase 'an arduous climb' is also somewhat editorializing. The model misses a few instances but catches the most prominent ones. No attribution rule violations — both flagged items are genuinely from author prose. Bias type labels are reasonable though 'Subjective Qualifying Adjectives' for the first instance could also be 'Sensationalism/Emotionalism' or 'Word Choice.'",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Both flagged items come from the author's own prose. The second item includes some attributed language ('propping up a failed marketplace') but the model focuses on 'assailed' which is the author's verb. Minor issue but no clear violation.",
+    "false_positive_rate": "Both flagged items are defensible. 'Stunning' is clearly editorializing, 'soaring...endure' is loaded language, and 'assailed' is a charged verb choice by the author. All are genuine bias patterns.",
+    "false_negative_rate": "The model misses several defensible instances: 'revolt against GOP leadership' (loaded framing), 'defy' in headline (Word Choice), 'magic number' (informal/editorializing), 'an arduous climb' (subjective characterization), and arguably 'razor-thin majority' could be flagged. These are moderate misses.",
+    "bias_type_accuracy": "The first item labeled 'Subjective Qualifying Adjectives' is reasonable for 'stunning' and 'soaring' though 'Sensationalism/Emotionalism' or 'Word Choice' might be equally valid. The second labeled 'Word Choice' for 'assailed' is appropriate. Labels are defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies two instances. The first ('stunning move' and 'soaring monthly premiums that millions of people will soon endure') is a legitimate catch of author-prose bias — 'stunning' is subjective editorializing and 'soaring' + 'endure' are loaded word choices. The second flagging of 'assailed' is more debatable. While 'assailed' is a somewhat strong verb, it's used in a clause that is attributing a position to the conservative wing ('which has assailed the subsidies as propping up a failed marketplace'). The word 'assailed' is the author's own verb choice to describe conservatives' criticism, so it is technically author prose and could be flagged. However, 'propping up a failed marketplace' is the attributed position of conservatives, not the author's view. The model correctly isolates 'assailed' as the biased element. There are some missed instances: 'broke with' / 'defy' in headline/lede could be flagged as Word Choice (implies rebellion framing), and 'the revolt against GOP leadership' uses the loaded term 'revolt.' The phrase 'an arduous climb' is also somewhat editorializing. The model misses a few instances but catches the most prominent ones. No attribution rule violations — both flagged items are genuinely from author prose. Bias type labels are reasonable though 'Subjective Qualifying Adjectives' for the first instance could also be 'Sensationalism/Emotionalism' or 'Word Choice.'\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 2, \"false_negative_rate\": 5, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Both flagged items come from the author's own prose. The second item includes some attributed language ('propping up a failed marketplace') but the model focuses on 'assailed' which is the author's verb. Minor issue but no clear violation.\", \"false_positive_rate\": \"Both flagged items are defensible. 'Stunning' is clearly editorializing, 'soaring...endure' is loaded language, and 'assailed' is a charged verb choice by the author. All are genuine bias patterns.\", \"false_negative_rate\": \"The model misses several defensible instances: 'revolt against GOP leadership' (loaded framing), 'defy' in headline (Word Choice), 'magic number' (informal/editorializing), 'an arduous climb' (subjective characterization), and arguably 'razor-thin majority' could be flagged. These are moderate misses.\", \"bias_type_accuracy\": \"The first item labeled 'Subjective Qualifying Adjectives' is reasonable for 'stunning' and 'soaring' though 'Sensationalism/Emotionalism' or 'Word Choice' might be equally valid. The second labeled 'Word Choice' for 'assailed' is appropriate. Labels are defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:26.892300+00:00",
+  "labeled_lean": "Right"
+}

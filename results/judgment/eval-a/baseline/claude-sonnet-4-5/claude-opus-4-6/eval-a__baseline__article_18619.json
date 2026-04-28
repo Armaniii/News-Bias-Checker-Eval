@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_18619",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_18619",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Fox Business"
+  ],
+  "article_meta": {
+    "title": "Christmas travelers left stranded as airports see mass flight cancelations",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxbusiness.com/lifestyle/christmas-travelers-left-stranded-airports-see-mass-flight-cancelations-delays",
+    "created_at": "2025-12-29 14:51:24"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 6
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model has a mix of correct and incorrect behavior. It correctly identifies some author-prose bias ('ho-ho-horrible') but also commits an attribution rule violation by flagging a direct quote from Danniel Sermone. Some bias type labels are from outside the defined list ('Emotional framing', 'Anecdotal bias'). The 'Misery Map' flagging is debatable since it's the actual name of the tool. Some genuine author-level bias patterns are identified but the execution has multiple issues.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model flagged a direct quote from Danniel Sermone ('I came to New York to have a Home Alone Christmas...') as bias. While the model frames it as 'anecdotal bias' (a structural choice), the biasedText field contains the quoted text itself, which is an attribution rule violation. The quote belongs to a named source speaking to the New York Post.",
+    "false_positive_rate": "The 'ho-ho-horrible' flagging is defensible as author sensationalism. 'Christmas travelers left stranded' is a reasonable flag for emotionally charged word choice. The 'Misery Map' flag is questionable since it's the actual name of FlightAware's product - the author is accurately reporting the tool's name. The Sermone quote flag is a false positive due to attribution violation.",
+    "false_negative_rate": "The model caught 'ho-ho-horrible' and 'stranded' which are the most prominent author-level bias instances. It could have flagged 'mass cancellations' (potentially sensationalized given the actual numbers reported), 'travel chaos' (repeated emotionally loaded phrase in author prose), 'barreling through' (loaded verb choice), or 'disastrous rain storm'. Some misses but the major ones were caught.",
+    "bias_type_accuracy": "'Emotional framing' and 'Anecdotal bias' are not in the defined list of bias types. 'Emotional framing' should be 'Sensationalism/Emotionalism' or 'Word Choice'. 'Anecdotal bias' is not a valid type - it could potentially be 'Slant' if it were author prose. Two of four labels use types outside the defined list."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has a mix of correct and incorrect behavior. It correctly identifies some author-prose bias ('ho-ho-horrible') but also commits an attribution rule violation by flagging a direct quote from Danniel Sermone. Some bias type labels are from outside the defined list ('Emotional framing', 'Anecdotal bias'). The 'Misery Map' flagging is debatable since it's the actual name of the tool. Some genuine author-level bias patterns are identified but the execution has multiple issues.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 6}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model flagged a direct quote from Danniel Sermone ('I came to New York to have a Home Alone Christmas...') as bias. While the model frames it as 'anecdotal bias' (a structural choice), the biasedText field contains the quoted text itself, which is an attribution rule violation. The quote belongs to a named source speaking to the New York Post.\", \"false_positive_rate\": \"The 'ho-ho-horrible' flagging is defensible as author sensationalism. 'Christmas travelers left stranded' is a reasonable flag for emotionally charged word choice. The 'Misery Map' flag is questionable since it's the actual name of FlightAware's product - the author is accurately reporting the tool's name. The Sermone quote flag is a false positive due to attribution violation.\", \"false_negative_rate\": \"The model caught 'ho-ho-horrible' and 'stranded' which are the most prominent author-level bias instances. It could have flagged 'mass cancellations' (potentially sensationalized given the actual numbers reported), 'travel chaos' (repeated emotionally loaded phrase in author prose), 'barreling through' (loaded verb choice), or 'disastrous rain storm'. Some misses but the major ones were caught.\", \"bias_type_accuracy\": \"'Emotional framing' and 'Anecdotal bias' are not in the defined list of bias types. 'Emotional framing' should be 'Sensationalism/Emotionalism' or 'Word Choice'. 'Anecdotal bias' is not a valid type - it could potentially be 'Slant' if it were author prose. Two of four labels use types outside the defined list.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:15.736242+00:00",
+  "labeled_lean": "Lean Right"
+}

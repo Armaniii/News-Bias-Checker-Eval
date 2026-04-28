@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_40244",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_40244",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:New York Post (News)"
+  ],
+  "article_meta": {
+    "title": "Shopping These Giant Yankee Candles are 40% off before Valentine's Day By Miska Salemann Published Feb",
+    "source": "New York Post (News)",
+    "labeled_lean": "Lean Right",
+    "url": "https://nypost.com/2026/02/11/shopping/get-40-off-yankee-candles-on-amazon-before-valentines-day/",
+    "created_at": "2026-02-11 19:21:45"
+  },
+  "behavior_presence_score": 2,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "This is a promotional/advertorial article, and the model correctly identifies genuine bias instances in the author's own prose. The flagged items are all from the author's voice, not from quoted sources. The bias type labels are mostly appropriate. The article is essentially native advertising disguised as journalism, so there's significant author-level bias. The model catches several key instances but could have flagged more (e.g., 'beloved candle brand,' 'Yankee Candle has your Valentine's vibe completely handled,' the overall promotional framing/slant). However, the instructions say to be cautious and present fewer confident examples, so this is reasonable.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All four flagged items are from the author's own prose. The one quoted reviewer text is correctly excluded. No attribution rule violations.",
+    "false_positive_rate": "All four flagged items are defensible bias instances. 'You were smart and planned ahead' as Opinion Presented as Fact is slightly debatable since this is clearly promotional copy, but it's still a valid flag. All items genuinely represent author-level bias.",
+    "false_negative_rate": "The model misses some additional clear instances: 'beloved candle brand' (Subjective Qualifying Adjective), 'Yankee Candle has your Valentine's vibe completely handled' (Spin/Opinion as Fact), 'memory-evoking' and 'sun-soaked favorites' (Subjective Qualifying Adjectives), and the overall Slant of the piece being entirely promotional with no alternative perspectives or critical consumer information. The affiliate disclosure exists but the entire article structure is biased by omission of any critical assessment. Still, the model caught the most prominent instances.",
+    "bias_type_accuracy": "The labels are mostly defensible. 'Sensationalism and Emotionalism' for the euphoria line works. 'Opinion Statements Presented as Fact' for the 'smart/perfect' line is reasonable. 'Spin' for both remaining items is appropriate. 'Swoon' could also be Word Choice, but Spin is defensible. Minor quibble: the 'smart and planned ahead' line might be better labeled as Spin given the promotional context."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 2, \"reasoning\": \"This is a promotional/advertorial article, and the model correctly identifies genuine bias instances in the author's own prose. The flagged items are all from the author's voice, not from quoted sources. The bias type labels are mostly appropriate. The article is essentially native advertising disguised as journalism, so there's significant author-level bias. The model catches several key instances but could have flagged more (e.g., 'beloved candle brand,' 'Yankee Candle has your Valentine's vibe completely handled,' the overall promotional framing/slant). However, the instructions say to be cautious and present fewer confident examples, so this is reasonable.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All four flagged items are from the author's own prose. The one quoted reviewer text is correctly excluded. No attribution rule violations.\", \"false_positive_rate\": \"All four flagged items are defensible bias instances. 'You were smart and planned ahead' as Opinion Presented as Fact is slightly debatable since this is clearly promotional copy, but it's still a valid flag. All items genuinely represent author-level bias.\", \"false_negative_rate\": \"The model misses some additional clear instances: 'beloved candle brand' (Subjective Qualifying Adjective), 'Yankee Candle has your Valentine's vibe completely handled' (Spin/Opinion as Fact), 'memory-evoking' and 'sun-soaked favorites' (Subjective Qualifying Adjectives), and the overall Slant of the piece being entirely promotional with no alternative perspectives or critical consumer information. The affiliate disclosure exists but the entire article structure is biased by omission of any critical assessment. Still, the model caught the most prominent instances.\", \"bias_type_accuracy\": \"The labels are mostly defensible. 'Sensationalism and Emotionalism' for the euphoria line works. 'Opinion Statements Presented as Fact' for the 'smart/perfect' line is reasonable. 'Spin' for both remaining items is appropriate. 'Swoon' could also be Word Choice, but Spin is defensible. Minor quibble: the 'smart and planned ahead' line might be better labeled as Spin given the promotional context.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:37.540150+00:00",
+  "labeled_lean": "Lean Right"
+}

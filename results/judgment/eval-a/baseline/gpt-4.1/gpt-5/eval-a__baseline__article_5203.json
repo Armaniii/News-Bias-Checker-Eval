@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_5203",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_5203",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:The Atlantic"
+  ],
+  "article_meta": {
+    "title": "PlanetOur Almost-Apocalyptic Climate FutureBy shooting for 3 degrees Celsius of warming, the world could slide toward a ",
+    "source": "The Atlantic",
+    "labeled_lean": "Left",
+    "url": "https://www.theatlantic.com/science/2025/11/cop-climate-3c-warming/685036/",
+    "created_at": "2025-12-04 08:24:05"
+  },
+  "behavior_presence_score": 7,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 7,
+    "bias_type_accuracy": 10
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model avoided attribution violations and flagged genuine bias in the author’s prose, but it systematically used invalid/non-approved bias type labels and missed multiple clear biased phrasings elsewhere in the article.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged passages are in the author’s own narrative; no quoted or attributed source language was flagged.",
+    "false_positive_rate": "Each flagged passage contains emotive or dismissive authorial language; none are clearly neutral or misattributed.",
+    "false_negative_rate": "The response missed several prominent biased phrasings (e.g., 'ham-fisted metaphor,' 'ritual in frustration and futility,' 'heavily compromised text,' 'annual punching bag,' 'provincial, self-interested,' 'in denial,' etc.).",
+    "bias_type_accuracy": "All four labels (e.g., 'Loaded Language / Emotional Appeal,' 'Framing Bias,' 'Selection Bias,' 'Certainty Bias') are outside the allowed set; closer valid types would be Sensationalism/Emotionalism, Slant, Word Choice, or Opinion Statements Presented as Fact."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 7, \"reasoning\": \"The model avoided attribution violations and flagged genuine bias in the author’s prose, but it systematically used invalid/non-approved bias type labels and missed multiple clear biased phrasings elsewhere in the article.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 2, \"false_negative_rate\": 7, \"bias_type_accuracy\": 10}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All flagged passages are in the author’s own narrative; no quoted or attributed source language was flagged.\", \"false_positive_rate\": \"Each flagged passage contains emotive or dismissive authorial language; none are clearly neutral or misattributed.\", \"false_negative_rate\": \"The response missed several prominent biased phrasings (e.g., 'ham-fisted metaphor,' 'ritual in frustration and futility,' 'heavily compromised text,' 'annual punching bag,' 'provincial, self-interested,' 'in denial,' etc.).\", \"bias_type_accuracy\": \"All four labels (e.g., 'Loaded Language / Emotional Appeal,' 'Framing Bias,' 'Selection Bias,' 'Certainty Bias') are outside the allowed set; closer valid types would be Sensationalism/Emotionalism, Slant, Word Choice, or Opinion Statements Presented as Fact.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:43.292323+00:00",
+  "labeled_lean": "Left"
+}

@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_230",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_230",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:The Guardian"
+  ],
+  "article_meta": {
+    "title": "Federal immigration officers board an elevator with respondents at immigration court in New York on 17 November 2025",
+    "source": "The Guardian",
+    "labeled_lean": "Left",
+    "url": "https://www.theguardian.com/us-news/2025/nov/21/fbi-signal-group-chat-immigration",
+    "created_at": "2025-11-21 22:08:11"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 2,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Classification direction is correct with strong evidence of Left lean, and confidence is plausible for a clearly biased article. However, there is an attribution violation: one key_indicator quotes an activist line as evidence, and some reasoning leans on quoted perspectives rather than strictly the author's prose.",
+  "custom_reasoning": {
+    "classification_accuracy": "Identified the article as Left, which matches the strong left-leaning framing and structure (or at worst is within one class if judged Lean Left).",
+    "confidence_calibration": "0.95 is high but defensible given the clear, consistent critical framing of law enforcement and the Trump DOJ, despite brief inclusion of opposing statements.",
+    "reasoning_evidence_quality": "Includes valid authorial evidence (e.g., 'spied' in the lede, structural emphasis undermining official claims) but also cites a direct activist quote as an indicator, violating the attribution rule, and some evidence is vaguely referenced."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"Classification direction is correct with strong evidence of Left lean, and confidence is plausible for a clearly biased article. However, there is an attribution violation: one key_indicator quotes an activist line as evidence, and some reasoning leans on quoted perspectives rather than strictly the author's prose.\", \"custom_scores\": {\"classification_accuracy\": 1, \"confidence_calibration\": 2, \"reasoning_evidence_quality\": 5}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"classification_accuracy\": \"Identified the article as Left, which matches the strong left-leaning framing and structure (or at worst is within one class if judged Lean Left).\", \"confidence_calibration\": \"0.95 is high but defensible given the clear, consistent critical framing of law enforcement and the Trump DOJ, despite brief inclusion of opposing statements.\", \"reasoning_evidence_quality\": \"Includes valid authorial evidence (e.g., 'spied' in the lede, structural emphasis undermining official claims) but also cites a direct activist quote as an indicator, violating the attribution rule, and some evidence is vaguely referenced.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T22:00:40.037708+00:00",
+  "labeled_lean": "Left"
+}

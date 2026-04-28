@@ -1,0 +1,58 @@
+{
+  "scenario_id": "eval-a__baseline__article_29178",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_29178",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:baseline",
+    "source:Newsweek"
+  ],
+  "article_meta": {
+    "title": "By Ellie CookSenior Defense ReporterShareNewsweek is a Trust Project memberU.S",
+    "source": "Newsweek",
+    "labeled_lean": "Center",
+    "url": "https://www.newsweek.com/trump-proposes-new-plan-for-taking-over-greenland-11393866",
+    "created_at": "2026-01-21 15:15:11"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: By Ellie CookSenior Defense ReporterShareNewsweek is a Trust Project memberU.S\nSOURCE: Newsweek\n\nARTICLE:\n\nBy Ellie CookSenior Defense ReporterShareNewsweek is a Trust Project memberU.S. President Donald Trump has said the U.S. is \"seeking immediate negotiations\" to acquire Greenland, deepening the yawning chasm opening up between Washington and its closest allies over the Arctic territory.Trump called Greenland \"part of North America\" and \"our territory\" during a rambling speech to world leaders at the World Economic Forum in the Swiss town of Davos on Wednesday.The Republican reiterated his claim that the U.S. is the only power that can protect the mostly ice-covered expanse, and insisted this would not pose a threat to NATO.Alliance officials have repeatedly said a U.S. military attack on Greenland, a semi-autonomous part of Denmark, would spell the end of NATO. The prospect of the U.S. — the most influential and powerful member of NATO —attacking territory belonging to a fellow alliance member has always been unfathomable, until now.The White House had refused to rule out using military force to take Greenland, which would be a violation of international law.\"I don't want to use force. I won't use force,\" Trump said. \"All the United States is asking for is a place called Greenland.\"This is a breaking story. More to follow....Request Reprint & LicensingSubmit CorrectionView Editorial & AI GuidelinesAdd Newsweek as a preferred source on Google to see more of our trusted coverage when you search.Related PodcastsTop StoriesFor MembersWorldWhy the US Won't Be Coming to Its Longtime Ally's Aid in Syria10 min readFor MembersNewsUncommon Knowledge: China Complaining About Trump's Land Grab? That's Rich5 min readNewsAnti-ICE Resistance Raises Prospect of Government Shutdown6 min readFor MembersOpinionDonald Trump Finally Makes the Right Move on Greenland: 'Immediate Negotiations'5 min readNewsPam Bondi Announces Departure of Lindsey Halligan From DOJ3 min readPoliticsMaryland's New Congressional Map Could Wipe Republicans Out4 min readTrendingDon BaconRepublican Blasts 'Immoral' Trump Actions After Issuing Impeachment Warning7 min readViralShopper Finds $4.99 Sweater in Thrift Store—Then Realizes Royal Connection3 min readDonald TrumpDonald Trump Leaks Private Texts From NATO Allies: Read in Full6 min read25th AmendmentDemocrats Call to Invoke 25th Amendment Against Donald Trump6 min readNcaaCarson Beck Faces Backlash for Postgame Decision After Miami's Loss to Indiana2 min readOpinionOpinionShould the US Put Boots on the Ground in Iran? Newsweek Contributors Debate6 min readOpinionSyria's Kurds Lose Out | Opinion6 min readOpinionAgriculture Secretary: A Year of Results—How the Trump Admin Put American Farmers First | Opinion6 min readOpinionThe New American ICE Age | Opinion5 min readFor MembersOpinionConventional Wisdom: Greenland Edition3 min read\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"rambling speech\",\n    \"explanation\": \"The word 'rambling' is a subjective, pejorative characterization of Trump's speech that suggests it was disorganized or incoherent, rather than using neutral language like 'speech' or 'remarks.'\"\n  },\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"deepening the yawning chasm opening up between Washington and its closest allies\",\n    \"explanation\": \"This dramatic phrase frames the situation as a major diplomatic crisis using emotionally charged language ('yawning chasm') that emphasizes conflict rather than neutrally reporting the diplomatic disagreement.\"\n  },\n  {\n    \"biasType\": \"Selective Emphasis\",\n    \"biasedText\": \"The White House had refused to rule out using military force to take Greenland, which would be a violation of international law.\",\n    \"explanation\": \"The article emphasizes the prior refusal to rule out force before Trump's explicit denial ('I don't want to use force. I won't use force'), potentially giving readers a more aggressive impression than Trump's actual stated position.\"\n  },\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"The prospect of the U.S. — the most influential and powerful member of NATO —attacking territory belonging to a fellow alliance member has always been unfathomable, until now.\",\n    \"explanation\": \"The phrase 'until now' suggests that such an attack is now conceivable or imminent, despite Trump explicitly stating he won't use force, creating a more alarming interpretation than the facts support.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"rambling speech\",\n    \"explanation\": \"The word 'rambling' is a subjective, pejorative characterization of Trump's speech that suggests it was disorganized or incoherent, rather than using neutral language like 'speech' or 'remarks.'\"\n  },\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"deepening the yawning chasm opening up between Washington and its closest allies\",\n    \"explanation\": \"This dramatic phrase frames the situation as a major diplomatic crisis using emotionally charged language ('yawning chasm') that emphasizes conflict rather than neutrally reporting the diplomatic disagreement.\"\n  },\n  {\n    \"biasType\": \"Selective Emphasis\",\n    \"biasedText\": \"The White House had refused to rule out using military force to take Greenland, which would be a violation of international law.\",\n    \"explanation\": \"The article emphasizes the prior refusal to rule out force before Trump's explicit denial ('I don't want to use force. I won't use force'), potentially giving readers a more aggressive impression than Trump's actual stated position.\"\n  },\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"The prospect of the U.S. — the most influential and powerful member of NATO —attacking territory belonging to a fellow alliance member has always been unfathomable, until now.\",\n    \"explanation\": \"The phrase 'until now' suggests that such an attack is now conceivable or imminent, despite Trump explicitly stating he won't use force, creating a more alarming interpretation than the facts support.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "rambling speech",
+      "explanation": "The word 'rambling' is a subjective, pejorative characterization of Trump's speech that suggests it was disorganized or incoherent, rather than using neutral language like 'speech' or 'remarks.'"
+    },
+    {
+      "biasType": "Framing Bias",
+      "biasedText": "deepening the yawning chasm opening up between Washington and its closest allies",
+      "explanation": "This dramatic phrase frames the situation as a major diplomatic crisis using emotionally charged language ('yawning chasm') that emphasizes conflict rather than neutrally reporting the diplomatic disagreement."
+    },
+    {
+      "biasType": "Selective Emphasis",
+      "biasedText": "The White House had refused to rule out using military force to take Greenland, which would be a violation of international law.",
+      "explanation": "The article emphasizes the prior refusal to rule out force before Trump's explicit denial ('I don't want to use force. I won't use force'), potentially giving readers a more aggressive impression than Trump's actual stated position."
+    },
+    {
+      "biasType": "Framing Bias",
+      "biasedText": "The prospect of the U.S. — the most influential and powerful member of NATO —attacking territory belonging to a fellow alliance member has always been unfathomable, until now.",
+      "explanation": "The phrase 'until now' suggests that such an attack is now conceivable or imminent, despite Trump explicitly stating he won't use force, creating a more alarming interpretation than the facts support."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:04.740269+00:00",
+  "labeled_lean": "Center"
+}

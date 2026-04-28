@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_52408",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_52408",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Fox Business"
+  ],
+  "article_meta": {
+    "title": "close video GasBuddy expert says claims the US will see 'massive spike' in gas prices are 'erroneous' Patrick De Haan, G",
+    "source": "Fox Business",
+    "labeled_lean": "Lean Right",
+    "url": "https://www.foxbusiness.com/economy/iran-threatens-200-oil-barrels-us-prepares-massive-release-emergency-petroleum-reserves",
+    "created_at": "2026-03-14 01:17:32"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model returned an empty array. While many parts of this article are attributed quotes or factual reporting, there are some defensible bias instances in the author's own prose that could have been flagged. For example: 'one of the worst oil shocks since the 1970s' is sensationalist/emotionalist framing in the author's own voice; the headline/subhead 'GAS PRICES SURGE, PINCHING AMERICANS AND HANDING THE GOP A NEW MIDTERM HEADACHE' uses loaded language (though these appear to be cross-promotional links rather than author prose); 'escalating U.S. and Israeli strikes against the country continue to rattle global energy markets' uses loaded verbs ('rattle') in author prose; and the phrase 'Tehran reportedly emphasized that the instability in global oil markets was the result of what Tehran describes as conditions imposed by the United States and Israel' is reasonably neutral paraphrasing. The article also arguably has a slant issue - it reproduces extensive administration statements (Chris Wright's full statement) without independent expert critique of those claims. However, the article is largely a news wire-style report with heavy reliance on attributed statements, so the bias is subtle. The empty array is not egregiously wrong but does miss some defensible instances.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "No attribution rule violations since the model returned an empty array - it didn't flag anything at all, so no quoted text was incorrectly attributed to the author.",
+    "false_positive_rate": "No false positives since nothing was flagged.",
+    "false_negative_rate": "The model missed some defensible instances: 'one of the worst oil shocks since the 1970s' (Sensationalism in author prose), 'rattle global energy markets' (Word Choice - loaded verb), 'To prevent what could be one of the worst oil shocks since the 1970s' (Sensationalism/framing), and potentially Slant in the heavy reproduction of administration statements vs. limited independent analysis. The cross-promotional headlines like 'GAS PRICES SURGE, PINCHING AMERICANS AND HANDING THE GOP A NEW MIDTERM HEADACHE' also use loaded language though these may be editorial links rather than author prose. These are moderate misses - the article is mostly factual reporting but does contain some author-voice bias.",
+    "bias_type_accuracy": "No labels to evaluate since the array was empty."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model returned an empty array. While many parts of this article are attributed quotes or factual reporting, there are some defensible bias instances in the author's own prose that could have been flagged. For example: 'one of the worst oil shocks since the 1970s' is sensationalist/emotionalist framing in the author's own voice; the headline/subhead 'GAS PRICES SURGE, PINCHING AMERICANS AND HANDING THE GOP A NEW MIDTERM HEADACHE' uses loaded language (though these appear to be cross-promotional links rather than author prose); 'escalating U.S. and Israeli strikes against the country continue to rattle global energy markets' uses loaded verbs ('rattle') in author prose; and the phrase 'Tehran reportedly emphasized that the instability in global oil markets was the result of what Tehran describes as conditions imposed by the United States and Israel' is reasonably neutral paraphrasing. The article also arguably has a slant issue - it reproduces extensive administration statements (Chris Wright's full statement) without independent expert critique of those claims. However, the article is largely a news wire-style report with heavy reliance on attributed statements, so the bias is subtle. The empty array is not egregiously wrong but does miss some defensible instances.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 5, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"No attribution rule violations since the model returned an empty array - it didn't flag anything at all, so no quoted text was incorrectly attributed to the author.\", \"false_positive_rate\": \"No false positives since nothing was flagged.\", \"false_negative_rate\": \"The model missed some defensible instances: 'one of the worst oil shocks since the 1970s' (Sensationalism in author prose), 'rattle global energy markets' (Word Choice - loaded verb), 'To prevent what could be one of the worst oil shocks since the 1970s' (Sensationalism/framing), and potentially Slant in the heavy reproduction of administration statements vs. limited independent analysis. The cross-promotional headlines like 'GAS PRICES SURGE, PINCHING AMERICANS AND HANDING THE GOP A NEW MIDTERM HEADACHE' also use loaded language though these may be editorial links rather than author prose. These are moderate misses - the article is mostly factual reporting but does contain some author-voice bias.\", \"bias_type_accuracy\": \"No labels to evaluate since the array was empty.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.218500+00:00",
+  "labeled_lean": "Lean Right"
+}

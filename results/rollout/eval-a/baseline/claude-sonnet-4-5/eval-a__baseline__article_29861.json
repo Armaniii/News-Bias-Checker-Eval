@@ -1,0 +1,53 @@
+{
+  "scenario_id": "eval-a__baseline__article_29861",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_29861",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:baseline",
+    "source:Consider This from NPR"
+  ],
+  "article_meta": {
+    "title": "Trump sues JPMorgan, CEO Dimon over alleged 'debanking' The lawsuit escalates a series of confrontations between the pre",
+    "source": "Consider This from NPR",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.npr.org/2026/01/22/nx-s1-5685151/trump-jpmorgan-chase-jamie-dimon-debanking",
+    "created_at": "2026-01-22 19:41:11"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: Trump sues JPMorgan, CEO Dimon over alleged 'debanking' The lawsuit escalates a series of confrontations between the pre\nSOURCE: Consider This from NPR\n\nARTICLE:\n\nTrump sues JPMorgan, CEO Dimon over alleged 'debanking' The lawsuit escalates a series of confrontations between the president and the leader of the country's biggest bank. Business Trump sues JPMorgan Chase and CEO Jamie Dimon for $5B over alleged 'debanking' January 22, 20262:17 PM ET By Maria Aspan Trump sued JPMorgan Chase and CEO Jamie Dimon (pictured) for a least $5 billion, alleging his accounts at the country's top lender were unfairly closed shortly after the Jan. 6 attack on the Capitol in 2021. Win McNamee/Getty Images North America hide caption toggle caption Win McNamee/Getty Images North America President Trump sued JPMorgan Chase and chief executive Jamie Dimon on Thursday, seeking at least $5 billion in damages over allegations that the country's biggest bank closed his account for political reasons. Business Trump calls for a 10% cap on credit card interest rates Business How Trump's 'crony capitalism' has shaken up U.S. business The lawsuit follows through on a threat Trump made on his Truth Social network over the weekend — and caps several days of escalating tensions between the president and one of the most powerful CEOs in the United States. Trump filed his lawsuit in a Miami-Dade County state court on Thursday, alleging that the bank closed his accounts in 2021, weeks after the January 6 attack at the U.S. Capitol, \"as a result of political and social motivations, and [JPMorgan Chase's] unsubstantiated, 'woke' beliefs that it needed to distance itself from President Trump and his conservative political views.\" Sponsor Message In an emailed statement, a JPMorgan Chase spokesperson told NPR the lawsuit \"has no merit\" and said it intends to defend itself. JPMorgan Chase \"does not close accounts for political or religious reasons. We do close accounts because they create legal or regulatory risk for the company. We regret having to do so but often rules and regulatory expectations lead us to do so,\" the bank's statement said. \"We have been asking both this Administration and prior administrations to change the rules and regulations that put us in this position, and we support the Administration's efforts to prevent the weaponization of the banking sector.\" Trump has gone after banks before Trump has attacked several large U.S. banks, including JPMorgan Chase and Bank of America, for what he calls debanking conservatives. Last year, he sued Capital One over similar allegations. And in August, he issued an executive order targeting what he called \"politicized or unlawful debanking.\" But his suit against JPMorgan Chase and Dimon also comes after tensions between the two men escalated on several fronts. Most U.S. CEOs have been reluctant to publicly criticize Trump over his business and economic policies, but Dimon has spoken out against some of the president's actions, including his efforts to exert more control over the Federal Reserve. Sponsor Message Last week, after the Department of Justice launched a criminal probe into the Fed, Dimon reiterated his support for an independent central bank and for Fed Chair Jerome Powell. Then, this week, Dimon used stronger language to criticize Trump's proposed cap on credit card interest rates. \"It would be an economic disaster,\" Dimon said during an on-stage interview at the World Economic Forum in Davos, Switzerland.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Framing bias\",\n    \"biasedText\": \"Trump sued JPMorgan Chase and chief executive Jamie Dimon on Thursday, seeking at least $5 billion in damages over allegations that the country's biggest bank closed his account for political reasons.\",\n    \"explanation\": \"The article presents Trump's allegations as the primary framing without immediately contextualizing that JPMorgan disputes these claims. The headline and opening emphasize Trump's perspective ('alleged debanking') before presenting the bank's denial, which could lead readers to give more weight to Trump's claims.\"\n  },\n  {\n    \"biasType\": \"Selection and omission bias\",\n    \"biasedText\": \"The lawsuit follows through on a threat Trump made on his Truth Social network over the weekend — and caps several days of escalating tensions between the president and one of the most powerful CEOs in the United States.\",\n    \"explanation\": \"The article characterizes Trump's lawsuit announcement as a 'threat' rather than using more neutral language like 'announcement' or 'statement,' which carries negative connotations. Additionally, the article doesn't provide context about whether account closures after January 6 were common practice for banks facing regulatory scrutiny or reputational risk.\"\n  },\n  {\n    \"biasType\": \"Source selection bias\",\n    \"biasedText\": \"Trump filed his lawsuit in a Miami-Dade County state court on Thursday, alleging that the bank closed his accounts in 2021, weeks after the January 6 attack at the U.S. Capitol\",\n    \"explanation\": \"The article specifically mentions the timing relative to January 6 without exploring whether there might have been legitimate legal or regulatory reasons for the account closure beyond political motivation, potentially influencing readers to connect the events without full context.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Framing bias\",\n    \"biasedText\": \"Trump sued JPMorgan Chase and chief executive Jamie Dimon on Thursday, seeking at least $5 billion in damages over allegations that the country's biggest bank closed his account for political reasons.\",\n    \"explanation\": \"The article presents Trump's allegations as the primary framing without immediately contextualizing that JPMorgan disputes these claims. The headline and opening emphasize Trump's perspective ('alleged debanking') before presenting the bank's denial, which could lead readers to give more weight to Trump's claims.\"\n  },\n  {\n    \"biasType\": \"Selection and omission bias\",\n    \"biasedText\": \"The lawsuit follows through on a threat Trump made on his Truth Social network over the weekend — and caps several days of escalating tensions between the president and one of the most powerful CEOs in the United States.\",\n    \"explanation\": \"The article characterizes Trump's lawsuit announcement as a 'threat' rather than using more neutral language like 'announcement' or 'statement,' which carries negative connotations. Additionally, the article doesn't provide context about whether account closures after January 6 were common practice for banks facing regulatory scrutiny or reputational risk.\"\n  },\n  {\n    \"biasType\": \"Source selection bias\",\n    \"biasedText\": \"Trump filed his lawsuit in a Miami-Dade County state court on Thursday, alleging that the bank closed his accounts in 2021, weeks after the January 6 attack at the U.S. Capitol\",\n    \"explanation\": \"The article specifically mentions the timing relative to January 6 without exploring whether there might have been legitimate legal or regulatory reasons for the account closure beyond political motivation, potentially influencing readers to connect the events without full context.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Framing bias",
+      "biasedText": "Trump sued JPMorgan Chase and chief executive Jamie Dimon on Thursday, seeking at least $5 billion in damages over allegations that the country's biggest bank closed his account for political reasons.",
+      "explanation": "The article presents Trump's allegations as the primary framing without immediately contextualizing that JPMorgan disputes these claims. The headline and opening emphasize Trump's perspective ('alleged debanking') before presenting the bank's denial, which could lead readers to give more weight to Trump's claims."
+    },
+    {
+      "biasType": "Selection and omission bias",
+      "biasedText": "The lawsuit follows through on a threat Trump made on his Truth Social network over the weekend — and caps several days of escalating tensions between the president and one of the most powerful CEOs in the United States.",
+      "explanation": "The article characterizes Trump's lawsuit announcement as a 'threat' rather than using more neutral language like 'announcement' or 'statement,' which carries negative connotations. Additionally, the article doesn't provide context about whether account closures after January 6 were common practice for banks facing regulatory scrutiny or reputational risk."
+    },
+    {
+      "biasType": "Source selection bias",
+      "biasedText": "Trump filed his lawsuit in a Miami-Dade County state court on Thursday, alleging that the bank closed his accounts in 2021, weeks after the January 6 attack at the U.S. Capitol",
+      "explanation": "The article specifically mentions the timing relative to January 6 without exploring whether there might have been legitimate legal or regulatory reasons for the account closure beyond political motivation, potentially influencing readers to connect the events without full context."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:02.021264+00:00",
+  "labeled_lean": "Lean Left"
+}

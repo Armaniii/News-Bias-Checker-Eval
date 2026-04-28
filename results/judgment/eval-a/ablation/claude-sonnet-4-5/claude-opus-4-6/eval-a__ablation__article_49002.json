@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_49002",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_49002",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:The Hill"
+  ],
+  "article_meta": {
+    "title": "Administration Trump says there will ‘likely be more’ American deaths in Iran before conflict ends by Max Rego - 03\\/01\\",
+    "source": "The Hill",
+    "labeled_lean": "Center",
+    "url": "https://thehill.com/homenews/administration/5762120-trump-iran-operation-epic-fury/",
+    "created_at": "2026-03-04 17:37:44"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 4,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model identifies three bias instances. Let me evaluate each: (1) Omission of Source Attribution for the Khamenei death claim - this is defensible; the author states it as fact without attribution in the author's own prose. (2) Sensationalism/Emotionalism for 'Trump celebrated Khamenei's death' - partially problematic. The word 'celebrated' is the author's own word choice and is a fair flag, but the model also flags the quoted text ('wretched and vile man' and 'had the blood of hundreds...') which are Trump's quoted words, creating a partial attribution rule violation. (3) Bias by Omission for the article as a whole - this is defensible as the article does lack opposing perspectives, international reaction, or independent verification. However, the biasedText is 'The article as a whole' rather than specific text, which is somewhat appropriate for omission bias but imprecise. The main issues are: (a) the second item partially flags quoted text as part of the bias, though the author's framing word 'celebrated' is legitimately biased; (b) some potential author-level bias was missed, such as 'repeatedly crushing dissent' which could be flagged as author editorial language.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The second item includes quoted text ('wretched and vile man', 'had the blood of hundreds, even thousands, of Americans on his hands') as part of the flagged biased text, though the author's word 'celebrated' is legitimately the author's own prose. This is a partial attribution violation - the model should have flagged only 'celebrated' separately from the quotes.",
+    "false_positive_rate": "Item 1 (Omission of Source Attribution) is defensible - the death of a supreme leader stated without attribution is a fair flag. Item 2 is partially valid for 'celebrated' but overreaches by including quotes. Item 3 (Bias by Omission) is reasonable given the one-sided sourcing. Most items have some merit.",
+    "false_negative_rate": "The model missed some potential bias: 'repeatedly crushing dissent' is editorializing in the author's voice. 'a slew of political and military officials' uses informal/loaded language. The phrase 'After spending the weekend at his Mar-a-Lago resort in Florida' could be seen as subtle slant. These are relatively minor misses.",
+    "bias_type_accuracy": "Omission of Source Attribution for the unattributed Khamenei death claim is correctly applied. Sensationalism/Emotionalism for the 'celebrated' framing is reasonable though Word Choice might be more precise. Bias by Omission for the one-sided article is correctly applied. Labels are mostly defensible."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model identifies three bias instances. Let me evaluate each: (1) Omission of Source Attribution for the Khamenei death claim - this is defensible; the author states it as fact without attribution in the author's own prose. (2) Sensationalism/Emotionalism for 'Trump celebrated Khamenei's death' - partially problematic. The word 'celebrated' is the author's own word choice and is a fair flag, but the model also flags the quoted text ('wretched and vile man' and 'had the blood of hundreds...') which are Trump's quoted words, creating a partial attribution rule violation. (3) Bias by Omission for the article as a whole - this is defensible as the article does lack opposing perspectives, international reaction, or independent verification. However, the biasedText is 'The article as a whole' rather than specific text, which is somewhat appropriate for omission bias but imprecise. The main issues are: (a) the second item partially flags quoted text as part of the bias, though the author's framing word 'celebrated' is legitimately biased; (b) some potential author-level bias was missed, such as 'repeatedly crushing dissent' which could be flagged as author editorial language.\", \"custom_scores\": {\"attribution_rule_compliance\": 4, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The second item includes quoted text ('wretched and vile man', 'had the blood of hundreds, even thousands, of Americans on his hands') as part of the flagged biased text, though the author's word 'celebrated' is legitimately the author's own prose. This is a partial attribution violation - the model should have flagged only 'celebrated' separately from the quotes.\", \"false_positive_rate\": \"Item 1 (Omission of Source Attribution) is defensible - the death of a supreme leader stated without attribution is a fair flag. Item 2 is partially valid for 'celebrated' but overreaches by including quotes. Item 3 (Bias by Omission) is reasonable given the one-sided sourcing. Most items have some merit.\", \"false_negative_rate\": \"The model missed some potential bias: 'repeatedly crushing dissent' is editorializing in the author's voice. 'a slew of political and military officials' uses informal/loaded language. The phrase 'After spending the weekend at his Mar-a-Lago resort in Florida' could be seen as subtle slant. These are relatively minor misses.\", \"bias_type_accuracy\": \"Omission of Source Attribution for the unattributed Khamenei death claim is correctly applied. Sensationalism/Emotionalism for the 'celebrated' framing is reasonable though Word Choice might be more precise. Bias by Omission for the one-sided article is correctly applied. Labels are mostly defensible.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:24.602447+00:00",
+  "labeled_lean": "Center"
+}

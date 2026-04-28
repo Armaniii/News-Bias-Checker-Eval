@@ -1,0 +1,68 @@
+{
+  "scenario_id": "eval-a__baseline__article_29166",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_29166",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:baseline",
+    "source:Newsmax (News)"
+  ],
+  "article_meta": {
+    "title": "President Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic n",
+    "source": "Newsmax (News)",
+    "labeled_lean": "Right",
+    "url": "https://www.newsmax.com/politics/trump-davos-greenland/2026/01/21/id/1242956/",
+    "created_at": "2026-01-21 15:03:40"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "Identify bias in this news article. Output ONLY a valid JSON array. No prose, no markdown fences. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}] Return [] if no bias found."
+    },
+    {
+      "role": "user",
+      "content": "Analyze this article:\n\n---\nHEADLINE: President Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic n\nSOURCE: Newsmax (News)\n\nARTICLE:\n\nPresident Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic necessity while insisting he does not want to use military force. \"People thought I would use force. I don't want to use force. I won't use force,\" Trump said in remarks to the World Economic Forum in Davos, Switzerland. \"All the United States is asking for is a place called Greenland, where we already had it as a [territory] but respectfully returned it back to Denmark not long ago, after we defeated the Germans, the Japanese, the Italians and others in World War II,\" said Trump. \"We gave it back to them.\" Trump's speech to the world leaders, airing on Newsmax and Newsmax2 comes as tensions are high between the U.S. and Europe over the president's demands on Greenland, a semiautonomous Arctic island and territory of Denmark. He has threatened eight European Union nations, including Denmark, with stiff tariffs if a deal is not reached with the United States to acquire the land. On Wednesday, Trump insisted that \"no nation or group of nations is in any position to be able to secure Greenland other than the United States. \"We're a great power, much greater than people even understand,\" Trump said. He described Greenland as strategically located between major powers. \"Greenland is a vast, almost entirely uninhabited and undeveloped territory sitting undefended in a key strategic location between the United States, Russia, and China,\" he said. He added that U.S. policy has long been to prevent outside threats from entering the Western Hemisphere. \"This enormous, unsecured island is part of North America on the northern frontier of the Western Hemisphere,\" he said. \"That is our territory. It is therefore a core national security interest of the United States of America.\" He used World War II to support his claim that Denmark could not defend Greenland and said the United States built bases there at significant cost. \"We saw this in World War II when Denmark fell to Germany after just six hours of fighting and was totally unable to defend either itself or Greenland,\" Trump said. \"So the United States was then compelled to send our own forces to hold the Greenland territory, and hold it,\" Trump said. \"We did at great cost and expense...we literally set up bases on Greenland for Denmark. We fought for Denmark. We weren't fighting for anyone else. We were fighting to save it for Denmark.\" He said the United States should not have returned Greenland after the war and accused Denmark of failing to invest in defenses. \"After the war, which we won, we won it big,\" he said. \"After the war, we gave Greenland back to Denmark. How stupid were we to do that, but we did it. But we gave it back. But how ungrateful are they now?\" He also cited a past Danish pledge to strengthen defenses on the island. \"In 2019 Denmark said that it would spend over $200 million to strengthen Greenland's defenses,\" Trump said. \"As you know, they spent less than 1% of that amount. 1%. No sign of Denmark there.\" Trump said his interest is primarily security-focused, not about minerals. \"Everyone talks about the minerals,\" he said. \"That's not the reason we need it. We need it for strategic national security and international security.\" Trump said he wants talks \"immediately\" and said an acquisition would strengthen NATO security, while also complaining about the alliance's burden-sharing. \"That's the reason I'm seeking immediate negotiations to once again discuss the acquisition of Greenland by the United States,\" he said. \"This would not be a threat to NATO. This would greatly enhance the security of the entire alliance, the NATO alliance.\" Newsmax's Sandy Fitzgerald contributed to this report.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"President Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic necessity\",\n    \"explanation\": \"The headline and opening frame Trump's position sympathetically by emphasizing his characterization as 'strategic necessity' without including critical perspectives or Denmark/Greenland's rejection of the proposal.\"\n  },\n  {\n    \"biasType\": \"Omission Bias\",\n    \"biasedText\": \"The article fails to include any response from Danish or Greenlandic officials, or mention that Greenland is a self-governing territory whose population has repeatedly rejected being sold.\",\n    \"explanation\": \"Critical context is missing: no Danish government response, no Greenlandic perspective, no mention that Greenland's prime minister has stated 'Greenland is not for sale,' and no historical context that Greenland was never 'given back' as it was never U.S. territory.\"\n  },\n  {\n    \"biasType\": \"False Balance/Unchallenged Claims\",\n    \"biasedText\": \"All the United States is asking for is a place called Greenland, where we already had it as a [territory] but respectfully returned it back to Denmark not long ago\",\n    \"explanation\": \"Trump's historically inaccurate claim that the U.S. owned Greenland as a territory and 'gave it back' is presented without fact-checking. The U.S. maintained military bases but never owned Greenland.\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"How stupid were we to do that... But how ungrateful are they now?\",\n    \"explanation\": \"Trump's inflammatory language characterizing U.S. historical decisions as 'stupid' and Denmark as 'ungrateful' is quoted without contextualization or counterpoint, amplifying divisive rhetoric.\"\n  },\n  {\n    \"biasType\": \"Source Bias\",\n    \"biasedText\": \"Trump's speech to the world leaders, airing on Newsmax and Newsmax2\",\n    \"explanation\": \"The article notes it's airing on Newsmax's own platforms, suggesting potential promotional bias. The article relies entirely on Trump's claims without independent verification or alternative sources.\"\n  },\n  {\n    \"biasType\": \"False Equivalence\",\n    \"biasedText\": \"when Denmark fell to Germany after just six hours of fighting and was totally unable to defend either itself or Greenland\",\n    \"explanation\": \"Trump's WWII comparison is presented without context that Denmark was invaded by Nazi Germany in 1940, framing Denmark's defeat as incompetence rather than historical reality of facing overwhelming military force.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Framing Bias\",\n    \"biasedText\": \"President Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic necessity\",\n    \"explanation\": \"The headline and opening frame Trump's position sympathetically by emphasizing his characterization as 'strategic necessity' without including critical perspectives or Denmark/Greenland's rejection of the proposal.\"\n  },\n  {\n    \"biasType\": \"Omission Bias\",\n    \"biasedText\": \"The article fails to include any response from Danish or Greenlandic officials, or mention that Greenland is a self-governing territory whose population has repeatedly rejected being sold.\",\n    \"explanation\": \"Critical context is missing: no Danish government response, no Greenlandic perspective, no mention that Greenland's prime minister has stated 'Greenland is not for sale,' and no historical context that Greenland was never 'given back' as it was never U.S. territory.\"\n  },\n  {\n    \"biasType\": \"False Balance/Unchallenged Claims\",\n    \"biasedText\": \"All the United States is asking for is a place called Greenland, where we already had it as a [territory] but respectfully returned it back to Denmark not long ago\",\n    \"explanation\": \"Trump's historically inaccurate claim that the U.S. owned Greenland as a territory and 'gave it back' is presented without fact-checking. The U.S. maintained military bases but never owned Greenland.\"\n  },\n  {\n    \"biasType\": \"Loaded Language\",\n    \"biasedText\": \"How stupid were we to do that... But how ungrateful are they now?\",\n    \"explanation\": \"Trump's inflammatory language characterizing U.S. historical decisions as 'stupid' and Denmark as 'ungrateful' is quoted without contextualization or counterpoint, amplifying divisive rhetoric.\"\n  },\n  {\n    \"biasType\": \"Source Bias\",\n    \"biasedText\": \"Trump's speech to the world leaders, airing on Newsmax and Newsmax2\",\n    \"explanation\": \"The article notes it's airing on Newsmax's own platforms, suggesting potential promotional bias. The article relies entirely on Trump's claims without independent verification or alternative sources.\"\n  },\n  {\n    \"biasType\": \"False Equivalence\",\n    \"biasedText\": \"when Denmark fell to Germany after just six hours of fighting and was totally unable to defend either itself or Greenland\",\n    \"explanation\": \"Trump's WWII comparison is presented without context that Denmark was invaded by Nazi Germany in 1940, framing Denmark's defeat as incompetence rather than historical reality of facing overwhelming military force.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Framing Bias",
+      "biasedText": "President Donald Trump said Wednesday he wants negotiations to acquire Greenland, portraying the effort as a strategic necessity",
+      "explanation": "The headline and opening frame Trump's position sympathetically by emphasizing his characterization as 'strategic necessity' without including critical perspectives or Denmark/Greenland's rejection of the proposal."
+    },
+    {
+      "biasType": "Omission Bias",
+      "biasedText": "The article fails to include any response from Danish or Greenlandic officials, or mention that Greenland is a self-governing territory whose population has repeatedly rejected being sold.",
+      "explanation": "Critical context is missing: no Danish government response, no Greenlandic perspective, no mention that Greenland's prime minister has stated 'Greenland is not for sale,' and no historical context that Greenland was never 'given back' as it was never U.S. territory."
+    },
+    {
+      "biasType": "False Balance/Unchallenged Claims",
+      "biasedText": "All the United States is asking for is a place called Greenland, where we already had it as a [territory] but respectfully returned it back to Denmark not long ago",
+      "explanation": "Trump's historically inaccurate claim that the U.S. owned Greenland as a territory and 'gave it back' is presented without fact-checking. The U.S. maintained military bases but never owned Greenland."
+    },
+    {
+      "biasType": "Loaded Language",
+      "biasedText": "How stupid were we to do that... But how ungrateful are they now?",
+      "explanation": "Trump's inflammatory language characterizing U.S. historical decisions as 'stupid' and Denmark as 'ungrateful' is quoted without contextualization or counterpoint, amplifying divisive rhetoric."
+    },
+    {
+      "biasType": "Source Bias",
+      "biasedText": "Trump's speech to the world leaders, airing on Newsmax and Newsmax2",
+      "explanation": "The article notes it's airing on Newsmax's own platforms, suggesting potential promotional bias. The article relies entirely on Trump's claims without independent verification or alternative sources."
+    },
+    {
+      "biasType": "False Equivalence",
+      "biasedText": "when Denmark fell to Germany after just six hours of fighting and was totally unable to defend either itself or Greenland",
+      "explanation": "Trump's WWII comparison is presented without context that Denmark was invaded by Nazi Germany in 1940, framing Denmark's defeat as incompetence rather than historical reality of facing overwhelming military force."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:10.387764+00:00",
+  "labeled_lean": "Right"
+}

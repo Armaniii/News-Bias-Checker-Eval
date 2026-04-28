@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_41873",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_41873",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:New York Times (News)"
+  ],
+  "article_meta": {
+    "title": "The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to",
+    "source": "New York Times (News)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nytimes.com/2026/02/14/us/politics/democrats-illinois-senate-ice-trump.html",
+    "created_at": "2026-02-14 17:43:37"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 2,
+    "false_positive_rate": 5,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model identifies some genuinely debatable bias instances in the author's prose and avoids flagging quoted text. However, some flagged items are questionable, and the bias type labels are not always well-matched. The analysis is reasonable but imperfect.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All four flagged items come from the author's own prose, not from quoted sources. The first item ('combat President Trump's deportation agenda') is the author's framing in the headline/lede. The second, third, and fourth are all author prose. No attribution rule violations.",
+    "false_positive_rate": "Item 1 ('combat') is somewhat defensible but 'combat' is fairly standard political journalism language and may be overreach. Item 2 (DHS shutdown spin) is a reasonable flag — the author does assert a causal chain. Item 3 (evidence without source) is defensible as Omission of Source Attribution, though the author does cite the NJ example in the next sentence. Item 4 ('most progressive') is borderline — it's a common journalistic characterization but does introduce subjectivity. Overall, 1-2 items are questionable.",
+    "false_negative_rate": "The article is relatively balanced news reporting and there aren't many glaring bias instances. The model caught the main defensible ones. One could argue for flagging the framing of the entire article around 'dismantling Trump's immigration enforcement structure' as Slant, but this is debatable. The truncated article makes full assessment difficult.",
+    "bias_type_accuracy": "Item 1 (Word Choice for 'combat') is defensible. Item 2 (Spin for causal attribution) is well-labeled. Item 3 (Omission of Source Attribution for 'evidence') is reasonable though the evidence is partially provided in the next sentence — could also be Unsubstantiated Claims. Item 4 (Subjective Qualifying Adjectives for 'most progressive') is correctly labeled. Labels are generally appropriate."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model identifies some genuinely debatable bias instances in the author's prose and avoids flagging quoted text. However, some flagged items are questionable, and the bias type labels are not always well-matched. The analysis is reasonable but imperfect.\", \"custom_scores\": {\"attribution_rule_compliance\": 2, \"false_positive_rate\": 5, \"false_negative_rate\": 4, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All four flagged items come from the author's own prose, not from quoted sources. The first item ('combat President Trump's deportation agenda') is the author's framing in the headline/lede. The second, third, and fourth are all author prose. No attribution rule violations.\", \"false_positive_rate\": \"Item 1 ('combat') is somewhat defensible but 'combat' is fairly standard political journalism language and may be overreach. Item 2 (DHS shutdown spin) is a reasonable flag — the author does assert a causal chain. Item 3 (evidence without source) is defensible as Omission of Source Attribution, though the author does cite the NJ example in the next sentence. Item 4 ('most progressive') is borderline — it's a common journalistic characterization but does introduce subjectivity. Overall, 1-2 items are questionable.\", \"false_negative_rate\": \"The article is relatively balanced news reporting and there aren't many glaring bias instances. The model caught the main defensible ones. One could argue for flagging the framing of the entire article around 'dismantling Trump's immigration enforcement structure' as Slant, but this is debatable. The truncated article makes full assessment difficult.\", \"bias_type_accuracy\": \"Item 1 (Word Choice for 'combat') is defensible. Item 2 (Spin for causal attribution) is well-labeled. Item 3 (Omission of Source Attribution for 'evidence') is reasonable though the evidence is partially provided in the next sentence — could also be Unsubstantiated Claims. Item 4 (Subjective Qualifying Adjectives for 'most progressive') is correctly labeled. Labels are generally appropriate.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:28.495669+00:00",
+  "labeled_lean": "Lean Left"
+}

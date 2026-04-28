@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_1056",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_1056",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:Forbes"
+  ],
+  "article_meta": {
+    "title": "EntrepreneursMeet Angelica Nwandu: Founder Of The Shade Room, Instagram's 3rd Most Engaged ProfileByTommy",
+    "source": "Forbes",
+    "labeled_lean": "Center",
+    "url": "https://www.forbes.com/sites/tommywilliams1/2020/02/20/meet-angelica-nwandu/",
+    "created_at": "2025-11-24 05:07:33"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 1,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 1
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model returned an empty array for an article that contains some author-level bias, though the bias is more subtle than in the calibration examples. The article is essentially a profile/feature piece with a largely positive, uncritical tone. There are several instances of author-level bias that could reasonably be flagged: (1) The overall framing is highly sympathetic and celebratory without critical perspective - Slant; (2) 'an impressive 17.7m followers' - Subjective Qualifying Adjective ('impressive' is the author's evaluative word); (3) The narrative structure presents Angelica's story as divinely guided and heroic without journalistic balance - Spin/Slant; (4) No opposing viewpoints or critical perspectives on The Shade Room are included - potential Bias by Omission. The most clear-cut instance is 'impressive' as a subjective qualifying adjective in the author's own prose. However, this is a Forbes contributor profile piece, and the genre expectations somewhat mitigate the severity of the bias. The empty array is a partial miss but not as egregious as the calibration Example 3.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "No items were flagged, so no attribution violations occurred.",
+    "false_positive_rate": "No items flagged means no false positives.",
+    "false_negative_rate": "The model missed at least 'impressive 17.7m followers' (Subjective Qualifying Adjective), and arguably the overall uncritical, celebratory framing of the piece (Slant). These are moderate misses - the 'impressive' instance is fairly clear-cut author bias, while the overall slant is somewhat genre-dependent for a Forbes profile piece.",
+    "bias_type_accuracy": "No items flagged, so no type labels to evaluate."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model returned an empty array for an article that contains some author-level bias, though the bias is more subtle than in the calibration examples. The article is essentially a profile/feature piece with a largely positive, uncritical tone. There are several instances of author-level bias that could reasonably be flagged: (1) The overall framing is highly sympathetic and celebratory without critical perspective - Slant; (2) 'an impressive 17.7m followers' - Subjective Qualifying Adjective ('impressive' is the author's evaluative word); (3) The narrative structure presents Angelica's story as divinely guided and heroic without journalistic balance - Spin/Slant; (4) No opposing viewpoints or critical perspectives on The Shade Room are included - potential Bias by Omission. The most clear-cut instance is 'impressive' as a subjective qualifying adjective in the author's own prose. However, this is a Forbes contributor profile piece, and the genre expectations somewhat mitigate the severity of the bias. The empty array is a partial miss but not as egregious as the calibration Example 3.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 1, \"false_negative_rate\": 5, \"bias_type_accuracy\": 1}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"No items were flagged, so no attribution violations occurred.\", \"false_positive_rate\": \"No items flagged means no false positives.\", \"false_negative_rate\": \"The model missed at least 'impressive 17.7m followers' (Subjective Qualifying Adjective), and arguably the overall uncritical, celebratory framing of the piece (Slant). These are moderate misses - the 'impressive' instance is fairly clear-cut author bias, while the overall slant is somewhat genre-dependent for a Forbes profile piece.\", \"bias_type_accuracy\": \"No items flagged, so no type labels to evaluate.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:18.949257+00:00",
+  "labeled_lean": "Center"
+}

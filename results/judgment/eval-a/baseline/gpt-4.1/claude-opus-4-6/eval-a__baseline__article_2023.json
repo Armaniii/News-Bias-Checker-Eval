@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_2023",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_2023",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:NBC News Digital"
+  ],
+  "article_meta": {
+    "title": "War in UkraineKremlin says leaked U.S",
+    "source": "NBC News Digital",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nbcnews.com/world/russia/kremlin-leaked-call-witkoff-russia-peace-talks-ukraine-trump-deal-rcna246016",
+    "created_at": "2025-11-26 19:44:49"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 5,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 7
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model produces two flagged items. The first has issues: it includes quoted text from William Taylor within the flagged passage, which is partly an attribution rule violation, though the author's own framing sentence 'But the leak added fuel to criticism that Witkoff, and the original peace plan itself, were too favorable to the Kremlin' is genuinely author prose containing editorial framing (Slant/Spin). The second item correctly identifies author prose with loaded language ('forcing', 'appeared to favor Moscow heavily'), though the bias type labels used ('Selection of Sources Bias' and 'Loaded Language') are not from the provided list. The model also misses some potential bias instances. Overall, mixed performance with some correct identifications but also attribution issues and incorrect type labels.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The first flagged item includes William Taylor's quoted text as part of the biased passage. While the author's framing sentence before the quote is genuinely biased author prose, bundling the quote into the flagged text is a partial attribution rule violation. The second item correctly targets only author prose.",
+    "false_positive_rate": "The second item ('appeared to favor Moscow heavily', 'forcing') is a defensible identification of loaded author prose. The first item's author-prose component ('the leak added fuel to criticism that Witkoff, and the original peace plan itself, were too favorable to the Kremlin') is also defensible as Slant/Spin. However, including the Taylor quote inflates the flagged text. Neither item is a complete false positive, but the first is partially problematic.",
+    "false_negative_rate": "The model catches some key instances but could have flagged additional items, such as 'maximalist demands' (author characterizing Russia's position with a loaded term), and the structural framing throughout that presents the peace plan negatively. However, the most significant instances were partially captured.",
+    "bias_type_accuracy": "Neither 'Selection of Sources Bias' nor 'Loaded Language' appear in the provided list of valid bias types. 'Selection of Sources Bias' maps roughly to 'Slant' or 'Bias by Omission'; 'Loaded Language' maps to 'Word Choice' or 'Subjective Qualifying Adjectives'. Using labels outside the provided taxonomy is a clear error."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model produces two flagged items. The first has issues: it includes quoted text from William Taylor within the flagged passage, which is partly an attribution rule violation, though the author's own framing sentence 'But the leak added fuel to criticism that Witkoff, and the original peace plan itself, were too favorable to the Kremlin' is genuinely author prose containing editorial framing (Slant/Spin). The second item correctly identifies author prose with loaded language ('forcing', 'appeared to favor Moscow heavily'), though the bias type labels used ('Selection of Sources Bias' and 'Loaded Language') are not from the provided list. The model also misses some potential bias instances. Overall, mixed performance with some correct identifications but also attribution issues and incorrect type labels.\", \"custom_scores\": {\"attribution_rule_compliance\": 5, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 7}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The first flagged item includes William Taylor's quoted text as part of the biased passage. While the author's framing sentence before the quote is genuinely biased author prose, bundling the quote into the flagged text is a partial attribution rule violation. The second item correctly targets only author prose.\", \"false_positive_rate\": \"The second item ('appeared to favor Moscow heavily', 'forcing') is a defensible identification of loaded author prose. The first item's author-prose component ('the leak added fuel to criticism that Witkoff, and the original peace plan itself, were too favorable to the Kremlin') is also defensible as Slant/Spin. However, including the Taylor quote inflates the flagged text. Neither item is a complete false positive, but the first is partially problematic.\", \"false_negative_rate\": \"The model catches some key instances but could have flagged additional items, such as 'maximalist demands' (author characterizing Russia's position with a loaded term), and the structural framing throughout that presents the peace plan negatively. However, the most significant instances were partially captured.\", \"bias_type_accuracy\": \"Neither 'Selection of Sources Bias' nor 'Loaded Language' appear in the provided list of valid bias types. 'Selection of Sources Bias' maps roughly to 'Slant' or 'Bias by Omission'; 'Loaded Language' maps to 'Word Choice' or 'Subjective Qualifying Adjectives'. Using labels outside the provided taxonomy is a clear error.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:19.304763+00:00",
+  "labeled_lean": "Lean Left"
+}

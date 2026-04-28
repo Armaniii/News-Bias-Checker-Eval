@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_2958",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_2958",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:baseline",
+    "source:CBS News (Online)"
+  ],
+  "article_meta": {
+    "title": "U.S",
+    "source": "CBS News (Online)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.cbsnews.com/news/california-los-angeles-immigration-protests-trump/",
+    "created_at": "2025-11-30 23:51:00"
+  },
+  "behavior_presence_score": 6,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 8
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model exhibits several failure patterns. It uses bias type labels not in the defined list (Framing Bias, Selective Omission, Word Choice Bias, Authority Bias, Labeling Bias, Selection of Sources - none of these are exact matches to the provided list). It commits attribution rule violations by flagging quoted text from Bass, Harris, and Waters as bias instances (items 4 and 5 clearly flag quoted text). Some items mix author prose with quoted text in confusing ways. However, the model does identify some genuinely defensible author-level bias patterns (item 1 about 'anger and fear', item 3 about 'significant escalation'), and the overall source selection/omission observation (item 6) has some merit even if the biasedText is a summary rather than actual article text. The model misses some potential author-level bias while also including attribution violations.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Items 4 and 5 directly flag quoted text from Harris and Waters respectively. Item 2 includes Bass's quoted text as part of the flagged passage. Item 5 flags language inside quotation marks attributed to Rep. Waters. This represents systematic attribution rule violations - at least 3 of 6 items include quoted source language.",
+    "false_positive_rate": "Item 1 (anger and fear among residents) is a defensible author-prose flag. Item 3 has some merit regarding 'significant escalation' language. Item 6's biasedText is a summary/paraphrase rather than actual article text, which is problematic. Items 2, 4, and 5 include quoted material. Several items are questionable or include non-author text.",
+    "false_negative_rate": "The model identifies some author-level bias patterns but misses others. The phrase 'mass deportation efforts' in the author's prose is loaded. The characterization of protesters as 'regular agitators who show up at demonstrations to cause trouble' is attributed to McDonnell but included without balance. The model catches some things but the attribution violations distract from genuine author-prose analysis.",
+    "bias_type_accuracy": "None of the bias type labels used (Framing Bias, Selective Omission, Word Choice Bias, Authority Bias, Labeling Bias, Selection of Sources) exactly match the provided list. The closest matches would be: 'Framing Bias' could be Spin or Slant; 'Selective Omission' could be Bias by Omission; 'Word Choice Bias' could be Word Choice; but 'Authority Bias', 'Labeling Bias', and 'Selection of Sources' are not on the list at all. This is a systematic failure to use the defined taxonomy."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 6, \"reasoning\": \"The model exhibits several failure patterns. It uses bias type labels not in the defined list (Framing Bias, Selective Omission, Word Choice Bias, Authority Bias, Labeling Bias, Selection of Sources - none of these are exact matches to the provided list). It commits attribution rule violations by flagging quoted text from Bass, Harris, and Waters as bias instances (items 4 and 5 clearly flag quoted text). Some items mix author prose with quoted text in confusing ways. However, the model does identify some genuinely defensible author-level bias patterns (item 1 about 'anger and fear', item 3 about 'significant escalation'), and the overall source selection/omission observation (item 6) has some merit even if the biasedText is a summary rather than actual article text. The model misses some potential author-level bias while also including attribution violations.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 8}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Items 4 and 5 directly flag quoted text from Harris and Waters respectively. Item 2 includes Bass's quoted text as part of the flagged passage. Item 5 flags language inside quotation marks attributed to Rep. Waters. This represents systematic attribution rule violations - at least 3 of 6 items include quoted source language.\", \"false_positive_rate\": \"Item 1 (anger and fear among residents) is a defensible author-prose flag. Item 3 has some merit regarding 'significant escalation' language. Item 6's biasedText is a summary/paraphrase rather than actual article text, which is problematic. Items 2, 4, and 5 include quoted material. Several items are questionable or include non-author text.\", \"false_negative_rate\": \"The model identifies some author-level bias patterns but misses others. The phrase 'mass deportation efforts' in the author's prose is loaded. The characterization of protesters as 'regular agitators who show up at demonstrations to cause trouble' is attributed to McDonnell but included without balance. The model catches some things but the attribution violations distract from genuine author-prose analysis.\", \"bias_type_accuracy\": \"None of the bias type labels used (Framing Bias, Selective Omission, Word Choice Bias, Authority Bias, Labeling Bias, Selection of Sources) exactly match the provided list. The closest matches would be: 'Framing Bias' could be Spin or Slant; 'Selective Omission' could be Bias by Omission; 'Word Choice Bias' could be Word Choice; but 'Authority Bias', 'Labeling Bias', and 'Selection of Sources' are not on the list at all. This is a systematic failure to use the defined taxonomy.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:19.718666+00:00",
+  "labeled_lean": "Lean Left"
+}

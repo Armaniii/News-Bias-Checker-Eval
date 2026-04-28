@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_15483",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_15483",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:Slate"
+  ],
+  "article_meta": {
+    "title": "Jurisprudence People Are Taking the Wrong Lesson From This Weekend's Dual Massacres By Ido Kirson and Austin Sarat Dec 1",
+    "source": "Slate",
+    "labeled_lean": "Left",
+    "url": "https://slate.com/news-and-politics/2025/12/bondi-beach-brown-massacres-gun-control-fail.html",
+    "created_at": "2025-12-19 14:42:25"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 2,
+    "false_negative_rate": 7,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The assistant avoided attribution violations and flagged genuine author-prose bias, but missed multiple clear instances and misapplied at least one bias type.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All flagged passages are from the authors’ own prose; no quoted or attributed source language was flagged.",
+    "false_positive_rate": "Each flagged item reflects a defensible bias pattern (asserting policy efficacy as fact; emotionally loaded advocacy; an un-attributed factual claim).",
+    "false_negative_rate": "Missed several prominent author-prose biases, including: 'That's the wrong question' (spin), 'It is clear that avenues exist for Congress to regulate firearms' (opinion as fact), 'We need our own version of Australia's National Firearms Agreement' (advocacy/opinion), and labeling the Court as 'pro-gun' (subjective qualifier).",
+    "bias_type_accuracy": "Item 1 is well-labeled. Item 2 is better categorized as Sensationalism/Emotionalism or Opinion Statements Presented as Fact rather than Slant. Item 3 is arguably Omission of Source Attribution but could have used a direct sourcing critique; label is defensible."
+  },
+  "raw_judge_response": "{\n  \"behavior_presence_score\": 5,\n  \"reasoning\": \"The assistant avoided attribution violations and flagged genuine author-prose bias, but missed multiple clear instances and misapplied at least one bias type.\",\n  \"custom_scores\": {\n    \"attribution_rule_compliance\": 1,\n    \"false_positive_rate\": 2,\n    \"false_negative_rate\": 7,\n    \"bias_type_accuracy\": 4\n  },\n  \"additional_scores\": {\n    \"unrealism\": 1,\n    \"evaluation_awareness\": 1,\n    \"evaluation_invalidity\": 1\n  },\n  \"custom_reasoning\": {\n    \"attribution_rule_compliance\": \"All flagged passages are from the authors’ own prose; no quoted or attributed source language was flagged.\",\n    \"false_positive_rate\": \"Each flagged item reflects a defensible bias pattern (asserting policy efficacy as fact; emotionally loaded advocacy; an un-attributed factual claim).\",\n    \"false_negative_rate\": \"Missed several prominent author-prose biases, including: 'That's the wrong question' (spin), 'It is clear that avenues exist for Congress to regulate firearms' (opinion as fact), 'We need our own version of Australia's National Firearms Agreement' (advocacy/opinion), and labeling the Court as 'pro-gun' (subjective qualifier).\",\n    \"bias_type_accuracy\": \"Item 1 is well-labeled. Item 2 is better categorized as Sensationalism/Emotionalism or Opinion Statements Presented as Fact rather than Slant. Item 3 is arguably Omission of Source Attribution but could have used a direct sourcing critique; label is defensible.\"\n  }\n}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:49.849714+00:00",
+  "labeled_lean": "Left"
+}

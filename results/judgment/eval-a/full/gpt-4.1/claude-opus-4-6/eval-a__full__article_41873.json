@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_41873",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_41873",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:New York Times (News)"
+  ],
+  "article_meta": {
+    "title": "The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to",
+    "source": "New York Times (News)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nytimes.com/2026/02/14/us/politics/democrats-illinois-senate-ice-trump.html",
+    "created_at": "2026-02-14 17:43:37"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 3
+  },
+  "reasoning": "The model identifies three instances of potential bias in the author's own prose, correctly avoiding quoted text. The flagged items are defensible but some are debatable. No attribution rule violations occur. The bias type labels are mostly appropriate though some could be refined.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged instances come from the author's own prose. No quoted text or attributed statements are flagged. The model correctly distinguishes between author prose and source language.",
+    "false_positive_rate": "The third item (Opinion Statements Presented as Fact about 'abolish ICE' and 'defund the police' hurting the party) is the strongest finding - the author states a contested causal claim as fact. The first item about slant is somewhat defensible but borderline - the author's characterization that candidates 'aren't split by major ideological or policy differences' is a judgment call. The second item about 'Democratic anger' causing a shutdown is debatable - it could be seen as a factual shorthand rather than negativity bias, though attributing the shutdown to one party's 'anger' does carry editorial framing.",
+    "false_negative_rate": "The model could have flagged 'ambitious Democrats' as a Subjective Qualifying Adjective - the word 'ambitious' carries connotations. The word 'dismantling' in reference to Trump's immigration enforcement structure could be flagged as Word Choice (loaded verb). The article's truncation also means potential Bias by Omission could exist but is hard to assess. Overall the model caught the most significant instances.",
+    "bias_type_accuracy": "The third item's label 'Opinion Statements Presented as Fact' is well-applied. The first item's 'Slant' label is reasonable. The second item's 'Negativity Bias' label is debatable - it might be better characterized as 'Spin' or 'Word Choice' since the issue is more about causal attribution framing than emphasizing negative news per se."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model identifies three instances of potential bias in the author's own prose, correctly avoiding quoted text. The flagged items are defensible but some are debatable. No attribution rule violations occur. The bias type labels are mostly appropriate though some could be refined.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 3}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged instances come from the author's own prose. No quoted text or attributed statements are flagged. The model correctly distinguishes between author prose and source language.\", \"false_positive_rate\": \"The third item (Opinion Statements Presented as Fact about 'abolish ICE' and 'defund the police' hurting the party) is the strongest finding - the author states a contested causal claim as fact. The first item about slant is somewhat defensible but borderline - the author's characterization that candidates 'aren't split by major ideological or policy differences' is a judgment call. The second item about 'Democratic anger' causing a shutdown is debatable - it could be seen as a factual shorthand rather than negativity bias, though attributing the shutdown to one party's 'anger' does carry editorial framing.\", \"false_negative_rate\": \"The model could have flagged 'ambitious Democrats' as a Subjective Qualifying Adjective - the word 'ambitious' carries connotations. The word 'dismantling' in reference to Trump's immigration enforcement structure could be flagged as Word Choice (loaded verb). The article's truncation also means potential Bias by Omission could exist but is hard to assess. Overall the model caught the most significant instances.\", \"bias_type_accuracy\": \"The third item's label 'Opinion Statements Presented as Fact' is well-applied. The first item's 'Slant' label is reasonable. The second item's 'Negativity Bias' label is debatable - it might be better characterized as 'Spin' or 'Word Choice' since the issue is more about causal attribution framing than emphasizing negative news per se.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:37.949485+00:00",
+  "labeled_lean": "Lean Left"
+}

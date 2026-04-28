@@ -1,0 +1,48 @@
+{
+  "scenario_id": "eval-a__ablation__article_41873",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_41873",
+  "model": "claude-sonnet-4-5",
+  "tags": [
+    "condition:ablation",
+    "source:New York Times (News)"
+  ],
+  "article_meta": {
+    "title": "The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to",
+    "source": "New York Times (News)",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.nytimes.com/2026/02/14/us/politics/democrats-illinois-senate-ice-trump.html",
+    "created_at": "2026-02-14 17:43:37"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are an AI tool for journalists to identify bias in their articles. Output ONLY a valid JSON array. No prose, no markdown fences. Empty array [] if no bias found. Format: [{\"biasType\": \"...\", \"biasedText\": \"...\", \"explanation\": \"...\"}]"
+    },
+    {
+      "role": "user",
+      "content": "Bias types: Spin, Unsubstantiated Claims, Opinion Statements Presented as Fact, Sensationalism/Emotionalism, Mudslinging/Ad Hominem, Mind Reading, Slant, Flawed Logic, Bias by Omission, Omission of Source Attribution, Bias by Story Choice and Placement, Subjective Qualifying Adjectives, Word Choice, Negativity Bias, Elite vs. Populist Bias.\n\nBe cautious — present fewer, confident examples rather than more uncertain ones.\n\nAnalyze this article:\n\n---\nHEADLINE: The three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to\nSOURCE: New York Times (News)\n\nARTICLE:\n\nThe three-way battle between Democrats running for Senate in Illinois has evolved into an argument about the best way to combat President Trump’s deportation agenda.Is it better to “abolish ICE,” as Lt. Gov. Juliana Stratton offers, or to “abolish Trump’s ICE,” as Representative Raja Krishnamoorthi promises?The contest’s third candidate, Representative Robin Kelly, said the country could not just abolish U.S. Immigration and Customs Enforcement without a plan to replace the agency’s border enforcement function, but she introduced legislation last month to impeach Kristi Noem, the Homeland Security secretary — a bill Mr. Krishnamoorthi quickly signed onto.The tenor of the Illinois race had a focus on immigration when the Trump administration sent federal agents to Chicago last fall and then shifted fully to deportation policy after Border Patrol agents shot and killed Alex Pretti in Minneapolis. The three Senate candidates, who aren’t split by major ideological or policy differences, now offer a window into how Democrats could approach dismantling Mr. Trump’s immigration enforcement structure if they win back full control in Washington.Early voting has begun for the March 17 primary race, and there is evidence in other contests that a strong anti-ICE agenda can work in low-turnout Democratic primaries. Last week in New Jersey, Analilia Mejia won a 13-candidate special primary election running as the most progressive candidate in the field on a pledge to abolish ICE. Democratic anger over Mr. Trump’s deportation policies led to a shutdown of the Department of Homeland Security when its funding expired this weekend.And yet ambitious Democrats who saw how calls to “abolish ICE” and “defund the police” hurt the party in recent years are concerned that running on a definitive message to abolish the agency is risky politics — if not in 2026 then beyond.We are having trouble retrieving the article content.Please enable JavaScript in your browser settings.Thank you for your patience while we verify access. If you are in Reader mode please exit and log into your Times account, or subscribe for all of The Times.Thank you for your patience while we verify access.Already a subscriber? Log in.Want all of The Times? Subscribe.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "```json\n[\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"there is evidence in other contests that a strong anti-ICE agenda can work in low-turnout Democratic primaries\",\n    \"explanation\": \"The article claims there is 'evidence' without citing any specific studies, data, or sources to support this assertion.\"\n  },\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"ambitious Democrats who saw how calls to 'abolish ICE' and 'defund the police' hurt the party in recent years are concerned\",\n    \"explanation\": \"The article attributes concerns to 'ambitious Democrats' without naming any specific individuals or providing quotes, making it unclear who holds these views or whether this represents a significant faction.\"\n  }\n]\n```"
+    }
+  ],
+  "raw_response": "```json\n[\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"there is evidence in other contests that a strong anti-ICE agenda can work in low-turnout Democratic primaries\",\n    \"explanation\": \"The article claims there is 'evidence' without citing any specific studies, data, or sources to support this assertion.\"\n  },\n  {\n    \"biasType\": \"Omission of Source Attribution\",\n    \"biasedText\": \"ambitious Democrats who saw how calls to 'abolish ICE' and 'defund the police' hurt the party in recent years are concerned\",\n    \"explanation\": \"The article attributes concerns to 'ambitious Democrats' without naming any specific individuals or providing quotes, making it unclear who holds these views or whether this represents a significant faction.\"\n  }\n]\n```",
+  "parsed_output": [
+    {
+      "biasType": "Omission of Source Attribution",
+      "biasedText": "there is evidence in other contests that a strong anti-ICE agenda can work in low-turnout Democratic primaries",
+      "explanation": "The article claims there is 'evidence' without citing any specific studies, data, or sources to support this assertion."
+    },
+    {
+      "biasType": "Omission of Source Attribution",
+      "biasedText": "ambitious Democrats who saw how calls to 'abolish ICE' and 'defund the police' hurt the party in recent years are concerned",
+      "explanation": "The article attributes concerns to 'ambitious Democrats' without naming any specific individuals or providing quotes, making it unclear who holds these views or whether this represents a significant faction."
+    }
+  ],
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:02.530326+00:00",
+  "labeled_lean": "Lean Left"
+}

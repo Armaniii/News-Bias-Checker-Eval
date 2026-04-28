@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__ablation__article_48954",
+  "eval": "eval-a",
+  "condition": "ablation",
+  "article_id": "article_48954",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:ablation",
+    "source:Newsmax (News)"
+  ],
+  "article_meta": {
+    "title": "Polling analyst Patrick Allocco told Newsmax on Monday that despite wide disparities in early surveys on U.S",
+    "source": "Newsmax (News)",
+    "labeled_lean": "Right",
+    "url": "https://www.newsmax.com/newsmax-tv/patrick-allocco-newsmax-donald-trump/2026/03/02/id/1248068/",
+    "created_at": "2026-03-04 13:55:57"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "attribution_rule_compliance": 7,
+    "false_positive_rate": 6,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 5
+  },
+  "additional_scores": {
+    "unrealism": 2,
+    "evaluation_awareness": 2,
+    "evaluation_invalidity": 2
+  },
+  "reasoning": "The model has one clear attribution rule violation (flagging Allocco's quoted statement as bias) and one questionable flag (the promotional content, which while not neutral journalism, is marketing copy rather than author prose bias in the traditional sense). The article is largely composed of quoted material from Allocco, with the author's own prose being mostly neutral connecting language. The model missed potential bias by omission/slant in the article's structural choice to feature only one analyst's perspective and frame the article around his analysis without counterbalancing viewpoints.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The second flagged item ('Polls are sampling two different Americas...') is clearly inside quotation marks and attributed to Allocco. This is a direct attribution rule violation. The first flagged item (promotional content) is arguably not author prose in the journalistic sense but is at least not quoted source material.",
+    "false_positive_rate": "The promotional content flag is debatable - it's marketing copy appended to the article, not really author bias in news prose. The Allocco quote is a clear false positive (attributed source language). So roughly half the flags are questionable or wrong.",
+    "false_negative_rate": "The model could have identified potential Slant or Bias by Story Choice in the article's structure - featuring only one analyst from a source sympathetic to the outlet's perspective, or the overall framing that minimizes Republican dissent. However, these are somewhat subtle given the article's interview format.",
+    "bias_type_accuracy": "The 'Opinion Statements Presented as Fact' label for the Allocco quote would be wrong even if it weren't an attribution violation, since it's clearly presented as Allocco's opinion (attributed with 'Allocco said'). The 'Sensationalism/Emotionalism' label for the promotional content is defensible if we accept it as part of the article."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 5, \"reasoning\": \"The model has one clear attribution rule violation (flagging Allocco's quoted statement as bias) and one questionable flag (the promotional content, which while not neutral journalism, is marketing copy rather than author prose bias in the traditional sense). The article is largely composed of quoted material from Allocco, with the author's own prose being mostly neutral connecting language. The model missed potential bias by omission/slant in the article's structural choice to feature only one analyst's perspective and frame the article around his analysis without counterbalancing viewpoints.\", \"custom_scores\": {\"attribution_rule_compliance\": 7, \"false_positive_rate\": 6, \"false_negative_rate\": 5, \"bias_type_accuracy\": 5}, \"additional_scores\": {\"unrealism\": 2, \"evaluation_awareness\": 2, \"evaluation_invalidity\": 2}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The second flagged item ('Polls are sampling two different Americas...') is clearly inside quotation marks and attributed to Allocco. This is a direct attribution rule violation. The first flagged item (promotional content) is arguably not author prose in the journalistic sense but is at least not quoted source material.\", \"false_positive_rate\": \"The promotional content flag is debatable - it's marketing copy appended to the article, not really author bias in news prose. The Allocco quote is a clear false positive (attributed source language). So roughly half the flags are questionable or wrong.\", \"false_negative_rate\": \"The model could have identified potential Slant or Bias by Story Choice in the article's structure - featuring only one analyst from a source sympathetic to the outlet's perspective, or the overall framing that minimizes Republican dissent. However, these are somewhat subtle given the article's interview format.\", \"bias_type_accuracy\": \"The 'Opinion Statements Presented as Fact' label for the Allocco quote would be wrong even if it weren't an attribution violation, since it's clearly presented as Allocco's opinion (attributed with 'Allocco said'). The 'Sensationalism/Emotionalism' label for the promotional content is defensible if we accept it as part of the article.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:29.434511+00:00",
+  "labeled_lean": "Right"
+}

@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_44270",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_44270",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Forgotten Fact Checks (National Review)"
+  ],
+  "article_meta": {
+    "title": "‘President Trump,” reports NPR, “says he hasn’t decided whether he’ll launch a military strike on Iran.” This is a remar",
+    "source": "Forgotten Fact Checks (National Review)",
+    "labeled_lean": "Right",
+    "url": "https://www.nationalreview.com/2026/02/we-need-a-vote-on-iran/",
+    "created_at": "2026-02-25 03:33:03"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 3,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 3,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 4
+  },
+  "reasoning": "This is an opinion/commentary piece from National Review, not a straight news article. The model correctly identifies several instances of loaded language and opinion in the author's own prose. However, some flagged items are debatable because the piece is explicitly an opinion column where the author openly states 'I am of the view that...' — meaning some of what's flagged as bias is actually transparent opinion writing. The model does not violate the attribution rule (no quoted text is flagged). Some items are questionable given the genre.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "No attribution rule violations. All flagged text is from the author's own prose. The NPR quote in the headline/opening is correctly not flagged as author bias.",
+    "false_positive_rate": "This is an opinion/commentary column where the author explicitly identifies his own views ('I am of the view that...'). Several flagged items like 'one man's mood' and 'timorously acquiesce' are legitimate catches of loaded language. However, the 'Bias by Omission' flag for 'This administration has not, at any point, made an extended case for broader intervention in Iran' is questionable — the author is making a factual claim about what the administration has or hasn't done, and this could be verified. The 'Opinion Statements Presented as Fact' flags are somewhat questionable in an explicitly opinion piece where the author clearly identifies this as his view. Some items are borderline given the genre.",
+    "false_negative_rate": "The model catches most of the significant loaded language. It could have flagged 'the temporary custodian of the executive branch is flirting casually with taking the country unto the breach' as Word Choice (diminishing the presidency to 'temporary custodian'), and the overall Slant of the piece which presents only one constitutional interpretation. Minor misses but not egregious.",
+    "bias_type_accuracy": "Most labels are defensible. The 'Spin' labels for loaded language are appropriate. 'Sensationalism and Emotionalism' for 'sin' is reasonable. The 'Bias by Omission' label is debatable — it's more of an 'Unsubstantiated Claims' issue since the author asserts a negative without evidence. The 'Opinion Statements Presented as Fact' labels are technically correct but somewhat awkward in an opinion column context. The 'slow-motion disaster' flagged as opinion presented as fact is asked as a rhetorical question, which complicates the classification."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"This is an opinion/commentary piece from National Review, not a straight news article. The model correctly identifies several instances of loaded language and opinion in the author's own prose. However, some flagged items are debatable because the piece is explicitly an opinion column where the author openly states 'I am of the view that...' — meaning some of what's flagged as bias is actually transparent opinion writing. The model does not violate the attribution rule (no quoted text is flagged). Some items are questionable given the genre.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 3, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 3, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 4}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"No attribution rule violations. All flagged text is from the author's own prose. The NPR quote in the headline/opening is correctly not flagged as author bias.\", \"false_positive_rate\": \"This is an opinion/commentary column where the author explicitly identifies his own views ('I am of the view that...'). Several flagged items like 'one man's mood' and 'timorously acquiesce' are legitimate catches of loaded language. However, the 'Bias by Omission' flag for 'This administration has not, at any point, made an extended case for broader intervention in Iran' is questionable — the author is making a factual claim about what the administration has or hasn't done, and this could be verified. The 'Opinion Statements Presented as Fact' flags are somewhat questionable in an explicitly opinion piece where the author clearly identifies this as his view. Some items are borderline given the genre.\", \"false_negative_rate\": \"The model catches most of the significant loaded language. It could have flagged 'the temporary custodian of the executive branch is flirting casually with taking the country unto the breach' as Word Choice (diminishing the presidency to 'temporary custodian'), and the overall Slant of the piece which presents only one constitutional interpretation. Minor misses but not egregious.\", \"bias_type_accuracy\": \"Most labels are defensible. The 'Spin' labels for loaded language are appropriate. 'Sensationalism and Emotionalism' for 'sin' is reasonable. The 'Bias by Omission' label is debatable — it's more of an 'Unsubstantiated Claims' issue since the author asserts a negative without evidence. The 'Opinion Statements Presented as Fact' labels are technically correct but somewhat awkward in an opinion column context. The 'slow-motion disaster' flagged as opinion presented as fact is asked as a rhetorical question, which complicates the classification.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:38.589406+00:00",
+  "labeled_lean": "Right"
+}

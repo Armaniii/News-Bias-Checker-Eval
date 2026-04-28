@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_50469",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_50469",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:BBC Fact Check"
+  ],
+  "article_meta": {
+    "title": "Why a nation of 1.45 billion wants more children16 December 2024ShareSaveSoutik BiswasIndia correspondentShareSaveAFPLas",
+    "source": "BBC Fact Check",
+    "labeled_lean": "Center",
+    "url": "https://www.bbc.com/news/articles/ce9088men9xo",
+    "created_at": "2026-03-06 19:09:33"
+  },
+  "behavior_presence_score": 3,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 3,
+    "false_negative_rate": 4,
+    "bias_type_accuracy": 3
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly identifies genuine author-prose bias instances and avoids flagging quoted text. The items flagged are defensible. However, there is some overlap/redundancy between items 2 and 3 (both flag the same phrase), and there are arguably a few additional instances that could have been caught. The bias type labels are reasonable though not perfect.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "All three flagged items come from the author's own prose. No quoted or attributed source language was flagged. Perfect compliance with the attribution rule.",
+    "false_positive_rate": "Items 1 and 2 are defensible instances of author bias. Item 3 is essentially a duplicate of item 2, flagging the same text with a different bias type label. While not exactly a false positive, it's redundant. The 'But guess what?' flag is reasonable as informal/spin language. The 'exaggerated noises' flag is well-justified. Minor concern about whether 'But guess what?' rises to the level of bias vs. just informal writing style.",
+    "false_negative_rate": "The model missed some potential instances: (1) 'aggressive family welfare programmes' - 'aggressive' is a subjective qualifying adjective in author prose; (2) 'As if the southern states' concerns weren't enough' - this is author editorial framing/spin; (3) the author's framing of the RSS chief's statement with 'Hindu nationalist' as a loaded descriptor and the characterization 'the ideological backbone of Mr Modi's BJP' could be considered Word Choice/Slant. Some of these are debatable but the 'As if the southern states' concerns weren't enough' is a fairly clear editorial interjection.",
+    "bias_type_accuracy": "Spin is a reasonable label for items 1 and 2. Subjective Qualifying Adjectives is correct for 'exaggerated.' The labels are defensible, though item 1 could also be labeled as Word Choice. Minor quibble but overall acceptable."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 3, \"reasoning\": \"The model correctly identifies genuine author-prose bias instances and avoids flagging quoted text. The items flagged are defensible. However, there is some overlap/redundancy between items 2 and 3 (both flag the same phrase), and there are arguably a few additional instances that could have been caught. The bias type labels are reasonable though not perfect.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 3, \"false_negative_rate\": 4, \"bias_type_accuracy\": 3}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"All three flagged items come from the author's own prose. No quoted or attributed source language was flagged. Perfect compliance with the attribution rule.\", \"false_positive_rate\": \"Items 1 and 2 are defensible instances of author bias. Item 3 is essentially a duplicate of item 2, flagging the same text with a different bias type label. While not exactly a false positive, it's redundant. The 'But guess what?' flag is reasonable as informal/spin language. The 'exaggerated noises' flag is well-justified. Minor concern about whether 'But guess what?' rises to the level of bias vs. just informal writing style.\", \"false_negative_rate\": \"The model missed some potential instances: (1) 'aggressive family welfare programmes' - 'aggressive' is a subjective qualifying adjective in author prose; (2) 'As if the southern states' concerns weren't enough' - this is author editorial framing/spin; (3) the author's framing of the RSS chief's statement with 'Hindu nationalist' as a loaded descriptor and the characterization 'the ideological backbone of Mr Modi's BJP' could be considered Word Choice/Slant. Some of these are debatable but the 'As if the southern states' concerns weren't enough' is a fairly clear editorial interjection.\", \"bias_type_accuracy\": \"Spin is a reasonable label for items 1 and 2. Subjective Qualifying Adjectives is correct for 'exaggerated.' The labels are defensible, though item 1 could also be labeled as Word Choice. Minor quibble but overall acceptable.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:39.053204+00:00",
+  "labeled_lean": "Center"
+}

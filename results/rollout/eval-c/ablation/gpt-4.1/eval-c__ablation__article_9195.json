@@ -1,0 +1,47 @@
+{
+  "scenario_id": "eval-c__ablation__article_9195",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_9195",
+  "model": "gpt-4.1",
+  "tags": [
+    "condition:ablation",
+    "source:Forbes"
+  ],
+  "article_meta": {
+    "title": "BusinessNetflix Will Acquire Warner Bros",
+    "source": "Forbes",
+    "labeled_lean": "Center",
+    "url": "https://www.forbes.com/sites/siladityaray/2025/12/05/netflix-will-acquire-warner-bros-in-83-billion-deal-discovery-will-be-split-off/",
+    "created_at": "2025-12-08 13:35:23"
+  },
+  "transcript": [
+    {
+      "role": "system",
+      "content": "You are a political lean classifier. Classify the article's political lean using the 5-class AllSides scale. Respond ONLY with a valid JSON object — no prose, no markdown fences:\n{\n  \"lean\": \"Left\"|\"Lean Left\"|\"Center\"|\"Lean Right\"|\"Right\",\n  \"confidence\": 0.0 to 1.0,\n  \"reasoning\": \"string\",\n  \"key_indicators\": [\"string\"]\n}\nScale:\n  Left: strong consistent left-leaning editorial choices\n  Lean Left: moderate left tilt, some balance present\n  Center: balanced, neither side consistently favored\n  Lean Right: moderate right tilt, some balance present\n  Right: strong consistent right-leaning editorial choices\nConfidence: 0.5-0.7 subtle lean, 0.8-0.95 clear lean, 0.95+ unambiguous."
+    },
+    {
+      "role": "user",
+      "content": "Classify the political lean of this article:\n\n---\nHEADLINE: BusinessNetflix Will Acquire Warner Bros\nSOURCE: Forbes\n\nARTICLE:\n\nBreakingBusinessNetflix Will Acquire Warner Bros. In $83 Billion Deal—Discovery Will Be Split OffBySiladitya Ray,Forbes Staff. Siladitya Ray is a New Delhi-based Forbes news team reporter.Follow AuthorDec 05, 2025, 07:52am ESTDec 05, 2025, 08:53am ESTShareSaveCommentToplineNetflix on Friday announced it had reached a deal to acquire Warner Bros.— including the company's film and television studios and streamer HBO Max—for $82.7 billion, in move that follows a weeks-long bidding war in which the streaming giant beat out Paramount and Comcast.Warner Bros. Discovery has reportedly entered exclusive talks with Netflix for a sale of its studio and TV businesses.Anadolu via Getty ImagesKey FactsIn a press statement the company said the cash and stock deal is valued at $27.75 per Warner Bros. Discovery share and it will close after the media giant's TV network business is spun off into a separate public company, Discovery Global.The deal is subject to regulatory approvals and is expected to be completed in the third quarter of 2026.If it goes through, each WBD shareholder will receive $23.25 in cash per share and $4.501 worth of shares of Netflix's stock.According to Deadline and CNN, Paramount Skydance had offered $27 per share for the entire Warner Bros. Discovery business, including its cable channels like CNN and TNT. Comcast also made a bid only for Warner Bros. Discovery's studio and streaming businesses.Bloomberg previously reported that Netflix is offering Warner Bros. Discovery a $5 billion breakup fee if regulators don't clear the deal.\n---"
+    },
+    {
+      "role": "assistant",
+      "content": "{\n  \"lean\": \"Center\",\n  \"confidence\": 0.95,\n  \"reasoning\": \"The article is a straightforward business report about an acquisition. It focuses on factual details such as the terms of the deal, statements from the companies involved, relevant figures, and competitor bids. There is no discernible partisan language or editorializing, and no policy or political context is introduced. Forbes is generally considered center or center-right for business reporting, but this specific article maintains a neutral, factual tone.\",\n  \"key_indicators\": [\n    \"Focus on facts and business details\",\n    \"Absence of partisan or policy commentary\",\n    \"No emotive or evaluative language\",\n    \"Neutral presentation of involved companies\"\n  ]\n}"
+    }
+  ],
+  "raw_response": "{\n  \"lean\": \"Center\",\n  \"confidence\": 0.95,\n  \"reasoning\": \"The article is a straightforward business report about an acquisition. It focuses on factual details such as the terms of the deal, statements from the companies involved, relevant figures, and competitor bids. There is no discernible partisan language or editorializing, and no policy or political context is introduced. Forbes is generally considered center or center-right for business reporting, but this specific article maintains a neutral, factual tone.\",\n  \"key_indicators\": [\n    \"Focus on facts and business details\",\n    \"Absence of partisan or policy commentary\",\n    \"No emotive or evaluative language\",\n    \"Neutral presentation of involved companies\"\n  ]\n}",
+  "parsed_output": {
+    "lean": "Center",
+    "confidence": 0.95,
+    "reasoning": "The article is a straightforward business report about an acquisition. It focuses on factual details such as the terms of the deal, statements from the companies involved, relevant figures, and competitor bids. There is no discernible partisan language or editorializing, and no policy or political context is introduced. Forbes is generally considered center or center-right for business reporting, but this specific article maintains a neutral, factual tone.",
+    "key_indicators": [
+      "Focus on facts and business details",
+      "Absence of partisan or policy commentary",
+      "No emotive or evaluative language",
+      "Neutral presentation of involved companies"
+    ]
+  },
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:30:29.311256+00:00",
+  "labeled_lean": "Center"
+}

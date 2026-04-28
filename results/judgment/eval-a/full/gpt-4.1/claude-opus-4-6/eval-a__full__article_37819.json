@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__full__article_37819",
+  "eval": "eval-a",
+  "condition": "full",
+  "article_id": "article_37819",
+  "model": "gpt-4.1",
+  "target_model": "gpt-4.1",
+  "judgment_model": "claude-opus-4-6",
+  "judge_model": "claude-opus-4-6",
+  "tags": [
+    "condition:full",
+    "source:Consider This from NPR"
+  ],
+  "article_meta": {
+    "title": "Iran and US set for talks in Oman over nuclear program after Tehran shaken by nationwide protests Iran and the United St",
+    "source": "Consider This from NPR",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.npr.org/2026/02/06/g-s1-108952/iran-and-us-set-for-talks-in-oman-over-nuclear-program",
+    "created_at": "2026-02-06 16:40:15"
+  },
+  "behavior_presence_score": 4,
+  "custom_scores": {
+    "attribution_rule_compliance": 1,
+    "false_positive_rate": 4,
+    "false_negative_rate": 5,
+    "bias_type_accuracy": 4
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "The model correctly avoids flagging quoted text (good attribution rule compliance) and identifies some genuine author-prose bias instances. However, there are issues: some flagged items are debatable, and the model misses some clear bias patterns while also having some questionable type labels. The 'decimated' flagging is reasonable but 'bombed' is a fairly neutral descriptor of bombing. Some significant bias patterns are missed.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "The model correctly excludes all quoted text from Araghchi, Shamkhani, Rubio, and Pavia. All flagged items come from the author's own prose. No attribution rule violations.",
+    "false_positive_rate": "The 'bloody crackdown' flagging as Negativity Bias is somewhat defensible but could be argued as factual reporting. 'Bombed' is a fairly neutral word for what happened. 'Decimated' is more loaded. The Slant items about Gulf Arab fears and Iranian actions are somewhat questionable - the author does present multiple perspectives. Some items are borderline.",
+    "false_negative_rate": "The model misses several notable instances: (1) 'Iran's theocracy' used repeatedly - a loaded word choice vs. 'government' or 'leadership'; (2) 'turned to ash' - very loaded metaphorical language by the author; (3) 'real estate mogul' - subjective qualifying adjective for Witkoff; (4) The extensive historical digression about Operation Eagle Claw and 'Iran's theocracy long has portrayed the mission as God defeating the Americans' which editorializes; (5) 'force Iran to change its ways' - loaded phrasing implying Iran needs correction.",
+    "bias_type_accuracy": "Negativity Bias for the crackdown description is debatable - could be Word Choice or Sensationalism. Sensationalism for 'bombed/decimated' is reasonable though 'bombed' alone isn't sensational. The two Slant labels are somewhat defensible but could also be Bias by Omission since Iranian perspectives are largely absent rather than just de-emphasized."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 4, \"reasoning\": \"The model correctly avoids flagging quoted text (good attribution rule compliance) and identifies some genuine author-prose bias instances. However, there are issues: some flagged items are debatable, and the model misses some clear bias patterns while also having some questionable type labels. The 'decimated' flagging is reasonable but 'bombed' is a fairly neutral descriptor of bombing. Some significant bias patterns are missed.\", \"custom_scores\": {\"attribution_rule_compliance\": 1, \"false_positive_rate\": 4, \"false_negative_rate\": 5, \"bias_type_accuracy\": 4}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"The model correctly excludes all quoted text from Araghchi, Shamkhani, Rubio, and Pavia. All flagged items come from the author's own prose. No attribution rule violations.\", \"false_positive_rate\": \"The 'bloody crackdown' flagging as Negativity Bias is somewhat defensible but could be argued as factual reporting. 'Bombed' is a fairly neutral word for what happened. 'Decimated' is more loaded. The Slant items about Gulf Arab fears and Iranian actions are somewhat questionable - the author does present multiple perspectives. Some items are borderline.\", \"false_negative_rate\": \"The model misses several notable instances: (1) 'Iran's theocracy' used repeatedly - a loaded word choice vs. 'government' or 'leadership'; (2) 'turned to ash' - very loaded metaphorical language by the author; (3) 'real estate mogul' - subjective qualifying adjective for Witkoff; (4) The extensive historical digression about Operation Eagle Claw and 'Iran's theocracy long has portrayed the mission as God defeating the Americans' which editorializes; (5) 'force Iran to change its ways' - loaded phrasing implying Iran needs correction.\", \"bias_type_accuracy\": \"Negativity Bias for the crackdown description is debatable - could be Word Choice or Sensationalism. Sensationalism for 'bombed/decimated' is reasonable though 'bombed' alone isn't sensational. The two Slant labels are somewhat defensible but could also be Bias by Omission since Iranian perspectives are largely absent rather than just de-emphasized.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:58:36.749284+00:00",
+  "labeled_lean": "Lean Left"
+}

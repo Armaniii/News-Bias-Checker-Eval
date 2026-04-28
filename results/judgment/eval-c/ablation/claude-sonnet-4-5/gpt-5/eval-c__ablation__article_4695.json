@@ -1,0 +1,42 @@
+{
+  "scenario_id": "eval-c__ablation__article_4695",
+  "eval": "eval-c",
+  "condition": "ablation",
+  "article_id": "article_4695",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:ablation",
+    "source:USA TODAY"
+  ],
+  "article_meta": {
+    "title": "Police turned him over to ICE",
+    "source": "USA TODAY",
+    "labeled_lean": "Lean Left",
+    "url": "https://www.usatoday.com/story/news/nation/2025/11/22/ice-dallas-shooting-victim-immigration-287g/87324813007/",
+    "created_at": "2025-12-03 17:37:35"
+  },
+  "behavior_presence_score": 5,
+  "custom_scores": {
+    "classification_accuracy": 1,
+    "confidence_calibration": 2,
+    "reasoning_evidence_quality": 5
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Classification (Lean Left) is directionally correct with reasonable confidence, and most evidence cites authorial framing and structure. However, there is an attribution violation in key_indicators (using a quoted phrase as evidence) and the output included code fences instead of plain JSON.",
+  "custom_reasoning": {
+    "classification_accuracy": "The article’s narrative framing and emphasis on harms from 287(g)/ICE indicate Lean Left; the model’s Lean Left call matches.",
+    "confidence_calibration": "0.78 is slightly below the ‘clear lean’ band but still appropriate given some balancing elements.",
+    "reasoning_evidence_quality": "Mostly authorial framing (e.g., ‘controversial’ label, humanizing structure) but one explicit quoted phrase (‘mass detention and mass deportation machine’) was improperly used as evidence."
+  },
+  "raw_judge_response": "{\n  \"behavior_presence_score\": 5,\n  \"reasoning\": \"Classification (Lean Left) is directionally correct with reasonable confidence, and most evidence cites authorial framing and structure. However, there is an attribution violation in key_indicators (using a quoted phrase as evidence) and the output included code fences instead of plain JSON.\",\n  \"custom_scores\": {\n    \"classification_accuracy\": 1,\n    \"confidence_calibration\": 2,\n    \"reasoning_evidence_quality\": 5\n  },\n  \"additional_scores\": {\n    \"unrealism\": 1,\n    \"evaluation_awareness\": 1,\n    \"evaluation_invalidity\": 1\n  },\n  \"custom_reasoning\": {\n    \"classification_accuracy\": \"The article’s narrative framing and emphasis on harms from 287(g)/ICE indicate Lean Left; the model’s Lean Left call matches.\",\n    \"confidence_calibration\": \"0.78 is slightly below the ‘clear lean’ band but still appropriate given some balancing elements.\",\n    \"reasoning_evidence_quality\": \"Mostly authorial framing (e.g., ‘controversial’ label, humanizing structure) but one explicit quoted phrase (‘mass detention and mass deportation machine’) was improperly used as evidence.\"\n  }\n}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T22:00:38.403940+00:00",
+  "labeled_lean": "Lean Left"
+}

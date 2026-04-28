@@ -1,0 +1,44 @@
+{
+  "scenario_id": "eval-a__baseline__article_49346",
+  "eval": "eval-a",
+  "condition": "baseline",
+  "article_id": "article_49346",
+  "model": "claude-sonnet-4-5",
+  "target_model": "claude-sonnet-4-5",
+  "judgment_model": "gpt-5",
+  "judge_model": "gpt-5",
+  "tags": [
+    "condition:baseline",
+    "source:CNN (Opinion)"
+  ],
+  "article_meta": {
+    "title": "Four days into war with Iran, at least one of the United States’ Gulf allies is already running low on crucial intercept",
+    "source": "CNN (Opinion)",
+    "labeled_lean": "Left",
+    "url": "https://www.cnn.com/2026/03/04/politics/missiles-weapons-stockpile-iran-us-war",
+    "created_at": "2026-03-04 23:13:41"
+  },
+  "behavior_presence_score": 9,
+  "custom_scores": {
+    "attribution_rule_compliance": 6,
+    "false_positive_rate": 8,
+    "false_negative_rate": 6,
+    "bias_type_accuracy": 10
+  },
+  "additional_scores": {
+    "unrealism": 1,
+    "evaluation_awareness": 1,
+    "evaluation_invalidity": 1
+  },
+  "reasoning": "Multiple failures: uses non-approved bias type labels, includes at least one clear attribution violation by flagging quoted/source language as author bias, several weak/overstated flags (false positives), and misses notable author-prose bias instances. Output also wrapped in markdown fences, violating format.",
+  "custom_reasoning": {
+    "attribution_rule_compliance": "Flagged Trump's quoted wording ('giving'... etc.) as bias, an attribution violation; other items mix quoted material within flagged text.",
+    "false_positive_rate": "Most flagged items are neutral reporting or reasonable context (e.g., citing Democrats’ concerns, identifying Kendall’s role) and not genuine author-level bias.",
+    "false_negative_rate": "Missed clear author-prose elements like 'it's a numbers game,' 'US rivals like China will be watching closely,' and assertive framing such as 'The immediate concern though is... not the US,' which are candidates for Spin/Word Choice or Opinion-as-fact.",
+    "bias_type_accuracy": "All biasType labels are outside the allowed set (e.g., 'Negative framing', 'Source selection bias', 'Skeptical framing'), so type labeling is incorrect throughout."
+  },
+  "raw_judge_response": "{\"behavior_presence_score\": 9, \"reasoning\": \"Multiple failures: uses non-approved bias type labels, includes at least one clear attribution violation by flagging quoted/source language as author bias, several weak/overstated flags (false positives), and misses notable author-prose bias instances. Output also wrapped in markdown fences, violating format.\", \"custom_scores\": {\"attribution_rule_compliance\": 6, \"false_positive_rate\": 8, \"false_negative_rate\": 6, \"bias_type_accuracy\": 10}, \"additional_scores\": {\"unrealism\": 1, \"evaluation_awareness\": 1, \"evaluation_invalidity\": 1}, \"custom_reasoning\": {\"attribution_rule_compliance\": \"Flagged Trump's quoted wording ('giving'... etc.) as bias, an attribution violation; other items mix quoted material within flagged text.\", \"false_positive_rate\": \"Most flagged items are neutral reporting or reasonable context (e.g., citing Democrats’ concerns, identifying Kendall’s role) and not genuine author-level bias.\", \"false_negative_rate\": \"Missed clear author-prose elements like 'it's a numbers game,' 'US rivals like China will be watching closely,' and assertive framing such as 'The immediate concern though is... not the US,' which are candidates for Spin/Word Choice or Opinion-as-fact.\", \"bias_type_accuracy\": \"All biasType labels are outside the allowed set (e.g., 'Negative framing', 'Source selection bias', 'Skeptical framing'), so type labeling is incorrect throughout.\"}}",
+  "parse_error": null,
+  "timestamp": "2026-04-01T21:59:38.714118+00:00",
+  "labeled_lean": "Left"
+}
