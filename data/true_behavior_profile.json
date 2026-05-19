@@ -1,0 +1,463 @@
+{
+  "profile": {
+    "sonnet__baseline": {
+      "target": "sonnet",
+      "condition": "baseline",
+      "EP": {
+        "EP": 1.0,
+        "EP_ci_low": 1.0,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 1.0,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.27802690582959644,
+          "CFI_generation_rate": 0.40669856459330145,
+          "absorbed": 124,
+          "resisted": 322,
+          "generated": 85,
+          "clean": 609,
+          "source_present_total": 446,
+          "summary_present_total": 209,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.09782608695652174,
+          "CFI_generation_rate": 0.5813953488372093,
+          "absorbed": 36,
+          "resisted": 332,
+          "generated": 50,
+          "clean": 722,
+          "source_present_total": 368,
+          "summary_present_total": 86,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5263157894736842,
+          "3class_accuracy": 0.8105263157894737,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.6021505376344086,
+          "3class_accuracy": 0.8172043010752689,
+          "n_5": 93,
+          "n_3": 93
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.4421052631578947,
+          "3class_accuracy": 0.7473684210526316,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "n_predictions": 95,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    },
+    "sonnet__ablation": {
+      "target": "sonnet",
+      "condition": "ablation",
+      "EP": {
+        "EP": 1.0,
+        "EP_ci_low": 1.0,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 1.0,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.25112107623318386,
+          "CFI_generation_rate": 0.32934131736526945,
+          "absorbed": 112,
+          "resisted": 334,
+          "generated": 55,
+          "clean": 639,
+          "source_present_total": 446,
+          "summary_present_total": 167,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.11294765840220386,
+          "CFI_generation_rate": 0.4810126582278481,
+          "absorbed": 41,
+          "resisted": 322,
+          "generated": 38,
+          "clean": 727,
+          "source_present_total": 363,
+          "summary_present_total": 79,
+          "n_cells": 1128,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5368421052631579,
+          "3class_accuracy": 0.7789473684210526,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.7311827956989247,
+          "3class_accuracy": 0.8817204301075269,
+          "n_5": 93,
+          "n_3": 93
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.6,
+          "3class_accuracy": 0.7789473684210526,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "n_predictions": 95,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    },
+    "sonnet__full": {
+      "target": "sonnet",
+      "condition": "full",
+      "EP": {
+        "EP": 1.0,
+        "EP_ci_low": 1.0,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 1.0,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.11210762331838565,
+          "CFI_generation_rate": 0.34210526315789475,
+          "absorbed": 50,
+          "resisted": 396,
+          "generated": 26,
+          "clean": 668,
+          "source_present_total": 446,
+          "summary_present_total": 76,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.024725274725274724,
+          "CFI_generation_rate": 0.6538461538461539,
+          "absorbed": 9,
+          "resisted": 355,
+          "generated": 17,
+          "clean": 747,
+          "source_present_total": 364,
+          "summary_present_total": 26,
+          "n_cells": 1128,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5434782608695652,
+          "3class_accuracy": 0.75,
+          "n_5": 92,
+          "n_3": 92
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.7111111111111111,
+          "3class_accuracy": 0.8333333333333334,
+          "n_5": 90,
+          "n_3": 90
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.6413043478260869,
+          "3class_accuracy": 0.7608695652173914,
+          "n_5": 92,
+          "n_3": 92
+        },
+        "n_predictions": 92,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    },
+    "gpt__baseline": {
+      "target": "gpt",
+      "condition": "baseline",
+      "EP": {
+        "EP": 0.9655172413793104,
+        "EP_ci_low": 0.8823529411764706,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 0.9655172413793104,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.2533632286995516,
+          "CFI_generation_rate": 0.4083769633507853,
+          "absorbed": 113,
+          "resisted": 333,
+          "generated": 78,
+          "clean": 616,
+          "source_present_total": 446,
+          "summary_present_total": 191,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.11684782608695653,
+          "CFI_generation_rate": 0.4819277108433735,
+          "absorbed": 43,
+          "resisted": 325,
+          "generated": 40,
+          "clean": 732,
+          "source_present_total": 368,
+          "summary_present_total": 83,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5789473684210527,
+          "3class_accuracy": 0.7368421052631579,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.6559139784946236,
+          "3class_accuracy": 0.8279569892473119,
+          "n_5": 93,
+          "n_3": 93
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.5157894736842106,
+          "3class_accuracy": 0.6947368421052632,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "n_predictions": 95,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    },
+    "gpt__ablation": {
+      "target": "gpt",
+      "condition": "ablation",
+      "EP": {
+        "EP": 1.0,
+        "EP_ci_low": 1.0,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 1.0,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.24439461883408073,
+          "CFI_generation_rate": 0.3735632183908046,
+          "absorbed": 109,
+          "resisted": 337,
+          "generated": 65,
+          "clean": 629,
+          "source_present_total": 446,
+          "summary_present_total": 174,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.09239130434782608,
+          "CFI_generation_rate": 0.48484848484848486,
+          "absorbed": 34,
+          "resisted": 334,
+          "generated": 32,
+          "clean": 740,
+          "source_present_total": 368,
+          "summary_present_total": 66,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5368421052631579,
+          "3class_accuracy": 0.7052631578947368,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.6989247311827957,
+          "3class_accuracy": 0.8279569892473119,
+          "n_5": 93,
+          "n_3": 93
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.5578947368421052,
+          "3class_accuracy": 0.7052631578947368,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "n_predictions": 95,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    },
+    "gpt__full": {
+      "target": "gpt",
+      "condition": "full",
+      "EP": {
+        "EP": 1.0,
+        "EP_ci_low": 1.0,
+        "EP_ci_high": 1.0,
+        "ER_by_stratum": {
+          "CENTER": 1.0,
+          "RIGHT": 1.0,
+          "LEFT": 1.0
+        },
+        "n_by_stratum": {
+          "CENTER": 29,
+          "RIGHT": 32,
+          "LEFT": 32
+        },
+        "n_articles_total": 95,
+        "method": "Disparate-impact ratio min/max of engagement rates across 3-class lean strata; bootstrap 95% CI (2000 iter, resampled articles)"
+      },
+      "CFI_per_judge": {
+        "opus": {
+          "CFI_absorption_rate": 0.06502242152466367,
+          "CFI_generation_rate": 0.275,
+          "absorbed": 29,
+          "resisted": 417,
+          "generated": 11,
+          "clean": 683,
+          "source_present_total": 446,
+          "summary_present_total": 40,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        },
+        "gpt5": {
+          "CFI_absorption_rate": 0.010869565217391304,
+          "CFI_generation_rate": 0.3333333333333333,
+          "absorbed": 4,
+          "resisted": 364,
+          "generated": 2,
+          "clean": 770,
+          "source_present_total": 368,
+          "summary_present_total": 6,
+          "n_cells": 1140,
+          "threshold": 5,
+          "method": "Absorption rate per absorption/generation decomposition; framework from eval-b-susceptibility/seed.yaml; full citations in METHODS.md \u00a71.2"
+        }
+      },
+      "LCA": {
+        "vs_AllSides": {
+          "5class_accuracy": 0.5473684210526316,
+          "3class_accuracy": 0.6947368421052632,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "vs_Opus": {
+          "5class_accuracy": 0.6451612903225806,
+          "3class_accuracy": 0.7956989247311828,
+          "n_5": 93,
+          "n_3": 93
+        },
+        "vs_GPT5": {
+          "5class_accuracy": 0.6526315789473685,
+          "3class_accuracy": 0.7473684210526316,
+          "n_5": 95,
+          "n_3": 95
+        },
+        "n_predictions": 95,
+        "method": "5-class and 3-class accuracy reported across three ground-truth options; methodology per METHODS \u00a71.3"
+      }
+    }
+  },
+  "dissociation": {
+    "n_cells": 6,
+    "cells": [
+      "sonnet__baseline",
+      "sonnet__ablation",
+      "sonnet__full",
+      "gpt__baseline",
+      "gpt__ablation",
+      "gpt__full"
+    ],
+    "EP_values": [
+      1.0,
+      1.0,
+      1.0,
+      0.9655172413793104,
+      1.0,
+      1.0
+    ],
+    "CFI_values": [
+      0.18792649639305908,
+      0.18203436731769385,
+      0.0684164490218302,
+      0.18510552739325406,
+      0.1683929615909534,
+      0.037945993371027484
+    ],
+    "pearson_r_EP_CFI": -0.3423526139804629,
+    "pearson_p_EP_CFI": 0.506533851548329,
+    "variance_EP": 0.00016514731140176997,
+    "variance_CFI": 0.0037377441709066446,
+    "variance_ratio_CFI_to_EP": 22.63278850367397,
+    "interpretation": "Low |r| with var(CFI) >> var(EP) supports the dissociation claim: CFI varies substantially across cells while EP is approximately invariant. This is the empirical anchor for the category-error argument in FRAME \u00a7'Conceptual framing'."
+  }
+}

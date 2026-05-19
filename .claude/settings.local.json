@@ -18,7 +18,27 @@
       "Bash(find /mnt/c/Users/arman/Documents/allsides/bloom-news-eval-v7/bloom-eval/eval-* -type f)",
       "Bash(grep -E \"\\\\.py$\")",
       "WebSearch",
-      "WebFetch(domain:www.anthropic.com)"
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:alignment.anthropic.com)",
+      "Bash(gh api *)",
+      "Bash(curl -s https://raw.githubusercontent.com/safety-research/bloom/main/src/bloom/stages/step4_judgment.py)",
+      "Bash(curl -s https://raw.githubusercontent.com/safety-research/bloom/main/pyproject.toml)",
+      "WebFetch(domain:www.nist.gov)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:aclanthology.org)",
+      "WebFetch(domain:www.science.org)",
+      "WebFetch(domain:meridianlabs-ai.github.io)",
+      "WebFetch(domain:openreview.net)",
+      "WebFetch(domain:crfm.stanford.edu)",
+      "WebFetch(domain:www.aisi.gov.uk)",
+      "WebFetch(domain:openai.com)",
+      "WebFetch(domain:cameronrwolfe.substack.com)",
+      "WebFetch(domain:link.springer.com)",
+      "WebFetch(domain:www.sciencedirect.com)",
+      "Bash(xargs -I {} ls -la {})",
+      "Bash(xargs cat *)",
+      "WebFetch(domain:iclr.cc)",
+      "Bash(grep -n \"verification.*120\\\\|stage 2.*120\\\\|verification.*\\\\$\\\\|stage 2.*\\\\$\\\\|verif.*cost\\\\|verif.*batch\" /mnt/c/Users/arman/Documents/allsides/bloom-news-eval-v7/bloom-eval/PRE_REGISTRATION.md /mnt/c/Users/arman/Documents/allsides/bloom-news-eval-v7/bloom-eval/METHODS.md)"
     ]
   }
 }

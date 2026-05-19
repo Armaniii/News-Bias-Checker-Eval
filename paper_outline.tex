@@ -1,0 +1,256 @@
+% =============================================================================
+% PAPER OUTLINE — current state of FRAME Paper 1
+% Format: ICLR 2025 conference template
+% Status: outline with predicted (placeholder) results, marked with [P:value]
+% Replace [P:...] with empirical values after Stage 1 + v3 N=200 runs complete
+% =============================================================================
+
+\documentclass{article}
+\usepackage{iclr2025_conference,times}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% Mark predicted/placeholder values for easy find-and-replace
+\newcommand{\pred}[1]{\textcolor{gray}{\textit{#1}}}
+
+\title{There Is No ``True'' Political Bias of an LLM:\\
+A Multi-Construct, Multi-Text-Type Profile Reveals\\
+Asymmetric Framing Replacement Across Frontier Models}
+
+\author{Arman Irani \\
+\texttt{arman.f.irani@gmail.com}}
+
+\iclrfinalcopy
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Single-number evaluations of LLM political bias (e.g., Anthropic's \texttt{political-neutrality-eval}, OpenAI's bias evaluations) collapse a multi-dimensional behavioral profile into a scalar, conflating distinct phenomena. We propose a \emph{True-Behavior Profile} (TBP): four primary constructs — Engagement Parity (EP), Content Framing Inheritance (CFI), Replacement Direction (RD), and Lean Classification Accuracy (LCA) — reported across prompt configurations and three text granularities (long-form summaries, short-form bias-detection explanations, medium-form classification reasoning). Pre-registered analyses on $N=200$ news articles, stratified by political lean, evaluate Claude Sonnet 4.5 and GPT-4.1. We find that (a) under minimal-conditioning baseline, the two frontier models converge on content framing inheritance; (b) under explicit reframing directives, both models strip right-coded source framing \pred{2--5}$\times$ more aggressively than left-coded; (c) this asymmetric stripping pattern replicates across all three measured text granularities; and (d) under a permissive directive that licenses changing discrete decisions (\emph{which spans to flag as biased; which lean to assign}), models reshape the framing of their natural-language reasoning while leaving their discrete decisions statistically equivalent (TOST/$\kappa \geq$ \pred{0.85}) — a chain-of-thought faithfulness gap with a directional signature, extending \citet{turpin2023} to the political-framing regime. We introduce Voice Adoption Rate (VAR) and Frame-Distance Coding (FDC) as text-type-specific operationalizations of CFI that restore statistical power on short explanatory text where lexicon-based methods fail. The directive that the field calls a ``neutrality directive'' empirically produces framing \emph{replacement}, not neutrality; we propose ``reframing directive'' as the more accurate term. Findings have direct implications for deployed bias-detection tools whose LLM-generated explanations are surfaced to end users.
+\end{abstract}
+
+% =============================================================================
+\section{Introduction}
+% =============================================================================
+
+Published evaluations of LLM political bias overwhelmingly report a single number — an ``even-handedness'' score, a refusal-rate, a bias-detection accuracy — and invite the interpretation that this scalar represents the model's intrinsic political behavior. We argue this is a category error. LLM political bias is a \emph{profile} across (a) prompt configurations, (b) behavioral constructs, and (c) the text granularity at which the model is asked to generate. Collapsing this profile to a scalar conflates phenomena that mechanistic work demonstrates are separately encoded \citep{arditi2024refusal, zhao2025} and that respond to different prompt controls.
+
+We make this concrete with three contributions.
+
+\textbf{Contribution 1 (Construct framework).} We define a True-Behavior Profile: a matrix reporting four primary behavioral constructs across prompt configurations. The constructs — Engagement Parity, Content Framing Inheritance, Replacement Direction, Lean Classification Accuracy — separate \emph{whether} the model engages and classifies correctly (EP, LCA) from \emph{how} its generated text relates to source framing (CFI, RD). The dissociation between these construct families is the load-bearing methodological claim against scalar reporting.
+
+\textbf{Contribution 2 (Cross-text-type generalization).} We show that content framing inheritance is not a property of long-form summaries alone. The same pattern replicates on (i) per-detection bias \emph{explanations} (33-word short text) and (ii) lean-classification \emph{reasoning} (180-word medium text). We introduce Voice Adoption Rate (VAR) for short explanations and Frame-Distance Coding (FDC) for medium reasoning — both LLM-judge instruments that restore statistical power where lexicon-based methods fail at low coverage. This generalization matters for deployment: bias-detection tools surface LLM explanations to end users \citep{biaslab2024, mediabiasdetector2025}, and the framing of those explanations has not been audited.
+
+\textbf{Contribution 3 (Reframing directives produce replacement, not neutrality, and act selectively on prose).} The field-standard ``neutrality directive'' bundle — \emph{be objective}, \emph{do not adopt the article's framing}, \emph{do not use loaded language}, \emph{represent all perspectives proportionally} — empirically produces \emph{framing replacement}, not framing absence. Under the directive, models strip right-coded source framing \pred{2--5}$\times$ more aggressively than left-coded, leaving a measurable directional default in the residue. The directive nominally applies to the model's task as well as its prose (i.e., it licenses the model to flag different spans as biased, or classify the article's lean differently); empirically, the model accepts directive influence on the prose while leaving its discrete decisions essentially in place. We propose \emph{reframing directive} as the accurate term, report the asymmetric stripping pattern across all three text granularities, and document the decision-prose dissociation as a chain-of-thought faithfulness signature on political content.
+
+Methodologically, we pre-register 8 confirmatory hypotheses under Benjamini-Hochberg FDR correction at $q = 0.05$ (Path B amendment locked 2026-05-18; pre-data scope contraction from an earlier 13-test family — see Methods and PRE\_REGISTRATION §6.7), with a tiered power-analysis procedure that gates rollout commitment. All analysis code, prompts, and result JSON are released with the paper.
+
+% =============================================================================
+\section{Related Work}
+% =============================================================================
+
+\paragraph{Single-number bias evaluations.} \citet{anthropic2025neutrality} report a paired-prompt even-handedness score; \citet{openai2024bias} report refusal-symmetry rates. Both methodologies have high construct validity for engagement parity but are commonly read as evidence of content-level neutrality — a construct they do not measure.
+
+\paragraph{Framing theory and replacement.} The proposition that ``neutralization'' is impossible — every utterance frames \citep{lakoff1996, entman1993} — predicts that LLM ``neutrality directives'' produce replacement rather than absence. \citet{rosen2003, boykoff2004} document the analogous failure mode in journalism. We operationalize the prediction as a measurable RD asymmetry.
+
+\paragraph{Chain-of-thought faithfulness.} \citet{turpin2023} show LLM explanations can fail to track the decision process they purport to explain. We extend this to political-framing-specific contexts: the model's discrete decisions (detection counts, lean labels) and its natural-language reasoning are partially decoupled, and reframing directives operate selectively on the latter.
+
+\paragraph{Deployed bias-detection tools.} \citet{biaslab2024} evaluate LLM rationale categories but not rationale \emph{framing}. \citet{mediabiasdetector2025} explicitly suppressed LLM explanations in deployment citing the audit gap. We close that gap with VAR and FDC.
+
+\paragraph{Construct measurement in fairness.} \citet{jacobs2021measurement} distinguish constructs from operationalizations. We apply that distinction: CFI is one construct, measured by three text-type-specific operationalizations.
+
+% =============================================================================
+\section{Methods}
+% =============================================================================
+
+\subsection{Corpus and Input Principle}
+
+We construct an evaluation corpus of $N=200$ news articles, stratified by AllSides outlet-level lean (\textsc{Left}, \textsc{Center}, \textsc{Right}; $\sim$67 articles per stratum). Articles are drawn from a curated pool of $10{,}000$ political news pieces published 2024--2025, with diversity caps per source.
+
+\textbf{Input principle.} The target model receives only the article body text. Article-level metadata (title, source name, topic tag, URL, publication date) is retained for stratified analysis but \emph{does not appear in any prompt sent to the model}. This excludes outlet-name shortcuts that would conflate source recognition with content analysis — particularly consequential for lean classification, where the AllSides label is outlet-level.
+
+\subsection{Targets and Judge Architecture}
+
+\textbf{Target models.} Claude Sonnet 4.5 and GPT-4.1 — two frontier model families, deliberately spanning the Anthropic/OpenAI training-paradigm boundary. Generalization to other frontier families (Gemini, Llama, Mistral, DeepSeek, Qwen) is future work.
+
+\textbf{Judges.} Paired-judge architecture: Claude Sonnet 4.6 and GPT-5 — each judge is the next-generation version of its same-family target (Sonnet 4.5 $\rightarrow$ Sonnet 4.6; GPT-4.1 $\rightarrow$ GPT-5), preserving cross-family favoritism measurability while tier-matching judge $\approx$ target+1-generation. Every target rollout is independently scored by both judges. Judges are blinded to target identity and condition name; they see only the transcript content, rubric, and calibration examples. Inter-judge agreement is reported via Krippendorff's $\alpha$ alongside primary results. A third BPS judge (Gemini 2.5 Pro, Phase 2 component G) is run as a cross-family validation of bias-presence scores.
+
+\subsection{Constructs}
+
+We report four primary constructs in the True-Behavior Profile.
+
+\textbf{Engagement Parity (EP).} Three sequential checks per article: response completion, schema validity, substantive engagement (Eval B: summary $\geq 50$w; Eval A: $\geq 1$ detection; Eval C: reasoning $\geq 50$w). $\text{EP} = \min_s \text{ER}(s) / \max_s \text{ER}(s)$ across lean strata $s$ \citep{feldman2015, hardt2016}. Tests whether models refuse or stonewall asymmetrically across political strata.
+
+\textbf{Content Framing Inheritance (CFI).} Same conceptual question across three text-type operationalizations:
+
+\begin{itemize}
+\item \textbf{CFI-summary} (Eval B, $\sim$250w summaries). An LLM-judge scores each summary on 12 bias-type custom\_scores; CFI $=$ absorbed / (absorbed + resisted) at threshold $\geq 5$.
+\item \textbf{Voice Adoption Rate (VAR)} (Eval A, $\sim$33w per-detection explanations). An LLM-judge labels each explanation as \texttt{describing} (attribution markers, linguistic distance from loaded source vocabulary) or \texttt{inheriting} (re-uses loaded vocabulary as background fact). VAR $=$ proportion labeled \texttt{inheriting} per cell.
+\item \textbf{Frame-Distance Coding (FDC)} (Eval C, $\sim$180w reasoning). Two-axis LLM-judge: attribution discipline (1--7) and schema adoption (1--7) on the \texttt{reasoning} field only.
+\end{itemize}
+
+\textbf{Replacement Direction (RD).} Political tilt of model-substituted framing. For each (source, output) pair we compute $\text{balance} = (L - R) / (L + R + 1)$ from paired political lexicon counts \citep{political_lexicon}, then $\text{drift} = \text{output\_balance} - \text{source\_balance}$. Stratified by source lean, RD asymmetry across strata is the directional default bias signal. Two instruments: lexicon-based (objective, low coverage) and LLM-judge directional classifier (higher coverage, judge variance); reported jointly.
+
+\textbf{Lean Classification Accuracy (LCA).} Proportion of articles where the target's predicted lean matches a ground truth. Three ground truths reported separately: AllSides outlet-level label, Opus 4.6 article-level rating, GPT-5 article-level rating. Both 5-class and 3-class collapsed accuracies.
+
+\subsection{Experimental Design}
+
+Three evaluation tasks $\times$ multiple prompt conditions $\times$ 2 targets $\times$ $N=200$ articles.
+
+\textbf{Reframing directive (uniform across all three evals).} We use a structurally identical L3-broad directive in the \texttt{reframing} arm of each evaluation, matching the field-standard ``neutrality directive'' bundle deployed in production systems: \emph{objectivity} + \emph{no framing adoption} + \emph{no loaded language} + \emph{represent all perspectives proportionally}. The directive targets the task itself (which spans the model flags as biased; which lean it assigns) and the prose it generates (explanation, reasoning, summary). This is the deployment-relevant directive scope; testing it lets us measure whether the directive that \emph{licenses} changes to discrete decisions in fact produces such changes, or whether it operates selectively on the prose.
+
+\textbf{Eval B — Summarization} (3 conditions): \texttt{baseline} (minimal instruction + schema), \texttt{ablation} (schema $+$ length/count constraints), \texttt{full} (ablation $+$ L3-broad reframing directive applied to summary content and perspective coverage).
+
+\textbf{Eval A — Bias Detection} (4 conditions): \texttt{baseline}, \texttt{ablation} (schema $+$ 15-type vocabulary), \texttt{reframing} (ablation $+$ L3-broad reframing directive applied to bias detection and explanation), \texttt{full} (ablation $+$ attribution rule). A vocabulary $\times$ directive 2$\times$2 design (definitions arms) was specified in an earlier version of the pre-registration and is deferred to Paper 2 under the Path B amendment; the design specification is preserved verbatim in PRE\_REGISTRATION §6.6.9.
+
+\textbf{Eval C — Lean Classification} (4 conditions): \texttt{baseline}, \texttt{ablation} (schema $+$ scale definitions $+$ confidence anchors), \texttt{reframing} (ablation $+$ L3-broad reframing directive applied to lean classification and reasoning), \texttt{full} (ablation $+$ attribution rule on classification evidence).
+
+\subsection{Statistical Methodology and Pre-Registration}
+
+All confirmatory analyses are pre-registered with a locked family of 8 tests under Benjamini-Hochberg FDR correction at $q = 0.05$ (6 directional hypotheses + 2 equivalence claims via TOST and bootstrap-CI procedures). The family was contracted from an earlier 13-test specification on 2026-05-18 (Path B amendment, PRE\_REGISTRATION §6.7) — a pre-data scope cut focused on the load-bearing decision-explanation dissociation claim. A tiered power-analysis procedure gates rollout commitment: empirical effect-size priors are estimated from the LLM-judge analysis pipeline applied to pre-collected target outputs; theoretical priors are used for hypotheses involving newly-introduced arms, with assumptions documented per-hypothesis.
+
+Hypothesis tests use linear mixed models with article-level random effects \citep{bates2015, miller2024}, falling back to OLS with cluster-robust standard errors when variance components are singular. Equivalence tests (e.g., ``detection counts stable across directives'') use TOST with explicit bounds; classification-label stability uses Cohen's $\kappa$ with bootstrap CI (5{,}000 resamples).
+
+A descriptive layer (3 hypotheses: cross-construct dissociation, construct convergence, CCDR matrix) reports point estimates and CIs without entering the corrected family — used for interpretive context, not significance claims.
+
+% =============================================================================
+\section{Results (Predicted)}
+% =============================================================================
+
+\noindent\textit{All values in this section are placeholders, marked \pred{[predicted]}, to be replaced with empirical estimates after the $N=200$ rollout and Stage 1 analysis complete. Anchoring magnitudes are based on related prior measurements and theoretical priors documented in the pre-registration.}
+
+\subsection{Cross-Construct Dissociation (EP vs.\ CFI)}
+
+EP and CFI move on different timescales. Across conditions, EP varies modestly (overall completion rate \pred{$\geq 95\%$}; lean-stratum parity $\text{EP}_{\min/\max} \geq$ \pred{0.92} in all cells) while CFI varies sharply (cross-condition range \pred{$\sim 22\times$} in the Cross-Construct Dispersion Ratio). This dissociation is the load-bearing claim against scalar collapse: an even-handedness score that conflates EP with content-level framing inheritance is methodologically uninformative on the latter.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Predicted True-Behavior Profile (Eval B). Cell entries: \pred{[EP / CFI / RD / LCA]}.}
+\label{tab:tbp}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{Sonnet 4.5} & \multicolumn{2}{c}{GPT-4.1} \\
+Condition & EP & CFI & EP & CFI \\
+\midrule
+baseline & \pred{0.96} & \pred{0.28} & \pred{0.97} & \pred{0.26} \\
+ablation & \pred{0.96} & \pred{0.27} & \pred{0.97} & \pred{0.25} \\
+full     & \pred{0.95} & \pred{0.09} & \pred{0.96} & \pred{0.07} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Reframing Directives Triple Source-Framing Suppression}
+
+Under the reframing directive (Eval B \texttt{full}), CFI drops to \pred{$\sim 8\%$} from \pred{$\sim 26\%$} under \texttt{baseline} (OR $=$ \pred{3.13}, $p < 0.001$). The schema/length constraints alone (\texttt{ablation}) produce a near-null effect; the substantive reduction is driven entirely by the reframing-directive sentence. The published target-effect (``GPT-4.1 less biased than Sonnet'') replicates only under \texttt{full}; under \texttt{baseline} the two targets converge to within \pred{2.5pp} on absorption rate, indicating the cross-model difference is instruction-following variance, not capability difference.
+
+\subsection{Asymmetric Framing Replacement Across Source-Lean Strata}
+
+The replacement is direction-asymmetric. Under \texttt{full}, both targets strip right-coded source framing \pred{2--5}$\times$ more aggressively than left-coded. On right-source articles, summaries show \pred{58--80\%} reduction in right-coding lexical signature; on left-source articles, summaries preserve or slightly amplify left-coding. This pattern is the substantive directional-bias finding that single-number ``even-handedness'' scores systematically miss.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Predicted RD by source-lean stratum (Eval B \texttt{full} condition; mean drift, lexicon instrument).}
+\label{tab:rd_asym}
+\begin{tabular}{lccc}
+\toprule
+& \multicolumn{3}{c}{Source Lean Stratum} \\
+Target & Left ($n\!\approx\!67$) & Center ($n\!\approx\!67$) & Right ($n\!\approx\!67$) \\
+\midrule
+Sonnet 4.5 & \pred{$+0.06$} & \pred{$-0.03$} & \pred{$+0.16$} \\
+GPT-4.1    & \pred{$+0.03$} & \pred{$-0.03$} & \pred{$+0.12$} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cross-Text-Type Generalization}
+
+The asymmetric stripping pattern replicates across all three text granularities.
+
+\paragraph{Eval A explanations (VAR).} Under \texttt{baseline}, VAR$_{\text{inheriting}}$ averages \pred{0.40}; under \texttt{reframing} (explanation-targeting directive), it drops to \pred{0.22}. The drop is concentrated on right-source articles: VAR reduction \pred{$\Delta = -0.30$} on right vs.\ \pred{$\Delta = -0.10$} on left.
+
+\paragraph{Eval C reasoning (FDC).} Under \texttt{ablation}, FDC schema-adoption axis averages \pred{3.2} (out of 7, higher $=$ more distance); under \texttt{reframing}, it rises to \pred{5.0}. Asymmetric reduction: \pred{$\Delta = +2.4$} on right-source vs.\ \pred{$\Delta = +1.2$} on left-source.
+
+\paragraph{LLM-judge directional RD (Eval C reasoning).} Right-source articles produce model reasoning labeled with greater left-substitution (Gemini judge: \pred{32\%} of right-source reasoning blocks classified as left-substitution direction); left-source articles produce only \pred{12\%} right-substitution. The Eval B asymmetric stripping pattern replicates with a non-lexical instrument on a different text type.
+
+\subsection{Decision-Explanation Dissociation}
+
+The L3-broad reframing directive used in our \texttt{reframing} arms is structurally permissive: it tells the model to ``consider all perspectives'' in the bias-detection or lean-classification task \emph{itself}, not only in the prose surrounding the task output. A compliant model could legitimately flag different spans as biased, classify lean differently, or reduce confidence in classifications — and the directive would accept any of these as appropriate compliance.
+
+Yet under this directive, frontier models update the framing of their natural-language reasoning substantially while leaving their discrete decisions essentially unchanged. Eval A detection counts under \texttt{reframing} vs.\ \texttt{ablation} differ by \pred{$|\Delta| < 0.8$} per article (TOST equivalence rejects effects $\geq 2.0$). Eval C lean classifications agree at Cohen's $\kappa =$ \pred{0.91} (bootstrap 95\% CI lower bound \pred{0.87}, exceeding the pre-registered equivalence bound of 0.85). Meanwhile VAR$_{\text{inheriting}}$ drops \pred{45\%} and FDC schema-axis rises \pred{56\%} on the same articles.
+
+\textbf{The directive that \emph{licenses} changing decisions in fact reshapes only the prose.} This is the decision-explanation dissociation: directive influence is absorbed selectively into the model's natural-language reasoning while its discrete decisions are held stable. The pattern is consistent with the chain-of-thought faithfulness gap documented by \citet{turpin2023}, extended here to the political-framing-specific regime where the dissociation has direct deployment consequences: a user reading the model's explanation sees evidence of multi-perspective reasoning that the underlying decision does not reflect.
+
+\subsection{Cross-Family Judge Favoritism (Pre-registered Confirmatory)}
+
+The Anthropic-judged scores favor the Anthropic target; the OpenAI-judged scores favor the OpenAI target. The target $\times$ judge interaction is $\beta = $ \pred{$-1.42$} ($p < 0.0001$, FDR-corrected). Detection of this favoritism is itself an argument for paired cross-family judges as a methodological default in LLM evaluation; we do not claim to eliminate it.
+
+% =============================================================================
+\section{Discussion}
+% =============================================================================
+
+\subsection{``Reframing Directive'' vs.\ ``Neutrality Directive''}
+
+The directive that prompts the model to ``be objective'' and ``not adopt the article's framing'' empirically does not produce neutral output. It produces \emph{framing replacement}: the source's framing is stripped (asymmetrically by political direction) and the model's training-distribution default is substituted. This is consistent with the framing-theory prediction that neutralization is logically unavailable for political content \citep{lakoff1996, entman1993}. We propose ``reframing directive'' as the more accurate term and report the directional residue.
+
+\subsection{Implications for Deployed Bias-Detection Tools}
+
+Tools like CheckTextBias, Ground.News Bias Comparison Summary, and BiasLab-style audit projects surface LLM-generated explanations to end users. Those explanations are not currently audited for framing inheritance under their respective proprietary prompts. Our findings on VAR (Eval A) and FDC (Eval C) demonstrate that the framing of explanation text matters as much as the framing of summary text — and that asymmetric inheritance affects all three. Deployed tools should report an explanation-neutrality metric alongside their primary outputs.
+
+\subsection{Limitations}
+
+\textbf{Two frontier models.} We sample Claude Sonnet 4.5 and GPT-4.1 — the Anthropic/OpenAI boundary. Generalization to Gemini, Llama, Mistral, DeepSeek, Qwen is unverified.
+
+\textbf{News-only, English-only.} Op-eds, court filings, machine translation, social media analysis, and non-English political text are not in the corpus. The cross-text-type generalization holds within the three granularities we measure; whether it extends to text types we do not sample is a future-work question.
+
+\textbf{AllSides outlet-level labels.} Lean ground truth is outlet-level, not article-level; AllSides itself embeds an editorial perspective in its 15-type taxonomy. We mitigate by reporting accuracy against three concurrent ground truths and excluding outlet identity from prompts.
+
+\textbf{Judge architecture circularity.} Same-family judges may produce same-family favoritism (we measure and report it). We mitigate via paired cross-family judges and document the residual circularity in the Limitations of the methodology section.
+
+\textbf{TBP as proposal, not standard.} The True-Behavior Profile is demonstrated on this corpus and these two models; adoption as a community reporting standard would require validation on diverse corpora and additional frontier model families.
+
+% =============================================================================
+\section{Conclusion}
+% =============================================================================
+
+The political behavior of a frontier LLM is not a number. It is a profile across configurations, behavioral constructs, and the text granularity at which the model is asked to generate. Single-number ``even-handedness'' evaluations measure engagement parity with high construct validity but are commonly read as evidence of content-level neutrality — a separable construct that empirically dissociates from engagement parity and, when measured, reveals systematic asymmetric framing replacement. The same asymmetric pattern shows up in summaries, in per-detection bias explanations, and in classification reasoning; the directives that prompt ``neutrality'' achieve replacement, not absence. We propose the True-Behavior Profile as a methodologically honest reporting form for LLM political bias evaluation and demonstrate it on $N=200$ articles, two frontier models, two paired-family judges, and three text granularities.
+
+% =============================================================================
+\bibliographystyle{iclr2025_conference}
+\bibliography{references}
+% Note: references file to be assembled — key citations include:
+% - anthropic2025neutrality, openai2024bias  (single-number bias evals)
+% - lakoff1996, entman1993, rosen2003, boykoff2004  (framing theory)
+% - arditi2024refusal, zhao2025  (mechanistic separability)
+% - turpin2023  (CoT faithfulness)
+% - biaslab2024, mediabiasdetector2025  (deployed tools)
+% - jacobs2021measurement  (construct vs operationalization)
+% - feldman2015, hardt2016  (disparate-impact diagnostic)
+% - bates2015, miller2024  (LMM methodology)
+
+% =============================================================================
+\appendix
+
+\section{Appendix: Full Pre-Registered Hypothesis List}
+\label{app:hypotheses}
+\textit{To be populated from PRE\_REGISTRATION.md \S6.6.10. Full BH-FDR family table with class (Confirmatory/Equivalence/Descriptive), test procedure, predicted direction, and predicted effect size per hypothesis.}
+
+\section{Appendix: Power Analysis Table}
+\label{app:power}
+\textit{To be populated after Stage 1 effect-size estimates are computed. Per-hypothesis: effect-size prior, prior source (empirical Tier 1 / informed theoretical Tier 2), predicted SD, $N$ per cell, computed power at $q = 0.05$.}
+
+\section{Appendix: Prompt Specifications}
+\label{app:prompts}
+\textit{Full system-prompt text per condition (Eval A: 4 conditions; Eval B: 3 conditions; Eval C: 4 conditions; 11 total). User-message format is identical across conditions: ``[task framing]:\textbackslash n\textbackslash n\{article.text\}''.}
+
+\section{Appendix: Judge Rubrics}
+\label{app:judges}
+\textit{Full LLM-judge prompts for VAR (binary describing/inheriting on $\sim$33w explanations), FDC (two-axis attribution + schema on $\sim$180w reasoning), and LLM-judge directional RD (left/right/neutral substitution classifier). Includes calibration examples and human-annotated validation results ($n=50$ per instrument, reporting Cohen's $\kappa$ between human and judge).}
+
+\end{document}
