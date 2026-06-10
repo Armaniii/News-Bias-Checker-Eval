@@ -62,100 +62,26 @@ EVAL_KEYS = {"a": "eval-a", "b": "eval-b", "c": "eval-c"}
 
 ALLSIDES_LEAN = {"Left", "Lean Left", "Center", "Lean Right", "Right"}
 
-# Import base PROMPTS and utilities
+# Import locked prompts (single source of truth, prompts.py) + parsing utilities.
+# prompts.py replaced generate_ideation_static.py + the .txt "full"-arm overrides
+# as the source of truth (2026-05-21). get_system_prompt/build_user_message enforce
+# the input principle (article text only — no HEADLINE/SOURCE leakage).
 sys.path.insert(0, str(BASE_DIR))
-from generate_ideation_static import PROMPTS as _BASE_PROMPTS
+from prompts import PROMPTS, get_system_prompt, build_user_message
 from validate_structured_output import extract_json, strip_fences
 
-
-def _load_production_prompts():
-    """Override full-condition prompts with production .txt files.
-
-    Eval A full: analysis-system.txt + analysis-user.txt
-      Complete attribution rule, worked Pillen/NSEA example,
-      detailed bias type definitions with examples.
-
-    Eval C full: score-user.txt
-      Content type detection, attribution rules, rating review,
-      source check, structured explanation format, 4 worked examples.
-      Output format adapted from numeric rating to 5-class.
-      Worked example outputs converted to 5-class format.
-    """
-    import copy
-    prompts = copy.deepcopy(_BASE_PROMPTS)
-
-    # --- Eval A full: use production analysis prompts ---
-    a_sys_path = BASE_DIR / "analysis-system.txt"
-    a_usr_path = BASE_DIR / "analysis-user.txt"
-    if a_sys_path.exists() and a_usr_path.exists():
-        prompts["eval-a"]["full"] = {
-            "system": a_sys_path.read_text(encoding="utf-8").strip(),
-            "user_prefix": a_usr_path.read_text(encoding="utf-8").strip(),
-        }
-
-    # --- Eval C full: use production scoring prompts (adapted output) ---
-    c_usr_path = BASE_DIR / "score-user.txt"
-    if c_usr_path.exists():
-        raw = c_usr_path.read_text(encoding="utf-8").strip()
-
-        # 1. Replace output format specification (numeric → 5-class)
-        #    Find the format block and replace it entirely
-        marker = "Output ONLY a valid JSON object."
-        idx = raw.rfind(marker)
-        if idx >= 0:
-            # Find end of the format line: {"rating": <number>, "explanation": "<string>"}
-            fmt_end = raw.find('"}', idx)
-            if fmt_end >= 0:
-                new_format = (
-                    'Output ONLY a valid JSON object. No preamble, no explanation '
-                    'outside the JSON, no markdown fences.\n'
-                    'Format:\n'
-                    '{"lean": "Left"|"Lean Left"|"Center"|"Lean Right"|"Right", '
-                    '"confidence": 0.0 to 1.0, '
-                    '"reasoning": "<string>", '
-                    '"key_indicators": ["<string>"]}\n\n'
-                    'Map your analysis to the AllSides 5-class scale:\n'
-                    '  Left: rating <= -3.0 (strong consistent left-leaning editorial choices)\n'
-                    '  Lean Left: rating -1.0 to -2.99 (moderate left tilt)\n'
-                    '  Center: rating -0.99 to +0.99 (balanced)\n'
-                    '  Lean Right: rating +1.0 to +2.99 (moderate right tilt)\n'
-                    '  Right: rating >= +3.0 (strong consistent right-leaning editorial choices)\n'
-                    'Confidence: 0.5-0.7 subtle lean, 0.8-0.95 clear lean, 0.95+ unambiguous.\n'
-                    'key_indicators must cite specific phrases from the AUTHOR\'S OWN PROSE only.'
-                )
-                raw = raw[:idx] + new_format + raw[fmt_end + 2:]
-
-        # 2. Convert worked example outputs from numeric to 5-class
-        #    Rating → lean mapping with appropriate confidence
-        example_replacements = [
-            ('{"rating": 0,', '{"lean": "Center", "confidence": 1.0,'),
-            ('{"rating": -7,', '{"lean": "Left", "confidence": 0.95,'),
-            ('{"rating": 6,',  '{"lean": "Right", "confidence": 0.95,'),
-            ('{"rating": -2.5,', '{"lean": "Lean Left", "confidence": 0.80,'),
-            ('{"rating": -3,', '{"lean": "Left", "confidence": 0.85,'),
-        ]
-        for old, new in example_replacements:
-            raw = raw.replace(old, new)
-
-        # Also convert "explanation" field name to "reasoning" in examples
-        # and add key_indicators stub after each example's closing
-        raw = raw.replace('"explanation":', '"reasoning":')
-
-        # 3. Replace article transition
-        raw = raw.replace(
-            "Article to analyze is below:",
-            "Classify the political lean of this article:"
-        )
-
-        prompts["eval-c"]["full"] = {
-            "system": prompts["eval-c"]["full"]["system"],
-            "user_prefix": raw,
-        }
-
-    return prompts
+# All conditions defined across evals, derived from the source of truth so the
+# CLI choices can never drift from prompts.py (e.g. reframing / reframing_cot).
+_ALL_CONDITIONS = sorted({c for _ev in PROMPTS.values() for c in _ev})
 
 
-PROMPTS = _load_production_prompts()
+# NOTE (2026-05-21): _load_production_prompts() removed. Prompts now come
+# directly from prompts.py (imported above), the locked source of truth. The
+# former .txt "full"-arm overrides (analysis-system.txt / analysis-user.txt /
+# score-user.txt) are no longer applied — the clean prompts.py "full" arm is
+# used instead, consistent with the input principle and the Path-B clean design.
+# The .txt files remain on disk as historical artifacts of the deployed-tool
+# prompts (potential Paper-2 external-validity comparator).
 
 
 # =============================================================================
@@ -230,7 +156,12 @@ def load_articles(csv_path, limit=None):
                 break
             aid = row.get("id") or f"article_{i}"
             aid = re.sub(r"[^\w\-]", "_", aid)[:80]
-            text = row.get("text") or row.get("content") or row.get("body", "")
+            # Prefer the boundary-cleaned body (text_clean, LLM-stripped of
+            # scraper boilerplate and deterministically verified — see
+            # data/clean_v3 + clean-v3 workflow). Falls back to the raw text
+            # column when text_clean is absent/empty.
+            text = ((row.get("text_clean") or "").strip()
+                    or row.get("text") or row.get("content") or row.get("body", ""))
             meta = {k: row.get(k, "") for k in
                     ("title", "source", "topic", "labeled_lean", "url", "created_at")}
             articles.append({"id": aid, "text": text, **meta})
@@ -265,20 +196,15 @@ def load_custom_qualities(eval_letter):
 # SCENARIO CONSTRUCTION
 # =============================================================================
 
-def build_article_block(article):
-    block = ""
-    if article.get("title"):
-        block += f"HEADLINE: {article['title']}\n"
-    if article.get("source"):
-        block += f"SOURCE: {article['source']}\n"
-    block += f"\nARTICLE:\n\n{article['text'].strip()}\n"
-    return block
-
-
 def build_scenario(article, eval_letter, condition):
     eval_key = EVAL_KEYS[eval_letter]
-    p = PROMPTS[eval_key][condition]
-    article_block = build_article_block(article)
+
+    # Prompts from the locked source of truth. build_user_message enforces the
+    # input principle: the user message is exactly "<task framing>\n\n{article.text}".
+    # Article title/source/topic/url/date and ground-truth labels are NEVER
+    # placed in the prompt (they were leaking via the old HEADLINE/SOURCE block).
+    system_prompt = get_system_prompt(eval_key, condition)
+    user_message = build_user_message(eval_key, condition, article["text"].strip())
 
     tags = [f"condition:{condition}"]
     if article.get("source"):
@@ -297,8 +223,8 @@ def build_scenario(article, eval_letter, condition):
         "eval": eval_key,
         "condition": condition,
         "article_id": article["id"],
-        "system_prompt": p["system"],
-        "user_message": f"{p['user_prefix']}\n\n---\n{article_block}---",
+        "system_prompt": system_prompt,
+        "user_message": user_message,
         "tags": tags,
         "article_meta": article_meta,
     }
@@ -312,7 +238,13 @@ def generate_scenarios(articles, evals, conditions):
     scenarios = []
     for article in articles:
         for ev in evals:
+            eval_key = EVAL_KEYS[ev]
             for cond in conditions:
+                # Conditions are eval-specific (e.g. Eval B has no `reframing`;
+                # `reframing_cot` only exists for Eval A and Eval C). Skip any
+                # condition not defined for this eval in prompts.PROMPTS.
+                if cond not in PROMPTS[eval_key]:
+                    continue
                 scenarios.append(build_scenario(article, ev, cond))
     return scenarios
 
@@ -1066,15 +998,17 @@ def main():
                         choices=["a", "b", "c"],
                         help="Which evals to run (default: a b c)")
     parser.add_argument("--conditions", nargs="+",
-                        default=["baseline", "ablation", "full"],
-                        choices=["baseline", "ablation", "full"],
-                        help="Prompt conditions (default: all three)")
+                        default=_ALL_CONDITIONS,
+                        choices=_ALL_CONDITIONS,
+                        help="Prompt conditions (default: all conditions defined in "
+                             "prompts.py; non-applicable conditions are skipped per eval)")
     parser.add_argument("--targets", nargs="+",
                         default=["claude-sonnet-4-5", "gpt-4.1"],
-                        help="Target models (short names from models.json)")
+                        help="Target models (short names)")
     parser.add_argument("--judges", nargs="+",
-                        default=["claude-opus-4-6", "gpt-5"],
-                        help="Judge models (short names from models.json)")
+                        default=["claude-sonnet-4-6", "gpt-5"],
+                        help="Judge models (short names). Path-B canonical pair: "
+                             "Sonnet 4.6 (Anthropic) + GPT-5 (OpenAI).")
     parser.add_argument("--output", default="results/",
                         help="Output directory (default: results/)")
     parser.add_argument("--workers", type=int, default=5,
@@ -1103,6 +1037,18 @@ def main():
     out_base = pathlib.Path(args.output)
     resume = not args.no_resume
     registry = load_model_registry()
+
+    # Judge-architecture sanity check (Path-B canonical pair: Sonnet 4.6 + GPT-5).
+    # A model must never judge its own rollouts (degenerate self-judging), and the
+    # cross-family favoritism analysis requires the judge pair to span families.
+    _overlap = set(args.targets) & set(args.judges)
+    if _overlap:
+        print(f"WARNING: model(s) {sorted(_overlap)} appear as BOTH target and judge "
+              f"(self-judging). Cross-family favoritism analysis assumes disjoint "
+              f"target/judge sets.")
+    if set(args.judges) != {"claude-sonnet-4-6", "gpt-5"}:
+        print(f"NOTE: judges {args.judges} differ from the Path-B canonical pair "
+              f"['claude-sonnet-4-6', 'gpt-5'] (PRE_REGISTRATION §1.1).")
 
     # Load articles
     csv_path = BASE_DIR / args.input if not os.path.isabs(args.input) else pathlib.Path(args.input)

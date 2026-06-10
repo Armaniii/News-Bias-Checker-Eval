@@ -7,9 +7,12 @@ versioned edit to this file.
 What this module provides:
 
   Target-model prompts (per eval × condition):
-    PROMPTS["eval-a"]["baseline"|"ablation"|"reframing"|"full"]
+    PROMPTS["eval-a"]["baseline"|"ablation"|"reframing"|"full"|"reframing_cot"]
     PROMPTS["eval-b"]["baseline"|"ablation"|"full"]
-    PROMPTS["eval-c"]["baseline"|"ablation"|"reframing"|"full"]
+    PROMPTS["eval-c"]["baseline"|"ablation"|"reframing"|"full"|"reframing_cot"]
+
+  `reframing_cot` arms are descriptive CoT (reasoning-first) robustness arms;
+  see PRE_REGISTRATION.md §6.6.12. Not in the BH-FDR confirmatory family.
 
   Vocabulary content used in the names-list block:
     BIAS_TYPE_NAMES          = list of 15 AllSides type names
@@ -71,6 +74,23 @@ EVAL_A_SCHEMA_HEAD = (
     "return an empty array."
 )
 
+# CoT (reasoning-first) schema — used only by the `reframing_cot` arm.
+# Adds a holistic "reasoning" field generated BEFORE the detection list, so the
+# detection decision is conditioned on the model's own just-emitted reasoning.
+# NOTE: vs the JSON-first `reframing` arm this changes generation order AND adds
+# a holistic reasoning field that `reframing` does not have — a mild confound,
+# documented in PRE_REGISTRATION.md §6.6.12.
+EVAL_A_SCHEMA_HEAD_COT = (
+    "Output ONLY a valid JSON object. No prose, no markdown fences. "
+    'Reason step by step about bias in the article inside the "reasoning" '
+    "field BEFORE listing any detections — the \"reasoning\" field must be "
+    "generated first.\n"
+    'Format: {"reasoning": "step-by-step analysis of bias in this '
+    'article", "detections": [{"biasType": "...", "biasedText": "verbatim '
+    'quote from article", "explanation": "..."}]}. If you do not identify '
+    "any bias, return an empty detections array."
+)
+
 EVAL_A_VOCAB_NAMES_BLOCK = (
     "The 15 bias types under consideration: "
     + ", ".join(BIAS_TYPE_NAMES) + "."
@@ -122,6 +142,24 @@ EVAL_C_SCHEMA = (
     '"key_indicators": ["phrase1", "phrase2", ...]}'
 )
 
+# CoT (reasoning-first) schema — used only by the `reframing_cot` arm.
+# Pure field reorder: the "reasoning" field already exists in EVAL_C_SCHEMA;
+# here it is moved BEFORE the "lean" label, so the classification decision is
+# conditioned on the model's own just-emitted reasoning. No content added —
+# the cleanest generation-order manipulation in the design (see
+# PRE_REGISTRATION.md §6.6.12).
+EVAL_C_SCHEMA_COT = (
+    "Respond ONLY with a valid JSON object. No prose, no markdown fences. "
+    "Reason step by step BEFORE committing to a classification — the "
+    '"reasoning" field must be generated first, and the "lean" label must '
+    "follow it.\n"
+    "Schema:\n"
+    '{"reasoning": "string", '
+    '"lean": "Left"|"Lean Left"|"Center"|"Lean Right"|"Right", '
+    '"confidence": 0.0-1.0, '
+    '"key_indicators": ["phrase1", "phrase2", ...]}'
+)
+
 EVAL_C_SCALE_DEFINITIONS = (
     "5-class lean scale:\n"
     "- Left: consistent left-leaning framing, language, and source selection.\n"
@@ -156,7 +194,7 @@ EVAL_C_REFRAMING_DIRECTIVE = (
 
 PROMPTS = {
     # -------------------------------------------------------------------------
-    # EVAL A — Bias Detection (4 conditions)
+    # EVAL A — Bias Detection (4 confirmatory + 1 descriptive CoT arm)
     # -------------------------------------------------------------------------
     "eval-a": {
         "baseline": {
@@ -204,6 +242,22 @@ PROMPTS = {
             ),
             "user_prefix": "Identify bias in this article:",
         },
+
+        # Descriptive CoT robustness arm (Path B amendment, PRE_REGISTRATION
+        # §6.6.12). Identical to `reframing` except the schema is reasoning-
+        # first (EVAL_A_SCHEMA_HEAD_COT). NOT in the BH-FDR family.
+        "reframing_cot": {
+            "system": (
+                "You are an AI tool for journalists identifying bias in news "
+                "articles. "
+                + EVAL_A_SCHEMA_HEAD_COT
+                + "\n\n"
+                + EVAL_A_VOCAB_NAMES_BLOCK
+                + "\n\n"
+                + EVAL_A_REFRAMING_DIRECTIVE
+            ),
+            "user_prefix": "Identify bias in this article:",
+        },
     },
 
     # -------------------------------------------------------------------------
@@ -245,7 +299,7 @@ PROMPTS = {
     },
 
     # -------------------------------------------------------------------------
-    # EVAL C — Lean Classification (4 conditions)
+    # EVAL C — Lean Classification (4 confirmatory + 1 descriptive CoT arm)
     # -------------------------------------------------------------------------
     "eval-c": {
         "baseline": {
@@ -294,14 +348,34 @@ PROMPTS = {
             ),
             "user_prefix": "Classify the political lean of this article:",
         },
+
+        # Descriptive CoT robustness arm (Path B amendment, PRE_REGISTRATION
+        # §6.6.12). Identical to `reframing` except the schema is reasoning-
+        # first (EVAL_C_SCHEMA_COT) — a pure field reorder. NOT in the
+        # BH-FDR family.
+        "reframing_cot": {
+            "system": (
+                "You are a political lean classifier. Classify the article's "
+                "political lean using the 5-class scale.\n\n"
+                + EVAL_C_SCALE_DEFINITIONS
+                + "\n\n"
+                + EVAL_C_REFRAMING_DIRECTIVE
+                + "\n\n"
+                + EVAL_C_SCHEMA_COT
+            ),
+            "user_prefix": "Classify the political lean of this article:",
+        },
     },
 }
 
-# Sanity check the structure
+# Sanity check the structure.
+# `reframing_cot` arms (Eval A, Eval C) are descriptive CoT robustness arms —
+# see PRE_REGISTRATION.md §6.6.12. They are not in the BH-FDR confirmatory
+# family. 13 conditions total (Eval A: 5, Eval B: 3, Eval C: 5).
 _EXPECTED_CONDITIONS = {
-    "eval-a": {"baseline", "ablation", "reframing", "full"},
+    "eval-a": {"baseline", "ablation", "reframing", "full", "reframing_cot"},
     "eval-b": {"baseline", "ablation", "full"},
-    "eval-c": {"baseline", "ablation", "reframing", "full"},
+    "eval-c": {"baseline", "ablation", "reframing", "full", "reframing_cot"},
 }
 for _ev, _conds in _EXPECTED_CONDITIONS.items():
     assert set(PROMPTS[_ev].keys()) == _conds, (
@@ -522,8 +596,8 @@ def load_article_rating_prompts():
 # Module metadata
 # =============================================================================
 
-VERSION = "3.2.0"  # v3.2: Path B scope contraction — Eval A reduced 6→4 conditions; definitions arms deferred to Paper 2
-LOCKED_DATE = "2026-05-18"
+VERSION = "3.3.0"  # v3.3: descriptive CoT robustness arms added (Eval A + Eval C reframing_cot); see PRE_REGISTRATION §6.6.12
+LOCKED_DATE = "2026-05-21"
 
 if __name__ == "__main__":
     # Print a summary of available prompts (sanity check)

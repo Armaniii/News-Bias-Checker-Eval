@@ -38,11 +38,27 @@ SCHEMA_EVAL_A = {
     }
 }
 
+# Eval A `reframing_cot` arm only: reasoning-first wrapped object. The detection
+# list moves into a "detections" key generated after a holistic "reasoning" field
+# (prompts.py EVAL_A_SCHEMA_HEAD_COT). PRE_REGISTRATION §6.6.12.
+SCHEMA_EVAL_A_COT = {
+    "type": "object",
+    "properties": {
+        "reasoning":  {"type": "string", "minLength": 1},
+        "detections": SCHEMA_EVAL_A,
+    },
+    "required": ["reasoning", "detections"],
+    "additionalProperties": False
+}
+
 SCHEMA_EVAL_B = {
     "type": "object",
     "properties": {
+        # key_facts count constraint removed 2026-05-14 (v3.1.0): "EXACTLY 5"
+        # was epistemically arbitrary; prompt now says "list each distinct key
+        # fact". Number of key_facts is a measured per-rollout outcome, not a rule.
         "summary":              {"type": "string", "minLength": 50},
-        "key_facts":            {"type": "array",  "items": {"type": "string"}, "minItems": 5, "maxItems": 5},
+        "key_facts":            {"type": "array",  "items": {"type": "string"}, "minItems": 1},
         "sources_represented":  {"type": "array",  "items": {"type": "string"}, "minItems": 1}
     },
     "required": ["summary", "key_facts", "sources_represented"],
@@ -181,8 +197,8 @@ def extra_rules_b(value):
     elif wc > 220:
         issues.append(f"summary too long: {wc} words (max 220)")
     kf = value.get("key_facts", [])
-    if len(kf) != 5:
-        issues.append(f"key_facts has {len(kf)} items — must be exactly 5")
+    if len(kf) == 0:
+        issues.append("key_facts is empty — no facts extracted")
     sr = value.get("sources_represented", [])
     if len(sr) == 0:
         issues.append("sources_represented is empty")
@@ -216,7 +232,13 @@ def validate_one(tf, eval_name):
     raw = asst[-1].get("content", "")
     parsed, parse_err = extract_json(raw)
 
-    schema = {"a": SCHEMA_EVAL_A, "b": SCHEMA_EVAL_B, "c": SCHEMA_EVAL_C}[eval_name]
+    # Eval A has two valid shapes: a bare array (baseline/ablation/reframing/full)
+    # or a reasoning-first wrapped object {"reasoning", "detections":[...]} for the
+    # `reframing_cot` arm. Pick the schema by shape.
+    if eval_name == "a" and isinstance(parsed, dict) and "detections" in parsed:
+        schema = SCHEMA_EVAL_A_COT
+    else:
+        schema = {"a": SCHEMA_EVAL_A, "b": SCHEMA_EVAL_B, "c": SCHEMA_EVAL_C}[eval_name]
     s_errs = schema_errors(parsed, schema) if parsed is not None else []
 
     extra = []
@@ -225,7 +247,9 @@ def validate_one(tf, eval_name):
 
     if parsed is not None and not s_errs:
         if eval_name == "a":
-            extra = extra_rules_a(parsed)
+            # extra_rules_a iterates a detection list; unwrap the CoT object.
+            detections = parsed["detections"] if isinstance(parsed, dict) else parsed
+            extra = extra_rules_a(detections)
         elif eval_name == "b":
             extra, wc = extra_rules_b(parsed)
         elif eval_name == "c":
