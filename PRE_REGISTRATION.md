@@ -138,6 +138,7 @@ and rationale.
 | 2026-05-18 | Anthropic-side Stage 1 judge revised: Opus 4.6 → Sonnet 4.6. | Judge tier-matched to its same-family target (Sonnet 4.5) + 1 generation, parallel to GPT-4.1 → GPT-5 on the OpenAI side. Cross-family favoritism remains measurable. |
 | 2026-05-21 | Terminology correction: the headline finding is a **decision–rationalization dissociation**, not a "chain-of-thought faithfulness gap." The v3 schemas commit the discrete decision before the justifying prose, so the prose is post-hoc rationalization, not CoT. Turpin et al. 2023 is now cited as related work, not as a paradigm directly extended. | Precise reading of the output schemas (`prompts.py`): `biasType` precedes `explanation`, `lean` precedes `reasoning`. |
 | 2026-05-21 | Added two descriptive (D-class) CoT robustness arms — `eval-a`/`reframing_cot` and `eval-c`/`reframing_cot` (`prompts.py` v3.3.0). New descriptive hypotheses D-HCoT-A, D-HCoT-C. See §6.6.12. Pre-data; BH-FDR family unchanged at 8. Budget ~$635 → ~$775. | Tests whether the decision–rationalization dissociation survives reasoning-first generation order — directly answers the methodological objection that the finding may be specific to post-hoc generation order. |
+| 2026-06-08 | **v3.4.0 instrument & integrity amendment (§6.8), pre-data.** Judge de-leak bundle (VAR uncodable+tie-break; FDC predicted_lean removed + confound guard; RD threshold + mechanism split + examples; BPS condition blinding; verification/article-rating HEADLINE+SOURCE de-leak + Sonnet 4.6; judge source cap 4k→10k; parse retry). C5 β=−1.42 relabeled prior-observation, v3 re-estimation descriptive. H28 SESOI re-derived from v1+v2 + sensitivity bounds + span-overlap/label-shift/test-retest descriptive companions. Outcome-interpretation map pre-committed for all branches. Stage-1 trigger operationalized; corpus locked. §4.10 scoped to Eval C. BH-FDR family unchanged at 8. | Two pre-data audits (six-judge instrument audit; venue-readiness review) found direction-aligned instrument leaks and integrity gaps. Batched as one versioned amendment before any Stage-1/Stage-2 execution so instrument changes cannot be read as tuning. |
 
 ---
 
@@ -580,6 +581,63 @@ The reframing directive, vocabulary list, scale definitions, and persona are byt
 - Paper outline (`paper_outline.tex`) is restructured to make the decision–rationalization dissociation finding the load-bearing headline rather than a co-equal contribution alongside vocabulary precision.
 
 **Reviewer-facing disclosure:** This amendment will be disclosed in the paper's Methods section and as the first entry of the post-pre-registration deviations log (§6). The contraction is principled (paper-strength argument, pre-data), not opportunistic (no Stage 2 results were known at the time of contraction).
+
+---
+
+## 6.8 Instrument & integrity amendment — v3.4.0 (locked 2026-06-08)
+
+**Status: Pre-data.** No Stage-1 judge pass and no Stage-2 rollout has been executed at the time of this amendment. All changes below were motivated by two pre-data design audits (a six-judge instrument audit, 62 confirmed findings; and a venue-readiness review, 71 confirmed findings), not by any observed result. They are batched into a single versioned amendment — `prompts.py` v3.4.0 — precisely so the instrument changes cannot be read as incremental tuning.
+
+### 6.8.1 Instrument de-leak bundle (prompts.py v3.4.0 + judge scripts)
+
+| # | Change | Why (audit finding) |
+|---|--------|---------------------|
+| 1 | **VAR judge**: added `uncodable` label (empty / refusal / pure restatement / no framing-bearing language) + deterministic tie-break (any un-attributed re-use of loaded source phrasing → `inheriting`). Runner filters empty explanations before job creation and reports exclusions per (condition × target). Uncodable items are excluded from the VAR denominator. | Empty/terse explanations are most likely in the `reframing` arm; force-labeling or silently nulling them was an MNAR risk aligned with H27/H23. |
+| 2 | **FDC judge**: `predicted_lean` removed from the judge input (correlates with `source_lean`, the H25 regressor — soft leakage); midpoint (~4) anchor example added; substance-not-surface confound instruction added (length / meta-language / self-declared neutrality do not count as distance); `{"uncodable": true}` escape added. | Scale compression on 1–7; verbosity/keyword-echo artifact threatened the H27b interpretation. |
+| 3 | **Directional-RD judge**: `no_signal` operational threshold (reserved for genuinely procedural/apolitical source text) + neutral-default tie-break; **mechanism field added** (`strip` / `amplify` / `both` / `na`) so `left_substitution` no longer conflates strip-right with amplify-left; 4 balanced worked examples added. `no_signal` rate is reported by source-lean stratum as a coverage diagnostic for H26. | LEFT_SUBSTITUTION conflation made the C4 strip-right story untestable; unthresholded `no_signal` risked collapsing H26's effective N, possibly lean-dependently. |
+| 4 | **BPS judge condition blinding**: the condition-specific system prompt is replaced with a fixed generic stub in every transcript shown to the BPS judge (`run_eval.blind_transcript`, applied inside `build_judge_user` so both the synchronous and batch paths are covered). The blinding claim in the paper is scoped honestly: identifying metadata and system instructions are withheld; the target's stylistic content is unchanged (label blinding, not stylometric anonymization). | The reframing directive sat inside the scored transcript and maps onto the constructs BPS scores — the prior "blinded" claim was not true for condition. |
+| 5 | **Verification + article-rating de-leak**: `verify_detections.py` and `rate_articles.py` no longer inject `HEADLINE:`/`SOURCE:` into any prompt (article text only, boundary-cleaned `text_clean` preferred). `rate_articles.py` judge updated Opus 4.6 → Sonnet 4.6 (Path-B §1.1). All prior verification verdicts and LCA article ratings are **discarded and regenerated** on the v3 corpus. | Live label leak (outlet name → AllSides label); ratings were also on the superseded legacy-100 corpus with the non-canonical judge. |
+| 6 | **Judge source-context cap raised 4,000 → 10,000 chars** (`SOURCE_TEXT_MAXCHARS`): at 4,000, 143/200 v3 articles were truncated for the judges carrying all six directional tests; 10,000 covers the full 400–1500-word corpus band untruncated. | Truncated sources made inheritance judgments against partial context. |
+| 7 | **Parse-failure handling**: one automatic retry on judge JSON parse failure; parse-failure rate reported per cell. | Silently-dropped NULLs bias cell estimates invisibly if failure correlates with content. |
+
+### 6.8.2 C5 favoritism estimate — relabel and re-estimation plan
+
+The cross-family favoritism interaction (β = −1.42, Eval C) was estimated on the **v1 N=95 corpus, which this pre-registration deprecates**, and LMM 1 was fit before the v1 document was finalized (§Status, v1). It is therefore **not** a Paper-1 pre-registered confirmatory result and will not be presented as one. Reclassification:
+
+- The v1 estimate is reported as a **prior empirical observation** motivating the paired cross-family judge design.
+- The target × judge interaction is **re-estimated on the v3 corpus** (BPS judgments, Sonnet 4.6 + GPT-5 + Gemini 2.5 Pro) and reported **descriptively with 95% CI, outside the 8-test BH-FDR family** (family size unchanged).
+
+### 6.8.3 H28 equivalence-bound (SESOI) repair
+
+The prior bound justification ("re-derive from v3 ablation dispersion") was temporally impossible as written (that data exists only after Stage 2). Corrected procedure, locked now:
+
+1. The SESOI is re-derived from the **v1+v2 rollouts that already exist**: per-article detection-count dispersion in the `ablation` and `full` arms (mean ≈ 3.9 detections/article). The bound is set to 0.5 × within-arm SD-implied units and rounded to one decimal, with |Δ| < 2.0 retained as the pre-registered ceiling.
+2. **Sensitivity analysis at bounds 1.0 and 1.5** is reported alongside the primary bound — equivalence claims that hold only at the loosest bound are flagged as weak.
+3. **Decision-stability companions (descriptive, pre-registered now, not in the family):**
+   - **Span-overlap**: per-article Jaccard overlap of detected `biasedText` spans (normalized) between `reframing` and `ablation`; reported by source-lean stratum. H28 counts alone cannot distinguish "same detections" from "same number of different detections" — the span overlap closes that gap.
+   - **Label-shift matrix**: Eval C 5×5 confusion matrix between `ablation` and `reframing` labels, with per-lean-stratum κ, so any equivalence failure is directionally decomposable.
+   - **Test–retest noise floor**: one same-condition re-run (`ablation`, both targets, same articles, temperature as deployed) to estimate the count/label stability ceiling against which H28/H29 equivalence is interpreted. Sampling temperature and parameters are reported explicitly.
+
+### 6.8.4 Outcome-interpretation map (pre-committed, all branches)
+
+The headline is a conjunction; the modal outcome is a partial pattern. Interpretations are pre-committed so no branch requires post-hoc narrative:
+
+| Branch | Pattern | Pre-committed interpretation | Reporting frame |
+|---|---|---|---|
+| **B1 Full** | H27/H27b ∧ H28/H29 ∧ (H23 directional) | Decision–rationalization dissociation with directional signature | Main-conference framing as registered |
+| **B2 Symmetric** | H27/H27b ∧ H28/H29, H23/H25/H26 null | **Symmetric** framing replacement with stable decisions: directive reshapes prose without moving decisions, with no detectable political direction. Title drops the directional clause; "replacement-not-neutrality" + dissociation remain the claims. | Findings-tier; explicitly NOT salvage — this branch is pre-named here |
+| **B3 Decisions move** | H28 and/or H29 fail equivalence | The permissive directive changes **decisions**, not just prose — a stronger deployment finding than the dissociation. Reported via the §6.8.3 label-shift matrix and span-overlap companions (direction and magnitude of decision movement), framed as "reframing directives are not prose-only." | Re-titled accordingly; descriptive companions carry the decomposition |
+| **B4 Inconclusive TOST** | TOST fails to reject in either direction | Neither dissociation nor decision-change claimable at the registered bound; report with the §6.8.3 sensitivity bounds and the test–retest floor; emphasis shifts to the prose-side confirmatory results that did land. | Honest null-zone reporting; no equivalence language used |
+| **B5 Calibration failure** | VAR and/or FDC human κ < 0.4 | Affected instrument's tests downgrade to exploratory per METHODS Phase-1.5 thresholds; if both fail and RD lacks a floor, no confirmatory directional claim is made. | Methods-and-measurement paper framing |
+
+### 6.8.5 Stage-1 trigger test and corpus lock
+
+- **Stage-1 trigger (§6.6.6) operationalized**: "significant cross-source-lean asymmetry" = two-sided Welch test on VAR (and FDC schema) between RIGHT and LEFT strata at α = 0.05, per target, uncorrected (it is a gate, not a finding). "VAR > 0.15 in any cell" and "FDC < 4.0 (1–7) in any cell" are computed on per-judge labels; either judge crossing triggers.
+- **Corpus lock**: Paper-1 analyses use `articles_v3.csv` as committed in the repository at this amendment (N=200; 40 per 5-class lean × 25 per macro-theme; 400–1500-word cleaned text; `text_clean` column is the analysis text). No article may be added, removed, or re-cleaned after Stage-2 collection begins.
+
+### 6.8.6 Scope correction — decision-before-prose
+
+The post-hoc-rationalization claim (METHODS §4.10) is **airtight only for Eval C** (schema commits `lean` before `reasoning`). For Eval A, each detection's `biasType` precedes its `explanation`, but the **count-level** decision (how many detections) is never committed before prose — detections stream with interleaved explanations. The paper scopes the generation-order argument accordingly: Eval C carries the strict post-hoc claim; Eval A's per-detection labels are locally pre-prose; H28 is framed as decision-stability, not post-hoc-order, evidence.
 
 ---
 

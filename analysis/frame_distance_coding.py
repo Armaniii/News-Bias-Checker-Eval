@@ -42,9 +42,10 @@ def build_jobs(corpus_csv, conditions, targets):
         if not reasoning:
             no_reason += 1
             continue
+        # predicted_lean no longer passed to the judge (v3.4.0 de-leak);
+        # retained in the job meta below for analysis only.
         user = FDC_JUDGE_PROMPT["user_template"].format(
             source_text=source,
-            predicted_lean=out.get("lean", ""),
             reasoning_text=reasoning)
         jobs.append({
             "item_id": f"{aid}__{d['condition']}__{d['model']}",
@@ -76,6 +77,7 @@ def assemble(records) -> pd.DataFrame:
     rows = []
     for r in records:
         p = r.get("parsed")
+        uncodable = bool(isinstance(p, dict) and p.get("uncodable"))
         rows.append({
             "item_id": r["item_id"], "article_id": r.get("article_id"),
             "condition": r.get("condition"), "target": r.get("target"),
@@ -83,8 +85,11 @@ def assemble(records) -> pd.DataFrame:
             "source_lean3": cfg.LEAN_3.get(r.get("source_lean"), ""),
             "predicted_lean": r.get("predicted_lean"),
             "judge": r["judge"], "judge_family": r.get("judge_family"),
-            "fdc_attribution": _axis(p, "attribution"),
-            "fdc_schema": _axis(p, "schema"),
+            # v3.4.0: judge may return {"uncodable": true} for empty/refusal/
+            # no-framing reasoning — axes stay None, flag kept for reporting.
+            "uncodable": uncodable,
+            "fdc_attribution": None if uncodable else _axis(p, "attribution"),
+            "fdc_schema": None if uncodable else _axis(p, "schema"),
         })
     return pd.DataFrame(rows)
 

@@ -46,9 +46,11 @@ THEMES = ["immigration_border", "foreign_defense", "elections_governance",
 STAGE1_CORPUS = ROOT / "articles_v2.csv"     # existing v1+v2 rollouts (N=100)
 STAGE2_CORPUS = ROOT / "articles_v3.csv"     # new N=200 grid
 
-# Cap source text injected into judge prompts (token control). Judges compare
-# output framing to the source; ~4000 chars (~600 words) is enough context.
-SOURCE_TEXT_MAXCHARS = 4000
+# Cap source text injected into judge prompts (token control). Raised from
+# 4000 -> 10000 (v3.4.0, 2026-06-08): at 4000 chars, 143/200 v3 articles were
+# truncated for the judges carrying all six directional tests. 10000 chars
+# (~1500 words) covers the full 400-1500-word corpus band untruncated.
+SOURCE_TEXT_MAXCHARS = 10000
 
 # --- BH-FDR family (PRE_REGISTRATION §6.6.10) -------------------------------
 # Confirmatory (directional) + Equivalence. Family size = 8.

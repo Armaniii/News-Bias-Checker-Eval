@@ -33,6 +33,12 @@ CACHE = cfg.DATA / "voice_adoption.cache.jsonl"
 def build_jobs(corpus_csv, conditions, targets):
     src = jc.load_source_texts(corpus_csv)
     jobs, missing_src = [], 0
+    # Empty/whitespace explanations are filtered BEFORE job creation and
+    # counted per (condition, target): they are most likely in the reframing
+    # arm (H27/H23), so force-labeling or silently nulling them is an MNAR
+    # risk in the direction of the load-bearing finding. They are excluded
+    # from the VAR denominator and reported per cell (v3.4.0, 2026-06-08).
+    empty_excluded = {}
     for d in jc.iter_rollouts("a", conditions=conditions, targets=targets):
         aid = d["article_id"]
         source = src.get(aid)
@@ -47,6 +53,10 @@ def build_jobs(corpus_csv, conditions, targets):
             continue
         for i, det in enumerate(dets):
             if not isinstance(det, dict):
+                continue
+            if not (det.get("explanation") or "").strip():
+                key = (d["condition"], d["model"])
+                empty_excluded[key] = empty_excluded.get(key, 0) + 1
                 continue
             user = VAR_JUDGE_PROMPT["user_template"].format(
                 source_text=source,
@@ -66,6 +76,10 @@ def build_jobs(corpus_csv, conditions, targets):
             })
     if missing_src:
         print(f"  WARN: {missing_src} rollouts had no source text in corpus")
+    if empty_excluded:
+        print("  empty-explanation detections excluded (condition, target -> n):")
+        for k, v in sorted(empty_excluded.items()):
+            print(f"    {k}: {v}")
     return jobs
 
 
@@ -81,7 +95,10 @@ def assemble(records) -> pd.DataFrame:
             "source_lean3": cfg.LEAN_3.get(r.get("source_lean"), ""),
             "bias_type": r.get("bias_type"), "detection_idx": r.get("detection_idx"),
             "judge": r["judge"], "judge_family": r.get("judge_family"),
-            "voice": voice if voice in ("describing", "inheriting") else None,
+            # uncodable is a valid judge label (v3.4.0): kept in `voice` for
+            # per-cell reporting, excluded from the VAR denominator via
+            # inheriting=None.
+            "voice": voice if voice in ("describing", "inheriting", "uncodable") else None,
             "inheriting": 1 if voice == "inheriting" else (0 if voice == "describing" else None),
         })
     return pd.DataFrame(rows)

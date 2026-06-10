@@ -197,29 +197,21 @@ def load_rollout(model_key, article_id):
 
 # ─── Prompt builders ─────────────────────────────────────────────────────────
 
+# HEADLINE/SOURCE removed from prompts 2026-06-08 (v3.4.0 de-leak amendment):
+# the input principle (article text only) applies to judges as well as targets
+# — the outlet name leaks the AllSides label. Prefers boundary-cleaned text.
+def _article_text(article):
+    return ((article.get("text_clean") or "").strip()
+            or article.get("text", "").strip())
+
+
 def build_stage1_user(usr_template, article):
-    title = article.get("title", "").strip()
-    source = article.get("source", "").strip()
-    text = article.get("text", "").strip()
-    block = ""
-    if title:
-        block += f"HEADLINE: {title}\n"
-    if source:
-        block += f"SOURCE: {source}\n"
-    block += f"\nARTICLE:\n\n{text}"
+    block = f"\nARTICLE:\n\n{_article_text(article)}"
     return usr_template + "\n---\n" + block + "\n---"
 
 
 def build_stage2_user(article, judge_detections, sonnet_detections, gpt_detections):
-    title = article.get("title", "").strip()
-    source = article.get("source", "").strip()
-    text = article.get("text", "").strip()
-    article_block = ""
-    if title:
-        article_block += f"HEADLINE: {title}\n"
-    if source:
-        article_block += f"SOURCE: {source}\n"
-    article_block += f"\n{text}"
+    article_block = f"\n{_article_text(article)}"
 
     return f"""## Article
 ---

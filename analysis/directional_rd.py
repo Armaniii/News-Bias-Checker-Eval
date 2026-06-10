@@ -59,11 +59,15 @@ def build_jobs(corpus_csv, conditions, targets):
     return jobs
 
 
+VALID_MECH = {"strip", "amplify", "both", "na"}
+
+
 def assemble(records) -> pd.DataFrame:
     rows = []
     for r in records:
         p = r.get("parsed") or {}
         direction = (p.get("direction") or "").strip().lower() if isinstance(p, dict) else ""
+        mech = (p.get("mechanism") or "").strip().lower() if isinstance(p, dict) else ""
         rows.append({
             "item_id": r["item_id"], "article_id": r.get("article_id"),
             "condition": r.get("condition"), "target": r.get("target"),
@@ -71,6 +75,10 @@ def assemble(records) -> pd.DataFrame:
             "source_lean3": cfg.LEAN_3.get(r.get("source_lean"), ""),
             "judge": r["judge"], "judge_family": r.get("judge_family"),
             "direction": direction if direction in VALID_DIR else None,
+            # v3.4.0: strip vs amplify split — LEFT_SUBSTITUTION alone
+            # conflates strip-right with amplify-left; the C4 directional-
+            # default story needs the mechanism to distinguish them.
+            "mechanism": mech if mech in VALID_MECH else None,
         })
     return pd.DataFrame(rows)
 

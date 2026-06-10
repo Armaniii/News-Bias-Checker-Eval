@@ -136,6 +136,12 @@ def run_jobs(jobs, judges=None, cache_path=None, dry_run=False,
         full = resolve_model(judge, registry)
         raw = call_llm(job["system"], job["user"], full, max_tokens=max_tokens)
         parsed, _ = extract_json(raw)
+        if parsed is None:
+            # One retry on parse failure (v3.4.0): silently-dropped NULLs
+            # bias cell estimates invisibly if failures correlate with
+            # content (e.g. messier reframing-arm outputs).
+            raw = call_llm(job["system"], job["user"], full, max_tokens=max_tokens)
+            parsed, _ = extract_json(raw)
         rec = {k: v for k, v in job.items() if k not in ("system", "user")}
         rec.update({"item_id": job["item_id"], "judge": judge,
                     "judge_family": cfg.JUDGE_FAMILY.get(judge, "?"),

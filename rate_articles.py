@@ -35,10 +35,14 @@ ROOT = pathlib.Path(__file__).resolve().parent
 OUT_DIR = ROOT / "results" / "article_ratings"
 BATCH_DIR = OUT_DIR / "batch"
 
+# Anthropic-side judge revised Opus 4.6 -> Sonnet 4.6 (Path-B canonical pair,
+# PRE_REGISTRATION §1.1; propagated here 2026-06-08 v3.4.0 amendment — the
+# prior Opus ratings were also on the superseded legacy-100 corpus and must be
+# regenerated on articles_v3.csv regardless).
 MODELS = {
-    "claude-opus-4-6": {
+    "claude-sonnet-4-6": {
         "provider": "anthropic",
-        "api_model": "claude-opus-4-6",
+        "api_model": "claude-sonnet-4-6",
     },
     "gpt-5": {
         "provider": "openai",
@@ -78,16 +82,12 @@ def load_prompts():
 
 
 def build_user_prompt(usr_template, article):
-    title = article.get("title", "").strip()
-    source = article.get("source", "").strip()
-    text = article.get("text", "").strip()
-    article_block = ""
-    if title:
-        article_block += f"HEADLINE: {title}\n"
-    if source:
-        article_block += f"SOURCE: {source}\n"
-    article_block += f"\n{text}"
-    return usr_template + "\n" + article_block
+    # HEADLINE/SOURCE removed 2026-06-08 (v3.4.0 de-leak): outlet name leaks
+    # the AllSides label to the ground-truth judge. Article text only, prefer
+    # the boundary-cleaned column.
+    text = ((article.get("text_clean") or "").strip()
+            or article.get("text", "").strip())
+    return usr_template + "\n\n" + text
 
 
 # =============================================================================
@@ -115,8 +115,8 @@ def prepare(articles_path):
             cid = f"rate__{model_key}__{aid}"
             # Shorten for Anthropic 64-char limit
             short_cid = (cid
-                         .replace("claude-opus-4-6", "cop46")
-                         .replace("article_", "a"))
+                         .replace("claude-sonnet-4-6", "cso46")
+                         .replace("article_", "a", 1))
 
             if mcfg["provider"] == "anthropic":
                 anthropic_reqs.append({
@@ -280,10 +280,14 @@ def status():
 # =============================================================================
 
 def _expand_cid(cid):
-    """Expand shortened custom_id back to full form."""
+    """Expand shortened custom_id back to full form.
+
+    Handles both legacy numeric ids (a1056 -> article_1056) and v3 composite
+    ids (aarticles_22548 -> article_articles_22548, abackup7_101004 ->
+    article_backup7_101004)."""
     s = cid
-    s = s.replace("cop46", "claude-opus-4-6")
-    s = re.sub(r"__a(\d+)$", r"__article_\1", s)
+    s = s.replace("cso46", "claude-sonnet-4-6")
+    s = re.sub(r"__a(?=[\w])", "__article_", s, count=1)
     return s
 
 
@@ -451,7 +455,7 @@ def _generate_summary():
 
     print(f"\n  {'Article':<15} {'Outlet Lean':<12}", end="")
     for m in models:
-        short = m.replace("claude-opus-4-6", "Opus").replace("gpt-5", "GPT-5")
+        short = m.replace("claude-sonnet-4-6", "Sonnet").replace("gpt-5", "GPT-5")
         print(f"  {short:>15}", end="")
     print(f"  {'Agree?':>8}")
     print("  " + "-" * 70)
