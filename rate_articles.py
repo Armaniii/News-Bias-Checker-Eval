@@ -287,7 +287,11 @@ def _expand_cid(cid):
     article_backup7_101004)."""
     s = cid
     s = s.replace("cso46", "claude-sonnet-4-6")
-    s = re.sub(r"__a(?=[\w])", "__article_", s, count=1)
+    # Idempotent: OpenAI custom_ids are stored full-form (never shortened) —
+    # only expand when the id is actually in shortened form, otherwise
+    # "__article_x" would be re-expanded into "__article_rticle_x".
+    if "__article_" not in s:
+        s = re.sub(r"__a(?=[\w])", "__article_", s, count=1)
     return s
 
 
