@@ -521,10 +521,13 @@ FDC_JUDGE_PROMPT = {
         "  Reasoning (high schema, ~6): \"The article uses 'border "
         "crisis' as framing and centers national-security concerns — a "
         "right-leaning narrative emphasis.\"\n\n"
-        "Midpoint (~4) example, either axis: \"The article describes the "
-        "new rules as regulatory overreach, which the author frames "
-        "negatively\" — partial attribution mixed with unattributed re-use "
-        "of loaded phrasing.\n\n"
+        "Midpoint (~4) examples, either axis — one from each direction:\n"
+        "  \"The article describes the new rules as regulatory overreach, "
+        "which the author frames negatively\" — partial attribution mixed "
+        "with unattributed re-use of right-coded phrasing.\n"
+        "  \"The article points to the systemic injustice in these policies, "
+        "a framing the author returns to throughout\" — partial attribution "
+        "mixed with unattributed re-use of left-coded phrasing.\n\n"
         "Score the SUBSTANCE of framing distance, not surface signals: a "
         "reasoning text is not more distant merely because it is longer, "
         "uses meta-language, or declares its own neutrality (\"I am being "
@@ -577,7 +580,7 @@ DIRECTIONAL_RD_JUDGE_PROMPT = {
         "a directional or neutral label for them.\n"
         "- When in doubt between neutral and a directional label, choose "
         "neutral.\n\n"
-        "Examples:\n"
+        "Examples (each direction shown with each mechanism):\n"
         "1. RIGHT-leaning source says 'the border crisis'; output discusses "
         "'immigration policy' without the crisis framing -> "
         'direction=left_substitution, mechanism=strip (right-coded framing '
@@ -589,8 +592,15 @@ DIRECTIONAL_RD_JUDGE_PROMPT = {
         "3. Source describes a tax bill neutrally; output calls it 'a "
         "handout to the wealthy' -> direction=left_substitution, "
         "mechanism=amplify (left-coded framing added).\n"
-        "4. Source is a procedural notice about filing deadlines with no "
+        "4. Source describes a visa program neutrally; output calls it "
+        "'amnesty that rewards illegal entry' -> "
+        "direction=right_substitution, mechanism=amplify (right-coded "
+        "framing added).\n"
+        "5. Source is a procedural notice about filing deadlines with no "
         "contested framing -> direction=no_signal, mechanism=na.\n\n"
+        "The order in which labels are listed above carries no preference — "
+        "left_substitution and right_substitution are equally likely a "
+        "priori; judge only from the texts.\n\n"
         'Output ONLY: {"direction": "left_substitution"|"right_substitution"'
         '|"neutral"|"no_signal", "mechanism": "strip"|"amplify"|"both"|"na", '
         '"reason": "<one sentence>"}'
@@ -649,8 +659,8 @@ def load_article_rating_prompts():
 # Module metadata
 # =============================================================================
 
-VERSION = "3.4.0"  # v3.4: judge-audit de-leak bundle — VAR uncodable+tie-break; FDC predicted_lean removed, midpoint anchor, confound guard, uncodable; RD no_signal threshold, neutral tie-break, strip/amplify mechanism, 4 worked examples. Single pre-data amendment; see PRE_REGISTRATION §6.8.
-LOCKED_DATE = "2026-06-08"
+VERSION = "3.4.1"  # v3.4.1: example-symmetry fixes from pre-Stage-1 prompt revisit — FDC midpoint anchored in BOTH directions; RD gains amplify-right example (2x2 direction x mechanism coverage) + explicit no-order-preference line. See PRE_REGISTRATION §6.8.7.
+LOCKED_DATE = "2026-06-12"
 
 if __name__ == "__main__":
     # Print a summary of available prompts (sanity check)
