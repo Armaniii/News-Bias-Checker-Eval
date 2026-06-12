@@ -82,6 +82,154 @@ def iter_rollouts(eval_letter: str, conditions=None, targets=None,
                 yield d
 
 
+# ---------------------------------------------------------------------------
+# Batch API path (50% pricing). Mirrors rate_articles.py / run_eval.py:
+#   batch_submit()   -> build request files + manifest, submit both providers
+#   batch_status()   -> poll
+#   batch_download() -> fetch results, append parsed verdicts to the SAME
+#                       cache jsonl the sync path uses. Parse failures are NOT
+#                       cached, so a follow-up sync run (resume) patches them.
+# custom_ids are positional ("j0", "j1", ...) with a manifest.json mapping
+# back to (item_id, judge, meta) — sidesteps Anthropic's 64-char cid limit.
+# ---------------------------------------------------------------------------
+
+def _clients():
+    import anthropic
+    from openai import OpenAI
+    import os
+    return (anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"]),
+            OpenAI(api_key=os.environ["OPENAI_API_KEY"]))
+
+
+def batch_submit(jobs, judges=None, cache_path=None, batch_dir=None,
+                 max_tokens=None, dry_run=False):
+    """Submit uncached (job x judge) pairs as provider batches."""
+    judges = judges or cfg.JUDGES
+    max_tokens = max_tokens or cfg.JUDGE_MAX_TOKENS
+    registry = load_model_registry()
+    batch_dir = pathlib.Path(batch_dir); batch_dir.mkdir(parents=True, exist_ok=True)
+    done = _cache_load(pathlib.Path(cache_path))
+    work = [(job, judge) for job in jobs for judge in judges
+            if (job["item_id"], judge) not in done]
+    print(f"  batch: {len(jobs)} jobs x {len(judges)} judges; "
+          f"{len(done)} cached, {len(work)} to submit")
+    if not work:
+        return None
+
+    manifest, anth_reqs, oa_lines = {}, [], []
+    for i, (job, judge) in enumerate(work):
+        cid = f"j{i}"
+        meta = {k: v for k, v in job.items() if k not in ("system", "user")}
+        meta.update({"item_id": job["item_id"], "judge": judge,
+                     "judge_family": cfg.JUDGE_FAMILY.get(judge, "?")})
+        manifest[cid] = meta
+        full = resolve_model(judge, registry)
+        provider, model = full.split("/", 1)
+        if provider == "anthropic":
+            anth_reqs.append({"custom_id": cid, "params": {
+                "model": model, "max_tokens": max_tokens,
+                "system": job["system"],
+                "messages": [{"role": "user", "content": job["user"]}]}})
+        else:
+            oa_lines.append({"custom_id": cid, "method": "POST",
+                "url": "/v1/chat/completions", "body": {
+                    "model": model, "max_completion_tokens": max_tokens,
+                    "messages": [{"role": "system", "content": job["system"]},
+                                 {"role": "user", "content": job["user"]}]}})
+
+    (batch_dir / "manifest.json").write_text(json.dumps(manifest))
+    oa_path = batch_dir / "openai_requests.jsonl"
+    with open(oa_path, "w", encoding="utf-8") as f:
+        for line in oa_lines:
+            f.write(json.dumps(line, ensure_ascii=False) + "\n")
+    print(f"  prepared: anthropic={len(anth_reqs)} openai={len(oa_lines)} "
+          f"(manifest + files in {batch_dir})")
+    if dry_run:
+        print("  --dry-run: not submitting.")
+        return None
+
+    anth_client, oa_client = _clients()
+    ids = {}
+    if anth_reqs:
+        b = anth_client.messages.batches.create(requests=anth_reqs)
+        ids["anthropic"] = b.id
+        print(f"  Anthropic batch: {b.id}")
+    if oa_lines:
+        up = oa_client.files.create(file=open(oa_path, "rb"), purpose="batch")
+        b = oa_client.batches.create(input_file_id=up.id,
+                                     endpoint="/v1/chat/completions",
+                                     completion_window="24h")
+        ids["openai"] = b.id
+        print(f"  OpenAI batch: {b.id}")
+    (batch_dir / "batch_ids.json").write_text(json.dumps(ids))
+    return ids
+
+
+def batch_status(batch_dir):
+    batch_dir = pathlib.Path(batch_dir)
+    ids = json.loads((batch_dir / "batch_ids.json").read_text())
+    anth_client, oa_client = _clients()
+    out = {}
+    if "anthropic" in ids:
+        b = anth_client.messages.batches.retrieve(ids["anthropic"])
+        c = b.request_counts
+        out["anthropic"] = b.processing_status
+        print(f"  Anthropic {ids['anthropic']}: {b.processing_status} "
+              f"(ok={c.succeeded} err={c.errored} run={c.processing})")
+    if "openai" in ids:
+        b = oa_client.batches.retrieve(ids["openai"])
+        out["openai"] = b.status
+        print(f"  OpenAI {ids['openai']}: {b.status} "
+              f"(ok={b.request_counts.completed} err={b.request_counts.failed} "
+              f"total={b.request_counts.total})")
+    return out
+
+
+def batch_download(batch_dir, cache_path):
+    """Fetch results, append successfully-parsed verdicts to the cache jsonl.
+
+    Returns (saved, failed). Failures are left uncached so a sync run
+    (run_jobs, resume mode) patches them with its built-in retry."""
+    batch_dir = pathlib.Path(batch_dir)
+    ids = json.loads((batch_dir / "batch_ids.json").read_text())
+    manifest = json.loads((batch_dir / "manifest.json").read_text())
+    anth_client, oa_client = _clients()
+    fh = open(cache_path, "a", encoding="utf-8")
+    saved = failed = 0
+
+    def _save(cid, raw):
+        nonlocal saved, failed
+        meta = manifest.get(cid)
+        if meta is None:
+            failed += 1; return
+        parsed, _ = extract_json(raw or "")
+        if parsed is None:
+            failed += 1; return
+        rec = dict(meta); rec.update({"raw": raw, "parsed": parsed})
+        fh.write(json.dumps(rec, ensure_ascii=False) + "\n"); saved += 1
+
+    if "anthropic" in ids:
+        for r in anth_client.messages.batches.results(ids["anthropic"]):
+            if r.result.type == "succeeded":
+                _save(r.custom_id, r.result.message.content[0].text)
+            else:
+                failed += 1
+    if "openai" in ids:
+        b = oa_client.batches.retrieve(ids["openai"])
+        if b.output_file_id:
+            for line in oa_client.files.content(b.output_file_id).text.splitlines():
+                if not line.strip():
+                    continue
+                d = json.loads(line)
+                body = (d.get("response") or {}).get("body") or {}
+                ch = (body.get("choices") or [{}])[0]
+                _save(d.get("custom_id"), (ch.get("message") or {}).get("content"))
+    fh.close()
+    print(f"  batch download: {saved} verdicts cached, {failed} failed/unparsed "
+          f"(patch failures by re-running WITHOUT --batch — sync mode resumes from cache)")
+    return saved, failed
+
+
 def _cache_load(cache_path: pathlib.Path) -> dict:
     done = {}
     if cache_path.exists():

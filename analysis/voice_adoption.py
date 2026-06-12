@@ -111,17 +111,32 @@ def main():
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--stage2", action="store_true", help="use v3 corpus + reframing/reframing_cot arms")
     ap.add_argument("--conditions", nargs="+", default=None)
+    ap.add_argument("--batch", choices=["submit", "status", "download"], default=None,
+                    help="batch API path (50%% pricing): submit -> status -> download; "
+                         "patch any failures by re-running without --batch")
     args = ap.parse_args()
+
+    batch_dir = cfg.DATA / "batch_stage1" / "var"
+    if args.batch == "status":
+        jc.batch_status(batch_dir); return
 
     corpus = cfg.STAGE2_CORPUS if args.stage2 else cfg.STAGE1_CORPUS
     print(f"VAR runner | corpus={corpus.name} | judges={cfg.JUDGES}")
     jobs = build_jobs(corpus, args.conditions, cfg.TARGETS)
     print(f"  built {len(jobs)} VAR jobs (one per detection)")
 
-    records = jc.run_jobs(jobs, cache_path=CACHE, dry_run=args.dry_run,
-                          limit=args.limit, workers=args.workers,
-                          max_tokens=cfg.JUDGE_MAX_TOKENS)
-    if args.dry_run:
+    if args.batch == "submit":
+        jc.batch_submit(jobs, cache_path=CACHE, batch_dir=batch_dir,
+                        dry_run=args.dry_run)
+        return
+    if args.batch == "download":
+        jc.batch_download(batch_dir, CACHE)
+        records = list(jc._cache_load(CACHE).values())
+    else:
+        records = jc.run_jobs(jobs, cache_path=CACHE, dry_run=args.dry_run,
+                              limit=args.limit, workers=args.workers,
+                              max_tokens=cfg.JUDGE_MAX_TOKENS)
+    if args.dry_run and not args.batch:
         return
     df = assemble(records)
     df.to_parquet(OUT, index=False)
