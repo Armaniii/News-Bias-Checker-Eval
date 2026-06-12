@@ -52,6 +52,15 @@ STAGE2_CORPUS = ROOT / "articles_v3.csv"     # new N=200 grid
 # (~1500 words) covers the full 400-1500-word corpus band untruncated.
 SOURCE_TEXT_MAXCHARS = 10000
 
+# Completion budget for Stage-1 judge calls. GPT-5 is a reasoning model whose
+# reasoning tokens consume the completion budget BEFORE any visible output —
+# at 1200 tokens it returned EMPTY content on 18/59 LCA rating calls
+# (2026-06-12); 6000 cleared 17/18 and 12000 the last one. Judges only emit a
+# one-line JSON verdict, but the budget must cover the invisible reasoning.
+# Billing is per generated token, so the high cap costs nothing extra when
+# the model reasons briefly.
+JUDGE_MAX_TOKENS = 6000
+
 # --- BH-FDR family (PRE_REGISTRATION §6.6.10) -------------------------------
 # Confirmatory (directional) + Equivalence. Family size = 8.
 BH_FAMILY = {

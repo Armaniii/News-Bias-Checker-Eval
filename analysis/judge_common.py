@@ -98,7 +98,11 @@ def _cache_load(cache_path: pathlib.Path) -> dict:
 
 
 def run_jobs(jobs, judges=None, cache_path=None, dry_run=False,
-             limit=None, workers=6, max_tokens=400):
+             limit=None, workers=6, max_tokens=None):
+    if max_tokens is None:
+        # GPT-5 reasoning consumes the completion budget before visible
+        # output — small caps return EMPTY content (see cfg.JUDGE_MAX_TOKENS).
+        max_tokens = cfg.JUDGE_MAX_TOKENS
     """Run each job under each judge, concurrently, resumable.
 
     Returns a list of records: {item_id, judge, judge_family, raw, parsed, **meta}.

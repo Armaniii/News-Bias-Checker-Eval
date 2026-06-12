@@ -109,7 +109,8 @@ def main():
     print(f"  built {len(jobs)} FDC jobs (one per Eval C reasoning)")
 
     records = jc.run_jobs(jobs, cache_path=CACHE, dry_run=args.dry_run,
-                          limit=args.limit, workers=args.workers, max_tokens=200)
+                          limit=args.limit, workers=args.workers,
+                          max_tokens=cfg.JUDGE_MAX_TOKENS)
     if args.dry_run:
         return
     df = assemble(records)
