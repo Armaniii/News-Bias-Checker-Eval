@@ -706,6 +706,14 @@ The deeper finding: under the corrected rubric, the construct is **near-floor**.
 
 **Not adopted from the VPEI piece** (with reasons, for the record): the multiplicative PB = VP × (1−EI) index (no measurement theory; scale-dependent); ideological-Turing-test instruments (no reliability evidence — precisely the failure mode §§6.8.8–6.8.9 document empirically). Mirrored-vocabulary synthetic counterfactuals (true turnabout tests) are noted as future work outside Paper 1.
 
+### 6.8.11 H26 primary test structure + judge-sensitivity estimate (locked 2026-06-23, pre-Stage-2)
+
+**Motivation (power, not effect).** The §6.8.9 anchoring reduced directional-flag rates in the predicted against-interest direction. Simulation at the Stage-2 design (80 Right vs 80 Left articles × 10 reasonings each, article-level clustering, one-sided test) shows the GPT-5-judged arm well powered (~96% at gate-estimated rates; ≥75% at half those rates) but the Sonnet-judged arm underpowered (~58% at its gate-estimated ~2.5% directional rate, which rests on 1 event in 40 items). Testing H26 per-judge therefore risks a spurious appearance of cross-judge non-replication driven by sensitivity, not sign.
+
+**Pre-committed primary (fixed before the sensitivity estimate below was run).** H26 is tested once, on judge-pooled data (each reasoning contributes both judges' verdicts; article-level clustering respected in the test). Confirmation requires BOTH: (a) the pooled one-sided test significant under BH-FDR within the 3-test family; AND (b) per-judge sign consistency — both judges' point estimates of the asymmetry carry the predicted sign. Per-judge tests are reported descriptively with CIs. A significant pooled test with discordant per-judge signs is reported as **non-confirmation**. This structure is fixed regardless of the sensitivity estimate's outcome.
+
+**Judge-sensitivity estimate (instrument property; no hypothesis content).** Sonnet's directional-flag rate under prompts v3.4.3 is estimated on ~300 pilot Eval-C reasonings (v1+v2 pool — excluded from Paper-1 analysis; contaminated articles excluded; Sonnet only; separate cache). Only the overall directional/neutral/no_signal rate is computed — the by-lean asymmetry split is deliberately not examined. The estimate feeds the power appendix only; no statistic from this run enters any confirmatory analysis. Result recorded in the deviations log upon completion.
+
 ---
 
 ## 7. Software & reproducibility
