@@ -1,0 +1,451 @@
+% FRAME Paper 1 — ICLR draft skeleton (v0.1, pre-Stage-2)
+% Compile: requires iclr2026_conference.sty + .bst (or swap the two style
+% lines below for \documentclass{article} + natbib to compile standalone).
+% Placeholders for Stage-2 results are marked \pending{...} in orange.
+\documentclass{article}
+\usepackage{iclr2026_conference,times}   % ICLR style; comment out if absent
+%\usepackage{times}                      % standalone fallback
+\usepackage{natbib}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\newcommand{\pending}[1]{\textcolor{orange!80!black}{[#1]}}
+\newcommand{\kap}{\kappa}
+\newcommand{\framework}{\textsc{Frame}}
+
+\title{The Directive Reaches the Rationale, Not the Decision:\\
+Reliability-Gated, Pre-Registered Measurement of\\
+Political-Framing Behavior in Frontier Language Models}
+
+\author{Anonymous Authors\\
+\texttt{anonymous@example.com}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Neutrality directives---system-prompt instructions such as \emph{``do not
+editorialize; represent perspectives proportionally''}---are the de facto
+industry remedy for political bias in deployed language models. We test
+whether they do what they appear to do. In a pre-registered, two-stage study
+of two frontier models (Claude Sonnet 4.5, GPT-4.1) operating on a balanced
+corpus of 200 real news articles stratified by expert-rated political lean,
+we separate what a directive changes about a model's \emph{decisions} (which
+bias it detects; how it classifies an article's lean) from what it changes
+about the model's \emph{stated rationale}. Our design is built around a
+methodological commitment we argue the LLM-judge literature needs:
+\textbf{measurement precedes findings}. Every judge instrument had to pass a
+cross-family inter-rater reliability gate ($\kap \ge 0.40$, threshold and
+fallback committed in writing before validation data existed, one attempt,
+no re-rolling). Two of our three instruments \emph{failed}---one judge
+scored 89\% of items at the scale ceiling; another never used one of two
+labels across 60 items---and the pilot's most striking apparent finding
+(models re-use loaded source framing in 55--64\% of explanations) proved to
+be largely an artifact of judge error, collapsing to $\sim$10\% under a
+corrected rubric. The surviving instrument ($\kap = 0.606$) measures the
+political direction of framing substitution. With it, we test the
+pre-registered prediction that directives leave decisions unchanged
+(equivalence tests on detection counts and lean labels) while stated
+rationales drift directionally---with right-leaning sources sanitized toward
+the center more than left-leaning sources. Stage-2 results:
+\pending{H26/H28/H29 outcomes}. Beyond the findings, which are snapshots of
+two models at one moment, we release the durable artifact: a deterministic,
+refreshable corpus recipe, gated instruments, and a pre-registration
+protocol that lets any future model generation be audited identically.
+\end{abstract}
+
+\section{Introduction}
+
+When a language model is asked to analyze a politically charged news
+article, it produces two things: a \emph{decision} (an answer---which spans
+are biased, what the article's lean is) and a \emph{rationale} (a stated
+explanation of that answer). Almost all governance of political behavior in
+deployed models operates on the assumption that these move together: add a
+neutrality directive to the system prompt, observe better-sounding
+explanations, and conclude the model has become more even-handed. This paper
+tests that assumption directly, and pre-registers the prediction that it is
+false in a specific, directional way.
+
+Our central design principle is a dissociation test. If a directive
+genuinely alters processing, its effects should appear in the decisions
+themselves. If instead the directive is absorbed as a \emph{presentation
+instruction}, decisions will be unchanged while rationales are rewritten to
+\emph{perform} compliance. The distinction matters for AI safety practice
+well beyond the political domain: it determines whether behavioral audits
+and self-report audits of the same system can be expected to agree. A model
+whose explanations respond to instructions that its decisions ignore will
+pass every audit that reads its explanations and fail every audit that
+measures its behavior---or, more dangerously, the reverse.
+
+Testing this required confronting a second problem, which became a
+co-equal contribution of the paper. At the scale of thousands of judgments,
+the only affordable instruments are LLM judges, and the field's default
+practice is to write a plausible rubric, spot-check a few outputs, and
+trust the resulting numbers. We instead adopted the standard that
+psychometrics applies to any new instrument: \textbf{demonstrate
+reliability before collecting confirmatory data, under acceptance criteria
+committed in advance}. Concretely, every instrument was scored
+independently by two frontier judges from different model families
+(cross-family pairing, to break same-family circularity), on held-out pilot
+data excluded from all confirmatory analysis, against a pre-committed gate
+(Cohen's $\kap \ge 0.40$ plus non-degeneracy conditions), with a
+pre-registered fallback and a one-shot rule forbidding iterative
+re-anchoring until the gate passes.
+
+The gates did real work. Of three instruments that all looked reasonable on
+paper---and whose pilot outputs all \emph{looked} sensible to
+inspection---two failed calibration in ways that would have silently
+corrupted the study (\S\ref{sec:gates}). Most consequentially, the pilot's
+most publishable number, an apparent 55--64\% rate at which models absorb
+loaded source framing into their own explanatory voice, was traced by
+forensic audit to judge error: under a corrected, evidence-anchored rubric
+the rate collapsed to roughly 10\%. We report this trajectory in full not
+as a confession but as a finding: plausible-looking LLM-judge instruments
+fail cross-family calibration at high rates, the failures are systematic
+rather than noisy, and unn gated instruments convert judge artifacts into
+publishable effects.
+
+\textbf{Contributions.}
+\begin{enumerate}
+  \item \textbf{A dissociation result on instruction-faithfulness}
+  (pre-registered; Stage-2 outcomes \pending{confirmed/disconfirmed}):
+  neutrality directives leave frontier models' decisions statistically
+  unchanged (equivalence on detection counts, $|\Delta| < 2.0$ per article;
+  label stability $\kap \ge 0.85$) while their stated rationales shift, with
+  a directional signature---right-leaning sources' framing is stripped or
+  re-coded toward the center \pending{X}$\times$ more often than
+  left-leaning sources' (pilot prior: $2$--$3\times$, both judge families
+  agreeing on sign independently).
+  \item \textbf{A measurement-integrity protocol with empirical teeth}:
+  pre-committed reliability gates for LLM-judge instruments, under which 2
+  of 3 plausible instruments failed; a demonstration that the gates caught
+  a large artifact before it became a headline finding; and a
+  characterization of the failure modes (anchor divergence, base-rate
+  degeneracy, off-definition abstention) with the rubric-design features
+  that distinguished the surviving instrument (categorical labels,
+  quoted-evidence requirements, explicit abstention semantics).
+  \item \textbf{A durable, refreshable audit capability}: a deterministic
+  corpus-generation recipe over expert-rated news (contamination-resistant
+  by regeneration), gated instruments, analysis code, and a pre-registration
+  with externally timestamped amendments---packaged so that the study can be
+  re-run on any future model generation for $\sim$\$150.
+\end{enumerate}
+
+We emphasize the asymmetry between our findings and our instrument. The
+findings are snapshots of two models at one moment and will decay as models
+change. The question the instrument asks---\emph{do instructions reach the
+decision, or only the story about the decision?}---must be re-answered by
+every model generation. The durable contribution is the validated capacity
+to ask it.
+
+\section{Motivation and Related Work}
+\label{sec:motivation}
+
+\textbf{From opinion surveys to behavior.} A substantial literature
+documents left-of-center tendencies in LLM outputs, largely by
+administering political-orientation questionnaires or eliciting stances on
+contested issues \citep[e.g.,][]{rozado2024politics}. Recent critiques
+observe that such measurements cannot distinguish a model's
+\emph{viewpoint preferences} from failures of \emph{epistemic integrity},
+and that directional asymmetry is not per se evidence of bias when inputs
+themselves are asymmetric \citep{rozado2026vpei}. We adopt this distinction
+rather than dispute it, and operationalize what it leaves unmeasured: not
+what models \emph{say they believe}, but what they \emph{do} to political
+framing when performing realistic editorial tasks---detection,
+summarization, classification---on real news, with the article's outlet and
+headline withheld to prevent source-prior shortcuts. Our pre-registered
+justified-asymmetry companion analysis (\S\ref{sec:setup}) directly
+addresses the strongest objection this literature would raise against our
+headline test: per-stratum intensity balance is measured (objective loaded-lexicon
+density; expert rating magnitudes; the models' own pre-directive detection
+counts), with the interpretation rule fixed before data collection.
+
+\textbf{Faithfulness of stated reasoning.} \citet{turpin2023language}
+showed that chain-of-thought explanations can omit the features that
+actually drive predictions. Our design asks the complementary question: not
+whether explanations \emph{omit} true causes, but whether an explicit
+instruction changes the explanation \emph{without} changing the decision it
+purports to explain---and whether that rewriting has a political direction.
+The generation-order arms (rationale emitted before vs.\ after the label)
+probe the same post-hoc hypothesis from a second angle.
+
+\textbf{LLM judges and their validation.} LLM-as-judge evaluation is known
+to exhibit position, verbosity, and self-preference biases
+\citep{zheng2023judging}, and agreement with human raters varies widely
+across tasks. What the literature largely lacks is \emph{consequence}:
+reliability is measured, lamented, and the judges are used anyway. Our
+protocol imports the missing step from psychometrics and clinical-trial
+practice \citep{landis1977measurement}: instruments earn confirmatory
+status by passing acceptance criteria fixed in advance, or they are
+demoted---a rule we enforced against our own study twice
+(\S\ref{sec:gates}). We are not aware of prior work in which pre-committed
+reliability gates with registered fallbacks were applied to LLM-judge
+instruments before confirmatory data collection; we document what such
+gates catch.
+
+\textbf{Construct validity in NLP evaluation.} Our approach follows calls
+to treat evaluation instruments as measurement devices requiring validity
+arguments rather than as ground truth \citep{jacobs2021measurement}. The
+gate-failure post-mortems (\S\ref{sec:gates}) supply concrete instances:
+identical rubrics resolved in opposite, internally consistent ways by two
+frontier judges; Cohen's $\kap$ collapsing under extreme base rates while
+raw agreement stands at 87\% \citep{gwet2008computing}.
+
+\section{Experimental Setup}
+\label{sec:setup}
+
+\textbf{Corpus.} $N{=}200$ contemporary U.S.\ news articles on a balanced
+$5\times8$ grid: five AllSides-anchored lean classes (Left, Lean~Left,
+Center, Lean~Right, Right; 40 each) crossed with eight topical themes
+(25 each), 400--1500 words, per-outlet caps within lean, deterministic
+selection from a 10{,}000-article enriched pool by a released curation
+script. Articles were boundary- and interior-cleaned; an identity audit
+(id$\leftrightarrow$url$\leftrightarrow$text) was performed after six
+mismatched rows were discovered in the pilot pool (all excluded from
+analysis; none present in the final corpus). Models receive
+\emph{article text only}---no headline, outlet, URL, or date---so that
+classification cannot reduce to outlet priors.
+
+\textbf{Targets and tasks.} Two frontier models (Claude Sonnet 4.5;
+GPT-4.1) perform three tasks: \textbf{Eval~A}, span-level bias detection
+with per-detection explanations; \textbf{Eval~B}, summarization with key
+facts and represented perspectives; \textbf{Eval~C}, five-class lean
+classification with a mandatory free-text rationale. Structured JSON
+outputs; one rollout per cell.
+
+\textbf{Conditions.} Each task runs under prompt arms that differ by
+exactly one block (verified by programmatic diff): \emph{baseline} (task
+only), \emph{ablation} (adds bias-type schema and vocabulary; no
+directive), \emph{reframing} (ablation $+$ the neutrality directive),
+\emph{full} (ablation $+$ an attribution rule), and, for Evals A and C, a
+\emph{reframing-CoT} arm that reorders generation so the rationale precedes
+the decision. The registered directive contrast is
+reframing~vs.~ablation.
+
+\textbf{Instruments and gates.}
+\label{sec:instruments}
+Judge instruments are scored independently by a cross-family pair (Claude
+Sonnet 4.6; GPT-5) on identical inputs. Three were built:
+\textbf{VAR} (voice adoption: does an explanation \emph{describe} loaded
+source framing or \emph{inherit} it?), \textbf{FDC} (1--7 frame-distance
+coding on attribution and schema axes), and \textbf{Directional RD}
+(categorical: does an output's framing substitute \emph{leftward},
+\emph{rightward}, neither, or is there no signal---plus a
+strip/amplify mechanism, with quoted-evidence requirements). Each faced a
+pre-committed acceptance gate on held-out pilot data (excluded from all
+confirmatory analysis): $\kap \ge 0.40$ with non-degeneracy conditions, one
+attempt, registered fallback (demotion to exploratory, per-judge
+reporting). Human calibration on a stratified subsample
+(\pending{$n$, coders, agreement}) arbitrates all demoted constructs.
+
+\textbf{Confirmatory hypotheses} (Benjamini--Hochberg FDR, $q{=}.05$,
+family of three after gate outcomes; full decision rules in the
+pre-registration):
+\textbf{H26}: on Eval-C rationales, $P(\text{left-substitution} \mid
+\text{Right-lean source}) > P(\text{right-substitution} \mid
+\text{Left-lean source})$; primary test judge-pooled with a per-judge
+sign-consistency requirement (a significant pooled result with discordant
+per-judge signs counts as non-confirmation).
+\textbf{H28}: equivalence (TOST, $|\Delta| < 2.0$ detections/article) of
+Eval-A detection counts, reframing vs.\ ablation.
+\textbf{H29}: stability of Eval-C lean labels across the directive
+contrast (bootstrap $\kap \ge 0.85$).
+H28 and H29 require no judge; H26 uses the sole gate-passing instrument.
+
+\textbf{Pre-registration and integrity.} All hypotheses, thresholds,
+fallbacks, exclusions, and amendments are timestamped in a public git
+history; every instrument revision was committed \emph{before} the data
+that evaluated it existed. The two demotions below were executed exactly
+as registered.
+
+\section{Findings}
+
+\subsection{Finding 1: Most plausible judge instruments fail calibration---and gates catch what inspection does not}
+\label{sec:gates}
+
+This finding is complete (it precedes Stage-2 data by design).
+Table~\ref{tab:gates} summarizes.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lllll}
+\toprule
+Instrument & Scale type & Gate statistic & Outcome & Failure mode \\
+\midrule
+FDC & 1--7 Likert, 2 axes & qw-$\kap = 0.109$ & \textbf{fail} &
+anchor divergence: one judge 89\% at ceiling \\
+& & & & ($\sigma{=}0.47$); 2.5-pt systematic offset after repair \\
+VAR & categorical (3) & $\kap = 0.000$ & \textbf{fail} &
+zero-variance rater (0/60 one label); raw agreement \\
+& & & & 86.7\%, AC$_1{=}0.848$: base-rate degeneracy \\
+Directional RD & categorical (4) $+$ mech. & $\kap = 0.606$ &
+\textbf{pass} & --- (from $\kap{=}0.233$ pre-anchoring) \\
+\bottomrule
+\end{tabular}
+\caption{Pre-committed reliability gates ($\kap \ge 0.40$, one shot,
+registered fallbacks). Cross-family judge pairs; held-out pilot items.}
+\label{tab:gates}
+\end{table}
+
+Three observations. \emph{First}, both failures were systematic, not
+noisy: each judge applied an articulable, internally consistent rule that
+the rubric failed to adjudicate (e.g., whether generic source-mention
+constitutes attribution). \emph{Second}, the pilot's most striking
+apparent result---55--64\% of explanations inheriting loaded source
+framing---was substantially a judge artifact: forensic audit found 47\% of
+``inheriting'' verdicts cited phrases absent from the source; under the
+corrected rubric the rate fell to $\sim$10\%. Ungated, this artifact was
+publishable. \emph{Third}, the surviving instrument differed by design
+features, not luck: categorical labels rather than Likert anchors,
+quoted-evidence requirements for non-default verdicts, and explicit
+abstention semantics. Reliability rose from $\kap = 0.233$ to $0.606$ after
+these were added, while the same repair strategy could not save the Likert
+instrument.
+
+\subsection{Finding 2: Decisions are unchanged by the directive (H28, H29)}
+\pending{Stage-2: TOST outcome, equivalence bounds, per-target detail;
+label-stability $\kap$ with bootstrap CI. Pilot priors indicate detection
+counts and lean labels move little across arms.}
+
+\subsection{Finding 3: Rationales drift, directionally (H26)}
+\pending{Stage-2: pooled estimate with cluster-robust CI; per-judge sign
+consistency; no-signal coverage by arm and stratum. Pilot prior (excluded
+corpus, both judges independently): right-lean sources' framing
+re-coded toward center 2--3$\times$ more often than left-lean sources'.}
+
+\subsection{Finding 4: The asymmetry is not explained by input intensity (D-JA companion)}
+Corpus-side indicators, computed pre-collection: objective loaded-lexicon
+density is balanced across Left and Right strata (1.73 vs.\ 1.93 per 1k
+words; $d{=}0.10$, $p{=}.55$); expert rating magnitudes are imbalanced
+\emph{against} the predicted direction (Left articles rated more intense),
+making proportionate-response accounts of the predicted asymmetry
+conservative. \pending{Stage-2: models' own baseline detection counts per
+stratum; intensity-normalized asymmetry if any indicator is imbalanced.}
+
+\section{Discussion and Limitations}
+
+\textbf{What the dissociation means if confirmed.} A model whose rationale
+responds to a neutrality instruction that its decisions ignore is not
+``more neutral''; it is more fluent at narrating neutrality. For
+practitioners this cuts in a specific direction: system-prompt directives
+are presentation-layer controls, and any governance regime that audits
+models by reading their explanations will systematically mis-estimate
+behavioral change. Behavioral audits---counting decisions under controlled
+contrasts---are not optional rigor; they measure a different quantity.
+
+\textbf{What the gate failures mean regardless of Stage-2 outcomes.} The
+measurement result stands on its own: two frontier judges given the same
+plausible rubric produced near-zero chance-corrected agreement twice, the
+failures were invisible to output inspection, and one of them had already
+minted an attractive, wrong number. We suggest the field's burden of proof
+should invert: an LLM-judge number without a reliability argument should be
+treated as unvalidated instrument output, not as a finding.
+
+\textbf{Limitations.} (1) \emph{Scope}: two closed-weight models, U.S.\
+politics, English news; the pattern's generality is untested (the pipeline
+re-runs on additional targets for marginal cost). (2) \emph{No mechanism}:
+we establish behavioral dissociation, not its cause; generation-order arms
+probe but cannot settle it. (3) \emph{Judge mediation}: H26 rides on one
+validated instrument; cross-family sign agreement and human calibration
+(\pending{results}) bound, but do not eliminate, shared-judge-bias risk.
+(4) \emph{Gate statistics}: $\kap$ is base-rate sensitive; our own VAR
+post-mortem illustrates the $\kap$ paradox (high raw agreement, degenerate
+marginals), which is why gates included non-degeneracy conditions and why
+demotions route to human arbitration rather than deletion. (5)
+\emph{Construct floor}: under the corrected rubric, explanation-level
+framing inheritance appears rare; whether that reflects model behavior or
+rubric strictness awaits human coding. (6) \emph{One rollout per cell};
+sampling variance is handled across articles, not within.
+
+\section{Conclusion}
+
+We set out to measure whether neutrality directives change what frontier
+models do with politically framed news, and found we first had to build
+instruments that could be trusted to measure anything at all. The
+resulting study contributes a pre-registered dissociation test between
+decisions and rationales (\pending{outcome}), a directional
+characterization of framing substitution on real news under a
+justified-asymmetry discipline (\pending{outcome}), and---independent of
+either---a demonstrated protocol under which evaluation instruments earn
+trust before they are believed. The findings are dated the moment new
+models ship. The capability to re-derive them, on a regenerated corpus
+with re-gated instruments for roughly the cost of a conference
+registration, is the contribution we expect to last.
+
+\subsubsection*{Ethics Statement}
+This study evaluates model behavior on politically contested material; we
+have tried to hold it to the epistemic standard we advocate. The research
+question is directional symmetry, not the vindication of any political
+position; the corpus is balanced by construction against expert ratings;
+the loaded-language lexicon pairs left- and right-coded terms; judge
+prompts were audited for direction-priming and example asymmetries, with
+two such asymmetries found and corrected pre-data. We adopt the
+distinction between viewpoint preference and epistemic failure and
+explicitly do not equate measured asymmetry with ``bias'': our
+pre-registered companion analysis tests whether asymmetric treatment
+tracks asymmetric inputs, and our claims are conditioned on its outcome.
+Misuse risks run in two directions---overreading a directional default as
+partisan intent, and weaponizing ``neutrality'' audits to punish accurate
+asymmetry \citep{rozado2026vpei}; our reporting rules (per-judge
+estimates, intensity normalization, equivalence tests reported alongside
+directional ones) are designed against both. News text is used under
+research norms with per-outlet caps; article text is redistributed only as
+required for reproduction, with source URLs and the deterministic curation
+script provided in lieu of bulk redistribution where licensing requires.
+Planned human annotation involves paid coders rating published news text
+(no personal data, no vulnerable populations); compensation and consent
+procedures follow institutional guidelines. All API costs
+($\sim$\$200) and the full audit trail of instrument failures are
+disclosed to make the study's error-correction process, not only its
+conclusions, inspectable.
+
+\subsubsection*{Reproducibility Statement}
+The pre-registration (hypotheses, thresholds, gates, fallbacks, and every
+amendment) is timestamped in a public git history, with instrument
+revisions committed before the data that evaluated them existed. We
+release: the deterministic corpus curation script and corpus manifest, all
+judge prompts (versioned, with the full revision history), the runner and
+analysis code, gate validation data, batch manifests, and per-call cost
+accounting. A regeneration of the full study on new articles or new
+target models requires one configuration change and $\sim$\$150 in batched
+API calls. \pending{Repository and OSF links after de-anonymization.}
+
+\bibliography{references}
+\bibliographystyle{iclr2026_conference}
+
+% --- references.bib (starter; verify entries before submission) ---------
+% @article{rozado2024politics,
+%   title={The political preferences of LLMs},
+%   author={Rozado, David}, journal={PLOS ONE}, year={2024}}
+% @misc{rozado2026vpei,
+%   title={Have We Been Measuring AI Political Bias Wrong?},
+%   author={Rozado, David and others}, year={2026},
+%   howpublished={Substack essay, VPEI framework}}
+% @inproceedings{turpin2023language,
+%   title={Language Models Don't Always Say What They Think: Unfaithful
+%          Explanations in Chain-of-Thought Prompting},
+%   author={Turpin, Miles and Michael, Julian and Perez, Ethan and
+%           Bowman, Samuel R.}, booktitle={NeurIPS}, year={2023}}
+% @inproceedings{zheng2023judging,
+%   title={Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena},
+%   author={Zheng, Lianmin and others}, booktitle={NeurIPS Datasets and
+%   Benchmarks}, year={2023}}
+% @inproceedings{jacobs2021measurement,
+%   title={Measurement and Fairness},
+%   author={Jacobs, Abigail Z. and Wallach, Hanna},
+%   booktitle={FAccT}, year={2021}}
+% @article{landis1977measurement,
+%   title={The measurement of observer agreement for categorical data},
+%   author={Landis, J. Richard and Koch, Gary G.},
+%   journal={Biometrics}, year={1977}}
+% @article{gwet2008computing,
+%   title={Computing inter-rater reliability and its variance in the
+%          presence of high agreement},
+%   author={Gwet, Kilem L.}, journal={British Journal of Mathematical and
+%   Statistical Psychology}, year={2008}}
+
+\end{document}
