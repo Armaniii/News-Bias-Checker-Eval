@@ -111,7 +111,11 @@ def call_llm(system, user, model_full, max_tokens=2000):
                 msg = client.messages.create(
                     model=model_full.split("/", 1)[1],
                     max_tokens=max_tokens,
-                    system=system,
+                    # cache_control: concurrent workers share the arm's system
+                    # prompt — reads bill at 10% of input within the 5-min TTL.
+                    # No-op below the model's minimum cacheable length.
+                    system=[{"type": "text", "text": system,
+                             "cache_control": {"type": "ephemeral"}}],
                     messages=[{"role": "user", "content": user}],
                 )
                 return msg.content[0].text
@@ -574,12 +578,16 @@ def run_judgment_batch(out_base, evals, conditions, target_models,
 # =============================================================================
 
 def _anthropic_batch_request(custom_id, model_name, system, user, max_tokens):
+    # cache_control: all requests in an arm share the same system prompt —
+    # cache reads bill at 10% of input and stack with the 50% batch discount
+    # (best-effort hits). No-op below the model's minimum cacheable length.
     return {
         "custom_id": custom_id,
         "params": {
             "model": model_name,
             "max_tokens": max_tokens,
-            "system": system,
+            "system": [{"type": "text", "text": system,
+                        "cache_control": {"type": "ephemeral"}}],
             "messages": [{"role": "user", "content": user}],
         }
     }

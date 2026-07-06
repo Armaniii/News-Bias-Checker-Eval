@@ -102,12 +102,22 @@ def _clients():
 
 
 def batch_submit(jobs, judges=None, cache_path=None, batch_dir=None,
-                 max_tokens=None, dry_run=False):
+                 max_tokens=None, dry_run=False, force=False):
     """Submit uncached (job x judge) pairs as provider batches."""
     judges = judges or cfg.JUDGES
     max_tokens = max_tokens or cfg.JUDGE_MAX_TOKENS
     registry = load_model_registry()
     batch_dir = pathlib.Path(batch_dir); batch_dir.mkdir(parents=True, exist_ok=True)
+    # Double-submit guard: re-submitting overwrites manifest.json while the
+    # prior batch is still in flight — its positional custom_ids would then
+    # resolve against the NEW manifest on download, silently assigning
+    # verdicts to the wrong items. Download (or archive the dir) first.
+    if (batch_dir / "batch_ids.json").exists() and not (dry_run or force):
+        raise SystemExit(
+            f"  REFUSING to submit: {batch_dir}/batch_ids.json exists — a prior "
+            f"batch may be in flight and re-submitting would overwrite its "
+            f"manifest (wrong-item contamination on download). Run --batch "
+            f"download first, or archive/delete the batch dir, or pass force.")
     done = _cache_load(pathlib.Path(cache_path))
     work = [(job, judge) for job in jobs for judge in judges
             if (job["item_id"], judge) not in done]
@@ -126,9 +136,14 @@ def batch_submit(jobs, judges=None, cache_path=None, batch_dir=None,
         full = resolve_model(judge, registry)
         provider, model = full.split("/", 1)
         if provider == "anthropic":
+            # cache_control: every request in an instrument's batch shares the
+            # same system prompt (>1024 tok post-v3.4.x) — cache reads bill at
+            # 10% of input, stacking with the 50% batch discount (best-effort
+            # hits within a batch). No-op if the prompt is under the minimum.
             anth_reqs.append({"custom_id": cid, "params": {
                 "model": model, "max_tokens": max_tokens,
-                "system": job["system"],
+                "system": [{"type": "text", "text": job["system"],
+                            "cache_control": {"type": "ephemeral"}}],
                 "messages": [{"role": "user", "content": job["user"]}]}})
         else:
             oa_lines.append({"custom_id": cid, "method": "POST",
@@ -137,6 +152,13 @@ def batch_submit(jobs, judges=None, cache_path=None, batch_dir=None,
                     "messages": [{"role": "system", "content": job["system"]},
                                  {"role": "user", "content": job["user"]}]}})
 
+    if dry_run and (batch_dir / "batch_ids.json").exists():
+        # Never overwrite the manifest of a possibly-in-flight batch, even on
+        # dry-run — stale manifest + live batch = wrong-item contamination.
+        print(f"  --dry-run: would submit anthropic={len(anth_reqs)} "
+              f"openai={len(oa_lines)} (files NOT written: prior batch_ids.json "
+              f"present in {batch_dir})")
+        return None
     (batch_dir / "manifest.json").write_text(json.dumps(manifest))
     oa_path = batch_dir / "openai_requests.jsonl"
     with open(oa_path, "w", encoding="utf-8") as f:
@@ -194,14 +216,17 @@ def batch_download(batch_dir, cache_path):
     ids = json.loads((batch_dir / "batch_ids.json").read_text())
     manifest = json.loads((batch_dir / "manifest.json").read_text())
     anth_client, oa_client = _clients()
+    already = _cache_load(pathlib.Path(cache_path))   # idempotent re-download
     fh = open(cache_path, "a", encoding="utf-8")
-    saved = failed = 0
+    saved = failed = skipped = 0
 
     def _save(cid, raw):
-        nonlocal saved, failed
+        nonlocal saved, failed, skipped
         meta = manifest.get(cid)
         if meta is None:
             failed += 1; return
+        if (meta["item_id"], meta["judge"]) in already:
+            skipped += 1; return
         parsed, _ = extract_json(raw or "")
         if parsed is None:
             failed += 1; return
@@ -225,7 +250,8 @@ def batch_download(batch_dir, cache_path):
                 ch = (body.get("choices") or [{}])[0]
                 _save(d.get("custom_id"), (ch.get("message") or {}).get("content"))
     fh.close()
-    print(f"  batch download: {saved} verdicts cached, {failed} failed/unparsed "
+    print(f"  batch download: {saved} verdicts cached, {failed} failed/unparsed, "
+          f"{skipped} already-cached skipped "
           f"(patch failures by re-running WITHOUT --batch — sync mode resumes from cache)")
     return saved, failed
 
