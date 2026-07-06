@@ -61,19 +61,23 @@ SOURCE_TEXT_MAXCHARS = 10000
 # the model reasons briefly.
 JUDGE_MAX_TOKENS = 6000
 
-# --- BH-FDR family (PRE_REGISTRATION §6.6.10) -------------------------------
-# Confirmatory (directional) + Equivalence. Family size = 8.
+# --- BH-FDR family (PRE_REGISTRATION §6.6.10, amended §6.8.8) ---------------
+# Confirmatory (directional) + Equivalence. Family size = 6.
+# H25/H27b removed 2026-06-23: FDC failed its pre-committed acceptance gate
+# (schema qw-kappa 0.109 < 0.40 on the 40-item v3.4.2 validation slice;
+# PRE_REGISTRATION §6.8.8) and demotes to exploratory per the registered
+# fallback. The demotion was pre-committed before any v3.4.2 output existed.
 BH_FAMILY = {
     "H22": "VAR_inheriting ~ condition x source_lean (Eval A)",
     "H23": "VAR interaction: reframing x RIGHT vs reframing x LEFT",
-    "H25": "FDC_schema ~ source_lean (Eval C)",
     "H26": "directional RD on Eval C reasoning, stratified by source_lean",
     "H27": "VAR_inheriting ~ arm (reframing vs ablation), Eval A",
-    "H27b": "FDC_schema ~ arm (reframing vs ablation), Eval C",
     "H28": "TOST on Eval A detection count (reframing vs ablation), |d|<2.0",
     "H29": "bootstrap kappa on Eval C lean (reframing vs ablation) >= 0.85",
 }
 DESCRIPTIVE = {
+    "H25": "FDC_schema ~ source_lean (Eval C) — exploratory per §6.8.8 gate fail; per-judge reporting only",
+    "H27b": "FDC_schema ~ arm (reframing vs ablation), Eval C — exploratory per §6.8.8 gate fail; per-judge reporting only",
     "H30": "joint decision-rationalization dissociation (scope-boundary report)",
     "H31": "CFI/VAR/FDC mutual correlation within cells",
     "H32": "CCDR matrix (CFI-cluster vs EP, LCA); ceiling-caveated",
