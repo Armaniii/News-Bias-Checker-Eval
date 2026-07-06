@@ -689,6 +689,23 @@ Pre-data: no Stage-1 judge call has been made under any v3.4.x prompt. `prompts.
 
 **Smoke pilot (pre-registered, non-analysis).** Before Stage-2 submission: ~5 articles × 2 targets × {reframing, reframing_cot} × Evals A and C, written outside the analysis results tree. Purpose: parse-rate verification only — the treatment arms have zero rollouts under any prompt version. Outputs are never analyzed.
 
+### 6.8.9a VAR gate post-mortem (investigation, 2026-06-23; demotion unchanged)
+
+A forensic check of the failed VAR gate ruled out pipeline artifact: all 60 GPT-5 verdicts parsed cleanly (0 parse failures, 0 raw-vs-parsed mismatches, well-formed JSON with voice/evidence/reason). The zero variance is genuine judge behavior, and per-item reading shows it is largely **rubric-faithful**: on the disagreement items, several of Sonnet's residual "inheriting" verdicts penalize the explanation's own counter-frame vocabulary or its factual mischaracterization of the source — grounds the v3.4.3 scope guard itself forbids — while GPT-5 credits the attribution constructions actually present.
+
+The deeper finding: under the corrected rubric, the construct is **near-floor**. Sonnet's inheriting rate fell 53.4% (pilot, v3.4.1 rubric) → 13.3% (gate, v3.4.3); GPT-5 0%. Combined with the audit evidence that ~47% of pilot inheriting verdicts flagged terms absent from the source, the pilot's apparent "55–64% framing inheritance" was substantially a judge-error artifact. Descriptively, base-rate-robust agreement on the gate slice is high (Gwet's AC1 = 0.848; raw agreement 86.7%); Cohen's κ = 0 reflects the extreme-base-rate regime (κ paradox) *and* one rater's zero variance. The registered gate statistic was Cohen's κ and the demotion stands — an instrument with a zero-variance rater cannot power interaction tests regardless of cause — but the interpretation is revised: explanation-level framing inheritance in the studied frontier models appears **rare once judge error is removed**, itself a reportable (exploratory) finding. Phase-1.5 human coding arbitrates: if human-coded inheriting is similarly rare, the pilot-scale CFI effect is disconfirmed; if humans side with Sonnet's strict tail, per-judge Sonnet-VAR regains exploratory evidential weight. H22/H23/H27 effect-size priors from the pilot are void (inflated by the artifact).
+
+### 6.8.10 Justified-asymmetry companion analysis for H26 (locked 2026-06-23, pre-Stage-2; no new data collection)
+
+**Motivation.** The VPEI framework (Rozado, 2026, "Have we been measuring AI political bias wrong?") distinguishes viewpoint preference from epistemic integrity and observes that directional asymmetry is not per se bias: an asymmetric response to asymmetric inputs can be justified. The strongest external objection to H26 is therefore: *right-leaning sources in the corpus may simply be more intensely loaded, making asymmetric sanitizing a proportionate response rather than a directional default.*
+
+**Pre-registered descriptive companion (D-JA), computed from data already collected — no new instruments, no new API calls.** Reported alongside H26 regardless of outcome:
+1. **Intensity balance check** by lean stratum (Left/Center/Right, N=200 v3 corpus): distribution of |lean_rating| (AllSides-anchored article-level rating magnitude); loaded-lexicon term density per 1000 words (existing `replacement_direction.py` lexicon, symmetric left/right term lists); Eval-A baseline detection count per article (both targets — the models' own pre-directive assessment of bias density).
+2. **Interpretation rule (fixed now):** if the three indicators are approximately balanced across Left vs Right strata, H26's asymmetry is interpreted as a directional default. If any indicator shows material Left/Right imbalance, H26 is additionally reported normalized per unit intensity (asymmetry ratio conditioned on the imbalanced indicator) as an exploratory companion, and the paper's claim is stated conditionally.
+3. **Claim discipline:** H26 is reported as a *directional default in substitution behavior*, not as "political bias" tout court; the VPEI distinction (preference vs epistemic failure) is adopted in the paper's framing, with the decision–rationalization dissociation (H30) carrying the epistemic-integrity interpretation.
+
+**Not adopted from the VPEI piece** (with reasons, for the record): the multiplicative PB = VP × (1−EI) index (no measurement theory; scale-dependent); ideological-Turing-test instruments (no reliability evidence — precisely the failure mode §§6.8.8–6.8.9 document empirically). Mirrored-vocabulary synthetic counterfactuals (true turnabout tests) are noted as future work outside Paper 1.
+
 ---
 
 ## 7. Software & reproducibility
