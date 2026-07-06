@@ -61,22 +61,24 @@ SOURCE_TEXT_MAXCHARS = 10000
 # the model reasons briefly.
 JUDGE_MAX_TOKENS = 6000
 
-# --- BH-FDR family (PRE_REGISTRATION §6.6.10, amended §6.8.8) ---------------
-# Confirmatory (directional) + Equivalence. Family size = 6.
-# H25/H27b removed 2026-06-23: FDC failed its pre-committed acceptance gate
-# (schema qw-kappa 0.109 < 0.40 on the 40-item v3.4.2 validation slice;
-# PRE_REGISTRATION §6.8.8) and demotes to exploratory per the registered
-# fallback. The demotion was pre-committed before any v3.4.2 output existed.
+# --- BH-FDR family (PRE_REGISTRATION §6.6.10, amended §6.8.8/§6.8.9) --------
+# Confirmatory (directional) + Equivalence. Family size = 3.
+# H25/H27b removed 2026-06-23: FDC failed its §6.8.8 gate (qw-kappa 0.109).
+# H22/H23/H27 removed 2026-06-23: VAR failed its §6.8.9 gate (kappa 0.000 —
+# GPT-5 zero-variance: 0/60 inheriting; raw agreement 86.7% but degenerate
+# marginals). Both demotions executed per the pre-committed one-shot fallbacks.
+# RD PASSED its §6.8.9 gate (4-label kappa 0.606; sign criterion passed at
+# n=1 both-directional — thin, noted in §6.8.9 outcome entry).
 BH_FAMILY = {
-    "H22": "VAR_inheriting ~ condition x source_lean (Eval A)",
-    "H23": "VAR interaction: reframing x RIGHT vs reframing x LEFT",
     "H26": "directional RD on Eval C reasoning, stratified by source_lean",
-    "H27": "VAR_inheriting ~ arm (reframing vs ablation), Eval A",
     "H28": "TOST on Eval A detection count (reframing vs ablation), |d|<2.0",
     "H29": "bootstrap kappa on Eval C lean (reframing vs ablation) >= 0.85",
 }
 DESCRIPTIVE = {
+    "H22": "VAR_inheriting ~ condition x source_lean (Eval A) — exploratory per §6.8.9 gate fail; per-judge only",
+    "H23": "VAR interaction: reframing x RIGHT vs x LEFT — exploratory per §6.8.9 gate fail; per-judge only",
     "H25": "FDC_schema ~ source_lean (Eval C) — exploratory per §6.8.8 gate fail; per-judge reporting only",
+    "H27": "VAR_inheriting ~ arm (reframing vs ablation) — exploratory per §6.8.9 gate fail; per-judge only",
     "H27b": "FDC_schema ~ arm (reframing vs ablation), Eval C — exploratory per §6.8.8 gate fail; per-judge reporting only",
     "H30": "joint decision-rationalization dissociation (scope-boundary report)",
     "H31": "CFI/VAR/FDC mutual correlation within cells",
