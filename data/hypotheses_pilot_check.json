@@ -1,0 +1,83 @@
+{
+  "scope": "PILOT (mechanics check only)",
+  "H26": {
+    "pooled": {
+      "n_right_articles": 38,
+      "n_left_articles": 34,
+      "rate_leftsub_on_right": 0.4309,
+      "rate_rightsub_on_left": 0.1963,
+      "asymmetry": 0.2345,
+      "t": 4.548,
+      "p_one_sided": 1.2699120872769098e-05
+    },
+    "per_judge": {
+      "anthropic": {
+        "n_right_articles": 36,
+        "n_left_articles": 34,
+        "rate_leftsub_on_right": 0.2468,
+        "rate_rightsub_on_left": 0.0887,
+        "asymmetry": 0.158,
+        "t": 2.983,
+        "p_one_sided": 0.0022178605739708894
+      },
+      "openai": {
+        "n_right_articles": 38,
+        "n_left_articles": 34,
+        "rate_leftsub_on_right": 0.557,
+        "rate_rightsub_on_left": 0.2681,
+        "asymmetry": 0.2889,
+        "t": 4.236,
+        "p_one_sided": 3.416500150931981e-05
+      }
+    },
+    "sign_consistent": true,
+    "p": 1.2699120872769098e-05,
+    "coverage": {
+      "no_signal_rate[ablation]": 0.219,
+      "no_signal_rate[baseline]": 0.237,
+      "no_signal_rate[full]": 0.149,
+      "no_signal_rate[Center]": 0.279,
+      "no_signal_rate[Left]": 0.161,
+      "no_signal_rate[Right]": 0.202
+    }
+  },
+  "H28": {
+    "n_pairs": 198,
+    "mean_diff": -0.045,
+    "ci90": [
+      -0.353,
+      0.262
+    ],
+    "bound": 2.0,
+    "p": 0.0,
+    "equivalent": true
+  },
+  "H29": {
+    "n_pairs": 197,
+    "kappa": 0.6401,
+    "ci95": [
+      0.5473,
+      0.7213
+    ],
+    "floor": 0.85,
+    "equivalent": false
+  },
+  "BH": {
+    "H28": {
+      "p": 0.0,
+      "reject": true
+    },
+    "H26": {
+      "p": 1.2699120872769098e-05,
+      "reject": true
+    }
+  },
+  "D_JA_indicator3": {
+    "mean_dets[Center]": 3.325,
+    "mean_dets[Left]": 4.55,
+    "mean_dets[Right]": 4.775,
+    "welch_p_L_vs_R": 0.6215,
+    "cohens_d_R_minus_L": 0.111
+  },
+  "H26_confirmed": true
+}
