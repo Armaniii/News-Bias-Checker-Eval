@@ -153,9 +153,17 @@ def extract_json(text):
     result = _try_parse(clean)
     if result is not None:
         return result, None
+    # Valid JSON followed by trailing prose ("Extra data") — raw_decode stops
+    # at the end of the first complete value instead of failing.
+    dec = json.JSONDecoder()
     for start in ["[", "{"]:
         idx = clean.find(start)
         if idx != -1:
+            try:
+                obj, _ = dec.raw_decode(clean[idx:])
+                return obj, None
+            except json.JSONDecodeError:
+                pass
             result = _try_parse(clean[idx:])
             if result is not None:
                 return result, None

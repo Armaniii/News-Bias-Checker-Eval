@@ -265,8 +265,17 @@ def run_rollout_one(scenario, model_full, model_short, out_base):
 
     try:
         raw = call_llm(scenario["system_prompt"], scenario["user_message"],
-                        model_full, max_tokens=2000)
+                        model_full, max_tokens=4000)
         parsed, parse_err = extract_json(raw)
+        if parsed is None and raw:
+            # One retry on parse failure: parse failures are not random
+            # (concentrated in specific arms/cells — MNAR), so a single
+            # resample recovers most of them cheaply.
+            raw2 = call_llm(scenario["system_prompt"], scenario["user_message"],
+                            model_full, max_tokens=4000)
+            parsed2, parse_err2 = extract_json(raw2)
+            if parsed2 is not None:
+                raw, parsed, parse_err = raw2, parsed2, parse_err2
     except Exception as e:
         raw = ""
         parsed = None
@@ -625,7 +634,7 @@ def _expand_id(short_cid):
 
 def prepare_batch_files(scenarios, target_models, registry, out_base,
                         judge_configs=None, judge_models=None,
-                        stage="rollout", max_tokens_target=2000,
+                        stage="rollout", max_tokens_target=4000,
                         max_tokens_judge=4000, resume=True):
     """Prepare JSONL batch files for Anthropic and OpenAI batch APIs.
 

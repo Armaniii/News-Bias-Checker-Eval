@@ -85,6 +85,14 @@ DESCRIPTIVE = {
     "D-HCoT-C": "reframing_cot vs reframing on FDC + lean labels (Eval C)",
 }
 
+# v1+v2 articles with mismatched id<->url<->text identity (§6.8.9): the corpus
+# row's text is one story but the rollout discussed another. Excluded from all
+# Stage-1-derived analyses. None appear in articles_v3.csv (audited 2026-06-23).
+STAGE1_CONTAMINATED_ARTICLES = {
+    "article_8401", "article_24346", "article_28565",
+    "article_37862", "article_42780", "article_51657",
+}
+
 FDC_SCALE_MIN, FDC_SCALE_MAX, FDC_MIDPOINT = 1, 7, 4   # matches prompts.py
 H28_EQUIV_BOUND = 2.0          # |Δ| detections/article (SESOI; re-derive post-Stage1)
 H29_KAPPA_FLOOR = 0.85
