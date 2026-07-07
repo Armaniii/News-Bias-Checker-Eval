@@ -33,31 +33,28 @@ in Frontier Language Models}
 \begin{abstract}
 Neutrality directives---system-prompt instructions such as \emph{``do not
 editorialize''}---are widely proposed as a remedy for political bias in
-LLMs. In a pre-registered two-stage study of two frontier models on 200
-outlet-anchored news articles, we separate what such a directive changes
-about a model's \emph{decisions} from what it changes about its
-\emph{stated rationale}, under a methodological rule the LLM-judge
-literature lacks: every judge instrument must pass a pre-committed
-cross-family reliability gate before its output counts. Two of three
-instruments failed, and the pilot's most striking number---models
-absorbing loaded framing in 55--64\% of explanations---proved to be judge
-artifact ($\sim$10\% corrected). On the surviving instrument: decisions
-were equivalent across the directive contrast (detection counts within
-$\pm1.0$ per article, TOST; lean labels stable, $\kap=0.90$), while
-rationales exhibit a \textbf{directional default that no intervention we
-tested causes or removes}: framing in analyses of right-leaning sources
-is substituted toward the center at $1.9\times$ the mirror rate ($11.0\%$
-vs.\ $5.8\%$, $p=.0014$; permutation $p=10^{-4}$), present at baseline
-with no instruction, confined to one of the two models ($+10.1$pp vs.\
-$+0.1$pp, CI $[-3.0,+3.2]$), additive in mechanism, and corroborated by a
-judge-free lexicon instrument on the same text ($+7.5$pp, $p=.04$). We
-report the surviving instrument's limits as prominently as its result:
-item-level $\kap$ attenuates from $0.606$ at the gate to $0.255$ at
-scale, sign agreement is $93.5\%$, and the asymmetry survives restriction
-to both-judge-agreed items ($p=.005$); the claim is graded accordingly,
-pending human arbitration. We release the refreshable audit---corpus
-recipe, gated instruments, pre-registration---re-runnable per model
-generation for $\sim$\$150.
+LLMs, and LLM judges are the default instrument for auditing them. This
+paper subjects both to a rule the judge literature lacks: no instrument's
+output counts until it passes a pre-committed, cross-family reliability
+gate. The gates exposed a measurement hazard: two of three plausible
+instruments failed calibration systematically, and ungated judging had
+already produced a publishable artifact---an apparent 55--64\% rate of
+framing absorption that fell to $\sim$10\% under an evidence-anchored
+rubric. On the surviving instrument, a pre-registered two-stage study of
+two frontier models on 200 outlet-anchored articles dissociates decisions
+from rationales. The directive left decisions statistically equivalent
+(detection counts within $\pm1.0$ per article, TOST; lean labels stable,
+$\kap=0.90$), while rationales carry a directional default no tested
+intervention causes or removes: framing in right-leaning sources is
+substituted toward the center at $1.9\times$ the mirror rate ($11.0\%$
+vs.\ $5.8\%$, $p=.0014$; permutation $p=10^{-4}$), present at baseline,
+confined to one model ($+10.1$pp vs.\ $+0.1$pp, CI $[-3.0,+3.2]$),
+additive in mechanism, and corroborated by a judge-free lexicon
+instrument ($+7.5$pp, $p=.04$). The instrument's measured limits
+(item-level $\kap$ $0.606$ at the gate, $0.255$ at scale; sign agreement
+$93.5\%$; the asymmetry survives restriction to both-judge-agreed items,
+$p=.005$) grade the claim, pending human arbitration. The gated audit
+re-runs per model generation for $\sim$\$150.
 \end{abstract}
 
 \section{Introduction}
@@ -101,12 +98,13 @@ re-anchoring until the gate passes.
 The gates did real work. Of three instruments that all looked reasonable on
 paper---and whose pilot outputs all \emph{looked} sensible to
 inspection---two failed calibration in ways that would have silently
-corrupted the study (\S\ref{sec:gates}). Most consequentially, the pilot's
-most publishable number, an apparent 55--64\% rate at which models absorb
-loaded source framing into their own explanatory voice, was traced by
-forensic audit to judge error: under a corrected, evidence-anchored rubric
-the rate collapsed to roughly 10\%. We report this trajectory in full not
-as a confession but as a finding: plausible-looking LLM-judge instruments
+corrupted the study (\S\ref{sec:gates}). Most consequentially, an ungated
+instrument had already minted the pilot's most publishable number---an
+apparent 55--64\% rate at which models absorb loaded source framing into
+their own explanatory voice. Forensic audit traced it to judge error:
+under a corrected, evidence-anchored rubric the rate collapsed to
+roughly 10\%. This trajectory is itself the paper's first result:
+plausible-looking LLM-judge instruments
 fail cross-family calibration at high rates, the failures are systematic
 rather than noisy, and ungated instruments convert judge artifacts into
 publishable effects.
@@ -204,7 +202,7 @@ reliability is measured, lamented, and the judges are used anyway. Our
 protocol imports the missing step from psychometrics and clinical-trial
 practice \citep{landis1977measurement}: instruments earn confirmatory
 status by passing acceptance criteria fixed in advance, or they are
-demoted---a rule we enforced against our own study twice
+demoted---a rule that cost this study two of its three instruments
 (\S\ref{sec:gates}). We are not aware of prior work in which pre-committed
 reliability gates with registered fallbacks were applied to LLM-judge
 instruments before confirmatory data collection; we document what such
@@ -340,9 +338,8 @@ surviving instrument differed by design features, not luck: categorical
 labels rather than Likert anchors, quoted-evidence requirements for
 non-default verdicts, and explicit abstention semantics ($\kap$ rose from
 $0.233$ to $0.606$ under these repairs, while the same strategy could not
-save the Likert instrument). \emph{Fourth}---a correction we report
-against our own pass verdict---the RD gate's point estimate did not
-replicate: at $n{=}1{,}987$ the 4-label $\kap$ attenuates to $0.255$, and
+save the Likert instrument). \emph{Fourth}, the pass verdict itself did not survive scale
+unqualified: the RD gate's point estimate failed to replicate--- at $n{=}1{,}987$ the 4-label $\kap$ attenuates to $0.255$, and
 the gate estimate's own bootstrap interval ($[0.28, 0.85]$ at $n{=}40$)
 had always included sub-threshold values. The large-$N$ disagreement
 concentrates at the neutral-vs-directional \emph{threshold} (raw
@@ -429,11 +426,10 @@ across $n{=}399$ paired article$\times$target cells, the directive changed
 the number of detections by $+0.69$ per article (90\% CI $[0.48, 0.90]$)
 against a mean of ${\sim}6.9$---well inside the registered $\pm 2.0$
 equivalence bound (TOST $p < .001$); equivalence in fact holds down to
-$\pm1.0$ ($p=.007$), half the registered bound. We note transparently
-that the interval excludes zero: the directive produces a small
-(${\sim}10\%$ relative) increase in detections, equivalent under the
-SESOI but not literally null---and we use this same graded language for
-every decision-channel effect in the paper. \textbf{Lean labels (H29):}
+$\pm1.0$ ($p=.007$), half the registered bound. The interval excludes zero: the directive produces a small
+(${\sim}10\%$ relative) increase in detections---equivalent under the
+SESOI, not literally null. The same graded language applies to every
+decision-channel effect in the paper. \textbf{Lean labels (H29):}
 across $n{=}394$ paired cells, five-class lean labels were stable across
 the contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
 $[0.864, 0.932]$; lower bound above the registered $0.85$ floor, which
@@ -509,8 +505,8 @@ ratio scale (robust to the targets' different directional-content base
 rates), Sonnet's center-ward substitution ratio is $2.4$ vs.\
 GPT-4.1's $1.0$.
 The registered pooled test is thus carried by one of the two targets;
-we report this prominently and correspondingly claim a directional
-default in \emph{a} frontier model, not in frontier models per se. The
+the confirmed claim is correspondingly a directional default in
+\emph{a} frontier model, not in frontier models per se. The
 model-specificity itself is informative: the behavior is not inherent
 to the task or the corpus, and therefore is in principle trainable
 away. \textbf{Its mechanism is additive}: among directional verdicts
@@ -539,8 +535,7 @@ scale-dependent in sign); decisively, the \emph{cross}-family judge
 finds the larger effect, so any residual own-family leniency could only
 have shrunk the result, not produced it.
 
-\textbf{Measurement-validity status of this result---stated in one
-place.} The instrument passed its registered gate, but three facts
+\textbf{Measurement-validity status of this result.} The instrument passed its registered gate, but three facts
 qualify it and two independent lines of evidence sustain it. Qualifying:
 item-level $\kap$ at scale is $0.255$, below the $0.40$ gate value the
 instrument passed at $n{=}40$; the gate's sign-agreement criterion,
@@ -683,7 +678,7 @@ channel carries a directional default the directive neither causes nor
 removes---and the directive's visible effects concentrate in
 presentation (rationales lengthen by ${\sim}50$--$150$ words; the
 demoted voice instrument's single-judge trend points the same way but,
-by our own standard, carries no evidential weight). For practitioners
+under the registered standard, carries no evidential weight). For practitioners
 this cuts in a specific direction: in this study, a neutrality directive
 was a presentation-layer control, and an audit that read these models'
 explanations would have mis-estimated their behavioral change. We
@@ -708,7 +703,7 @@ we establish behavioral dissociation, not its cause; generation-order arms
 probe but cannot settle it. (3) \emph{Judge mediation}: H26 rides on one
 validated instrument; cross-family sign agreement and human calibration
 (\pending{results}) bound, but do not eliminate, shared-judge-bias risk.
-(4) \emph{Gate statistics}: $\kap$ is base-rate sensitive; our own VAR
+(4) \emph{Gate statistics}: $\kap$ is base-rate sensitive; the VAR
 post-mortem illustrates the $\kap$ paradox (high raw agreement, degenerate
 marginals), which is why gates included non-degeneracy conditions and why
 demotions route to human arbitration rather than deletion. (5)
@@ -719,9 +714,9 @@ sampling variance is handled across articles, not within.
 
 \section{Conclusion}
 
-We set out to measure whether neutrality directives change what frontier
-models do with politically framed news, and found we first had to build
-instruments that could be trusted to measure anything at all. The
+Measuring whether neutrality directives change what frontier models do
+with politically framed news turned out to require, first, instruments
+that could be trusted to measure anything at all. The
 resulting study contributes a confirmed, pre-registered dissociation
 between decisions and rationales (decisions equivalent under the
 directive; rationales responsive), a confirmed directional
@@ -758,8 +753,11 @@ required for reproduction, with source URLs and the deterministic curation
 script provided in lieu of bulk redistribution where licensing requires.
 Planned human annotation involves paid coders rating published news text
 (no personal data, no vulnerable populations); compensation and consent
-procedures follow institutional guidelines. All API costs
-($\sim$\$200) and the full audit trail of instrument failures are
+procedures follow institutional guidelines. Model-specific results will be shared with both
+developers prior to public release, following named-system audit
+practice. All API costs
+($\sim$\$200 study total; $\sim$\$150 marginal re-run) and the full
+audit trail of instrument failures are
 disclosed to make the study's error-correction process, not only its
 conclusions, inspectable.
 

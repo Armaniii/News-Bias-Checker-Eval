@@ -40,11 +40,75 @@ distinctive. Risk: reads as cover letter / blog register at a venue.
 
 (to be filled by review agents)
 
-### A. How landmark methods/measurement papers frame instrument failure
-- pending
+### A. How landmark methods/measurement papers frame instrument failure (COMPLETE)
 
-### B. How high-impact sensitive-finding papers structure title/abstract
-- pending
+Surveyed: Schaeffer (Mirage), D'Amour (Underspecification), Gender
+Shades, Röttger (Spinning Arrow), Anthropic's honest-negatives trio
+(alignment faking / CoT faithfulness / sabotage evals), Perez
+model-written evals, Sijtsma (Cronbach's alpha), Flake & Fried,
+OSC 2015 reproducibility, Rohrer Loss-of-Confidence Project.
+
+The dominant template (universal across subfields):
+1. **Noun the failure** — the failure mode gets a NAME (underspecification,
+   mirage, alignment faking, QMPs) and that noun is the subject of title
+   + first sentence. Authors enter at sentence 2-3.
+2. **Authors are the apparatus, never the culprit** — first person bound
+   exclusively to discovery verbs (identify, find, show, measure). No
+   successful paper says "we erred" or "not as a confession."
+3. Prior wrong beliefs — even the community's own — attributed to
+   **generic mechanisms** ("the researcher's choice of metric", "the
+   prevailing paradigm").
+4. **Failures become results when gated by design** (confirmed
+   predictions, pre-committed evals) — implicitly the two-study move.
+5. Confessional content has **fixed subordinate slots**: one
+   matter-of-fact sentence + dedicated section (Anthropic sabotage
+   evals: "We also survey related evaluations we tried and abandoned"),
+   abstract-final limitations, appendix deviation logs, errata, or
+   retrospective venues (ML Retrospectives = explicitly a blog genre).
+Empirical: public first-person self-correction is vanishingly rare
+(Rohrer et al. 2021); ML institutionalized it into workshops, not main
+tracks. Verdict: Hypothesis A register, with B's "failures as designed
+results" achieved implicitly; C's confession register reserved for
+talks/blog/interviews.
+
+### B. How high-impact sensitive-finding papers structure title/abstract (COMPLETE)
+
+Surveyed: Feng (ACL best paper), Santurkar OpinionQA, Gentzkow-Shapiro,
+Bang 2024, Hartmann (counter-example), Gender Shades + Raji actionable
+auditing + Obermeyer, OpenAI + Anthropic self-audits.
+
+Dominant pattern:
+- **Title = question / phenomenon / measurement act; never model+direction.**
+  Hartmann (the one direction-in-title paper) got virality, lost
+  narrative control, aged badly with model updates.
+- **Abstract states results plainly but picks the symmetric/comparative
+  formulation** for headline billing; directional entity-specific claims
+  live in the body with full precision. Hedging is methodological
+  (pre-registration, robustness), never rhetorical.
+- **Named-entity results: late, comparative, mechanism-class attributed.**
+  Santurkar's "some human feedback-tuned LMs" + AI21 null contrast = our
+  GPT-4.1 null: leading with the null model converts indictment into
+  contingent-training-outcome.
+- **Structural anti-weaponization**: symmetric instrument (both-poles
+  anchored, like Gentzkow-Shapiro), refuse a single aggregate lean score
+  (Bang), anchor to vendor-endorsed norms (both labs published
+  even-handedness ideals), pre-publication vendor disclosure (Raji:
+  naming-with-disclosure drives remediation), constructive counterfactual
+  close (Obermeyer).
+
+## Decision
+
+**ADOPTED (2026-07-08): Option A register via Agent C's 11 local
+rewrites + c-class deletions; reject the two-study rebilling (C's
+registration-mismatch argument) — Finding 1 already functions as the
+validation study's results section. Plus from B: abstract rebuilt on
+C's Option A skeleton (divergence-on-symmetric-instrument billing),
+mechanism-class attribution kept, single-score refusal kept,
+pre-publication vendor-disclosure commitment added to Ethics. The
+confessional chronology lives in the deviations log (public
+registration) + one matter-of-fact pointer, Anthropic-sabotage-evals
+style. The interview/cover-letter register is a SEPARATE artifact and
+stays out of the paper.**
 
 ### C. Draft-specific inventory + rewrite options (COMPLETE)
 
