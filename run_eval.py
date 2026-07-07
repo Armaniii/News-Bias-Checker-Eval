@@ -632,9 +632,12 @@ def _expand_id(short_cid):
     s = s.replace("cop46", "claude-opus-4-6")
     s = s.replace("cso45", "claude-sonnet-4-5")
     s = s.replace("g41", "gpt-4.1").replace("g5", "gpt-5")
-    # article_ shortening: __a followed by digits
+    # article_ shortening: __a followed by the rest of the id. v2 ids are
+    # __a<digits>; v3 ids are __a(articles_|backup7_)<id>. The alternation is
+    # anchored to these exact shapes so it cannot match condition tokens
+    # (__ablation__...) and cannot re-expand an already-full id (idempotent).
     import re
-    s = re.sub(r"__a(\d+)$", r"__article_\1", s)
+    s = re.sub(r"__a((?:articles_|backup7_)\w+|\d+)$", r"__article_\1", s)
     s = re.sub(r"^r__", "rollout__", s)
     s = re.sub(r"^j__", "judgment__", s)
     return s
