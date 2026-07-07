@@ -50,8 +50,17 @@ political direction of framing substitution. With it, we test the
 pre-registered prediction that directives leave decisions unchanged
 (equivalence tests on detection counts and lean labels) while stated
 rationales drift directionally---with right-leaning sources sanitized toward
-the center more than left-leaning sources. Stage-2 results:
-\pending{H26/H28/H29 outcomes}. Beyond the findings, which are snapshots of
+the center more than left-leaning sources. All three pre-registered tests
+confirmed. Decisions were equivalent across the directive contrast
+(detection counts within the $\pm2.0$ equivalence bound, TOST $p<.001$;
+lean-label stability $\kap=0.90$, bootstrap CI $[0.86, 0.93]$, above the
+registered $0.85$ floor), while rationales substituted framing toward the
+center asymmetrically: left-coded substitution on right-leaning sources
+occurred at $1.9\times$ the rate of the mirror-image substitution
+($11.0\%$ vs.\ $5.8\%$; pooled one-sided $p=.0014$, BH-FDR), with both
+judge families independently significant in the same direction. Balance
+checks show the asymmetry is not explained by input intensity. Beyond the
+findings, which are snapshots of
 two models at one moment, we release the durable artifact: a deterministic,
 refreshable corpus recipe, gated instruments, and a pre-registration
 protocol that lets any future model generation be audited identically.
@@ -111,14 +120,15 @@ publishable effects.
 \textbf{Contributions.}
 \begin{enumerate}
   \item \textbf{A dissociation result on instruction-faithfulness}
-  (pre-registered; Stage-2 outcomes \pending{confirmed/disconfirmed}):
-  neutrality directives leave frontier models' decisions statistically
-  unchanged (equivalence on detection counts, $|\Delta| < 2.0$ per article;
-  label stability $\kap \ge 0.85$) while their stated rationales shift, with
-  a directional signature---right-leaning sources' framing is stripped or
-  re-coded toward the center \pending{X}$\times$ more often than
-  left-leaning sources' (pilot prior: $2$--$3\times$, both judge families
-  agreeing on sign independently).
+  (pre-registered; all three Stage-2 tests confirmed): neutrality
+  directives leave frontier models' decisions statistically equivalent
+  (detection counts within the registered $|\Delta| < 2.0$ bound; label
+  stability $\kap = 0.90 \ge 0.85$) while their stated rationales shift,
+  with a directional signature---right-leaning sources' framing is
+  stripped or re-coded toward the center $1.9\times$ more often than
+  left-leaning sources' ($11.0\%$ vs.\ $5.8\%$; $p=.0014$), with both
+  judge families independently significant in the same direction
+  (Sonnet $+4.0$pp, $p=.006$; GPT-5 $+6.4$pp, $p=.004$).
   \item \textbf{A measurement-integrity protocol with empirical teeth}:
   pre-committed reliability gates for LLM-judge instruments, under which 2
   of 3 plausible instruments failed; a demonstration that the gates caught
@@ -306,36 +316,73 @@ abstention semantics. Reliability rose from $\kap = 0.233$ to $0.606$ after
 these were added, while the same repair strategy could not save the Likert
 instrument.
 
-\subsection{Finding 2: Decisions are unchanged by the directive (H28, H29)}
-\pending{Stage-2: TOST outcome, equivalence bounds, per-target detail;
-label-stability $\kap$ with bootstrap CI. Pilot priors indicate detection
-counts and lean labels move little across arms.}
+\subsection{Finding 2: Decisions are equivalent across the directive contrast (H28, H29)}
+Adding the neutrality directive left both decision channels statistically
+equivalent to the no-directive control. \textbf{Detection counts (H28):}
+across $n{=}399$ paired article$\times$target cells, the directive changed
+the number of detections by $+0.69$ per article (90\% CI $[0.48, 0.90]$)
+against a mean of ${\sim}6.9$---well inside the registered $\pm 2.0$
+equivalence bound (TOST $p < .001$). We note transparently that the
+interval excludes zero: the directive produces a small (${\sim}10\%$
+relative) increase in detections, equivalent under the pre-registered
+SESOI but not literally null. \textbf{Lean labels (H29):} across
+$n{=}394$ paired cells, five-class lean labels were stable across the
+contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
+$[0.864, 0.932]$), clearing the registered $0.85$ equivalence floor.
+The directive does not change what the models decide.
 
 \subsection{Finding 3: Rationales drift, directionally (H26)}
-\pending{Stage-2: pooled estimate with cluster-robust CI; per-judge sign
-consistency; no-signal coverage by arm and stratum. Pilot prior (excluded
-corpus, both judges independently): right-lean sources' framing
-re-coded toward center 2--3$\times$ more often than left-lean sources'.}
+On the same rollouts whose decisions were equivalent, the models'
+free-text rationales substituted political framing asymmetrically.
+Pooling both judges with article-level clustering (80 Right-lean vs.\
+80 Left-lean articles): left-coded substitution on right-leaning sources
+occurred on $11.0\%$ of classifiable rationales, against $5.8\%$ for the
+mirror-image substitution on left-leaning sources---a $+5.2$pp asymmetry
+($1.9\times$; one-sided $t=3.05$, $p=.0014$, significant under BH-FDR in
+the three-test family). The pre-registered robustness requirement was
+exceeded: both judge families were \emph{independently} significant in
+the predicted direction (Sonnet $+4.0$pp, $p=.006$; GPT-5 $+6.4$pp,
+$p=.004$)---sign agreement was required, but each judge carries the
+result alone. In raw counts, right-leaning sources drew 340 left-coded
+against 71 right-coded substitutions, left-leaning sources 170
+right-coded against 62 left-coded: both source classes are re-framed
+\emph{toward the center}, right-leaning sources ${\sim}2\times$ more
+strongly. Instrument coverage was high (no-signal verdicts $1$--$3\%$
+per arm; $0.3$--$0.4\%$ on partisan strata, $8.4\%$ on Center---the
+procedural-copy case the label was designed for), and the observed
+magnitude matched the post-anchoring power projection ($1.9\times$
+vs.\ the pilot's judge-lenient $2$--$3\times$).
 
 \subsection{Finding 4: The asymmetry is not explained by input intensity (D-JA companion)}
-Corpus-side indicators, computed pre-collection: objective loaded-lexicon
-density is balanced across Left and Right strata (1.73 vs.\ 1.93 per 1k
-words; $d{=}0.10$, $p{=}.55$); expert rating magnitudes are imbalanced
-\emph{against} the predicted direction (Left articles rated more intense),
-making proportionate-response accounts of the predicted asymmetry
-conservative. \pending{Stage-2: models' own baseline detection counts per
-stratum; intensity-normalized asymmetry if any indicator is imbalanced.}
+All three pre-registered intensity indicators fail to account for the
+asymmetry. Computed pre-collection: objective loaded-lexicon density is
+balanced across Left and Right strata (1.73 vs.\ 1.93 per 1k words;
+$d{=}0.10$, $p{=}.55$); expert rating magnitudes are imbalanced
+\emph{against} the predicted direction (Left articles rated more
+intense), making proportionate-response accounts conservative. Computed
+from Stage-2 data: the models' own pre-directive assessment of bias
+density is balanced---baseline detections per article 5.96 (Left) vs.\
+6.38 (Right), $d{=}0.13$, $p{=}.40$. Under the pre-registered
+interpretation rule, H26 is therefore reported as a \emph{directional
+default in substitution behavior}, not as a proportionate response to
+asymmetric inputs.
 
 \section{Discussion and Limitations}
 
-\textbf{What the dissociation means if confirmed.} A model whose rationale
+\textbf{What the confirmed dissociation means.} A model whose rationale
 responds to a neutrality instruction that its decisions ignore is not
-``more neutral''; it is more fluent at narrating neutrality. For
-practitioners this cuts in a specific direction: system-prompt directives
-are presentation-layer controls, and any governance regime that audits
-models by reading their explanations will systematically mis-estimate
-behavioral change. Behavioral audits---counting decisions under controlled
-contrasts---are not optional rigor; they measure a different quantity.
+``more neutral''; it is more fluent at narrating neutrality. The
+dissociation is visible from both sides in our data: decisions were
+equivalent across the directive contrast (H28, H29), while the rationale
+layer responded strongly---beyond the directional H26 result, the
+directive collapsed explanation-voice framing inheritance from
+${\sim}26\%$ to ${\sim}11\%$ of detections (exploratory, single-judge
+VAR). For practitioners this cuts in a specific direction: system-prompt
+directives are presentation-layer controls, and any governance regime
+that audits models by reading their explanations will systematically
+mis-estimate behavioral change. Behavioral audits---counting decisions
+under controlled contrasts---are not optional rigor; they measure a
+different quantity.
 
 \textbf{What the gate failures mean regardless of Stage-2 outcomes.} The
 measurement result stands on its own: two frontier judges given the same
@@ -366,12 +413,14 @@ sampling variance is handled across articles, not within.
 We set out to measure whether neutrality directives change what frontier
 models do with politically framed news, and found we first had to build
 instruments that could be trusted to measure anything at all. The
-resulting study contributes a pre-registered dissociation test between
-decisions and rationales (\pending{outcome}), a directional
-characterization of framing substitution on real news under a
-justified-asymmetry discipline (\pending{outcome}), and---independent of
-either---a demonstrated protocol under which evaluation instruments earn
-trust before they are believed. The findings are dated the moment new
+resulting study contributes a confirmed, pre-registered dissociation
+between decisions and rationales (decisions equivalent under the
+directive; rationales responsive), a confirmed directional
+characterization of framing substitution on real news that survives a
+justified-asymmetry discipline ($1.9\times$ toward-center asymmetry
+against right-leaning sources, independently significant under both
+judge families), and---independent of either---a demonstrated protocol
+under which evaluation instruments earn trust before they are believed. The findings are dated the moment new
 models ship. The capability to re-derive them, on a regenerated corpus
 with re-gated instruments for roughly the cost of a conference
 registration, is the contribution we expect to last.
