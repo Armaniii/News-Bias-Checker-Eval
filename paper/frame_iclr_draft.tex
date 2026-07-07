@@ -338,7 +338,7 @@ with post-hoc large-$N$ re-estimates from Stage-2 dual-judged data.}
 \end{table}
 
 Four observations. \emph{First}, both failures were systematic, not
-noisy---and both \textbf{replicate exactly at 25--50$\times$ the gate
+noisy---and both \textbf{replicate exactly at 17--50$\times$ the gate
 sample size} (Table~\ref{tab:gates}): each judge applied an articulable,
 internally consistent rule that the rubric failed to adjudicate.
 \emph{Second}, the pilot's most striking apparent result---55--64\% of
@@ -358,7 +358,7 @@ unqualified: the RD gate's point estimate failed to replicate--- at $n{=}1{,}987
 the gate estimate's own bootstrap interval ($[0.28, 0.85]$ at $n{=}40$)
 had always included sub-threshold values. The large-$N$ disagreement
 concentrates at the neutral-vs-directional \emph{threshold} (raw
-agreement 83.1\%, with ${\sim}78\%$ neutral verdicts mechanically
+agreement 83.1\%, with ${\sim}88\%$ neutral verdicts mechanically
 depressing $\kap$); the error type that could inject direction into
 H26---sign flips---occurs on 6.5\% of both-flagged items (sign agreement
 93.5\%). Threshold noise of this kind is judge-idiosyncratic and
@@ -450,7 +450,7 @@ the contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
 $[0.864, 0.932]$; lower bound above the registered $0.85$ floor, which
 binds on the interval, not the point estimate). The registered
 companions sharpen the picture: the $5\times5$ label-shift matrix is
-near-diagonal with per-stratum $\kap$ of $0.85$--$0.90$ (no
+near-diagonal with per-3-class-stratum $\kap$ of $0.85$--$0.90$ (no
 stratum-differential instability), while the registered span-overlap
 check shows the \emph{specific spans} cited across arms overlap only
 partially (pooled span-level Jaccard $0.20$ on exact string match;
@@ -495,8 +495,8 @@ the three-test family). The pre-registered robustness requirement was
 exceeded: both judge families were \emph{independently} significant in
 the predicted direction (Sonnet $+4.0$pp, $p=.006$; GPT-5 $+6.4$pp,
 $p=.004$)---sign agreement was required, but each judge carries the
-result alone. In raw counts (of 1,584 classifiable judge-verdicts on
-right-leaning and 1,592 on left-leaning sources), right-leaning sources
+result alone. In raw counts (of 1,579 classifiable judge-verdicts on
+right-leaning and 1,586 on left-leaning sources), right-leaning sources
 drew 173 left-coded against 48 right-coded substitutions, left-leaning
 sources 92 right-coded against 23 left-coded: both source classes are
 re-framed \emph{toward the center}, right-leaning sources more strongly. Instrument coverage was high (no-signal verdicts $1$--$3\%$
@@ -548,14 +548,18 @@ than by deleting right-coded ones.
 
 Four robustness checks, each targeting a distinct way the result could
 be an artifact. \emph{Distributional assumptions}: a 10{,}000-draw
-article-relabeling permutation test gives $p < 10^{-4}$ (no permuted
-statistic reached the observed one), so the parametric primary is, if
-anything, conservative. \emph{Stratum choice}: the asymmetry is
-significant at both extremity levels separately (Right vs.\ Left
-$+11.8$pp, $p=.0008$; Lean~Right vs.\ Lean~Left $+8.4$pp, $p=.019$)---it
-is a level shift across the whole right half of the spectrum, not an
-artifact of extreme outlets. \emph{Topic}: the asymmetry is positive in
-all 8 of 8 themes (range $+4$ to $+20$pp), so it is a property of the
+article-relabeling permutation test gives $p \le 10^{-4}$ (0 of 10{,}000
+permuted statistics reached the observed value at the registered seed;
+add-one corrected $p = 10^{-4}$), so the parametric primary is, if
+anything, conservative. \emph{Stratum choice} (Sonnet target, where the effect resides): the
+asymmetry is significant at both extremity levels separately (Right vs.\
+Left $+11.8$pp, $p=.0008$; Lean~Right vs.\ Lean~Left $+8.4$pp,
+$p=.019$; pooled across targets the extreme pair holds at $+7.3$pp,
+$p=.0015$, while the lean pair does not, $+3.1$pp, $p=.11$)---a level
+shift across the right half of the spectrum, not an artifact of extreme
+outlets. \emph{Topic} (Sonnet target): the asymmetry is positive in
+all 8 of 8 themes (range $+4$ to $+20$pp; pooled across targets, 7 of 8,
+with foreign\_defense at $-0.9$pp), so it is a property of the
 model's treatment of right-coded framing generally, not of one charged
 topic. \emph{Judge family}: a judge$\times$target
 difference-in-differences finds no same-family favoritism (n.s., and
@@ -577,9 +581,11 @@ $58$ items where \emph{both} judges agree on direction ($+2.8$pp,
 one-sided $p=.005$), which discards every disputed verdict; second, the
 originally registered \emph{judge-free} instrument---the deterministic
 paired lexicon, applied to the same rationale text---independently finds
-the same-sign asymmetry (added left-coded terms on right-lean sources
-$21.8\%$ vs.\ the mirror $14.3\%$; $+7.5$pp, $p=.04$), and rationale
-lengths are balanced across strata ($172.7$ vs.\ $177.5$ words), so
+the same-sign asymmetry (Sonnet target: added left-coded terms on
+right-lean sources $21.8\%$ vs.\ the mirror $14.3\%$, $+7.5$pp,
+$p=.04$; pooled targets $+5.8$pp, $p=.03$), and rationale
+lengths are balanced across strata (Sonnet: $172.7$ vs.\ $178.1$
+words), so
 neither judge priors nor text volume explains the direction. The
 lexical corroboration is soft: it decomposes into two individually
 non-significant components (slightly higher coded-vocabulary engagement
@@ -621,7 +627,7 @@ third directional signature}
 \label{sec:capability}
 Five-class lean classification against AllSides labels is moderately
 accurate for all four frontier models in the study (targets: 53--66\%
-exact, 87--94\% within one class, vs.\ 20\% chance; judges: 62--65\%
+exact, 86--94\% within one class, vs.\ 20\% chance; judges: 61--65\%
 exact), providing the capability context for H29's stability result. The
 \emph{errors}, however, are not directionally neutral. Signed error by
 true stratum (negative = classified left of the expert label):
@@ -692,7 +698,7 @@ sources each article actually quotes, and therefore flagged for the human
 coding rather than claimed. \textbf{Generation order} (D-HCoT): emitting
 the rationale \emph{before} the decision shifts detection counts by
 $-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
-image of the directive's $+0.69$---and perturbs $21.3\%$ of lean labels
+image of the directive's $+0.69$---and perturbs ${\sim}22\%$ of lean labels
 (vs.\ $\kap = 0.90$ stability across the directive contrast at fixed
 order), with rationales lengthening from 145 to 214 words. Instructing
 the rationale channel does not move decisions, but \emph{re-ordering} it
@@ -725,7 +731,8 @@ dissociation is visible from both sides in our data: decisions were
 equivalent across the directive contrast (H28, H29), while the rationale
 channel carries a directional default the directive neither causes nor
 removes---and the directive's visible effects concentrate in
-presentation (rationales lengthen by ${\sim}50$--$150$ words; the
+presentation (rationales lengthen by $+18$ to $+65$ words under the directive, and
+by ${\sim}160$ under reasoning-first ordering; the
 demoted voice instrument's single-judge trend points the same way but,
 under the registered standard, carries no evidential weight). For practitioners
 this cuts in a specific direction: in this study, a neutrality directive
