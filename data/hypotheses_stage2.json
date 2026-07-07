@@ -1,0 +1,85 @@
+{
+  "scope": "STAGE-2 CONFIRMATORY",
+  "H26": {
+    "pooled": {
+      "n_right_articles": 80,
+      "n_left_articles": 80,
+      "rate_leftsub_on_right": 0.1097,
+      "rate_rightsub_on_left": 0.0578,
+      "asymmetry": 0.0519,
+      "t": 3.048,
+      "p_one_sided": 0.001396441042717777
+    },
+    "per_judge": {
+      "anthropic": {
+        "n_right_articles": 80,
+        "n_left_articles": 80,
+        "rate_leftsub_on_right": 0.0739,
+        "rate_rightsub_on_left": 0.0341,
+        "asymmetry": 0.0399,
+        "t": 2.572,
+        "p_one_sided": 0.005646774603828628
+      },
+      "openai": {
+        "n_right_articles": 80,
+        "n_left_articles": 80,
+        "rate_leftsub_on_right": 0.1453,
+        "rate_rightsub_on_left": 0.0815,
+        "asymmetry": 0.0638,
+        "t": 2.665,
+        "p_one_sided": 0.004289083456739156
+      }
+    },
+    "sign_consistent": true,
+    "p": 0.001396441042717777,
+    "coverage": {
+      "no_signal_rate[ablation]": 0.019,
+      "no_signal_rate[baseline]": 0.02,
+      "no_signal_rate[full]": 0.03,
+      "no_signal_rate[reframing]": 0.019,
+      "no_signal_rate[reframing_cot]": 0.01,
+      "no_signal_rate[Center]": 0.084,
+      "no_signal_rate[Left]": 0.004,
+      "no_signal_rate[Right]": 0.003
+    }
+  },
+  "H28": {
+    "n_pairs": 399,
+    "mean_diff": 0.687,
+    "ci90": [
+      0.477,
+      0.896
+    ],
+    "bound": 2.0,
+    "p": 0.0,
+    "equivalent": true
+  },
+  "H29": {
+    "n_pairs": 394,
+    "kappa": 0.8998,
+    "ci95": [
+      0.8636,
+      0.932
+    ],
+    "floor": 0.85,
+    "equivalent": true
+  },
+  "BH": {
+    "H28": {
+      "p": 0.0,
+      "reject": true
+    },
+    "H26": {
+      "p": 0.001396441042717777,
+      "reject": true
+    }
+  },
+  "D_JA_indicator3": {
+    "mean_dets[Center]": 2.663,
+    "mean_dets[Left]": 5.956,
+    "mean_dets[Right]": 6.381,
+    "welch_p_L_vs_R": 0.3979,
+    "cohens_d_R_minus_L": 0.134
+  },
+  "H26_confirmed": true
+}
