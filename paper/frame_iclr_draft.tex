@@ -85,8 +85,8 @@ measures its behavior---or, more dangerously, the reverse.
 
 Testing this required confronting a second problem, which became a
 co-equal contribution of the paper. At the scale of thousands of judgments,
-the only affordable instruments are LLM judges, and the field's default
-practice is to write a plausible rubric, spot-check a few outputs, and
+the only affordable instruments are LLM judges, and a common practice
+is to write a plausible rubric, spot-check a few outputs, and
 trust the resulting numbers. We instead adopted the standard that
 psychometrics applies to any new instrument: \textbf{demonstrate
 reliability before collecting confirmatory data, under acceptance criteria
@@ -173,8 +173,19 @@ headline withheld to prevent source-prior shortcuts. Our pre-registered
 justified-asymmetry companion analysis (\S\ref{sec:setup}) directly
 addresses the strongest objection this literature would raise against our
 headline test: per-stratum intensity balance is measured (objective loaded-lexicon
-density; expert rating magnitudes; the models' own pre-directive detection
+density; article intensity ratings; the models' own pre-directive detection
 counts), with the interpretation rule fixed before data collection.
+Closest to our subject, Anthropic's open-sourced political
+even-handedness evaluation \citep{anthropic2025evenhandedness} measures
+response symmetry to paired opinion prompts and reports the same model we
+study among the most even-handed available; our instruments measure
+framing substitution in editorial rationales on real news. These are
+different constructs and both results can be true of the same
+model---indeed their coexistence instantiates this paper's central claim
+that output-symmetry and behavioral-substitution measurements can
+dissociate---so we position the two as complements, and note that our
+cross-model classification channel (Finding~5) is directionally
+consistent with their ranking.
 
 \textbf{Faithfulness of stated reasoning.} \citet{turpin2023language}
 showed that chain-of-thought explanations can omit the features that
@@ -433,9 +444,15 @@ stratum-differential instability), while the registered span-overlap
 check shows the \emph{specific spans} cited across arms overlap only
 partially (mean Jaccard $\approx 0.20$ on exact string match)---the
 directive leaves the quantity and the verdicts of detection intact but
-not the identity of every cited span. Interpreting that overlap requires
-the same-arm test-retest floor reported alongside it (\S below), since
-single-sample decoding stochasticity alone produces span churn.
+not the identity of every cited span. The same-arm test-retest slice
+($n{=}200$, identical prompts re-run) supplies the floors that make
+these numbers interpretable: count difference $+0.02$ (SD $2.2$), span
+Jaccard $0.27$, label $\kap = 0.96$. Cross-arm span overlap ($0.20$)
+sits near the stochasticity ceiling ($0.27$)---most span churn is
+decoding noise, not directive effect---while label stability across the
+directive ($0.90$) against a $0.96$ retest ceiling indicates a small
+real directive effect on labels, consistent with the graded reading
+throughout.
 
 Equivalent counts could still hide asymmetric \emph{content}---flagging
 right-coded language as bias more readily than left-coded language---so
@@ -482,8 +499,15 @@ bounds its influence on the conclusion.
 Two characterizations sharpen the result. \textbf{It is
 model-specific}: decomposing by target, the asymmetry is strong in
 Claude Sonnet 4.5 ($17.4\%$ vs.\ $7.3\%$, $+10.1$pp, one-sided
-$p=10^{-4}$) and absent in GPT-4.1 ($4.4\%$ vs.\ $4.3\%$, $p=.46$),
-whose rationales carry little directional substitution of either sign.
+$p=10^{-4}$) and not detected in GPT-4.1 ($4.4\%$ vs.\ $4.3\%$,
+$+0.1$pp, 95\% CI $[-3.0,+3.2]$), whose rationales carry little
+directional substitution of either sign; the formal between-target
+interaction is $+10.0$pp (bootstrap 95\% CI $[+4.1, +16.2]$,
+$p\approx.0006$), so the difference itself is significant, not merely
+the contrast of a significant with a non-significant result. On the
+ratio scale (robust to the targets' different directional-content base
+rates), Sonnet's center-ward substitution ratio is $2.4$ vs.\
+GPT-4.1's $1.0$.
 The registered pooled test is thus carried by one of the two targets;
 we report this prominently and correspondingly claim a directional
 default in \emph{a} frontier model, not in frontier models per se. The
@@ -494,9 +518,9 @@ on right-leaning sources, left-substitution operates by
 \emph{amplification}---introducing left-coded framing absent from the
 source---three times as often as by stripping right-coded terms
 (119 vs.\ 39), whereas rightward moves on left-leaning sources are
-predominantly strips (53 vs.\ 36). The default, where present, is less
-``sanitizing conservative language'' than ``recoding it in progressive
-vocabulary.''
+predominantly strips (53 vs.\ 36). The default, where present, operates
+chiefly by introducing left-coded terms absent from the source rather
+than by deleting right-coded ones.
 
 Four robustness checks, each targeting a distinct way the result could
 be an artifact. \emph{Distributional assumptions}: a 10{,}000-draw
@@ -641,8 +665,8 @@ neutrality directive, is attributable to that arm's longer rationales
 (more text, more codable framing): controlling for length, the
 directive's apparent elevation disappears and reverses. The meaning is
 double-edged: no intervention we tested \emph{causes} the drift, and
-none \emph{cures} it---it is a resting-state property of the model, out
-of reach of the entire prompt-engineering toolbox. Together
+none \emph{cures} it---it is a resting-state property of the model,
+unmoved by every prompt intervention we tested. Together
 these boundaries argue for the paper's central methodological point:
 each of these distinctions is invisible to any evaluation that reads
 model self-reports at face value, and none was expensive to
@@ -774,6 +798,11 @@ API calls. \pending{Repository and OSF links after de-anonymization.}
 %   title={Measurement and Fairness},
 %   author={Jacobs, Abigail Z. and Wallach, Hanna},
 %   booktitle={FAccT}, year={2021}}
+% @misc{anthropic2025evenhandedness,
+%   title={Measuring political bias in Claude},
+%   author={{Anthropic Societal Impacts}}, year={2025},
+%   howpublished={anthropic.com/news/political-even-handedness; eval
+%   open-sourced at github.com/anthropics/political-neutrality-eval}}
 % @article{landis1977measurement,
 %   title={The measurement of observer agreement for categorical data},
 %   author={Landis, J. Richard and Koch, Gary G.},
