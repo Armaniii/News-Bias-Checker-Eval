@@ -492,7 +492,13 @@ reliability at scale is fair rather than moderate ($\kap = 0.255$;
 works against detection, and the per-judge independent significance
 bounds its influence on the conclusion.
 
-Two characterizations sharpen the result. \textbf{It is
+Three characterizations sharpen the result. \textbf{It is not
+misperception}: the drift is statistically independent of whether the
+model classifies the article's lean correctly (left-substitution rate
+$0.197$ on correctly-classified vs.\ $0.151$ on misclassified
+right-lean articles, $p=.33$) --- the re-coding occurs even when the
+model identifies the source as right-leaning exactly, so the default is
+a property of expression, not of perception. \textbf{It is
 model-specific}: decomposing by target, the asymmetry is strong in
 Claude Sonnet 4.5 ($17.4\%$ vs.\ $7.3\%$, $+10.1$pp, one-sided
 $p=10^{-4}$) and not detected in GPT-4.1 ($4.4\%$ vs.\ $4.3\%$,
@@ -552,7 +558,12 @@ paired lexicon, applied to the same rationale text---independently finds
 the same-sign asymmetry (added left-coded terms on right-lean sources
 $21.8\%$ vs.\ the mirror $14.3\%$; $+7.5$pp, $p=.04$), and rationale
 lengths are balanced across strata ($172.7$ vs.\ $177.5$ words), so
-neither judge priors nor text volume explains the direction. The result
+neither judge priors nor text volume explains the direction. The
+lexical corroboration is soft: it decomposes into two individually
+non-significant components (slightly higher coded-vocabulary engagement
+on right-lean articles, and slightly more left-adding conditional on
+engagement), so it confirms the sign, not the magnitude, of the
+judge-measured effect. The result
 is additionally robust to outlet-level clustering (CI $[+0.012,
 +0.092]$). We therefore report H26 as confirmed under its registered
 procedure and corroborated by a judge-free instrument, with final
@@ -629,7 +640,14 @@ error cell ($.82$ vs.\ $.85$ on other errors, $p<10^{-6}$; Sonnet
 $.77$). The compression is a hesitant boundary failure, not confident
 assimilation---which matters practically, because it means the
 confidence signal already flags the failure and could be used to route
-exactly these cases to review. Article-level human coding adjudicates.
+exactly these cases to review. Classification error is, moreover, substantially article-driven: 33 of
+198 articles are misclassified by \emph{all four} models ($7.8\times$
+the rate independent errors would produce; mean pairwise correctness
+correlation $0.49$), and correctly-classified articles carry nearly
+twice the rated intensity of misclassified ones ($3.17$ vs.\ $1.82$)
+--- a shared-difficulty structure consistent with article-level
+ambiguity or outlet-to-article label error. Article-level human coding
+adjudicates, prioritizing the all-model-failure set.
 
 \subsection{Finding 6 (descriptive): Boundaries of the effect}
 Three registered descriptive analyses bound the phenomenon.
