@@ -424,6 +424,19 @@ contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
 $[0.864, 0.932]$), clearing the registered $0.85$ equivalence floor.
 The directive does not change what the models decide.
 
+Equivalent counts could still hide asymmetric \emph{content}---flagging
+right-coded language as bias more readily than left-coded language---so
+we checked: right-coded lexicon terms present in a source are flagged at
+$36.0\%$ vs.\ $38.5\%$ for left-coded terms (difference $-2.5$pp,
+clustered bootstrap CI $[-14.0, +9.3]$), stable across both targets and
+all five arms. This matters because it closes the last decision-side
+loophole: the models' detection behavior is politically even-handed in
+both volume and content, which is what makes the rationale-side drift
+(Finding~3) a dissociation rather than one symptom of a general bias.
+The only content structure found is lean-\emph{congruence}---models
+preferentially flag the article's own side's language ($+11.1$pp,
+marginal)---which is what a competent bias detector should do.
+
 \subsection{Finding 3: Rationales drift, directionally (H26)}
 On the same rollouts whose decisions were equivalent, the models'
 free-text rationales substituted political framing asymmetrically.
@@ -469,6 +482,23 @@ source---three times as often as by stripping right-coded terms
 predominantly strips (53 vs.\ 36). The default, where present, is less
 ``sanitizing conservative language'' than ``recoding it in progressive
 vocabulary.''
+
+Four robustness checks, each targeting a distinct way the result could
+be an artifact. \emph{Distributional assumptions}: a 10{,}000-draw
+article-relabeling permutation test gives $p < 10^{-4}$ (no permuted
+statistic reached the observed one), so the parametric primary is, if
+anything, conservative. \emph{Stratum choice}: the asymmetry is
+significant at both extremity levels separately (Right vs.\ Left
+$+11.8$pp, $p=.0008$; Lean~Right vs.\ Lean~Left $+8.4$pp, $p=.019$)---it
+is a level shift across the whole right half of the spectrum, not an
+artifact of extreme outlets. \emph{Topic}: the asymmetry is positive in
+all 8 of 8 themes (range $+4$ to $+20$pp), so it is a property of the
+model's treatment of right-coded framing generally, not of one charged
+topic. \emph{Judge family}: a judge$\times$target
+difference-in-differences finds no same-family favoritism (n.s., and
+scale-dependent in sign); decisively, the \emph{cross}-family judge
+finds the larger effect, so any residual own-family leniency could only
+have shrunk the result, not produced it.
 
 \subsection{Finding 4: The asymmetry is not explained by input intensity (D-JA companion)}
 All three pre-registered intensity indicators fail to account for the
@@ -529,7 +559,13 @@ the pattern could partly reflect article-level deviation from outlet
 ratings---though uniform label noise cannot produce the observed
 left/right asymmetry---and the H26 result is independent of this channel
 by construction (the RD judge never sees or produces lean labels).
-Article-level human coding adjudicates.
+The models' self-reported confidence adds a mitigating nuance: the
+Lean~Right$\to$Center misclassification is their \emph{lowest}-confidence
+error cell ($.82$ vs.\ $.85$ on other errors, $p<10^{-6}$; Sonnet
+$.77$). The compression is a hesitant boundary failure, not confident
+assimilation---which matters practically, because it means the
+confidence signal already flags the failure and could be used to route
+exactly these cases to review. Article-level human coding adjudicates.
 
 \subsection{Finding 6 (descriptive): Boundaries of the effect}
 Three registered descriptive analyses bound the phenomenon.
@@ -550,7 +586,18 @@ the rationale channel does not move decisions, but \emph{re-ordering} it
 does, modestly: the rationale is not purely epiphenomenal, and
 ``post-hoc'' should be read as a claim about the directive's locus of
 effect, not about architecture. \textbf{Model}: as reported above, the
-directional component is confined to one of the two targets. Together
+directional component is confined to one of the two targets.
+\textbf{Instruction}: the drift needs no prompt to exist and no prompt
+removes it. It is already present at baseline ($+9.4$pp, $p=.007$,
+Sonnet target) and remains significant under every arm---bias taxonomy,
+attribution rule, neutrality directive, reasoning-first ordering
+($+7.5$ to $+13.1$pp). The nominally largest value, under the
+neutrality directive, is attributable to that arm's longer rationales
+(more text, more codable framing): controlling for length, the
+directive's apparent elevation disappears and reverses. The meaning is
+double-edged: no intervention we tested \emph{causes} the drift, and
+none \emph{cures} it---it is a resting-state property of the model, out
+of reach of the entire prompt-engineering toolbox. Together
 these boundaries argue for the paper's central methodological point:
 each of these distinctions is invisible to any evaluation that reads
 model self-reports at face value, and none was expensive to
