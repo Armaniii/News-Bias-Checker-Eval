@@ -58,7 +58,11 @@ registered $0.85$ floor), while rationales substituted framing toward the
 center asymmetrically: left-coded substitution on right-leaning sources
 occurred at $1.9\times$ the rate of the mirror-image substitution
 ($11.0\%$ vs.\ $5.8\%$; pooled one-sided $p=.0014$, BH-FDR), with both
-judge families independently significant in the same direction. Balance
+judge families independently significant in the same direction. The
+asymmetry is model-specific---strong in Claude Sonnet 4.5 ($+10.1$pp,
+$p=10^{-4}$), absent in GPT-4.1 ($+0.1$pp)---and mechanism-coded: the
+drift predominantly \emph{adds} left-coded framing to analyses of
+right-leaning sources rather than stripping right-coded terms. Balance
 checks show the asymmetry is not explained by input intensity. Beyond the
 findings, which are snapshots of
 two models at one moment, we release the durable artifact: a deterministic,
@@ -125,10 +129,13 @@ publishable effects.
   (detection counts within the registered $|\Delta| < 2.0$ bound; label
   stability $\kap = 0.90 \ge 0.85$) while their stated rationales shift,
   with a directional signature---right-leaning sources' framing is
-  stripped or re-coded toward the center $1.9\times$ more often than
-  left-leaning sources' ($11.0\%$ vs.\ $5.8\%$; $p=.0014$), with both
-  judge families independently significant in the same direction
-  (Sonnet $+4.0$pp, $p=.006$; GPT-5 $+6.4$pp, $p=.004$).
+  re-coded toward the center $1.9\times$ more often than left-leaning
+  sources' ($11.0\%$ vs.\ $5.8\%$; $p=.0014$), with both judge families
+  independently significant in the same direction (Sonnet judge
+  $+4.0$pp, $p=.006$; GPT-5 judge $+6.4$pp, $p=.004$). The signature is
+  model-specific (present in Claude Sonnet 4.5, absent in GPT-4.1) and
+  predominantly \emph{additive} (introducing left-coded framing rather
+  than stripping right-coded terms).
   \item \textbf{A measurement-integrity protocol with empirical teeth}:
   pre-committed reliability gates for LLM-judge instruments, under which 2
   of 3 plausible instruments failed; a demonstration that the gates caught
@@ -377,6 +384,25 @@ reliability at scale is fair rather than moderate ($\kap = 0.255$;
 works against detection, and the per-judge independent significance
 bounds its influence on the conclusion.
 
+Two characterizations sharpen the result. \textbf{It is
+model-specific}: decomposing by target, the asymmetry is strong in
+Claude Sonnet 4.5 ($17.4\%$ vs.\ $7.3\%$, $+10.1$pp, one-sided
+$p=10^{-4}$) and absent in GPT-4.1 ($4.4\%$ vs.\ $4.3\%$, $p=.46$),
+whose rationales carry little directional substitution of either sign.
+The registered pooled test is thus carried by one of the two targets;
+we report this prominently and correspondingly claim a directional
+default in \emph{a} frontier model, not in frontier models per se. The
+model-specificity itself is informative: the behavior is not inherent
+to the task or the corpus, and therefore is in principle trainable
+away. \textbf{Its mechanism is additive}: among directional verdicts
+on right-leaning sources, left-substitution operates by
+\emph{amplification}---introducing left-coded framing absent from the
+source---three times as often as by stripping right-coded terms
+(119 vs.\ 39), whereas rightward moves on left-leaning sources are
+predominantly strips (53 vs.\ 36). The default, where present, is less
+``sanitizing conservative language'' than ``recoding it in progressive
+vocabulary.''
+
 \subsection{Finding 4: The asymmetry is not explained by input intensity (D-JA companion)}
 All three pre-registered intensity indicators fail to account for the
 asymmetry. Computed pre-collection: objective loaded-lexicon density is
@@ -438,6 +464,31 @@ left/right asymmetry---and the H26 result is independent of this channel
 by construction (the RD judge never sees or produces lean labels).
 Article-level human coding adjudicates.
 
+\subsection{Finding 6 (descriptive): Boundaries of the effect}
+Three registered descriptive analyses bound the phenomenon.
+\textbf{Text type}: on extractive summaries (Eval~B), the
+\emph{objective} lexicon instrument---deterministic paired left/right
+term lists, no LLM judge---finds no retention asymmetry (own-coded terms
+retained at 0.42 on Right-lean vs.\ 0.40 on Left-lean sources, $p=.63$).
+Either the directional default is specific to free-voice analytical text
+(rationales drift; summaries stay anchored to source content), or the
+lexicon's coverage (${\sim}7\%$ of framing-bearing language) lacks power;
+we report both readings. \textbf{Generation order} (D-HCoT): emitting
+the rationale \emph{before} the decision shifts detection counts by
+$-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
+image of the directive's $+0.69$---and perturbs $21.3\%$ of lean labels
+(vs.\ $\kap = 0.90$ stability across the directive contrast at fixed
+order), with rationales lengthening from 145 to 214 words. Instructing
+the rationale channel does not move decisions, but \emph{re-ordering} it
+does, modestly: the rationale is not purely epiphenomenal, and
+``post-hoc'' should be read as a claim about the directive's locus of
+effect, not about architecture. \textbf{Model}: as reported above, the
+directional component is confined to one of the two targets. Together
+these boundaries argue for the paper's central methodological point:
+each of these distinctions is invisible to any evaluation that reads
+model self-reports at face value, and none was expensive to
+measure---given validated instruments.
+
 \section{Discussion and Limitations}
 
 \textbf{What the confirmed dissociation means.} A model whose rationale
@@ -490,8 +541,10 @@ directive; rationales responsive), a confirmed directional
 characterization of framing substitution on real news that survives a
 justified-asymmetry discipline ($1.9\times$ toward-center asymmetry
 against right-leaning sources, independently significant under both
-judge families), and---independent of either---a demonstrated protocol
-under which evaluation instruments earn trust before they are believed. The findings are dated the moment new
+judge families, localized to one of the two target models and operating
+by additive re-coding), and---independent of either---a demonstrated
+protocol under which evaluation instruments earn trust before they are
+believed. The findings are dated the moment new
 models ship. The capability to re-derive them, on a regenerated corpus
 with re-gated instruments for roughly the cost of a conference
 registration, is the contribution we expect to last.
