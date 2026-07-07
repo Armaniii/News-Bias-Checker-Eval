@@ -183,7 +183,19 @@ model---indeed their coexistence instantiates this paper's central claim
 that output-symmetry and behavioral-substitution measurements can
 dissociate---so we position the two as complements, and note that our
 cross-model classification channel (Finding~5) is directionally
-consistent with their ranking.
+consistent with their ranking. Behavioral directional tendencies in news
+processing have adjacent and concurrent precedents that we position
+against precisely: LLM summarizers shift article stance, predominantly
+leftward, under classifier-based stance measurement \citep{liu2024p3sum};
+neutral-instruction summaries of hot-button topics exhibit pro-Democratic
+drift under classifier distinguishability \citep{vallejo2025neutral}; and
+concurrent work reports ``ideological center-collapse'' in frontier-model
+news classification and steered generation on AllSides-labeled articles
+\citep{kennedy2026left}. None of these measures the \emph{asymmetry of
+substitution conditional on expert-rated source lean}, manipulates a
+neutrality directive against a decision-channel equivalence test,
+separates decisions from rationales, or gates its instruments; those four
+elements, jointly, are this paper's delta.
 
 \textbf{Faithfulness of stated reasoning.} \citet{turpin2023language}
 showed that chain-of-thought explanations can omit the features that
@@ -197,16 +209,19 @@ probe the same post-hoc hypothesis from a second angle.
 \textbf{LLM judges and their validation.} LLM-as-judge evaluation is known
 to exhibit position, verbosity, and self-preference biases
 \citep{zheng2023judging}, and agreement with human raters varies widely
-across tasks. What the literature largely lacks is \emph{consequence}:
-reliability is measured, lamented, and the judges are used anyway. Our
-protocol imports the missing step from psychometrics and clinical-trial
-practice \citep{landis1977measurement}: instruments earn confirmatory
-status by passing acceptance criteria fixed in advance, or they are
-demoted---a rule that cost this study two of its three instruments
-(\S\ref{sec:gates}). We are not aware of prior work in which pre-committed
-reliability gates with registered fallbacks were applied to LLM-judge
-instruments before confirmatory data collection; we document what such
-gates catch.
+across tasks. Reliability-with-consequence is emerging at the
+\emph{instance} level---selective evaluation with provable human-agreement
+guarantees and escalation fallbacks \citep{jung2025trust}, and human-agreement
+admission tests for judge selection---but at the \emph{instrument} level a
+common practice remains: reliability is measured, lamented, and the judges
+are used anyway. Our protocol imports the missing step from psychometrics
+and clinical-trial practice \citep{landis1977measurement}: instruments earn
+confirmatory status by passing acceptance criteria fixed in advance, or
+they are demoted---a rule that cost this study two of its three
+instruments (\S\ref{sec:gates}). We are not aware of prior work in which
+\emph{instrument-level} reliability gates with registered fallbacks were
+pre-committed in a study registration before confirmatory data collection;
+we document what such gates catch.
 
 \textbf{Construct validity in NLP evaluation.} Our approach follows calls
 to treat evaluation instruments as measurement devices requiring validity
@@ -438,16 +453,19 @@ companions sharpen the picture: the $5\times5$ label-shift matrix is
 near-diagonal with per-stratum $\kap$ of $0.85$--$0.90$ (no
 stratum-differential instability), while the registered span-overlap
 check shows the \emph{specific spans} cited across arms overlap only
-partially (mean Jaccard $\approx 0.20$ on exact string match)---the
-directive leaves the quantity and the verdicts of detection intact but
-not the identity of every cited span. The same-arm test-retest slice
-($n{=}200$, identical prompts re-run) supplies the floors that make
-these numbers interpretable: count difference $+0.02$ (SD $2.2$), span
-Jaccard $0.27$, label $\kap = 0.96$. Cross-arm span overlap ($0.20$)
-sits near the stochasticity ceiling ($0.27$)---most span churn is
-decoding noise, not directive effect---while label stability across the
-directive ($0.90$) against a $0.96$ retest ceiling indicates a small
-real directive effect on labels, consistent with the graded reading
+partially (pooled span-level Jaccard $0.20$ on exact string match;
+$0.23$ Sonnet, $0.17$ GPT-4.1)---the directive leaves the quantity and
+the verdicts of detection intact but not the identity of every cited
+span. A same-arm test-retest slice supplies the floors that make these
+numbers interpretable ($n{=}200$ article cells, identical prompts
+re-run; executed for the Sonnet target only, a partial execution of the
+registered both-target re-run): count difference $+0.02$ (SD $2.2$),
+span Jaccard $0.269$, label $\kap = 0.960$. In the matched-target
+comparison, cross-arm span overlap ($0.228$) sits near the
+stochasticity ceiling ($0.269$)---most span churn is decoding noise,
+not directive effect---while label stability across the directive
+($0.915$) against the $0.960$ retest ceiling indicates a small real
+directive effect on labels, consistent with the graded reading
 throughout.
 
 Equivalent counts could still hide asymmetric \emph{content}---flagging
@@ -493,20 +511,24 @@ works against detection, and the per-judge independent significance
 bounds its influence on the conclusion.
 
 Three characterizations sharpen the result. \textbf{It is not
-misperception}: the drift is statistically independent of whether the
-model classifies the article's lean correctly (left-substitution rate
-$0.197$ on correctly-classified vs.\ $0.151$ on misclassified
-right-lean articles, $p=.33$) --- the re-coding occurs even when the
-model identifies the source as right-leaning exactly, so the default is
-a property of expression, not of perception. \textbf{It is
+misperception}: the drift persists when perception is demonstrably
+correct---restricted to the 39 right-lean articles whose lean the model
+classifies exactly, left-substitution remains at $19.7\%$ against the
+$7.3\%$ mirror rate ($p=.0014$)---so the default is a property of
+expression, not of perception. (The correct-vs-misclassified contrast
+itself, $19.7\%$ vs.\ $15.1\%$, is underpowered: the minimum
+detectable difference at $80\%$ power is $13.4$pp, so no dependence
+claim is made in either direction.) \textbf{It is
 model-specific}: decomposing by target, the asymmetry is strong in
 Claude Sonnet 4.5 ($17.4\%$ vs.\ $7.3\%$, $+10.1$pp, one-sided
 $p=10^{-4}$) and not detected in GPT-4.1 ($4.4\%$ vs.\ $4.3\%$,
 $+0.1$pp, 95\% CI $[-3.0,+3.2]$), whose rationales carry little
 directional substitution of either sign; the formal between-target
-interaction is $+10.0$pp (bootstrap 95\% CI $[+4.1, +16.2]$,
-$p\approx.0006$), so the difference itself is significant, not merely
-the contrast of a significant with a non-significant result. On the
+interaction is $+10.0$pp (article-paired bootstrap: the shared
+$80{+}80$ articles are resampled once per draw, each carrying both
+targets' rates jointly; 95\% CI $[+4.7, +15.4]$, $p\approx.0002$), so
+the difference itself is significant, not merely the contrast of a
+significant with a non-significant result. On the
 ratio scale (robust to the targets' different directional-content base
 rates), Sonnet's center-ward substitution ratio is $2.4$ vs.\
 GPT-4.1's $1.0$.
@@ -563,7 +585,10 @@ lexical corroboration is soft: it decomposes into two individually
 non-significant components (slightly higher coded-vocabulary engagement
 on right-lean articles, and slightly more left-adding conditional on
 engagement), so it confirms the sign, not the magnitude, of the
-judge-measured effect. The result
+judge-measured effect; and because coded-vocabulary engagement is
+itself part of the generated rationale---potentially raised by the very
+default being measured---the decomposition is post-outcome
+stratification, descriptive rather than causal. The result
 is additionally robust to outlet-level clustering (CI $[+0.012,
 +0.092]$). We therefore report H26 as confirmed under its registered
 procedure and corroborated by a judge-free instrument, with final
@@ -658,7 +683,13 @@ retained at 0.42 on Right-lean vs.\ 0.40 on Left-lean sources, $p=.63$).
 Either the directional default is specific to free-voice analytical text
 (rationales drift; summaries stay anchored to source content), or the
 lexicon's coverage (${\sim}7\%$ of framing-bearing language) lacks power;
-we report both readings. \textbf{Generation order} (D-HCoT): emitting
+we report both readings. One summary-channel candidate does appear in a
+different field: summaries credit right-lean articles with ${\sim}0.5$
+fewer represented perspectives (3.42 vs.\ 3.94, $p=.006$, same direction
+in both targets, attenuated but persistent under a word-count control)
+--- unverifiable as model behavior without ground-truthing how many
+sources each article actually quotes, and therefore flagged for the human
+coding rather than claimed. \textbf{Generation order} (D-HCoT): emitting
 the rationale \emph{before} the decision shifts detection counts by
 $-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
 image of the directive's $+0.69$---and perturbs $21.3\%$ of lean labels
@@ -819,6 +850,24 @@ API calls. \pending{Repository and OSF links after de-anonymization.}
 %   author={{Anthropic Societal Impacts}}, year={2025},
 %   howpublished={anthropic.com/news/political-even-handedness; eval
 %   open-sourced at github.com/anthropics/political-neutrality-eval}}
+% @inproceedings{jung2025trust,
+%   title={Trust or Escalate: LLM Judges with Provable Guarantees for
+%   Human Agreement}, author={Jung, Jaehun and Brahman, Faeze and Choi,
+%   Yejin}, booktitle={ICLR}, year={2025}}
+% @inproceedings{liu2024p3sum,
+%   title={P3Sum: Preserving Author's Perspective in News Summarization
+%   with Diffusion Language Models}, author={Liu, Yuhan and others},
+%   booktitle={NAACL}, year={2024}}
+% @inproceedings{vallejo2025neutral,
+%   title={When Neutral Summaries are not that Neutral: Quantifying
+%   Political Neutrality in LLM-Generated News Summaries},
+%   author={(verify authors)}, booktitle={AAAI}, year={2025},
+%   note={arXiv:2410.09978}}
+% @misc{kennedy2026left,
+%   title={Left, Right, or Center? Evaluating LLM Framing in News
+%   Classification and Generation}, author={Kennedy and Parker and Liu
+%   and Sch{\"u}tze (verify)}, year={2026},
+%   note={arXiv:2601.05835; concurrent work}}
 % @article{landis1977measurement,
 %   title={The measurement of observer agreement for categorical data},
 %   author={Landis, J. Richard and Koch, Gary G.},
