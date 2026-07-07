@@ -319,7 +319,10 @@ internally consistent rule that the rubric failed to adjudicate.
 explanations inheriting loaded source framing---was substantially a judge
 artifact: forensic audit found 47\% of ``inheriting'' verdicts cited
 phrases absent from the source; under the corrected rubric the rate fell
-to $\sim$10\%. Ungated, this artifact was publishable. \emph{Third}, the
+to $\sim$10\%. Ungated, this artifact was publishable.
+Figure~\ref{fig:gate-exemplars} shows the failure texture on real items:
+articulate, internally consistent verdicts that pass any spot-check
+individually and contradict each other only when paired. \emph{Third}, the
 surviving instrument differed by design features, not luck: categorical
 labels rather than Likert anchors, quoted-evidence requirements for
 non-default verdicts, and explicit abstention semantics ($\kap$ rose from
@@ -341,6 +344,70 @@ designed for it: each judge must carry the effect independently
 but only provisional for passes}. Acceptance criteria should bind on the
 interval's lower bound, or gate on larger validation slices; we adopt
 this for all future instruments.
+
+\begin{figure}[t]
+\centering
+\small
+\newcommand{\judgebox}[4]{%
+  \begin{minipage}[t]{0.478\textwidth}
+  \fcolorbox{black!35}{#1}{\begin{minipage}{0.94\textwidth}\vspace{2pt}
+  \textbf{#2}\hfill{\footnotesize #3}\\[2pt]
+  {\footnotesize #4}\vspace{2pt}\end{minipage}}\end{minipage}}
+%
+\fcolorbox{black!35}{black!4}{\begin{minipage}{0.965\textwidth}\vspace{2pt}
+\textbf{Panel A --- FDC (1--7 Likert scale): same rationale, opposite ends
+of the scale.}\hfill{\footnotesize gate qw-$\kappa=0.109$; replicated
+$0.117$ at $n{=}1{,}987$}\\[3pt]
+{\footnotesize\emph{Rationale under judgment (abridged):} ``The article
+demonstrates a predominantly left-leaning framing [\ldots] using
+emotionally charged language that aligns with Democratic messaging
+priorities. The article opens by highlighting `skyrocketing health care
+costs' [\ldots] The article's structure suggests Republican obstruction
+[\ldots] while portraying Democrats as advocating for vulnerable
+Americans.''}\vspace{4pt}
+\end{minipage}}\\[3pt]
+\judgebox{blue!5}{Claude Sonnet 4.6}{attribution \textbf{2}, schema
+\textbf{2}}{``The reasoning \emph{adopts the source's framing as its own
+analytical lens} [\ldots] its own summary re-uses charged terms like
+`obstruction' and `vulnerable Americans' without attribution.''}
+\hfill
+\judgebox{orange!8}{GPT-5}{attribution \textbf{5}, schema \textbf{7}}{``It
+\emph{quotes and marks the article's loaded language} [\ldots] but also
+adds some unquoted evaluative phrasing (e.g., `Republican obstruction'),
+while consistently analyzing the framing [\ldots] rather than reasoning
+within it.''}\\[7pt]
+%
+\fcolorbox{black!35}{black!4}{\begin{minipage}{0.965\textwidth}\vspace{2pt}
+\textbf{Panel B --- VAR (categorical): opposite verdicts, and a judge that
+argues with itself.}\hfill{\footnotesize gate $\kappa=0.000$; replicated
+$-0.003$ at $n{=}996$; AC$_1=0.883$}\\[3pt]
+{\footnotesize\emph{Explanation under judgment:} ``The author presents his
+beliefs about private prisons in a definitive way, as though they are
+established facts, without indicating they are opinions and without
+qualifying language.''}\vspace{4pt}
+\end{minipage}}\\[3pt]
+\judgebox{blue!5}{Claude Sonnet 4.6}{verdict: \textbf{inheriting}}{``[the
+explanation] fails to attribute or quote the source's framing with
+distancing markers---however, since there is no loaded source phrasing
+inherited here [\ldots] \emph{making this describing}.'' (The stated
+rationale concludes \emph{describing}; the verdict field records
+\emph{inheriting}.)}
+\hfill
+\judgebox{orange!8}{GPT-5}{verdict: \textbf{describing}}{``It attributes
+the stance to the author and analyzes the framing without reusing the
+source's loaded phrasing as fact.''}
+\caption{\textbf{Why gating was necessary.} Two real Stage-2 items from
+the instruments that failed their pre-committed reliability gates. In
+Panel A the judges \emph{agree on the facts}---both note the unquoted
+``Republican obstruction''---yet score opposite ends of the 1--7 scale:
+anchor divergence, not factual disagreement. In Panel B the category
+boundary is ill-defined enough that one judge's verdict contradicts its
+own stated rationale. Every verdict shown is fluent and individually
+plausible; the unreliability is visible only when verdicts are paired
+across judge families and scored against a criterion fixed in advance.
+Spot-checking cannot catch this; gates did.}
+\label{fig:gate-exemplars}
+\end{figure}
 
 \subsection{Finding 2: Decisions are equivalent across the directive contrast (H28, H29)}
 Adding the neutrality directive left both decision channels statistically
