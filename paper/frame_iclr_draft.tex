@@ -343,9 +343,12 @@ sample size} (Table~\ref{tab:gates}): each judge applied an articulable,
 internally consistent rule that the rubric failed to adjudicate.
 \emph{Second}, the pilot's most striking apparent result---55--64\% of
 explanations inheriting loaded source framing---was substantially a judge
-artifact: forensic audit found 47\% of ``inheriting'' verdicts cited
-phrases absent from the source; under the corrected rubric the rate fell
-to $\sim$10\%. Ungated, this artifact was publishable.
+artifact: 46.7\% of ``inheriting'' verdicts (549/1,175) cited quoted
+phrases absent from the source---a figure that rests on no model's
+judgment, being reproducible by a released script that does regex
+quote-extraction and substring matching against the source text. Under
+the corrected rubric the rate fell to $\sim$10\%. Ungated, this
+artifact was publishable.
 Figure~\ref{fig:gate-exemplars} shows the failure texture on real items:
 articulate, internally consistent verdicts that pass any spot-check
 individually and contradict each other only when paired. \emph{Third}, the
@@ -784,7 +787,13 @@ demotions route to human arbitration rather than deletion. (5)
 \emph{Construct floor}: under the corrected rubric, explanation-level
 framing inheritance appears rare; whether that reflects model behavior or
 rubric strictness awaits human coding. (6) \emph{One rollout per cell};
-sampling variance is handled across articles, not within.
+sampling variance is handled across articles, not within. (7)
+\emph{AI-assisted research loop}: the audits that detected judge errors
+were themselves AI-executed. Their findings are secured by deterministic
+re-verification where possible (released scripts), but no human has yet
+independently coded any judged item; the pending human calibration is
+therefore load-bearing for the judged claims, and the paper should be
+read with that dependency explicit.
 
 \section{Conclusion}
 
@@ -827,7 +836,17 @@ required for reproduction, with source URLs and the deterministic curation
 script provided in lieu of bulk redistribution where licensing requires.
 Planned human annotation involves paid coders rating published news text
 (no personal data, no vulnerable populations); compensation and consent
-procedures follow institutional guidelines. Model-specific results will be shared with both
+procedures follow institutional guidelines. This study was conducted
+with substantial AI assistance (an Anthropic-family assistant
+contributed to instrument drafting, analysis code, and adversarial
+audits), a meta-level circularity we address structurally: every
+load-bearing correction---the artifact rate, count reconciliations,
+reliability statistics---rests on deterministic, committed, re-runnable
+code rather than any model's judgment; the claims that do rest on model
+judgment (the directional labels) are exactly those assigned to human
+arbitration; and the judging itself was cross-family by design. The
+division is disclosed so readers can weight each claim by its
+verification path. Model-specific results will be shared with both
 developers prior to public release, following named-system audit
 practice. All API costs
 ($\sim$\$200 study total; $\sim$\$150 marginal re-run) and the full
