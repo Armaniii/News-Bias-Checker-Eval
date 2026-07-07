@@ -282,39 +282,58 @@ Table~\ref{tab:gates} summarizes.
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{lllll}
+\begin{tabular}{llllp{4.6cm}}
 \toprule
-Instrument & Scale type & Gate statistic & Outcome & Failure mode \\
+Instrument & Gate ($n{=}40$--$60$) & Outcome &
+Stage-2 ($n{\approx}1$--$2$k) & Failure mode \\
 \midrule
-FDC & 1--7 Likert, 2 axes & qw-$\kap = 0.109$ & \textbf{fail} &
-anchor divergence: one judge 89\% at ceiling \\
-& & & & ($\sigma{=}0.47$); 2.5-pt systematic offset after repair \\
-VAR & categorical (3) & $\kap = 0.000$ & \textbf{fail} &
-zero-variance rater (0/60 one label); raw agreement \\
-& & & & 86.7\%, AC$_1{=}0.848$: base-rate degeneracy \\
-Directional RD & categorical (4) $+$ mech. & $\kap = 0.606$ &
-\textbf{pass} & --- (from $\kap{=}0.233$ pre-anchoring) \\
+FDC (1--7 Likert) & qw-$\kap = 0.109$ & \textbf{fail} &
+qw-$\kap = 0.117$ $[.106,.127]$ & anchor divergence: one judge 89\% at
+ceiling; systematic offset ($+2.76$ at scale) \\
+VAR (categorical, 3) & $\kap = 0.000$ & \textbf{fail} &
+$\kap = -0.003$ $[-.03,.04]$ & zero-variance rater (1.2\% minority label
+at scale); raw agr.\ 89.5\%, AC$_1{=}0.883$: base-rate degeneracy \\
+Directional RD (categorical, 4) & $\kap = 0.606$ & \textbf{pass} &
+$\kap = 0.255$ $[.20,.31]$ & --- at scale: threshold noise
+(neutral-vs-directional); sign agreement 93.5\% (see text) \\
 \bottomrule
 \end{tabular}
 \caption{Pre-committed reliability gates ($\kap \ge 0.40$, one shot,
-registered fallbacks). Cross-family judge pairs; held-out pilot items.}
+registered fallbacks; cross-family judge pairs on held-out pilot items),
+with post-hoc large-$N$ re-estimates from Stage-2 dual-judged data.}
 \label{tab:gates}
 \end{table}
 
-Three observations. \emph{First}, both failures were systematic, not
-noisy: each judge applied an articulable, internally consistent rule that
-the rubric failed to adjudicate (e.g., whether generic source-mention
-constitutes attribution). \emph{Second}, the pilot's most striking
-apparent result---55--64\% of explanations inheriting loaded source
-framing---was substantially a judge artifact: forensic audit found 47\% of
-``inheriting'' verdicts cited phrases absent from the source; under the
-corrected rubric the rate fell to $\sim$10\%. Ungated, this artifact was
-publishable. \emph{Third}, the surviving instrument differed by design
-features, not luck: categorical labels rather than Likert anchors,
-quoted-evidence requirements for non-default verdicts, and explicit
-abstention semantics. Reliability rose from $\kap = 0.233$ to $0.606$ after
-these were added, while the same repair strategy could not save the Likert
-instrument.
+Four observations. \emph{First}, both failures were systematic, not
+noisy---and both \textbf{replicate exactly at 25--50$\times$ the gate
+sample size} (Table~\ref{tab:gates}): each judge applied an articulable,
+internally consistent rule that the rubric failed to adjudicate.
+\emph{Second}, the pilot's most striking apparent result---55--64\% of
+explanations inheriting loaded source framing---was substantially a judge
+artifact: forensic audit found 47\% of ``inheriting'' verdicts cited
+phrases absent from the source; under the corrected rubric the rate fell
+to $\sim$10\%. Ungated, this artifact was publishable. \emph{Third}, the
+surviving instrument differed by design features, not luck: categorical
+labels rather than Likert anchors, quoted-evidence requirements for
+non-default verdicts, and explicit abstention semantics ($\kap$ rose from
+$0.233$ to $0.606$ under these repairs, while the same strategy could not
+save the Likert instrument). \emph{Fourth}---a correction we report
+against our own pass verdict---the RD gate's point estimate did not
+replicate: at $n{=}1{,}987$ the 4-label $\kap$ attenuates to $0.255$, and
+the gate estimate's own bootstrap interval ($[0.28, 0.85]$ at $n{=}40$)
+had always included sub-threshold values. The large-$N$ disagreement
+concentrates at the neutral-vs-directional \emph{threshold} (raw
+agreement 83.1\%, with ${\sim}78\%$ neutral verdicts mechanically
+depressing $\kap$); the error type that could inject direction into
+H26---sign flips---occurs on 6.5\% of both-flagged items (sign agreement
+93.5\%). Threshold noise of this kind is judge-idiosyncratic and
+attenuates power rather than creating asymmetry, and the H26 primary was
+designed for it: each judge must carry the effect independently
+(\S\ref{sec:setup}), which both did. The methodological lesson stands:
+\textbf{point-estimate gates at $n{\approx}40$ are decisive for failures
+but only provisional for passes}. Acceptance criteria should bind on the
+interval's lower bound, or gate on larger validation slices; we adopt
+this for all future instruments.
 
 \subsection{Finding 2: Decisions are equivalent across the directive contrast (H28, H29)}
 Adding the neutrality directive left both decision channels statistically
@@ -351,7 +370,12 @@ strongly. Instrument coverage was high (no-signal verdicts $1$--$3\%$
 per arm; $0.3$--$0.4\%$ on partisan strata, $8.4\%$ on Center---the
 procedural-copy case the label was designed for), and the observed
 magnitude matched the post-anchoring power projection ($1.9\times$
-vs.\ the pilot's judge-lenient $2$--$3\times$).
+vs.\ the pilot's judge-lenient $2$--$3\times$). Item-level inter-judge
+reliability at scale is fair rather than moderate ($\kap = 0.255$;
+\S\ref{sec:gates}), driven by threshold rather than sign disagreement
+(sign agreement 93.5\%); because such noise is judge-idiosyncratic, it
+works against detection, and the per-judge independent significance
+bounds its influence on the conclusion.
 
 \subsection{Finding 4: The asymmetry is not explained by input intensity (D-JA companion)}
 All three pre-registered intensity indicators fail to account for the
@@ -362,10 +386,57 @@ $d{=}0.10$, $p{=}.55$); expert rating magnitudes are imbalanced
 intense), making proportionate-response accounts conservative. Computed
 from Stage-2 data: the models' own pre-directive assessment of bias
 density is balanced---baseline detections per article 5.96 (Left) vs.\
-6.38 (Right), $d{=}0.13$, $p{=}.40$. Under the pre-registered
-interpretation rule, H26 is therefore reported as a \emph{directional
-default in substitution behavior}, not as a proportionate response to
-asymmetric inputs.
+6.38 (Right), $d{=}0.13$, $p{=}.40$. (Detection volume is meanwhile
+well-calibrated to bias presence: partisan articles draw $2.3\times$ the
+detections of Center articles, a discriminant-validity check on the
+detection task itself.) Under the pre-registered interpretation rule,
+H26 is therefore reported as a \emph{directional default in substitution
+behavior}, not as a proportionate response to asymmetric inputs.
+
+\subsection{Finding 5 (exploratory): Classification capability, and a
+third directional signature}
+\label{sec:capability}
+Five-class lean classification against AllSides labels is moderately
+accurate for all four frontier models in the study (targets: 53--66\%
+exact, 87--94\% within one class, vs.\ 20\% chance; judges: 62--65\%
+exact), providing the capability context for H29's stability result. The
+\emph{errors}, however, are not directionally neutral. Signed error by
+true stratum (negative = classified left of the expert label):
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Left & Lean Left & Center & Lean Right & Right \\
+\midrule
+Claude Sonnet 4.5 (target) & $+0.05$ & $-0.38$ & $-0.55$ & $\mathbf{-0.75}$ & $-0.30$ \\
+GPT-4.1 (target)           & $+0.18$ & $+0.15$ & $-0.22$ & $\mathbf{-0.64}$ & $-0.42$ \\
+Claude Sonnet 4.6 (judge)  & $+0.08$ & $-0.18$ & $-0.35$ & $\mathbf{-0.65}$ & $-0.38$ \\
+GPT-5 (judge)              & $+0.18$ & $+0.12$ & $-0.38$ & $\mathbf{-1.05}$ & $-0.65$ \\
+\bottomrule
+\end{tabular}
+\caption{Signed classification error (in 5-class steps) by true stratum;
+targets at baseline, judges from the LCA instrument. Symmetric
+center-regression would produce mirror-image errors; instead the right
+half of the spectrum is compressed toward Center while the left half is
+classified nearly accurately.}
+\label{tab:signed-error}
+\end{table}
+
+All four models---two families, targets and judges alike---absorb
+``Lean Right'' toward Center by $0.6$--$1.0$ classes while classifying
+left-of-center strata nearly accurately. This was not a pre-registered
+test and is reported as a descriptive observation, but its structure is
+notable: it is a third, independent measurement channel (classification
+error, alongside framing substitution and rationale voice) exhibiting the
+same directional compression of right-coded content. Two caveats: the
+analysis inherits AllSides' outlet-anchored labels as ground truth, so
+the pattern could partly reflect article-level deviation from outlet
+ratings---though uniform label noise cannot produce the observed
+left/right asymmetry---and the H26 result is independent of this channel
+by construction (the RD judge never sees or produces lean labels).
+Article-level human coding adjudicates.
 
 \section{Discussion and Limitations}
 
