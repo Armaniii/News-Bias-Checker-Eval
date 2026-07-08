@@ -212,9 +212,14 @@ to exhibit position, verbosity, and self-preference biases
 across tasks. Reliability-with-consequence is emerging at the
 \emph{instance} level---selective evaluation with provable human-agreement
 guarantees and escalation fallbacks \citep{jung2025trust}, and human-agreement
-admission tests for judge selection---but at the \emph{instrument} level a
-common practice remains: reliability is measured, lamented, and the judges
-are used anyway. Our protocol imports the missing step from psychometrics
+admission tests for judge selection---but at the \emph{instrument} level the gap is measurable: in a
+systematic coding of 25 papers from 2024--2026 that use LLM judges to
+score outputs and draw substantive conclusions
+(Appendix~\ref{app:survey}), a majority (56--60\%) report no
+inter-judge or judge--human agreement statistic of any kind, \emph{none}
+(0/25) states an acceptance threshold that judge quality had to meet
+before its scores were used, and one (4\%) specifies any fallback should
+the judge prove unreliable. Our protocol imports the missing step from psychometrics
 and clinical-trial practice \citep{landis1977measurement}: instruments earn
 confirmatory status by passing acceptance criteria fixed in advance, or
 they are demoted---a rule that cost this study two of its three
@@ -864,6 +869,40 @@ analysis code, gate validation data, batch manifests, and per-call cost
 accounting. A regeneration of the full study on new articles or new
 target models requires one configuration change and $\sim$\$150 in batched
 API calls. \pending{Repository and OSF links after de-anonymization.}
+
+\appendix
+\section{Judge-validation prevalence survey}
+\label{app:survey}
+Twenty-five papers (2024--2026) that use LLM judges to score model
+outputs and draw substantive conclusions were located via arXiv/ACL
+Anthology search and coded on five binary fields from their published
+text; two additional candidates were dropped as unverifiable. The full
+per-paper coding table with URLs and quoted bases accompanies the
+released artifact.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+Practice & Yes & No/Unclear & Rate \\
+\midrule
+Reports any agreement statistic & 10 & 15 & 40\% \\
+Uses judges from $\ge$2 model families & 9 & 16 & 36\% \\
+Validates judge against human labels & 14 & 11 & 56\%$^{a}$ \\
+Pre-commits an acceptance threshold & \textbf{0} & 25 & \textbf{0\%} \\
+Pre-specifies a fallback if unreliable & 1 & 24 & 4\% \\
+\bottomrule
+\end{tabular}
+\caption{Prevalence of judge-validation practices ($N{=}25$).
+$^{a}$3--4 of the 14 are qualitative-only; quantitative validation is
+$10/25 = 40\%$. Convenience sample over-representing benchmark-construction
+papers, which validate most --- the no-statistic rate is therefore
+likely an underestimate for the broader literature. Sharpest
+sub-pattern: all 11 papers that \emph{consume} judged evaluations
+(rather than construct them) report zero agreement statistics.}
+\label{tab:survey}
+\end{table}
 
 \bibliography{references}
 \bibliographystyle{iclr2026_conference}
