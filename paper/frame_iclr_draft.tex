@@ -101,11 +101,13 @@ inspection---two failed calibration in ways that would have silently
 corrupted the study (\S\ref{sec:gates}). Most consequentially, an ungated
 instrument had already minted the pilot's most publishable number---an
 apparent 55--64\% rate at which models absorb loaded source framing into
-their own explanatory voice. Forensic audit traced it to judge error:
+their own explanatory voice. Forensic audit attributed most of it to
+judge error (with a quantified corpus-error component; \S\ref{sec:gates}):
 under a corrected, evidence-anchored rubric the rate collapsed to
 roughly 10\%. This trajectory is itself the paper's first result:
 plausible-looking LLM-judge instruments
-fail cross-family calibration at high rates, the failures are systematic
+can fail cross-family calibration---in this study, two of three did---the
+failures are systematic
 rather than noisy, and ungated instruments convert judge artifacts into
 publishable effects.
 
@@ -282,8 +284,18 @@ strip/amplify mechanism, with quoted-evidence requirements). Each faced a
 pre-committed acceptance gate on held-out pilot data (excluded from all
 confirmatory analysis): $\kap \ge 0.40$ with non-degeneracy conditions, one
 attempt, registered fallback (demotion to exploratory, per-judge
-reporting). Human calibration on a stratified subsample
-(\pending{$n$, coders, agreement}) arbitrates all demoted constructs.
+reporting). Human calibration arbitrates all judged constructs---demoted
+and surviving alike---under a decision rule fixed before coding begins:
+two independent paid coders (a third adjudicating disagreements), blind
+to arm, target model, and judge verdicts, code a stratified $n{=}300$
+subsample (all 58 both-judge-directional RD items; 92 stratified
+one-judge and neutral RD verdicts; 100 VAR verdicts including
+traceability-flagged and control strata; 50 articles for lean, including
+all 33 all-model-failure articles). H26's construct is \emph{sustained}
+if human direction labels agree with the pooled judge at $\kap \ge 0.40$
+and independently reproduce the asymmetry's sign on the coded subsample,
+and \emph{retracted to exploratory} if either condition fails; results:
+\pending{pending}.
 
 \textbf{Confirmatory hypotheses} (three surviving tests after gate
 outcomes: Benjamini--Hochberg FDR at $q{=}.05$ over the two
@@ -311,11 +323,11 @@ as registered.
 
 \section{Findings}
 
-\subsection{Finding 1: Most plausible judge instruments fail calibration---and gates catch what inspection does not}
+\subsection{Finding 1: Plausible judge instruments fail calibration systematically---and gates catch what inspection does not}
 \label{sec:gates}
 
-This finding is complete (it precedes Stage-2 data by design).
-Table~\ref{tab:gates} summarizes.
+Finding 1 precedes Stage-2 data by design; Table~\ref{tab:gates}
+summarizes.
 
 \begin{table}[h]
 \centering
@@ -348,10 +360,23 @@ sample size} (Table~\ref{tab:gates}): each judge applied an articulable,
 internally consistent rule that the rubric failed to adjudicate.
 \emph{Second}, the pilot's most striking apparent result---55--64\% of
 explanations inheriting loaded source framing---was substantially a judge
-artifact: 46.7\% of ``inheriting'' verdicts (549/1,175) cited quoted
-phrases absent from the source---a figure that rests on no model's
-judgment, being reproducible by a released script that does regex
-quote-extraction and substring matching against the source text. Under
+artifact: 44.1\% of ``inheriting'' verdicts with extractable quoted
+evidence (466/1,057, of 1,225 such verdicts total) cited quoted phrases
+that fail verbatim source-traceability---no extracted phrase appears
+anywhere in the source---and the registered post-mortem records the
+complementary error on a further 27\% (terms claimed as unquoted that
+were visibly quoted). The \emph{detection} layer of this figure rests on
+no model's judgment: a released script does regex quote-extraction and
+substring matching against the source text. The script itself
+illustrates the standard it serves---adversarial re-review of its first
+version (which reported 46.7\%) found a quote-extraction defect
+(possessive apostrophes minting phantom quotes) and an unapplied
+registered exclusion (six identity-contaminated pilot articles, on which
+absent quotes are corpus error, not judge error); the corrected script
+prints the full sensitivity table. What substring matching cannot settle
+is \emph{interpretation}: a traceability failure is judge error unless
+the phrase is a close paraphrase, a stratum the human audit of flagged
+verdicts (\S\ref{sec:setup}) quantifies. Under
 the corrected rubric the rate fell to $\sim$10\%. Ungated, this
 artifact was publishable.
 Figure~\ref{fig:gate-exemplars} shows the failure texture on real items:
@@ -750,23 +775,31 @@ measure---given validated instruments.
 
 \section{Discussion and Limitations}
 
-\textbf{What the confirmed dissociation means.} A model whose rationale
-responds to a neutrality instruction that its decisions ignore is not
-``more neutral''; it is more fluent at narrating neutrality. The
-dissociation is visible from both sides in our data: decisions were
-equivalent across the directive contrast (H28, H29), while the rationale
-channel carries a directional default the directive neither causes nor
-removes---and the directive's visible effects concentrate in
-presentation (rationales lengthen by $+18$ to $+65$ words under the directive, and
-by ${\sim}160$ under reasoning-first ordering; the
-demoted voice instrument's single-judge trend points the same way but,
-under the registered standard, carries no evidential weight). For practitioners
-this cuts in a specific direction: in this study, a neutrality directive
-was a presentation-layer control, and an audit that read these models'
-explanations would have mis-estimated their behavioral change. We
+\textbf{What the confirmed dissociation means.} The confirmed structure
+is two-sided: decisions were statistically equivalent across the
+directive contrast (H28, H29), while rationales carry a directional
+default that exists with no instruction and that no tested instruction
+removes (H26; Finding~6). The two channels answer to different
+levers---that is the dissociation---but the confirmed rationale-side
+result is directive-\emph{independent}. Whether the directive
+additionally rewrites rationales to \emph{perform} neutrality was the
+question assigned to the instruments that failed their gates; the
+surviving evidence on it is exploratory (rationales lengthen by $+18$ to
+$+65$ words under the directive and by ${\sim}160$ under reasoning-first
+ordering; the demoted voice instrument's single-judge trend points the
+same way but, under the registered standard, carries no evidential
+weight). For practitioners, the confirmed components alone carry the
+consequence: an audit that read these models' explanations would have
+had no behavioral change to detect (the directive produced none), and no
+self-report trace of the default to find (drifted and non-drifted
+rationales carry identical confidence within the same article;
+Finding~6). Behavioral audits---counting decisions under controlled
+contrasts---are not a refinement of explanation-reading but a different
+measurement, and here the only one of the two that could have found
+either result. We
 demonstrate one confirmed instance, not a universal law; but the
-existence proof is enough to make behavioral audits---counting decisions
-under controlled contrasts---a necessary complement wherever
+existence proof is enough to make behavioral audits
+a necessary complement wherever
 self-reports are currently read as evidence (e.g., explanation-based
 model evaluations under emerging audit regimes).
 
@@ -807,17 +840,22 @@ with politically framed news turned out to require, first, instruments
 that could be trusted to measure anything at all. The
 resulting study contributes a confirmed, pre-registered dissociation
 between decisions and rationales (decisions equivalent under the
-directive; rationales responsive), a confirmed directional
+directive; rationales carrying a directional default the directive
+neither causes nor removes), a directional
 characterization of framing substitution on real news that survives a
 justified-asymmetry discipline ($1.9\times$ toward-center asymmetry
 against right-leaning sources, independently significant under both
 judge families, localized to one of the two target models and operating
-by additive re-coding), and---independent of either---a demonstrated
+by additive re-coding)---confirmed under its registered procedure,
+with construct arbitration pending human coding---and, independent of
+either, a demonstrated
 protocol under which evaluation instruments earn trust before they are
 believed. The findings are dated the moment new
-models ship. The capability to re-derive them, on a regenerated corpus
-with re-gated instruments for roughly the cost of a conference
-registration, is the contribution we expect to last.
+models ship. The capability to re-derive them---on a regenerated corpus,
+with re-gated instruments, for marginal API costs of roughly a
+conference registration (the validation layers, larger gate slices and
+human arbitration, are priced separately)---is the contribution we
+expect to last.
 
 \subsubsection*{Ethics Statement}
 This study evaluates model behavior on politically contested material; we
