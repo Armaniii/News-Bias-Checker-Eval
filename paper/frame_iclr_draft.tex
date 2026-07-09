@@ -63,12 +63,22 @@ each finding maps to a design rule for news-facing AI products.
 When a language model is asked to analyze a politically charged news
 article, it produces two things: a \emph{decision} (an answer---which spans
 are biased, what the article's lean is) and a \emph{rationale} (a stated
-explanation of that answer). Almost all governance of political behavior in
+explanation of that answer). Much of the governance of political behavior in
 deployed models operates on the assumption that these move together: add a
 neutrality directive to the system prompt, observe better-sounding
-explanations, and conclude the model has become more even-handed. This paper
-tests that assumption directly, and pre-registers the prediction that it is
-false in a specific, directional way.
+explanations, and conclude the model has become more even-handed. Each
+step of that pattern is documented practice, not caricature: prompt-level
+neutrality directives are the recurrent mitigation in the research
+literature \citep{ganguli2023capacity,liu2025selfreflection,
+yang2025rethinking,fisher2025neutrality} and ship verbatim in production
+system prompts \citep{anthropic2025evenhandedness}; reading
+model-verbalized reasoning is itself institutionalizing as a governance
+instrument \citep{korbak2025monitorability,baker2025obfuscation}; and
+under the 2025 U.S. procurement rules a vendor may demonstrate
+``ideological neutrality'' by disclosing the system prompt itself
+\citep{eo2025neutrality,omb2026m2604}. This paper
+tests the underlying assumption directly, and pre-registers the
+prediction that it is false in a specific, directional way.
 
 Our central design principle is a dissociation test. If a directive
 genuinely alters processing, its effects should appear in the decisions
@@ -230,7 +240,10 @@ interpreted relative to it).
 
 \textbf{Faithfulness of stated reasoning.} \citet{turpin2023language}
 showed that chain-of-thought explanations can omit the features that
-actually drive predictions. Our design asks the complementary question: not
+actually drive predictions; \citet{lanham2023measuring} found stated
+reasoning often causally irrelevant to the answer it accompanies; and
+under optimization pressure models learn to hide intent from stated
+reasoning while the behavior persists \citep{baker2025obfuscation}. Our design asks the complementary question: not
 whether explanations \emph{omit} true causes, but whether an explicit
 instruction changes the explanation \emph{without} changing the decision it
 purports to explain---and whether that rewriting has a political direction.
@@ -941,7 +954,9 @@ a necessary complement wherever
 self-reports are currently read as evidence---e.g.,
 general-purpose-model evaluations under the EU AI Act
 \citep{euaiact2024}, or the 2025 U.S. procurement criterion of LLM
-``ideological neutrality'' \citep{eo2025neutrality}, the latter exactly
+``ideological neutrality'' \citep{eo2025neutrality,omb2026m2604}---whose
+implementation guidance accepts system-prompt disclosure as compliance
+evidence---the latter exactly
 the setting where an ungated neutrality audit could mint
 policy-consequential artifacts. Our audit framing follows the
 internal-audit and named-system traditions
