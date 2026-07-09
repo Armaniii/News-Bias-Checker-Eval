@@ -137,44 +137,34 @@ publishable effects.
 
 \textbf{Contributions.}
 \begin{enumerate}
-  \item \textbf{A directive-independent directional default, precisely
-  bounded} (all three surviving pre-registered tests confirmed; claims
-  graded to instrument validity): the neutrality directive leaves both
-  models' decisions statistically equivalent (detection counts within
-  $\pm1.0$ per article, stricter than the registered $\pm2.0$; label
-  stability $\kap = 0.90 \ge 0.85$), while rationales carry a directional
-  asymmetry that exists \emph{without any instruction} and is removed by
-  none we tested: right-leaning sources' framing is re-coded toward the
-  center $1.9\times$ more often than left-leaning sources' ($11.0\%$ vs.\
-  $5.8\%$; $p=.0014$), with both judge families independently significant
-  (Sonnet judge $+4.0$pp, $p=.006$; GPT-5 judge $+6.4$pp, $p=.004$) and a
-  judge-free lexicon instrument corroborating on the same text
-  (Sonnet target $+7.5$pp, $p=.04$; pooled $+5.8$pp, $p=.03$). The signature is model-specific (Claude Sonnet
-  4.5 $+10.1$pp; GPT-4.1 not detected, CI $[-3.0,+3.2]$pp) and,
-  descriptively, predominantly \emph{additive}. We note explicitly that the registered
-  directive$\to$rationale tests (H27/H27b) were demoted with their failed
-  instruments, so the directive's effect on rationale \emph{style} is
-  exploratory; what is confirmed is the default's existence and its
-  independence from the decision channel.
-  \item \textbf{A measurement-integrity protocol with empirical teeth}:
-  pre-committed reliability gates for LLM-judge instruments, under which 2
-  of 3 plausible instruments failed; a demonstration that the gates caught
-  a large artifact before it became a headline finding; and a
-  characterization of the failure modes (anchor divergence, base-rate
-  degeneracy, off-definition abstention) with the rubric-design features
-  that distinguished the surviving instrument (categorical labels,
-  quoted-evidence requirements, explicit abstention semantics).
-  \item \textbf{A durable, refreshable audit capability}: a deterministic
-  corpus-generation recipe over expert-rated news (contamination-resistant
-  by regeneration), gated instruments, analysis code, and a pre-registration
-  with externally timestamped amendments---packaged so that the study can be
-  re-run on any future model generation for $\sim$\$150 in marginal
-  API cost (gate validation and human arbitration priced separately).
-  The same package functions as a pre-deployment qualification and
-  per-upgrade regression audit for news-facing AI features
-  (\S\ref{sec:discussion})---and as the behavioral-verification layer
-  that disclosure-based neutrality compliance
-  \citep{omb2026m2604} currently accepts on trust.
+  \item \textbf{A directional default, not a directive effect.} The
+  neutrality directive changed neither channel: decisions remained
+  statistically equivalent across the contrast, while rationales carried
+  a directional asymmetry---framing in right-leaning sources re-coded
+  toward the center at $1.9\times$ the mirror rate---that predates the
+  directive and survives every intervention we tested. All three
+  surviving pre-registered tests confirmed; both judge families
+  independently significant; corroborated by a judge-free lexicon
+  instrument. The effect is confined to one of the two target models
+  (Claude Sonnet 4.5, $+10.1$pp; GPT-4.1, null), and the registered
+  directive$\to$rationale-style tests, demoted with their failed
+  instruments, remain exploratory.
+  \item \textbf{Instruments must earn trust before their output counts.}
+  Every LLM judge faced a pre-committed, cross-family reliability gate:
+  two of three plausible instruments failed---systematically, not
+  noisily---and the gates caught a publishable artifact before it became
+  the headline finding (an apparent 55--64\% framing-absorption rate
+  that fell to 0--13\% under an evidence-anchored rubric). The failure
+  modes, and the design features that saved the surviving instrument,
+  are characterized for reuse (Figure~\ref{fig:protocol-card}).
+  \item \textbf{A refreshable audit, not a one-off study.} A
+  deterministic corpus recipe over expert-rated news, gated instruments,
+  and analysis code, re-runnable on any future model generation for
+  $\sim$\$150 in marginal API cost (validation layers priced
+  separately). The same package is a pre-deployment qualification test
+  for news-facing AI features (\S\ref{sec:discussion})---and the
+  behavioral-verification layer that disclosure-based neutrality
+  compliance \citep{omb2026m2604} currently accepts on trust.
 \end{enumerate}
 
 We emphasize the asymmetry between our findings and our instrument. The
