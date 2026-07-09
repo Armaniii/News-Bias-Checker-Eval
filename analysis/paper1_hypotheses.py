@@ -226,6 +226,16 @@ def main():
     ap.add_argument("--pilot", action="store_true",
                     help="mechanics check on pilot rows (NOT a hypothesis test)")
     args = ap.parse_args()
+    gate_artifacts = [cfg.DATA / "rd_v343_gate.cache.jsonl",
+                      cfg.DATA / "var_v343_gate.cache.jsonl"]
+    if not all(p.exists() for p in gate_artifacts):
+        print("=" * 64)
+        print("UNGATED --- NOT A FINDING")
+        print("Gate-validation artifacts are absent from this checkout.")
+        print("Judge-instrument outputs produced without freshly passed")
+        print("reliability gates (PRE_REGISTRATION 6.8.9) must not be")
+        print("reported as findings of this instrument.")
+        print("=" * 64)
     ids = v3_ids()
     scope = "PILOT (mechanics check only)" if args.pilot else "STAGE-2 CONFIRMATORY"
     print(f"paper1_hypotheses | scope: {scope} | family: {sorted(cfg.BH_FAMILY)}")
