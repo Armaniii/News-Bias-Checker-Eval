@@ -84,7 +84,11 @@ Our central design principle is a dissociation test. If a directive
 genuinely alters processing, its effects should appear in the decisions
 themselves. If instead the directive is absorbed as a \emph{presentation
 instruction}, decisions will be unchanged while rationales are rewritten to
-\emph{perform} compliance. The distinction matters for AI safety practice
+\emph{perform} compliance. And there is a third possibility---the one
+our data ultimately support: the directive moves neither channel, and
+the political signature is a resting-state property of the rationale
+channel alone, present before any instruction and removed by none we
+test. The distinction matters for AI safety practice
 well beyond the political domain: it determines whether behavioral audits
 and self-report audits of the same system can be expected to agree. A model
 whose explanations respond to instructions that its decisions ignore will
@@ -168,7 +172,9 @@ publishable effects.
   API cost (gate validation and human arbitration priced separately).
   The same package functions as a pre-deployment qualification and
   per-upgrade regression audit for news-facing AI features
-  (\S\ref{sec:discussion}).
+  (\S\ref{sec:discussion})---and as the behavioral-verification layer
+  that disclosure-based neutrality compliance
+  \citep{omb2026m2604} currently accepts on trust.
 \end{enumerate}
 
 We emphasize the asymmetry between our findings and our instrument. The
