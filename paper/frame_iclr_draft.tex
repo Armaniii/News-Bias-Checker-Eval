@@ -54,7 +54,8 @@ instrument (pooled $+5.8$pp, $p=.03$). The instrument's measured limits
 (item-level $\kap$ $0.606$ at the gate, $0.255$ at scale; sign agreement
 $93.5\%$; the asymmetry survives restriction to both-judge-agreed items,
 $p=.005$) grade the claim, pending human arbitration. The gated audit
-re-runs per model generation for $\sim$\$150 in marginal API cost.
+re-runs per model generation for $\sim$\$150 in marginal API cost, and
+each finding maps to a design rule for news-facing AI products.
 \end{abstract}
 
 \section{Introduction}
@@ -78,7 +79,15 @@ well beyond the political domain: it determines whether behavioral audits
 and self-report audits of the same system can be expected to agree. A model
 whose explanations respond to instructions that its decisions ignore will
 pass every audit that reads its explanations and fail every audit that
-measures its behavior---or, more dangerously, the reverse.
+measures its behavior---or, more dangerously, the reverse. Nor is the
+setting hypothetical: the nearest deployment surface is the growing
+class of news-facing AI products---bias checkers, balanced-news
+summarizers, media-literacy tools built on expert outlet ratings---which
+surface exactly these two channels to readers: decisions (flagged spans,
+lean labels) and explanatory prose. Whether the two channels can
+diverge, and in which direction, is for that product class a correctness
+property, not an abstraction; \S\ref{sec:discussion} translates each
+finding into a design rule for it.
 
 Testing this required confronting a second problem, which became a
 co-equal contribution of the paper. At the scale of thousands of judgments,
@@ -147,6 +156,9 @@ publishable effects.
   with externally timestamped amendments---packaged so that the study can be
   re-run on any future model generation for $\sim$\$150 in marginal
   API cost (gate validation and human arbitration priced separately).
+  The same package functions as a pre-deployment qualification and
+  per-upgrade regression audit for news-facing AI features
+  (\S\ref{sec:discussion}).
 \end{enumerate}
 
 We emphasize the asymmetry between our findings and our instrument. The
@@ -899,6 +911,7 @@ model self-reports at face value, and none was expensive to
 measure---given validated instruments.
 
 \section{Discussion and Limitations}
+\label{sec:discussion}
 
 \textbf{What the confirmed dissociation means.} The confirmed structure
 is two-sided: decisions were statistically equivalent across the
@@ -933,6 +946,45 @@ the setting where an ungated neutrality audit could mint
 policy-consequential artifacts. Our audit framing follows the
 internal-audit and named-system traditions
 \citep{raji2020closing,raji2019actionable}.
+
+\textbf{Design rules for news-facing AI products.} The findings were
+collected as an audit, but each maps onto a concrete design rule for
+the product class named in \S1---bias checkers, balanced-news
+summarizers, and media-literacy tools anchored to expert outlet ratings.
+(1)~\emph{Ship decisions; gate explanations.} The decision channels
+measured deployment-grade: detection volume tracks bias presence
+(partisan articles draw $2.3\times$ the detections of Center articles)
+with no detectable political skew in flagged content, and lean labels
+are stable---so span-level detections and quoted evidence are the safe
+surface, while free-voice explanatory prose is where the directional
+default lives and belongs behind a filter. (2)~\emph{A neutrality
+directive is not a mitigation.} It left decisions equivalent and the
+default untouched; a product claiming neutrality because its system
+prompt requests it commits precisely the self-report error this paper
+measures. (3)~\emph{Prefer extractive summarization.} Summaries showed
+no retention asymmetry (Finding~6)---the safer generative surface---but
+perspective enumeration needs auditing: right-lean articles were
+credited with ${\sim}0.5$ fewer represented perspectives.
+(4)~\emph{Route the known failure cell to humans.} All four models
+compress Lean-Right toward Center and it is their lowest-confidence
+error cell (Finding~5), so a confidence threshold routes exactly these
+cases into the human editorial review that expert-rating platforms
+already operate; and because the 33 all-model-failure articles show the
+residual ambiguity is article-level, human arbitration---not a larger
+model---is the fix. (5)~\emph{Post-filter with the lexicon.} The
+judge-free paired lexicon detects the substitution deterministically at
+zero marginal cost; as an output filter it flags institutional-renaming
+rewrites (the highest-frequency drift vocabulary) before display, and
+the drift's concentration---twenty articles carry 70\% of it---makes
+risk targeting practical. (6)~\emph{External QA only; re-audit per
+upgrade.} Drifted rationales carry no confidence self-signal
+(Finding~6), so a product cannot self-monitor through model confidence;
+any LLM-judge QA in its pipeline inherits Finding~1's gate requirement;
+and the \$150 marginal re-run prices the audit as a per-model-upgrade
+regression test rather than a one-off study. These rules are the
+practical content of the dissociation: the audit tells a builder which
+channels of a bias-analysis product current models can already power,
+and which still need gates, filters, or humans.
 
 \textbf{What the gate failures mean regardless of Stage-2 outcomes.} The
 measurement result stands on its own: two frontier judges given the same
@@ -989,7 +1041,10 @@ models ship. The capability to re-derive them---on a regenerated corpus,
 with re-gated instruments, for marginal API costs of roughly a
 conference registration (the validation layers, larger gate slices and
 human arbitration, are priced separately)---is the contribution we
-expect to last.
+expect to last. For builders of news-facing AI, the same package is a
+qualification test: it answers, per model generation, which channels of
+a bias-analysis product are deployable and which still require gates,
+filters, or human review.
 
 \subsubsection*{Ethics Statement}
 This study evaluates model behavior on politically contested material; we
