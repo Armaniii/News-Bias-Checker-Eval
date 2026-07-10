@@ -961,43 +961,47 @@ internal-audit and named-system traditions
 \citep{raji2020closing,raji2019actionable}.
 
 \textbf{Design rules for news-facing AI products.} The findings were
-collected as an audit, but each maps onto a concrete design rule for
-the product class named in \S1---bias checkers, balanced-news
-summarizers, and media-literacy tools anchored to expert outlet ratings.
-(1)~\emph{Ship decisions; gate explanations.} The decision channels
-measured deployment-grade: detection volume tracks bias presence
-(partisan articles draw $2.3\times$ the detections of Center articles)
-with no detectable political skew in flagged content, and lean labels
-are stable---so span-level detections and quoted evidence are the safe
-surface, while free-voice explanatory prose is where the directional
-default lives and belongs behind a filter. (2)~\emph{A neutrality
-directive is not a mitigation.} It left decisions equivalent and the
-default untouched; a product claiming neutrality because its system
-prompt requests it commits precisely the self-report error this paper
-measures. (3)~\emph{Prefer extractive summarization.} Summaries showed
-no retention asymmetry (Finding~6)---the safer generative surface---but
-perspective enumeration needs auditing: right-lean articles were
-credited with ${\sim}0.5$ fewer represented perspectives.
-(4)~\emph{Route the known failure cell to humans.} All four models
-compress Lean-Right toward Center and it is their lowest-confidence
-error cell (Finding~5), so a confidence threshold routes exactly these
-cases into the human editorial review that expert-rating platforms
-already operate; and because the 33 all-model-failure articles show the
-residual ambiguity is article-level, human arbitration---not a larger
-model---is the fix. (5)~\emph{Post-filter with the lexicon.} The
-judge-free paired lexicon detects the substitution deterministically at
-zero marginal cost; as an output filter it flags institutional-renaming
-rewrites (the highest-frequency drift vocabulary) before display, and
-the drift's concentration---twenty articles carry 70\% of it---makes
-risk targeting practical. (6)~\emph{External QA only; re-audit per
-upgrade.} Drifted rationales carry no confidence self-signal
-(Finding~6), so a product cannot self-monitor through model confidence;
-any LLM-judge QA in its pipeline inherits Finding~1's gate requirement;
-and the \$150 marginal re-run prices the audit as a per-model-upgrade
-regression test rather than a one-off study. These rules are the
-practical content of the dissociation: the audit tells a builder which
-channels of a bias-analysis product current models can already power,
-and which still need gates, filters, or humans.
+collected as an audit, but each one answers a concrete build question
+for bias checkers, balanced-news summarizers, and media-literacy tools:
+\begin{itemize}
+  \item \emph{Show the model's decisions; filter its prose.} The
+  decisions held up well: the models flag more bias where experts rate
+  more bias, with no political skew we could detect in what gets
+  flagged. The directional default lives entirely in the free-written
+  explanations. So surface flagged spans and direct quotes, and treat
+  generated prose as the risky part of the product.
+  \item \emph{Do not trust a system prompt to deliver neutrality.} The
+  directive left decisions essentially unchanged and the default
+  untouched; its clearest effect was longer explanations. A product
+  that claims neutrality because its prompt asks for it is exactly the
+  failure this paper measures.
+  \item \emph{Summaries are safer than commentary.} Summaries stayed
+  anchored to the source, with no left--right asymmetry we could
+  detect. One caution: summaries credited right-leaning articles with
+  slightly fewer represented perspectives, so that feature needs its
+  own check.
+  \item \emph{Send the known blind spot to human editors.} Every model
+  we measured tends to read moderately conservative articles as
+  centrist, and the models are least confident exactly there. A simple
+  confidence threshold routes those cases into the human review that
+  expert-rating platforms already run. The hardest articles defeated
+  all four models at once, which points to ambiguity in the articles
+  themselves; human judgment, not a bigger model, is the fix.
+  \item \emph{Add a cheap word-list check on outputs.} A fixed list of
+  politically coded terms flags the most common substitutions---terms
+  like ``undocumented'' and ``reproductive rights'' introduced where
+  the source used other words---with no AI in the loop. The drift is
+  also concentrated: twenty articles account for seventy percent of
+  it, so screening is cheap to target.
+  \item \emph{Re-test on every model upgrade.} The model gives no
+  internal warning when it drifts, so the product cannot monitor
+  itself; and any AI judge used for quality control needs the same
+  validation ours did. The full audit re-runs for about \$150 in API
+  calls---a regression test, not a research project.
+\end{itemize}
+These rules are the practical content of the dissociation: they tell a
+builder which parts of a bias-analysis product today's models can
+already power, and which still need filters, checks, or humans.
 
 \textbf{What the gate failures mean regardless of Stage-2 outcomes.} The
 measurement result stands on its own: two frontier judges given the same
