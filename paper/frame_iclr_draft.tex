@@ -418,39 +418,54 @@ both-directional pair.}
 \label{tab:gates}
 \end{table}
 
-Four observations. \emph{First}, both failures were systematic, not
-noisy---and both \textbf{replicate, within the gate estimates' intervals, at
-17--50$\times$ the gate sample size} (Table~\ref{tab:gates}): each judge applied an articulable,
-internally consistent rule that the rubric failed to adjudicate.
-\emph{Second}, the pilot's most striking apparent result---55--64\% of
-explanations inheriting loaded source framing---was substantially a judge
-artifact: 44.1\% of ``inheriting'' verdicts with extractable quoted
-evidence (466/1,057, of 1,225 such verdicts total) cited quoted phrases
-that fail verbatim source-traceability---no extracted phrase appears
-anywhere in the source---and the registered post-mortem records the
-complementary error on a further 27\% (terms claimed as unquoted that
-were visibly quoted). The \emph{detection} layer of this figure rests on
-no model's judgment: a released script does regex quote-extraction and
-substring matching against the source text. The script itself
-illustrates the standard it serves---adversarial re-review of its first
-version (which reported 46.7\%) found a quote-extraction defect
-(possessive apostrophes minting phantom quotes) and an unapplied
-registered exclusion (six identity-contaminated pilot articles, on which
-absent quotes are corpus error, not judge error); the corrected script
-prints the full sensitivity table. What substring matching cannot settle
-is \emph{interpretation}: a traceability failure is judge error unless
-the phrase is a close paraphrase, a stratum the human audit of flagged
-verdicts (\S\ref{sec:setup}) quantifies. Under the corrected rubric the rate fell to 0--13\% (Sonnet judge
-13.3\%, GPT-5 0\%, on the gate slice). Ungated, this artifact was
+Four observations. \emph{First}, the failures were systematic, not
+noisy. Each judge was following its own consistent rule; the rubric
+simply never said which rule was right. And these were not flukes of a
+small pilot: re-scored on 17--50$\times$ as much Stage-2 data, both
+instruments failed by almost exactly the same margin
+(Table~\ref{tab:gates}).
+
+\emph{Second}, ungated judging had already produced a false headline.
+The pilot's most striking apparent result was that models absorb loaded
+source framing into 55--64\% of their explanations. Most of that number
+was the judge's own error. When the judge quoted the loaded phrases it
+said an explanation had inherited, the quoted phrases were often not in
+the article at all: of 1,225 ``inheriting'' verdicts, 1,057 contained
+checkable quotes, and in 466 of those (44.1\%) not one quoted phrase
+appears anywhere in the source. A released script checks this with
+plain string matching, no AI involved; the registered post-mortem
+records the mirror-image error (quoted terms miscounted as unquoted) on
+a further 27\%. The script itself has a history worth telling:
+adversarial re-review of its first version, which reported 46.7\%,
+found a quote-extraction bug and an unapplied registered exclusion, and
+the corrected script prints the full sensitivity table. String matching
+cannot settle everything---a phrase can fail the check because the
+judge invented it or because the judge paraphrased---so that
+distinction is one stratum of the human audit (\S\ref{sec:setup}).
+Under a corrected rubric the rate fell to 0--13\% depending on judge
+(13.3\% and 0\% on the gate slice). Ungated, the false headline was
 publishable.
-Figure~\ref{fig:gate-exemplars} shows the failure texture on real items:
-articulate, internally consistent verdicts that pass any spot-check
-individually and contradict each other only when paired. \emph{Third}, the
-surviving instrument differed by design features, not luck: categorical
-labels rather than Likert anchors, quoted-evidence requirements for
-non-default verdicts, and explicit abstention semantics ($\kap$ rose from
-$0.233$ to $0.606$ under these repairs, while the same strategy could not
-save the Likert instrument). \emph{Fourth}, the pass verdict itself did not survive scale
+Figure~\ref{fig:gate-exemplars} shows what the failures look like on
+real items: articulate, individually plausible verdicts that pass any
+spot-check and contradict each other only when paired.
+
+\emph{Third}---the constructive result---some of this is fixable, and
+the fixes are ordinary instrument hygiene, not prompt magic. Three
+repairs took the directional instrument from $\kap = 0.233$ to $0.606$
+on the same task. Replace the 1--7 scale with categorical labels, so
+two judges cannot silently mean different things by a ``5.'' Require
+quoted evidence for any non-default verdict; this cut speculative
+directional flagging sharply for both judges (Sonnet $18\%\to2.5\%$,
+GPT-5 $43\%\to15\%$)---against our own interest, since it shrinks the
+effects we might hope to report. And give the judge an explicit way to
+say nothing is there: a no-signal label with a defined scope closed an
+abstention gap of 37\% vs.\ 9\% between the judges to 15\% vs.\
+12.5\%. The limits of repair are part of the result: the same strategy
+could not save the 1--7 scale instrument, and the voice instrument
+failed even after revision---its repairs drove one label's base rate
+toward zero, where agreement statistics stop meaning anything. At that
+point the honest move is demotion, not another revision round; that is
+what the registered fallback is for. \emph{Fourth}, the pass verdict itself did not survive scale
 unqualified: the RD gate's point estimate failed to replicate--- at $n{=}1{,}987$ the 4-label $\kap$ attenuates to $0.255$, and
 the gate estimate's own bootstrap interval ($[0.28, 0.85]$ at $n{=}40$)
 had always included sub-threshold values. The large-$N$ disagreement
