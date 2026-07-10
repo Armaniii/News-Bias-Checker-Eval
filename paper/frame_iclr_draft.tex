@@ -43,7 +43,7 @@ framing absorption that fell to 0--13\% (per-judge range) under an
 evidence-anchored rubric. On the surviving instrument, a pre-registered two-stage study of
 two frontier models on 200 outlet-anchored articles dissociates decisions
 from rationales. The directive left decisions statistically equivalent
-(detection counts within $\pm1.0$ per article, TOST; lean labels stable,
+(detection counts within $\pm1.0$ per article by equivalence test; lean labels stable,
 $\kap=0.90$), while rationales carry a directional default no tested
 intervention causes or removes: framing in right-leaning sources is
 substituted toward the center at $1.9\times$ the mirror rate ($11.0\%$
@@ -244,7 +244,7 @@ reasoning while the behavior persists \citep{baker2025obfuscation}. Our design a
 whether explanations \emph{omit} true causes, but whether an explicit
 instruction changes the explanation \emph{without} changing the decision it
 purports to explain---and whether that rewriting has a political direction.
-The generation-order arms (rationale emitted before vs.\ after the label)
+The generation-order conditions (rationale emitted before vs.\ after the label)
 probe the same post-hoc hypothesis from a second angle.
 
 \textbf{LLM judges and their validation.} LLM-as-judge evaluation is known
@@ -316,16 +316,16 @@ GPT-4.1) perform three tasks: \textbf{Eval~A}, span-level bias detection
 with per-detection explanations; \textbf{Eval~B}, summarization with key
 facts and represented perspectives; \textbf{Eval~C}, five-class lean
 classification with a mandatory free-text rationale. Structured JSON
-outputs; one rollout per cell at provider-default sampling (temperature
-1.0), with a same-arm test-retest slice to anchor decoding-stochasticity
-floors for the equivalence results.
+outputs; one run per article, model, and condition, at provider-default sampling (temperature
+1.0), plus a re-run of identical prompts to measure how much outputs
+vary when nothing changes (the noise floor for the equivalence results).
 
-\textbf{Conditions.} Each task runs under prompt arms that differ by
+\textbf{Conditions.} Each task runs under prompt conditions that differ by
 exactly one block (verified by programmatic diff): \emph{baseline} (task
 only), \emph{ablation} (adds bias-type schema and vocabulary; no
 directive), \emph{reframing} (ablation $+$ the neutrality directive),
 \emph{full} (ablation $+$ an attribution rule), and, for Evals A and C, a
-\emph{reframing-CoT} arm that reorders generation so the rationale precedes
+\emph{reframing-CoT} condition that reorders generation so the rationale precedes
 the decision. The registered directive contrast is
 reframing~vs.~ablation.
 
@@ -336,7 +336,7 @@ Sonnet 4.6; GPT-5) on identical inputs. Three were built:
 \textbf{VAR} (voice adoption: does an explanation \emph{describe} loaded
 source framing or \emph{inherit} it?), \textbf{FDC} (1--7 frame-distance
 coding on attribution and schema axes), and \textbf{Directional RD}
-(categorical: does an output's framing substitute \emph{leftward},
+(replacement direction; categorical: does an output's framing substitute \emph{leftward},
 \emph{rightward}, neither, or is there no signal---plus a
 strip/amplify mechanism, with quoted-evidence requirements). Each faced a
 pre-committed acceptance gate on held-out pilot data (excluded from all
@@ -345,10 +345,11 @@ attempt, registered fallback (demotion to exploratory, per-judge
 reporting). Human calibration arbitrates all judged constructs---demoted
 and surviving alike---under a decision rule fixed before coding begins:
 two independent paid coders (a third adjudicating disagreements), blind
-to arm, target model, and judge verdicts, code a stratified $n{=}300$
-subsample (all 58 both-judge-directional RD items; 92 stratified
-one-judge and neutral RD verdicts; 100 VAR verdicts including
-traceability-flagged and control strata; 50 articles for lean, including
+to condition, target model, and judge verdicts, code an $n{=}300$
+subsample drawn to cover fixed categories (all 58 both-judge-directional
+RD items; 92 sampled one-judge and neutral RD verdicts; 100 VAR verdicts
+including traceability-flagged and control groups; 50 articles for lean,
+including
 all 33 all-model-failure articles). H26's construct is \emph{sustained}
 if human direction labels agree with the pooled judge at $\kap \ge 0.40$
 and independently reproduce the asymmetry's sign on the coded subsample,
@@ -356,7 +357,7 @@ and \emph{retracted to exploratory} if either condition fails; results:
 \pending{pending}.
 
 \textbf{Confirmatory hypotheses.} Three tests survived the gate
-outcomes. Multiplicity follows the registered treatment: BH-FDR
+outcomes. Multiplicity follows the registered treatment: a Benjamini--Hochberg false-discovery-rate correction
 \citep{benjamini1995controlling} at $q{=}.05$ over all three
 ($p_{\mathrm{H26}}{=}.0014$, $p_{\mathrm{H28}}{<}10^{-3}$,
 $p_{\mathrm{H29}}{=}.005$; H29 enters via its one-sided equivalence
@@ -371,7 +372,7 @@ are in the pre-registration.
 \text{Left-lean source})$; primary test judge-pooled with a per-judge
 sign-consistency requirement (a significant pooled result with discordant
 per-judge signs counts as non-confirmation).
-\textbf{H28}: equivalence (TOST; \citealp{lakens2017equivalence},
+\textbf{H28}: equivalence (two one-sided tests, TOST; \citealp{lakens2017equivalence},
 $|\Delta| < 2.0$ detections/article) of
 Eval-A detection counts, reframing vs.\ ablation.
 \textbf{H29}: stability of Eval-C lean labels across the directive
@@ -413,7 +414,8 @@ $\kap = 0.255$ $[.20,.31]$ & --- at scale: threshold noise
 \end{tabular}
 \caption{Pre-committed reliability gates ($\kap \ge 0.40$, one shot,
 registered fallbacks; cross-family judge pairs on held-out pilot items),
-with post-hoc large-$N$ re-estimates from Stage-2 dual-judged data. The
+with post-hoc large-$N$ re-estimates from Stage-2 dual-judged data
+(qw-$\kap$: quadratically weighted). The
 RD sign-agreement companion criterion passed at 100\% but on a single
 both-directional pair.}
 \label{tab:gates}
@@ -442,7 +444,7 @@ found a quote-extraction bug and an unapplied registered exclusion, and
 the corrected script prints the full sensitivity table. String matching
 cannot settle everything---a phrase can fail the check because the
 judge invented it or because the judge paraphrased---so that
-distinction is one stratum of the human audit (\S\ref{sec:setup}).
+distinction is one category of the human audit (\S\ref{sec:setup}).
 Under a corrected rubric the rate fell to 0--13\% depending on judge
 (13.3\% and 0\% on the gate slice). Ungated, the false headline was
 publishable.
@@ -595,7 +597,7 @@ Spot-checking cannot catch this; gates did.}
 Adding the neutrality directive left both kinds of decision---detection
 counts and lean labels---statistically
 equivalent to the no-directive control. \textbf{Detection counts (H28):}
-across $n{=}399$ paired article$\times$target cells (1 of 400 lost to
+across $n{=}399$ article--model pairs (1 of 400 lost to
 an unparseable output), the directive changed
 the number of detections by $+0.69$ per article (90\% CI $[0.48, 0.90]$)
 against a mean of ${\sim}6.9$---well inside the registered $\pm 2.0$
@@ -604,15 +606,15 @@ $\pm1.0$ ($p=.007$), half the registered bound. The interval excludes zero: the 
 (${\sim}10\%$ relative) increase in detections---equivalent under the
 registered bound, not literally null. The same graded language applies to every
 decision-side effect in the paper. \textbf{Lean labels (H29):}
-across $n{=}394$ paired cells (6 of 400 lost to unparseable outputs),
+across $n{=}394$ article--model pairs (6 of 400 lost to unparseable outputs),
 five-class lean labels were stable across
 the contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
 $[0.864, 0.932]$; lower bound above the registered $0.85$ floor, which
 binds on the interval, not the point estimate). The registered
 companions sharpen the picture: the $5\times5$ label-shift matrix is
-near-diagonal with per-3-class-stratum $\kap$ of $0.85$--$0.90$ (no
-stratum-differential instability), while the registered span-overlap
-check shows the \emph{specific spans} cited across arms overlap only
+near-diagonal, with $\kap$ of $0.85$--$0.90$ within the left, center,
+and right bands separately (stability does not depend on lean), while the registered span-overlap
+check shows the \emph{specific spans} cited across conditions overlap only
 partially (pooled span-level Jaccard $0.20$ on exact string match;
 $0.23$ Sonnet, $0.17$ GPT-4.1)---the directive leaves the quantity and
 the verdicts of detection intact but not the identity of every cited
@@ -620,7 +622,7 @@ span.
 
 How much of this movement is just sampling noise? We re-ran identical
 prompts to measure how much outputs change when \emph{nothing} changes
-($n{=}200$ article cells; Sonnet target only, a partial execution of
+($n{=}200$ articles; Sonnet target only, a partial execution of
 the registered both-target re-run): count difference $+0.02$ (SD
 $2.2$), span overlap $0.269$, label $\kap = 0.960$. These re-run
 ceilings calibrate the directive numbers. Span choices change about as
@@ -635,7 +637,7 @@ right-coded language as bias more readily than left-coded language---so
 we checked: right-coded lexicon terms present in a source are flagged at
 $36.0\%$ vs.\ $38.5\%$ for left-coded terms (difference $-2.5$pp,
 clustered bootstrap CI $[-14.0, +9.3]$), stable across both targets and
-all five arms. The interval is wide, so this excludes large content asymmetries
+all five conditions. The interval is wide, so this excludes large content asymmetries
 (${>}{\sim}10$pp) rather than all of them. But it closes the last
 decision-side loophole we could test: detection shows no political skew
 in volume or content, and that is what makes the rationale-side drift
@@ -645,14 +647,14 @@ preferentially flag the article's own side's language ($+11.1$pp,
 marginal)---which is what a competent bias detector should do.
 
 \subsection{Finding 3: Rationales drift, directionally (H26)}
-On the same rollouts whose decisions were equivalent, the models'
+In the same runs whose decisions were equivalent, the models'
 free-text rationales substituted political framing asymmetrically.
 Pooling both judges with article-level clustering (80 Right-lean vs.\
 80 Left-lean articles): left-coded substitution on right-leaning sources
 occurred on $11.0\%$ of classifiable rationales, against $5.8\%$ for the
 mirror-image substitution on left-leaning sources---a $+5.2$pp asymmetry
-($1.9\times$; one-sided $t=3.05$, $p=.0014$, significant under BH-FDR in
-the three-test family). The pre-registered robustness requirement was
+($1.9\times$; one-sided $t=3.05$, $p=.0014$, surviving the registered
+three-test multiplicity correction). The pre-registered robustness requirement was
 exceeded: both judge families were \emph{independently} significant in
 the predicted direction (Sonnet $+4.0$pp, $p=.006$; GPT-5 $+6.4$pp,
 $p=.004$)---sign agreement was required, but each judge carries the
@@ -661,7 +663,7 @@ right-leaning and 1,586 on left-leaning sources), right-leaning sources
 drew 173 left-coded against 48 right-coded substitutions, left-leaning
 sources 92 right-coded against 23 left-coded: both source classes are
 re-framed \emph{toward the center}, right-leaning sources more strongly. The instrument classified nearly every rationale (no-signal verdicts
-$1$--$3\%$ per arm, concentrated on Center articles---the case that
+$1$--$3\%$ per condition, concentrated on Center articles---the case that
 label was designed for), and the observed $1.9\times$ matched what the
 registered power analysis projected after the rubric was tightened (the
 looser pilot rubric had suggested $2$--$3\times$). Item-level inter-judge
@@ -673,7 +675,7 @@ bounds its influence on the conclusion.
 
 Three characterizations sharpen the result. \textbf{It is not
 misperception}: the drift persists when perception is demonstrably
-correct---restricting \emph{both} strata to articles whose lean the
+correct---restricting \emph{both} groups to articles whose lean the
 model classifies exactly at baseline, left-substitution on the 39
 correctly-read right-lean articles is $19.7\%$ against $7.5\%$ for the
 mirror on the 48 correctly-read left-lean articles ($p=.0012$;
@@ -739,7 +741,7 @@ item-level $\kap$ at scale is $0.255$, below the $0.40$ gate value the
 instrument passed at $n{=}40$; the gate's sign-agreement criterion,
 though passed at $100\%$, was satisfied on a single both-directional
 item pair; and inter-judge threshold disagreement is itself
-stratum-differential (one-judge-flags rates $17.8\%$ on right-lean vs.\
+itself lean-dependent (one-judge-flags rates $17.8\%$ on right-lean vs.\
 $10.8\%$ on left-lean items, $p<.001$)---the pattern a
 manufactured-asymmetry account would require. Sustaining: first, the
 asymmetry survives restriction to the maximum-reliability subset, the
@@ -752,7 +754,7 @@ text---independently finds
 the same-sign asymmetry (Sonnet target: added left-coded terms on
 right-lean sources $21.8\%$ vs.\ the mirror $14.3\%$, $+7.5$pp,
 $p=.04$; pooled targets $+5.8$pp, $p=.03$), and rationale
-lengths are balanced across strata (Sonnet: $172.7$ vs.\ $178.1$
+lengths are balanced across lean classes (Sonnet: $172.7$ vs.\ $178.1$
 words), so
 neither judge priors nor text volume explains the direction. The
 lexical corroboration is soft: it decomposes into two individually
@@ -761,8 +763,8 @@ on right-lean articles, and slightly more left-adding conditional on
 engagement), so it confirms the sign, not the magnitude, of the
 judge-measured effect; and because coded-vocabulary engagement is
 itself part of the generated rationale---potentially raised by the very
-default being measured---the decomposition is post-outcome
-stratification, descriptive rather than causal. The result
+default being measured---the decomposition conditions on an outcome of
+the process it describes, so it is descriptive rather than causal. The result
 is additionally robust to outlet-level clustering (CI $[+0.012,
 +0.092]$). Magnitudes should be read as a bracket rather than a point:
 the both-judge-agreed floor is $+2.8$pp against the pooled $+5.2$pp, and
@@ -777,7 +779,7 @@ construct arbitration assigned to human coding.
 \subsection{Finding 4: The asymmetry is not explained by input intensity (registered justified-asymmetry companion)}
 All three pre-registered intensity indicators fail to account for the
 asymmetry. Computed pre-collection: objective loaded-lexicon density is
-balanced across Left and Right strata (1.73 vs.\ 1.93 per 1k words;
+balanced across Left and Right articles (1.73 vs.\ 1.93 per 1k words;
 $d{=}0.10$, $p{=}.55$); the article-intensity ratings (LLM-generated,
 with a registered circularity caveat: a rater sharing the measured
 default would under-rate right-leaning intensity, producing exactly
@@ -805,7 +807,7 @@ accurate for all four frontier models in the study (targets: 53--66\%
 exact, 86--94\% within one class, vs.\ 20\% chance; judges: 61--65\%
 exact), providing the capability context for H29's stability result. The
 \emph{errors}, however, are not directionally neutral. Signed error by
-true stratum (negative = classified left of the expert label):
+true lean class (negative = classified left of the expert label):
 
 \begin{table}[h]
 \centering
@@ -820,8 +822,8 @@ Claude Sonnet 4.6 (judge)  & $+0.08$ & $-0.18$ & $-0.35$ & $\mathbf{-0.65}$ & $-
 GPT-5 (judge)              & $+0.18$ & $+0.12$ & $-0.38$ & $\mathbf{-1.05}$ & $-0.65$ \\
 \bottomrule
 \end{tabular}
-\caption{Signed classification error (in 5-class steps) by true stratum;
-targets at baseline, judges from the LCA instrument. Symmetric
+\caption{Signed classification error (in 5-class steps) by true lean class;
+targets at baseline, judges from the lean-classification audit. Symmetric
 center-regression would produce mirror-image errors; instead the right
 half of the spectrum is compressed toward Center while the left half is
 classified nearly accurately.}
@@ -830,7 +832,7 @@ classified nearly accurately.}
 
 All four models---two families, targets and judges alike---absorb
 ``Lean Right'' toward Center by $0.6$--$1.1$ classes while classifying
-left-of-center strata nearly accurately. This was not a pre-registered
+left-of-center classes nearly accurately. This was not a pre-registered
 test and is reported as a descriptive observation, but its structure is
 notable: classification error is a third, independent measurement
 (alongside framing substitution and rationale voice) exhibiting the
@@ -885,7 +887,7 @@ fewer represented perspectives (3.42 vs.\ 3.94, $p=.006$, same direction
 in both targets, attenuated but persistent under a word-count control)
 --- unverifiable as model behavior without ground-truthing how many
 sources each article actually quotes, and therefore flagged for the human
-coding rather than claimed. \textbf{Generation order} (D-HCoT): emitting
+coding rather than claimed. \textbf{Generation order} (the reasoning-first condition): emitting
 the rationale \emph{before} the decision shifts detection counts by
 $-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
 image of the directive's $+0.69$---and perturbs ${\sim}22\%$ of lean labels
@@ -899,7 +901,7 @@ directional component is confined to one of the two targets.
 \textbf{Anatomy} (exploratory, Sonnet target): the default is
 article-anchored rather than diffuse---the twenty most-affected articles
 carry 70\% of all left-substitution verdicts, sixteen articles drift in
-three or more of the five arms (persistence exceeding an
+three or more of the five conditions (persistence exceeding an
 independence baseline), and the persistent triggers skew toward
 higher-intensity, full-Right sources from combative outlets. Its
 lexical content is largely \emph{institutional renaming of contested
@@ -925,10 +927,10 @@ handles most confidently), so no introspective probe of the model would
 flag the substitution as it happens.
 \textbf{Instruction}: the drift needs no prompt to exist and no prompt
 removes it. It is already present at baseline ($+9.4$pp, $p=.007$,
-Sonnet target) and remains significant under every arm---bias taxonomy,
+Sonnet target) and remains significant under every condition---bias taxonomy,
 attribution rule, neutrality directive, reasoning-first ordering
 ($+7.5$ to $+13.1$pp). The nominally largest value, under the
-neutrality directive, is attributable to that arm's longer rationales
+neutrality directive, is attributable to that condition's longer rationales
 (more text, more codable framing): controlling for length, the
 directive's apparent elevation disappears and reverses. The meaning is
 double-edged: no intervention we tested \emph{causes} the drift, and
@@ -1035,7 +1037,7 @@ result survives both a gated judge instrument and a judge-free one.
 \textbf{Limitations.} (1) \emph{Scope}: two closed-weight models, U.S.\
 politics, English news; the pattern's generality is untested (the pipeline
 re-runs on additional targets for marginal cost). (2) \emph{No mechanism}:
-we establish behavioral dissociation, not its cause; generation-order arms
+we establish behavioral dissociation, not its cause; generation-order conditions
 probe but cannot settle it. (3) \emph{Judge mediation}: H26 rides on one
 validated instrument; cross-family sign agreement and human calibration
 (\pending{results}) bound, but do not eliminate, shared-judge-bias risk.
@@ -1045,7 +1047,7 @@ marginals), which is why gates included non-degeneracy conditions and why
 demotions route to human arbitration rather than deletion. (5)
 \emph{Construct floor}: under the corrected rubric, explanation-level
 framing inheritance appears rare; whether that reflects model behavior or
-rubric strictness awaits human coding. (6) \emph{One rollout per cell};
+rubric strictness awaits human coding. (6) \emph{One run per article--model--condition};
 sampling variance is handled across articles, not within. (7)
 \emph{AI-assisted research loop}: the audits that detected judge errors
 were themselves AI-executed. Their findings are secured by deterministic
@@ -1133,7 +1135,7 @@ judge prompts (versioned, with the full revision history), the runner and
 analysis code, gate validation data, batch manifests, per-call cost
 accounting, and a power/precision table for all three confirmatory tests
 (the registered deliverable, computed post hoc and labeled as such:
-TOST power ${>}.99$ at the registered bound, $.80$ at the $\pm1.0$
+equivalence-test power ${>}.99$ at the registered bound, $.80$ at the $\pm1.0$
 sensitivity bound; $.81$ probability of demonstrating the H29 floor at
 the observed $\kap$). A regeneration of the full study on new articles
 or new target models requires one configuration change and
