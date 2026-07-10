@@ -85,9 +85,9 @@ genuinely alters processing, its effects should appear in the decisions
 themselves. If instead the directive is absorbed as a \emph{presentation
 instruction}, decisions will be unchanged while rationales are rewritten to
 \emph{perform} compliance. And there is a third possibility---the one
-our data ultimately support: the directive moves neither channel, and
-the political signature is a resting-state property of the rationale
-channel alone, present before any instruction and removed by none we
+our data ultimately support: the directive moves neither the decisions
+nor the rationales, and the political signature lives in the rationales
+alone, present before any instruction and removed by none we
 test. The distinction matters for AI safety practice
 well beyond the political domain: it determines whether behavioral audits
 and self-report audits of the same system can be expected to agree. A model
@@ -97,10 +97,10 @@ measures its behavior---or, more dangerously, the reverse. Nor is the
 setting hypothetical: the nearest deployment surface is the growing
 class of news-facing AI products---bias checkers, balanced-news
 summarizers, media-literacy tools built on expert outlet ratings---which
-surface exactly these two channels to readers: decisions (flagged spans,
-lean labels) and explanatory prose. Whether the two channels can
-diverge, and in which direction, is for that product class a correctness
-property, not an abstraction; \S\ref{sec:discussion} translates each
+surface exactly these two outputs to readers: decisions (flagged spans,
+lean labels) and explanatory prose. Whether decisions and explanations
+can diverge, and in which direction, is for that product class a
+correctness property, not an abstraction; \S\ref{sec:discussion} translates each
 finding into a design rule for it.
 
 Testing this required confronting a second problem, which became a
@@ -138,8 +138,10 @@ publishable effects.
 \textbf{Contributions.}
 \begin{enumerate}
   \item \textbf{A directional default, not a directive effect.} The
-  neutrality directive changed neither channel: decisions remained
-  statistically equivalent across the contrast, while rationales carried
+  neutrality directive changed neither what the models decided nor the
+  political content of their rationales: decisions remained
+  statistically equivalent with and without the directive, while
+  rationales carried
   a directional asymmetry---framing in right-leaning sources re-coded
   toward the center at $1.9\times$ the mirror rate---that predates the
   directive and survives every intervention we tested. All three
@@ -207,7 +209,7 @@ study among the most even-handed available; our instruments measure
 framing substitution in editorial rationales on real news. These are
 different constructs, and both results can be true of the same
 model---their coexistence is itself an instance of this paper's central
-claim, that different channels of the same model can carry different
+claim, that a model's answers and its explanations can carry different
 politics---so we position the two as complements. Of the model pairs
 present in both studies the orderings agree (GPT-5 is rated less
 even-handed there and shows the largest Lean-Right compression here,
@@ -228,8 +230,7 @@ concurrent work combines the four elements that jointly constitute this
 paper's delta: substitution asymmetry measured \emph{in rationales},
 conditional on expert-rated source lean (\citealp{kennedy2026left}
 condition on the same labels but do not measure rationale substitution);
-a neutrality directive manipulated against a decision-channel
-equivalence test; decisions separated from rationales; and
+a neutrality directive tested against decision-level equivalence; decisions separated from rationales; and
 reliability-gated instruments (\citealp{kennedy2026left}, for example,
 score with a single fixed LLM evaluator and note that results should be
 interpreted relative to it).
@@ -591,7 +592,8 @@ Spot-checking cannot catch this; gates did.}
 \end{figure}
 
 \subsection{Finding 2: Decisions are equivalent across the directive contrast (H28, H29)}
-Adding the neutrality directive left both decision channels statistically
+Adding the neutrality directive left both kinds of decision---detection
+counts and lean labels---statistically
 equivalent to the no-directive control. \textbf{Detection counts (H28):}
 across $n{=}399$ paired article$\times$target cells (1 of 400 lost to
 an unparseable output), the directive changed
@@ -601,7 +603,7 @@ equivalence bound (TOST $p < .001$); equivalence in fact holds down to
 $\pm1.0$ ($p=.007$), half the registered bound. The interval excludes zero: the directive produces a small
 (${\sim}10\%$ relative) increase in detections---equivalent under the
 registered bound, not literally null. The same graded language applies to every
-decision-channel effect in the paper. \textbf{Lean labels (H29):}
+decision-side effect in the paper. \textbf{Lean labels (H29):}
 across $n{=}394$ paired cells (6 of 400 lost to unparseable outputs),
 five-class lean labels were stable across
 the contrast at $\kap = 0.900$ (article-clustered bootstrap 95\% CI
@@ -830,15 +832,16 @@ All four models---two families, targets and judges alike---absorb
 ``Lean Right'' toward Center by $0.6$--$1.1$ classes while classifying
 left-of-center strata nearly accurately. This was not a pre-registered
 test and is reported as a descriptive observation, but its structure is
-notable: it is a third, independent measurement channel (classification
-error, alongside framing substitution and rationale voice) exhibiting the
+notable: classification error is a third, independent measurement
+(alongside framing substitution and rationale voice) exhibiting the
 same directional compression of right-coded content. Two caveats: the
 analysis inherits AllSides' outlet-anchored labels as ground truth
 \citep[the standard caveat for outlet-derived corpora:][]{baly2020detect},
 so the pattern could partly reflect article-level deviation from outlet
 ratings---though uniform label noise cannot produce the observed
-left/right asymmetry---and the H26 result is independent of this channel
-by construction (the RD judge never sees or produces lean labels).
+left/right asymmetry---and the H26 result is independent of
+classification by construction (the RD judge never sees or produces
+lean labels).
 Concurrent work independently observes the collapse itself:
 \citet{kennedy2026left} report pervasive ideological center-collapse in
 nine frontier models (including one target and one judge studied here)
@@ -876,8 +879,8 @@ retained at 0.42 on Right-lean vs.\ 0.40 on Left-lean sources, $p=.63$).
 Either the directional default is specific to free-voice analytical text
 (rationales drift; summaries stay anchored to source content), or the
 lexicon's coverage (${\sim}7\%$ of framing-bearing language) lacks power;
-we report both readings. One summary-channel candidate does appear in a
-different field: summaries credit right-lean articles with ${\sim}0.5$
+we report both readings. One candidate effect does appear in a
+different field of the summaries: summaries credit right-lean articles with ${\sim}0.5$
 fewer represented perspectives (3.42 vs.\ 3.94, $p=.006$, same direction
 in both targets, attenuated but persistent under a word-count control)
 --- unverifiable as model behavior without ground-truthing how many
@@ -888,8 +891,8 @@ $-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
 image of the directive's $+0.69$---and perturbs ${\sim}22\%$ of lean labels
 (vs.\ $\kap = 0.90$ stability across the directive contrast at fixed
 order), with rationales lengthening from 145 to 214 words. Instructing
-the rationale channel does not move decisions, but \emph{re-ordering} it
-does, modestly: the rationale channel is not causally inert, and
+the rationale does not move decisions, but \emph{re-ordering} it
+does, modestly: rationales are not causally inert, and
 ``post-hoc'' describes where the directive lands, not how the model
 computes. \textbf{Model}: as reported above, the
 directional component is confined to one of the two targets.
@@ -943,7 +946,7 @@ measure---given validated instruments.
 is two-sided: decisions were statistically equivalent across the
 directive contrast (H28, H29), while rationales carry a directional
 default that exists with no instruction and that no tested instruction
-removes (H26; Finding~6). The two channels answer to different
+removes (H26; Finding~6). Decisions and rationales answer to different
 levers---that is the dissociation---but the confirmed rationale-side
 result is directive-\emph{independent}. Whether the directive
 additionally rewrites rationales to \emph{perform} neutrality was the
@@ -1074,7 +1077,7 @@ with re-gated instruments, for marginal API costs of roughly a
 conference registration (the validation layers, larger gate slices and
 human arbitration, are priced separately)---is the contribution we
 expect to last. For builders of news-facing AI, the same package is a
-qualification test: it answers, per model generation, which channels of
+qualification test: it answers, per model generation, which parts of
 a bias-analysis product are deployable and which still require gates,
 filters, or human review.
 
