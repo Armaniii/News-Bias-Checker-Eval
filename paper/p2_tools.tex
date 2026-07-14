@@ -1,4 +1,4 @@
-% FRAME Paper 2 — applications workshop paper (bias-detection tool reliability)
+% FRAME Paper 2 — applications paper (bias-detection tool reliability + triage protocol)
 % Shares corpus/models/protocol with the companion paper (p1_disclosure.tex).
 \documentclass{article}
 \usepackage{iclr2026_conference,times}
@@ -12,8 +12,8 @@
 \newcommand{\kap}{\kappa}
 
 \title{Which Bias Flags Can You Trust?\\
-A Reliability Map for Frontier-Model\\
-News-Bias Detection}
+A Label-Free Triage Protocol for\\
+Frontier-Model News-Bias Detection}
 \author{Anonymous Authors\\
 \texttt{anonymous@example.com}}
 
@@ -23,26 +23,30 @@ News-Bias Detection}
 \begin{abstract}
 News-bias products---bias checkers, balanced-news feeds, media-literacy
 tools---are increasingly built by asking a frontier model to flag biased
-spans, label an article's lean, and explain itself. But which of those
-outputs can a builder trust? We evaluate two frontier target models and
-two cross-family judges on 200 expert-rated U.S.\ news articles and find
-a sharp split. \emph{Trustworthy} primitives: the \emph{volume} of
-flagged spans is a valid meter of an article's partisan intensity
-(Spearman $\rho \approx 0.6$ vs.\ expert ratings), and cross-model
-\emph{agreement} predicts correctness cleanly (two models agreeing on
-lean are $74\%$ accurate vs.\ $22\%$ when they disagree; four agreeing,
-$87\%$). \emph{Untrustworthy} primitives: a single model's lean label
-near the center-right, its ``bias by omission'' or ``unsubstantiated
-claim'' flags (chance-corrected agreement $\kap \le 0.14$), and the
-specific text it highlights (cross-model overlap $0.26$) are
-model-specific opinion, not detected fact. We also document a
-directional failure mode shared by all four models---moderate-right
-articles are read as center or \emph{left}, so a lean-labeling tool
-built on them systematically under-counts right-leaning content---and
-translate the map into deployable triage rules: an agreement-based
-router clears $43\%$ of volume at $85\%$ accuracy while catching $86\%$
-of errors. Findings are exploratory (not pre-registered) and inherit
-AllSides outlet labels as ground truth.
+spans, label an article's lean, and explain itself. Which of those
+outputs can a builder trust, and how should the untrustworthy ones be
+triaged \emph{without} ground-truth labels at inference time? Evaluating
+two frontier target models and two cross-family judges on 200
+expert-rated U.S.\ news articles, we first map the primitives: the
+\emph{volume} of flagged spans is a valid partisan-intensity meter
+(Spearman $\rho \approx 0.6$), and models rank-track the continuous
+expert lean rating at $\rho \approx 0.8$, but a single model's lean
+label near the center-right, its omission/framing flags (chance-corrected
+agreement $\kap \le 0.14$), and the specific text it highlights
+(cross-model overlap $0.26$) are model-specific opinion. We then turn the
+map into a validated selective-prediction protocol. A cost-free
+\emph{committee-disagreement} bit ranks errors as well as a calibrated
+confidence score globally (AUC $0.69$ vs $0.70$, $p{=}.90$) yet captures
+significantly more errors per unit of human-review budget
+($+6$--$8$pts, $p{<}.05$, at a $20$--$30\%$ budget), because
+disagreements are far more error-dense ($32\%$ vs $71\%$ accurate); a
+$4$-model unanimity gate clears $44\%$ of articles at $87\%$ accuracy;
+and neither raw confidence (both models overconfident; a stated $0.9$
+means ${\sim}75\%$) nor a majority-vote ensemble (no accuracy gain over
+the best single model) should be used as a probability. Every result
+holds across five prompt conditions. Findings are exploratory and
+inherit AllSides outlet labels as ground truth; all statistics carry
+bootstrap CIs.
 \end{abstract}
 
 \section{Introduction}
@@ -51,34 +55,44 @@ of a news-bias analyst: it highlights loaded spans, assigns a
 left/right lean, summarizes ``both sides,'' and narrates why. The
 implicit assumption is that these outputs are measurements. Many are
 not---they are one model's opinion, and a different frontier model,
-shown the same article, would say something else. A builder needs to
-know, before shipping, \emph{which} outputs reproduce and which do not,
-and how to triage the difference.
+shown the same article, would say something else. A builder needs two
+things before shipping: to know \emph{which} outputs reproduce, and---for
+the ones that do not---a way to catch the likely errors that needs
+\emph{no} ground-truth labels at inference time, since a deployed
+product has none.
 
-This paper supplies that reliability map. We do not ask whether the
-models are biased (a companion paper takes up the behavioral question);
-we ask which of a bias detector's outputs a tool can present to a reader
-as reliable. The answer is a clean split between primitives anchored to
-explicit text---which reproduce across independent models---and
-primitives that require inference about what is absent, implied, or
-where an article sits on a scale---which do not. We close with the
-practical form of the map: routing rules, and one systematic,
-directional error a builder must correct for.
+This paper supplies both. We do not ask whether the models are biased (a
+companion paper takes up the behavioral question); we ask which of a
+bias detector's outputs a tool can present as reliable, and how to
+triage the rest. Our answer is a reliability map with a clean split---
+primitives anchored to explicit text reproduce across independent
+models; primitives that require inference about what is absent or
+implied do not---and, built on it, a label-free triage protocol whose
+central signal is not model confidence but \emph{model disagreement}. We
+validate the protocol against the standard confidence baseline with an
+operating curve, and show it is stable across prompt conditions rather
+than an artifact of one.
 
 \textbf{Contributions.}
 \begin{enumerate}
   \item \textbf{A reliability map of bias-detection primitives.} Which
   outputs of a frontier-model bias detector reproduce across models
-  (detection volume; cross-model agreement) and which are
-  model-specific opinion (lean labels near center-right; omission and
-  framing flags; specific highlights)---each with a number.
+  (detection volume; continuous-rating rank; cross-model agreement) and
+  which are model-specific opinion (lean labels near center-right;
+  omission and framing flags; specific highlights)---each with a number
+  and a bootstrap CI.
+  \item \textbf{A validated, label-free triage protocol.} A cost-free
+  committee-disagreement router with a published risk--coverage
+  operating curve, benchmarked against a calibrated confidence router
+  (equal global ranking, superior in-budget error capture); a
+  high-precision unanimity gate; and a per-model calibration analysis
+  showing raw confidence must be rescaled and is trustworthy only for
+  direction. The protocol needs no labels at inference and is
+  prompt-invariant.
   \item \textbf{A directional failure mode shared across vendors.} All
   four models read moderate-right content as center-or-left, so a
-  lean-labeling tool built on them under-counts the right; we localize
-  the hardest class, topics, and per-model detection habits.
-  \item \textbf{Deployable triage rules.} Agreement-based routing and a
-  primitive-by-primitive display policy that a product can adopt
-  directly, plus a $\sim$\$150 per-model-upgrade regression audit.
+  lean-labeling tool built on them under-counts the right; stable in
+  $5/5$ prompt conditions.
 \end{enumerate}
 
 \section{Setup}
@@ -87,72 +101,54 @@ summarize here and defer the full protocol (including the reliability
 gates behind the judge instruments) to it. The corpus is $N{=}200$
 contemporary U.S.\ news articles on a balanced $5\times8$ grid: five
 AllSides-anchored lean classes (Left, Lean~Left, Center, Lean~Right,
-Right; 40 each) $\times$ eight topics, models receiving article text
-only (no outlet or headline). Two frontier \emph{target} models
-(Claude Sonnet~4.5, GPT-4.1) and two cross-family \emph{judge} models
-(Claude Sonnet~4.6, GPT-5) perform three tasks: span-level bias
-detection with a shared bias-type schema
-\citep{spinde2021babe,hamborg2019automated}, summarization with
-represented-perspective counts, and five-class lean classification with
-confidence. All analyses below are exploratory and use expert AllSides
-labels as ground truth \citep{baly2020detect}.
+Right; 40 each) $\times$ eight topics, each also carrying a continuous
+expert lean rating; models receive article text only (no outlet or
+headline). Two frontier \emph{target} models (Claude Sonnet~4.5,
+GPT-4.1) and two cross-family \emph{judge} models (Claude Sonnet~4.6,
+GPT-5) perform span-level bias detection with a shared bias-type schema
+\citep{spinde2021babe,hamborg2019automated}, summarization, and
+five-class lean classification with confidence. All analyses are
+exploratory (not pre-registered) and use expert AllSides labels as
+ground truth \citep{baly2020detect}; bootstrap CIs use $10^4$ resamples.
 
 \section{Which primitives reproduce}
 
 \textbf{Detection volume is a valid intensity meter.} The simplest
-possible signal---how many spans a model flags---tracks how loaded an
-article actually is: flagged-span count rises monotonically with the
-article's expert-rated partisan intensity (Spearman $\rho{=}0.64$ for
-Sonnet, $0.58$ for GPT-4.1 against $|\text{lean rating}|$, both
-$p{<}10^{-18}$; partisan articles draw $2.3\times$ the flags of Center
-articles). A tool can trust a flag \emph{count} as a bias meter even
-where it cannot trust the individual flags.
+signal---how many spans a model flags---tracks how loaded an article is:
+flagged-span count rises monotonically with the article's expert-rated
+intensity (Spearman $\rho{=}0.64$ Sonnet, $0.58$ GPT-4.1 against
+$|\text{lean rating}|$, both $p{<}10^{-18}$; partisan articles draw
+$2.3\times$ the flags of Center articles). A builder can trust a flag
+\emph{count} as a meter even where the individual flags are unreliable.
 
-\textbf{Cross-model agreement predicts correctness.} The strongest cheap
-reliability signal is two independent models agreeing. On five-class
-lean, when the two target models agree they are $74\%$ accurate; when
-they disagree, only $22\%$ (n${=}199$ shared articles; they agree
-$61\%$ of the time). Adding the two judges sharpens it into a ladder:
-when all four models agree ($44\%$ of articles) the modal label is
-$87\%$ accurate, falling monotonically to $75\%$ at three-of-four and
-$62\%$ at two (Table~\ref{tab:consensus}). Agreement is a free,
-ground-truth-independent confidence signal.
-
-\begin{table}[h]\centering\small
-\begin{tabular}{lcc}
-\toprule
-Models agreeing on the label & Share of articles & Accuracy \\
-\midrule
-4 of 4 (unanimous) & $44\%$ & $0.87$ \\
-$\ge$3 of 4 & $74\%$ & $0.75$ \\
-$\ge$2 of 4 & $99\%$ & $0.62$ \\
-\bottomrule
-\end{tabular}
-\caption{Multi-model agreement is a monotone accuracy signal. Four
-frontier models (two families, targets and judges); modal-label
-accuracy vs.\ expert AllSides labels.}
-\label{tab:consensus}
-\end{table}
+\textbf{Lean predictions track the continuous rating, not just the
+bucket.} Each model's five-class prediction rank-correlates with the
+\emph{continuous} expert rating at least as strongly as with the discrete
+label (Spearman $0.77$--$0.86$ across the four models; difference vs the
+label $\le 0.01$), and within a single label class the models resolve
+graded intensity the bucket discards (within-Lean-Left
+$\rho(\text{pred},\text{rating}){=}0.40$--$0.50$, $p\le.01$, all four).
+The lean signal is thus finer than the five-way label, and the results
+below are not an artifact of five-way bucketing. (We do not claim
+independence from the AllSides labels: the continuous rating and the
+discrete label partition the corpus identically here.)
 
 \textbf{Only concrete, word-anchored bias forms reproduce.} Given both
-target models the same bias-type schema, we ask how often they agree a
-given form is present in an article (Cohen's $\kap$ over 256
-jointly-rated articles). No form clears moderate agreement---the ceiling
-is opinion-stated-as-fact at $\kap{=}0.45$---and the forms defined by
-what is \emph{absent from} or \emph{unverified against} the text
-collapse toward chance (Table~\ref{tab:biastype}). The reliable end is
-anchored to explicit words present in the text; the unreliable end
-requires reasoning beyond the page. \emph{The disagreement is not
-random}: the two models have distinct detection habits---Claude leads
-with bias-by-omission ($14\%$ of its flags), GPT-4.1 with sensationalism
-($15\%$)---so one hunts what a story omits while the other hunts its
-tone, which is exactly why they cannot agree omission is present. The
-unreliability reaches the span level too: even when both models flag the
-same article, the specific text they highlight overlaps at only Jaccard
-$0.26$. For a tool: show the concrete word-level flags, and treat any
-single model's omission, framing, or unsupported-claim flag---and any
-individual highlight---as one model's opinion, surfaced only on
-cross-model agreement.
+target models the same bias-type schema, we measure how often they agree
+a form is present (Cohen's $\kap$ over 256 jointly-rated articles). No
+form clears moderate agreement---the ceiling is opinion-stated-as-fact at
+$\kap{=}0.45$---and the forms defined by what is \emph{absent from} or
+\emph{unverified against} the text collapse toward chance
+(Table~\ref{tab:biastype}). The disagreement is not random: the two
+models have distinct habits---Claude leads with bias-by-omission ($14\%$
+of its flags), GPT-4.1 with sensationalism ($15\%$)---so one hunts what
+a story omits while the other hunts its tone, which is exactly why they
+cannot agree omission is present. The unreliability reaches the span
+level: even when both flag the same article, the specific highlighted
+text overlaps at only Jaccard $0.26$. For a tool: show concrete
+word-level flags; treat any single model's omission, framing, or
+unsupported-claim flag---and any individual highlight---as one model's
+opinion, surfaced only on cross-model agreement.
 
 \begin{table}[h]\centering\small
 \begin{tabular}{lc@{\hskip 2em}lc}
@@ -167,38 +163,96 @@ sensationalism & $0.24$ & unsubstantiated claims & $0.09$ \\
 \end{tabular}
 \caption{Cross-model agreement on bias forms (Cohen's $\kap$, two target
 models, 256 shared articles). Detectability tracks textual
-explicitness: models agree on loaded \emph{words}, not on what a story
-\emph{left out} or whether a claim is \emph{unsupported}.}
+explicitness.}
 \label{tab:biastype}
 \end{table}
 
-\textbf{A cheap word-list is a corpus monitor, not a per-item detector.}
-A deterministic paired left/right lexicon corroborates aggregate
-directional patterns, but as a filter for a judge's per-output verdict
-it reaches only precision $0.25$, recall $0.30$---so it belongs in a
-corpus-level regression check, never as a live per-article flag.
+\section{A label-free triage protocol}
+
+The map says most single-model outputs cannot be shown as fact. A
+deployed product cannot fix this with ground truth---it has none at
+inference---so it needs a trust signal computable from the model outputs
+alone. We show the best such signal is \emph{model disagreement}, and
+benchmark it against the obvious alternative, model confidence.
+
+\textbf{Route disagreement first.} On five-class lean, when the two
+target models agree they are $71.4\%$ accurate ($n{=}182$); when they
+disagree, only $31.6\%$ ($n{=}117$; gap $39.8$pts, $95\%$ CI $[29.0,
+50.4]$). As an error ranker, the free disagreement bit is
+\emph{statistically indistinguishable} from a calibrated confidence
+score in global discrimination (AUC $0.692$ $[.639,.744]$ vs $0.697$
+$[.636,.754]$; paired difference $-0.004$, $p{=}.90$), yet it captures
+more errors per unit of human-review budget in the operational regime,
+because disagreements are far more error-dense than low-confidence items
+(Table~\ref{tab:router}): at a $20$--$30\%$ review budget, routing
+disagreement first captures $+6$ to $+8$ points more of all errors than
+a confidence threshold ($p{=}.042$ and $p{=}.030$). The advantage is a
+directional, in-budget claim---it narrows and loses significance once the
+budget exceeds the disagreement rate, and part of the raw agree/disagree
+accuracy gap is mechanical (on a disagreement, only one of two labels can
+match a single ground-truth label). The operational recommendation is
+nonetheless clean: \emph{route model disagreements to human review
+first; confidence adds no ranking value until the budget exceeds the
+disagreement rate.}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lccccc}
+\toprule
+Review budget & $10\%$ & $20\%$ & $30\%$ & $40\%$ & $50\%$ \\
+\midrule
+route by disagreement & $15.5$ & $\mathbf{31.1}$ & $\mathbf{46.6}$ & $61.3$ & $67.7$ \\
+route by confidence & $15.2$ & $25.0$ & $38.6$ & $56.1$ & $65.2$ \\
+\bottomrule
+\end{tabular}
+\caption{Percent of all classification errors captured at each
+human-review budget (route least-reliable first; $n{=}299$, two target
+models). Disagreement dominates confidence in the practical
+$20$--$30\%$ regime (bold, $p{<}.05$).}
+\label{tab:router}
+\end{table}
+
+\textbf{At committee scale, trust unanimity---not a vote.} Adding the two
+judges, a four-model majority vote does \emph{not} beat the best single
+model ($0.646$ vs $0.662$ exact; McNemar $p{=}.68$; bootstrap gain
+$95\%$ CI $[-.061,+.030]$), and a builder cannot pre-select which model
+will be best (bootstrap $P(\text{is best})$: GPT-4.1 $.63$, Sonnet~4.6
+$.35$, GPT-5 $.02$, Sonnet~4.5 $.00$). Ensembling therefore buys
+robustness, not accuracy. Its deployable value is instead a
+high-precision \emph{gate}: the four models agree unanimously on $44\%$
+of articles, and there they are $87\%$ accurate---so unanimity auto-clears
+nearly half the volume at high precision, and the residual is exactly the
+disagreement set the router sends to review.
+
+\textbf{Never read raw confidence as a probability.} Both models are
+severely overconfident on the exact five-class label (mean confidence
+$0.85$--$0.89$ vs accuracy $0.53$--$0.63$); a stated $0.9$ empirically
+means $71\%$ (Claude) to $77\%$ (GPT-4.1) exact accuracy. GPT-4.1's
+confidence is the better gate (Brier $0.286$ vs $0.336$; ECE $0.260$ vs
+$0.324$, the exact-target gap suggestive at $p{=}.05$), and---critically---
+the overconfidence is almost entirely an \emph{exact-boundary} effect:
+scored on lean \emph{direction} (within one class), GPT-4.1's confidence
+is essentially calibrated (ECE $0.024$) and Claude's nearly so ($0.085$).
+Confidence is a usable ordering for \emph{direction}, never a usable
+probability for the exact label---rescale before thresholding.
 
 \section{The directional failure mode}
 
-The reproducible signals above are politically even-handed on average.
-The classification \emph{errors} are not. Breaking accuracy down by true
+The reproducible signals above are politically even-handed on average;
+the classification \emph{errors} are not. Breaking accuracy down by true
 class exposes a single hard case shared by every model
-(Table~\ref{tab:byclass}): \emph{Lean~Right} is the hardest label for
-all four (exact accuracy $0.07$--$0.46$; on average $2.85$ of $4$ models
-wrong per article, against under $1.0$ on the Left and Right extremes),
-and difficulty falls as an article's expert lean strengthens (Spearman
-$\rho{=}-0.37$, $p{<}10^{-7}$)---the models read the poles well and lose
-the moderate right. Crucially, the misreads are \emph{directional}:
-misclassified Lean-Right articles are pulled \emph{left}, not merely
-blurred to center---$33\%$ are labeled Lean-Left or Left and $21\%$
-Center, while Center articles are called Lean-Left $32\%$ of the time
-versus Lean-Right $4\%$. A ``balanced feed'' or lean-labeling product
-built on these classifications therefore \emph{systematically
-under-counts right-leaning content}. The pattern is not one model's
-quirk: it holds across both vendors and both roles, consistent with
-concurrent reports of ``center-collapse'' in frontier-model news
-classification \citep{kennedy2026left}, which our per-class
-decomposition refines into a right-to-left asymmetry.
+(Table~\ref{tab:byclass}): \emph{Lean~Right} is the hardest label for all
+four (exact accuracy $0.07$--$0.46$), and difficulty falls as an
+article's expert lean strengthens (Spearman $\rho{=}-0.37$,
+$p{<}10^{-7}$)---the models read the poles well and lose the moderate
+right. The misreads are \emph{directional}: misclassified Lean-Right
+articles are pulled \emph{left}, not merely blurred to center---$33\%$
+are labeled Lean-Left or Left and $21\%$ Center, while Center articles
+are called Lean-Left $32\%$ of the time versus Lean-Right $4\%$. A
+``balanced feed'' or lean-labeling product built on these
+classifications therefore \emph{systematically under-counts right-leaning
+content}, consistent with concurrent reports of ``center-collapse''
+\citep{kennedy2026left}, which our per-class decomposition refines into a
+right-to-left asymmetry.
 
 \begin{table}[h]\centering\small
 \begin{tabular}{lccccc}
@@ -212,59 +266,47 @@ GPT-5 & $.82$ & $.70$ & $.53$ & $\mathbf{.42}$ & $.60$ \\
 \bottomrule
 \end{tabular}
 \caption{Exact classification accuracy by true lean class. Lean~Right is
-the hardest label for every model; the poles are easy.}
+the hardest label for every model.}
 \label{tab:byclass}
 \end{table}
 
-Two riders help a builder localize the risk. By \emph{topic}, lean
-classification is least reliable on policy-abstract coverage
-(elections/governance, economy, climate: $1.9$ of $4$ models wrong) and
-most reliable on identity-concrete coverage (social/culture,
-crime/justice: $\approx1.1$). And the models' \emph{confidence} is
-diagnostic but must be recalibrated before display: they are markedly
-overconfident (mean stated confidence $0.88$ vs.\ actual accuracy
-$0.60$), and only the top bin is trustworthy ($87\%$ accurate at
-confidence ${\ge}0.95$, near chance below $0.90$; confidence--correctness
-AUC $0.75$). Confidence is a usable \emph{ordering}, not a usable
-probability.
-
-\section{Deployable triage}
-The map reduces to a short display-and-routing policy.
-\begin{itemize}
-  \item \emph{Triage by agreement, not confidence.} Route the articles
-  where independent models disagree (or either is under $0.85$
-  confident) to human review; auto-clear the confident-agreement
-  cases. On our data this clears $43\%$ of volume at $85\%$ accuracy
-  while catching $86\%$ of all errors---and beats a confidence
-  threshold at the same routing volume. Do not expose raw confidence as
-  a probability.
-  \item \emph{Show word-anchored flags; hide inferential ones.} Surface
-  loaded-word, opinion-as-fact, and negativity flags; present omission,
-  framing, and unsupported-claim flags---and individual highlights---only
-  where independent models agree.
-  \item \emph{Correct for the right-ward blind spot.} Expect
-  moderate-right articles to be under-labeled; a product aiming at
-  balance should treat a model's ``center'' label on right-of-center
-  content as a routing trigger, not a verdict.
-  \item \emph{Re-audit every model upgrade.} The reliability map is
-  model-specific; the full evaluation re-runs on a new model for
-  $\sim$\$150 in API cost---a regression test, not a research project.
-\end{itemize}
+\textbf{Both the map and the failure are prompt-invariant.} Re-running
+the two headline results under five different prompt scaffolds, the
+agreement$\to$accuracy gap holds in all five (gap $0.28$--$0.36$,
+bootstrap $P(\text{gap}{>}0){=}1.0$ in every condition) and Lean~Right is
+the strict hardest class in all five (pooled accuracy $0.21$--$0.29$).
+The pattern is a property of the models, not of one prompt. Two honest
+riders: the Lean-Right effect is Claude-driven (Claude is the worst model
+on it in $5/5$ conditions, GPT-4.1 in only $3/5$), and lean
+classification is least reliable on policy-abstract topics
+(elections/economy/climate) and most reliable on identity-concrete ones.
 
 \section{Discussion and Limitations}
-These results are a reliability map, not a bias verdict: they tell a
-builder which parts of a frontier-model bias detector today's models can
-power and which still need cross-model agreement, filters, or humans.
-Two limits bound the claims. All findings are \emph{exploratory} (not
-pre-registered) and computed on the baseline task condition; they are
-sized for design guidance, not confirmatory inference. And every
-accuracy statistic inherits AllSides' outlet-anchored labels as ground
-truth \citep{baly2020detect}, so the directional error could partly
-reflect article-vs-outlet label drift---though uniform label noise
-cannot produce a one-sided right-to-left pattern. Finally, any LLM judge
-inside a tool's own quality-control pipeline inherits the reliability
-problem we document for the models themselves, and needs the
-pre-committed validation the companion paper specifies.
+These results are a reliability map and a triage protocol, not a bias
+verdict: they tell a builder which parts of a frontier-model bias
+detector today's models can power, and---for the rest---how to catch
+likely errors with a signal (\emph{model disagreement}) that costs
+nothing and needs no labels at inference. The protocol's core claims are
+selective-prediction claims validated against the standard confidence
+baseline with an operating curve, and shown prompt-invariant; that
+methodology, and the balanced expert-rated corpus, are the durable
+contribution, while the specific per-model numbers are a dated snapshot.
+
+Three limits bound the claims. All findings are \emph{exploratory} and
+inherit AllSides' outlet-anchored labels as the sole ground truth
+\citep{baly2020detect}; the directional error could partly reflect
+article-vs-outlet label drift, though uniform label noise cannot produce
+a one-sided right-to-left pattern, and a second independent label source
+(e.g.\ per-article human consensus) is the highest-value next test. The
+router is validated on the baseline condition and one model pair; and the
+label-free signals so far require a \emph{committee}---disagreement needs
+two models, the unanimity gate four. A genuine single-model cold-start
+signal (self-consistency across temperature-sampled generations,
+benchmarked against the disagreement router's AUC of $0.69$) is the
+natural next step. Finally, any LLM judge inside a tool's own
+quality-control pipeline inherits the reliability problem we document for
+the models themselves, and needs the pre-committed validation the
+companion paper specifies.
 
 \bibliography{references}
 \bibliographystyle{iclr2026_conference}
