@@ -35,11 +35,13 @@ label near the center-right, its omission/framing flags (chance-corrected
 agreement $\kap \le 0.14$), and the specific text it highlights
 (cross-model overlap $0.26$) are model-specific opinion. We then turn the
 map into a validated selective-prediction protocol. A cost-free
-\emph{committee-disagreement} bit ranks errors as well as a calibrated
-confidence score globally (AUC $0.69$ vs $0.70$, $p{=}.90$) yet captures
-significantly more errors per unit of human-review budget
-($+6$--$8$pts, $p{<}.05$, at a $20$--$30\%$ budget), because
-disagreements are far more error-dense ($32\%$ vs $71\%$ accurate); a
+\emph{committee-disagreement} bit carries the same error-ranking
+information as a calibrated confidence score (AUC $0.69$ vs $0.70$,
+$p{=}.90$) for free, captures significantly more errors per unit of
+human-review budget in the practical $20$--$30\%$ regime ($+6$--$8$pts,
+$p{<}.05$; disagreements are $32\%$ vs $71\%$ accurate), and combined
+with confidence dominates either signal alone on the risk--coverage
+curve; a
 $4$-model unanimity gate clears $44\%$ of articles at $87\%$ accuracy;
 and neither raw confidence (both models overconfident; a stated $0.9$
 means ${\sim}75\%$) nor a majority-vote ensemble (no accuracy gain over
@@ -190,9 +192,22 @@ a confidence threshold ($p{=}.042$ and $p{=}.030$). The advantage is a
 directional, in-budget claim---it narrows and loses significance once the
 budget exceeds the disagreement rate, and part of the raw agree/disagree
 accuracy gap is mechanical (on a disagreement, only one of two labels can
-match a single ground-truth label). The operational recommendation is
-nonetheless clean: \emph{route model disagreements to human review
-first; confidence adds no ranking value until the budget exceeds the
+match a single ground-truth label). Integrated over \emph{all} coverage
+levels the picture is complementary rather than a clean win: confidence,
+being continuous, resolves risk within the agree and disagree groups and
+so has a modestly lower area under the risk--coverage curve
+(AURC $0.214$ vs disagreement's $0.300$; random $0.436$, oracle $0.103$),
+even though the two are tied on error ranking. The two signals therefore
+carry the same information but deliver it differently---disagreement is
+\emph{free} and most powerful in the low-budget regime, confidence is
+smoother across the full curve---and \emph{combining} them (route
+disagreements first, break ties within each group by confidence)
+dominates either alone (AURC $0.198$). This risk--coverage ordering is
+stable across all five prompt conditions (disagreement AURC
+$0.27$--$0.35$, confidence $0.19$--$0.22$ in every condition). The
+operational recommendation: \emph{route model disagreements to human
+review first, rank within groups by confidence, and expect no
+ranking gain from confidence alone until the budget exceeds the
 disagreement rate.}
 
 \begin{table}[h]\centering\small
