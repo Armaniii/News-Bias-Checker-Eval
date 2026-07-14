@@ -664,7 +664,15 @@ words}, but not on what a story \emph{left out} or whether a claim is
 page. For a tool this is a hard limit, not a tuning problem: a
 single model's ``bias by omission'' or ``unsubstantiated claim'' flag is
 one model's opinion, reproducible barely above chance, and should never
-be surfaced to a reader as a detected fact.
+be surfaced to a reader as a detected fact. The disagreement is not
+random: the two targets have distinct detection habits---Claude flags
+bias-by-omission at $14\%$ of its flags where GPT-4.1 leads with
+sensationalism at $15\%$---so one model hunts what a story omits while
+the other hunts its emotional tone, which is exactly why they cannot
+agree that omission is present. The unreliability reaches the span
+level too: even when both models flag the same article, the specific
+text they highlight overlaps at only Jaccard $0.26$, so no single
+model's highlight is authoritative either.
 
 \subsection{Finding 3: Rationales drift, directionally (H26)}
 In the same runs whose decisions were equivalent, the models'
@@ -884,6 +892,25 @@ left under steering is directionally consonant with the compression
 here. Their scoring relies on a single fixed LLM evaluator (a
 dependence their limitations flag), the instrument class Finding~1
 gates.
+
+Two sharper facts matter for anyone deploying frontier-model lean
+classification. First, the collapse is concentrated in \emph{one class}:
+``Lean~Right'' is the single hardest label for all four models
+(exact accuracy $0.07$--$0.46$, mean $2.85$ of $4$ models wrong per
+article, against $0.4$--$1.0$ wrong on the Left and Right extremes), and
+difficulty falls as an article's expert-rated lean strengthens
+(Spearman $\rho{=}-0.37$, $p{<}10^{-7}$)---the models read the poles
+well and lose the moderate right. Second, misclassified moderate-right
+articles are pulled \emph{left}, not merely blurred to center: of
+Lean-Right articles, $33\%$ are labeled Lean-Left or Left and $21\%$
+Center, and Center articles are called Lean-Left $32\%$ of the time
+versus Lean-Right $4\%$. A ``balanced feed'' or lean-labeling product
+built on these classifications would therefore \emph{systematically
+under-count right-leaning content}. The one reassurance is that
+model \emph{agreement} tracks correctness cleanly: when all four models
+agree on a label ($44\%$ of articles) they are $87\%$ accurate, falling
+monotonically to $62\%$ where only two agree---so unanimity is a usable
+free confidence signal (\S\ref{sec:discussion}).
 The models' self-reported confidence adds a mitigating nuance: the
 Lean~Right$\to$Center misclassification is their \emph{lowest}-confidence
 error cell ($.82$ vs.\ $.85$ on other errors, $p<10^{-6}$; Sonnet
@@ -925,10 +952,16 @@ lexicon's coverage (${\sim}7\%$ of framing-bearing language) lacks power;
 we report both readings. One candidate effect does appear in a
 different field of the summaries: summaries credit right-lean articles with ${\sim}0.5$
 fewer represented perspectives (3.42 vs.\ 3.94, $p=.006$, same direction
-in both targets, attenuated but persistent under a word-count control)
---- unverifiable as model behavior without ground-truthing how many
-sources each article actually quotes, and therefore flagged for the human
-coding rather than claimed. \textbf{Generation order} (the reasoning-first condition): emitting
+in both targets, attenuated but persistent under a word-count control).
+In Claude the thinner treatment spans three dimensions at once---fewer
+perspectives ($3.84$ vs.\ $4.46$, $p=.001$), fewer key facts ($8.69$
+vs.\ $9.47$, $p=.002$), and shorter summaries ($81$ vs.\ $89$ words,
+$p=.004$)---while GPT-4.1 shows none of the three at significance; that
+a genuine article property (right-lean articles simply quoting fewer
+sources) would appear in \emph{both} models but appears in only one is
+weak evidence for a model-behavioral reading. It remains
+unverifiable without ground-truthing each article's actual sourcing,
+and is flagged for the human coding rather than claimed. \textbf{Generation order} (the reasoning-first condition): emitting
 the rationale \emph{before} the decision shifts detection counts by
 $-0.66$ per article (CI$_{90}$ $[-0.89, -0.43]$)---nearly the mirror
 image of the directive's $+0.69$---and perturbs ${\sim}22\%$ of lean labels
