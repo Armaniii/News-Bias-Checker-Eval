@@ -646,6 +646,26 @@ The only content structure found is lean-\emph{congruence}---models
 preferentially flag the article's own side's language ($+11.1$pp,
 marginal)---which is what a competent bias detector should do.
 
+\textbf{Which bias forms are detectable at all (exploratory).} The
+detection channel is balanced, but not uniformly \emph{reliable}: when
+we give both target models the same bias-type schema and ask which forms
+each flags in an article, cross-model agreement varies sharply by form
+(Cohen's $\kap$ over 256 jointly-rated articles). No form clears
+moderate agreement---the ceiling is opinion-stated-as-fact at
+$\kap{=}0.45$---and the forms defined by what is \emph{absent from} or
+\emph{unverified against} the text collapse toward chance: framing
+$0.22$, omission of source attribution $0.19$, bias by omission $0.14$,
+and unsubstantiated claims $0.09$. The reliably-agreed forms are the ones
+anchored to explicit words present in the text (opinion-as-fact $0.45$,
+negativity $0.32$, word choice $0.31$). Detectability, in short, tracks
+textual explicitness: two frontier models can agree on \emph{loaded
+words}, but not on what a story \emph{left out} or whether a claim is
+\emph{unsupported}---the very judgments that require reasoning beyond the
+page. For a tool this is a hard limit, not a tuning problem: a
+single model's ``bias by omission'' or ``unsubstantiated claim'' flag is
+one model's opinion, reproducible barely above chance, and should never
+be surfaced to a reader as a detected fact.
+
 \subsection{Finding 3: Rationales drift, directionally (H26)}
 In the same runs whose decisions were equivalent, the models'
 free-text rationales substituted political framing asymmetrically.
@@ -766,7 +786,11 @@ itself part of the generated rationale---potentially raised by the very
 default being measured---the decomposition conditions on an outcome of
 the process it describes, so it is descriptive rather than causal. The result
 is additionally robust to outlet-level clustering (CI $[+0.012,
-+0.092]$). Magnitudes should be read as a bracket rather than a point:
++0.092]$). The lexicon corroborates the \emph{aggregate} asymmetry but
+is not a per-item drift detector---as a filter for the judge's
+per-output directional verdict it reaches only precision $0.25$, recall
+$0.30$---so it belongs in a corpus-level monitor, not a live
+per-article flag. Magnitudes should be read as a bracket rather than a point:
 the both-judge-agreed floor is $+2.8$pp against the pooled $+5.2$pp, and
 absolute rates are judge-dependent (Sonnet judge $7.4\%$ vs $3.4\%$;
 GPT-5 judge $14.5\%$ vs $8.2\%$). Distribution shift between the pilot
@@ -793,9 +817,13 @@ primary weight. Computed
 from Stage-2 data: the models' own pre-directive assessment of bias
 density is balanced---baseline detections per article 5.96 (Left) vs.\
 6.38 (Right), $d{=}0.13$, $p{=}.40$. (Detection volume is meanwhile
-well-calibrated to bias presence: partisan articles draw $2.3\times$ the
-detections of Center articles, a discriminant-validity check on the
-detection task itself.) Under the pre-registered interpretation rule,
+well-calibrated to bias presence: it rises monotonically with the
+article's expert-rated partisan intensity---Spearman $\rho{=}0.64$
+(Sonnet) and $0.58$ (GPT-4.1) between flagged-span count and
+$|\text{lean rating}|$, both $p{<}10^{-18}$; partisan articles draw
+$2.3\times$ the detections of Center articles---so the cheapest possible
+signal, a count of flagged spans, is a valid meter of how loaded an
+article is.) Under the pre-registered interpretation rule,
 H26 is therefore reported as a \emph{directional default in substitution
 behavior}, not as a proportionate response to asymmetric inputs.
 
@@ -860,9 +888,22 @@ The models' self-reported confidence adds a mitigating nuance: the
 Lean~Right$\to$Center misclassification is their \emph{lowest}-confidence
 error cell ($.82$ vs.\ $.85$ on other errors, $p<10^{-6}$; Sonnet
 $.77$). The compression is a hesitant boundary failure, not confident
-assimilation---which matters practically, because it means the
-confidence signal already flags the failure and could be used to route
-exactly these cases to review. Classification error is, moreover, substantially article-driven: 33 of
+assimilation---which matters practically, because the
+confidence signal already flags the failure and can route exactly these
+cases to review. But confidence must be recalibrated before a product
+exposes it: the models are markedly overconfident (mean stated
+confidence $0.88$ vs.\ actual $0.60$ accuracy), and only the top bin is
+trustworthy (calibrated at $87\%$ for confidence ${\ge}0.95$, near
+chance below $0.90$; confidence--correctness AUC $0.75$). A cheaper and
+stronger reliability signal is \emph{cross-model agreement}: when the
+two target models agree on an article's lean they are $74\%$ accurate,
+and when they disagree only $22\%$---so routing the $39\%$ of articles
+where they disagree captures $65\%$ of all errors (more than a
+confidence threshold at the same volume, $59\%$), and a combined rule
+(route if the models disagree \emph{or} either is under $0.85$
+confident) auto-clears the $43\%$ confident-agreement cases at $85\%$
+accuracy while catching $86\%$ of the errors---a deployable triage layer
+that needs no judge and no ground truth. Classification error is, moreover, substantially article-driven: 33 of
 198 articles (2 of 200 lack labels from at least one model) are
 misclassified by \emph{all four} models ($7.8\times$
 the rate independent errors would produce; mean pairwise correctness
@@ -989,7 +1030,13 @@ for bias checkers, balanced-news summarizers, and media-literacy tools:
   more bias, with no political skew we could detect in what gets
   flagged. The directional default lives entirely in the free-written
   explanations. So surface flagged spans and direct quotes, and treat
-  generated prose as the risky part of the product.
+  generated prose as the risky part of the product. But not every kind
+  of flag is equally trustworthy: two models agree on \emph{loaded-word}
+  flags far more than on \emph{omission}, \emph{framing}, or
+  \emph{unsupported-claim} flags, which reproduce barely above chance
+  (Finding~2). Show the concrete word-level flags; treat the
+  what's-missing and what's-unproven flags as one model's opinion, and
+  surface them only when independent models agree.
   \item \emph{Do not trust a system prompt to deliver neutrality.} The
   directive left decisions essentially unchanged and the default
   untouched; its clearest effect was longer explanations. A product
@@ -1000,13 +1047,19 @@ for bias checkers, balanced-news summarizers, and media-literacy tools:
   detect. One caution: summaries credited right-leaning articles with
   slightly fewer represented perspectives, so that feature needs its
   own check.
-  \item \emph{Send the known blind spot to human editors.} Every model
-  we measured tends to read moderately conservative articles as
-  centrist, and the models are least confident exactly there. A simple
-  confidence threshold routes those cases into the human review that
-  expert-rating platforms already run. The hardest articles defeated
-  all four models at once, which points to ambiguity in the articles
-  themselves; human judgment, not a bigger model, is the fix.
+  \item \emph{Triage by agreement, not confidence.} The best cheap
+  signal of a wrong answer is two independent models disagreeing: when
+  they agree on an article's lean they are right $74\%$ of the time,
+  when they disagree only $22\%$ (Finding~5). Auto-clear the
+  confident-agreement cases and send the rest to the human review that
+  expert-rating platforms already run, and you clear $43\%$ of the
+  volume at $85\%$ accuracy while catching $86\%$ of the errors. Do not
+  expose the model's raw confidence as a probability---it is badly
+  overconfident ($0.88$ claimed vs.\ $0.60$ actual)---but its ordering,
+  and especially model disagreement, is a usable router. The hardest
+  articles defeat all four models at once, which points to ambiguity in
+  the articles themselves; human judgment, not a bigger model, is the
+  fix.
   \item \emph{Add a cheap word-list check on outputs.} A fixed list of
   politically coded terms flags the most common substitutions---terms
   like ``undocumented'' and ``reproductive rights'' introduced where
