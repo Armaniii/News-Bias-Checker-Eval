@@ -102,32 +102,43 @@ def main():
     ap.add_argument("--stage2", action="store_true")
     ap.add_argument("--conditions", nargs="+", default=None)
     ap.add_argument("--batch", choices=["submit", "status", "download"], default=None)
+    ap.add_argument("--ext", action="store_true",
+                    help="run ONLY the two extended HF judges into a separate "
+                         ".ext cache (sync path; no --batch).")
     args = ap.parse_args()
+
+    judges = cfg.JUDGES_EXT_NEW if args.ext else cfg.JUDGES
+    cache = cfg.ext_cache(CACHE) if args.ext else CACHE
+    if args.ext and args.batch:
+        raise SystemExit("  --ext judges have no batch API; drop --batch (sync only).")
 
     batch_dir = cfg.DATA / "batch_stage1" / "fdc"
     if args.batch == "status":
         jc.batch_status(batch_dir); return
 
     corpus = cfg.STAGE2_CORPUS if args.stage2 else cfg.STAGE1_CORPUS
-    print(f"FDC runner | corpus={corpus.name} | judges={cfg.JUDGES} | scale 1-7")
+    print(f"FDC runner | corpus={corpus.name} | judges={judges} | scale 1-7"
+          f"{' | EXT->'+cache.name if args.ext else ''}")
     jobs = build_jobs(corpus, args.conditions, cfg.TARGETS)
     print(f"  built {len(jobs)} FDC jobs (one per Eval C reasoning)")
 
     if args.batch == "submit":
-        jc.batch_submit(jobs, cache_path=CACHE, batch_dir=batch_dir,
+        jc.batch_submit(jobs, cache_path=cache, batch_dir=batch_dir,
                         dry_run=args.dry_run)
         return
     if args.batch == "download":
-        jc.batch_download(batch_dir, CACHE)
-        records = list(jc._cache_load(CACHE).values())
+        jc.batch_download(batch_dir, cache)
+        records = list(jc._cache_load(cache).values())
     else:
-        records = jc.run_jobs(jobs, cache_path=CACHE, dry_run=args.dry_run,
-                              limit=args.limit, workers=args.workers,
+        records = jc.run_jobs(jobs, judges=judges, cache_path=cache,
+                              dry_run=args.dry_run, limit=args.limit,
+                              workers=args.workers,
                               max_tokens=cfg.JUDGE_MAX_TOKENS)
     if args.dry_run and not args.batch:
         return
     df = assemble(records)
-    df.to_parquet(OUT, index=False)
+    df.to_parquet(OUT.with_name(OUT.name.replace(".parquet",".ext.parquet")) if args.ext else OUT,
+                  index=False)
 
     ok = df[df["fdc_schema"].notna()]
     print(f"\n  wrote {OUT} ({len(df)} rows, {df['fdc_schema'].isna().sum()} unparsed)")

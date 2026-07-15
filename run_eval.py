@@ -137,6 +137,23 @@ def call_llm(system, user, model_full, max_tokens=2000):
                     params["max_tokens"] = max_tokens
                 resp = client.chat.completions.create(**params)
                 return resp.choices[0].message.content
+            elif model_full.startswith("hf/"):
+                # HuggingFace Inference Providers — OpenAI-compatible router.
+                # No batch API, so hf/ models only run the synchronous path
+                # (run_jobs / call_llm), never --batch. Requires HF_TOKEN.
+                # The repo id after "hf/" is passed straight to the router,
+                # which auto-selects a serving provider (append ":provider"
+                # to pin one, e.g. "deepseek-ai/DeepSeek-R1:fireworks-ai").
+                from openai import OpenAI
+                client = OpenAI(base_url="https://router.huggingface.co/v1",
+                                api_key=os.environ["HF_TOKEN"])
+                resp = client.chat.completions.create(
+                    model=model_full.split("/", 1)[1],
+                    messages=[{"role": "system", "content": system},
+                              {"role": "user", "content": user}],
+                    max_tokens=max_tokens,
+                )
+                return resp.choices[0].message.content
             else:
                 raise ValueError(f"Unknown model prefix: {model_full}")
         except Exception as e:

@@ -91,32 +91,45 @@ def main():
     ap.add_argument("--stage2", action="store_true")
     ap.add_argument("--conditions", nargs="+", default=None)
     ap.add_argument("--batch", choices=["submit", "status", "download"], default=None)
+    ap.add_argument("--ext", action="store_true",
+                    help="run ONLY the two extended HF judges (Qwen, DeepSeek) "
+                         "into a separate .ext cache; leaves pre-registered "
+                         "2-judge results untouched. Sync path only (no --batch).")
     args = ap.parse_args()
+
+    # Extended four-family judging: new judges only, separate cache, sync path.
+    judges = cfg.JUDGES_EXT_NEW if args.ext else cfg.JUDGES
+    cache = cfg.ext_cache(CACHE) if args.ext else CACHE
+    if args.ext and args.batch:
+        raise SystemExit("  --ext judges have no batch API; drop --batch (sync only).")
 
     batch_dir = cfg.DATA / "batch_stage1" / "rd"
     if args.batch == "status":
         jc.batch_status(batch_dir); return
 
     corpus = cfg.STAGE2_CORPUS if args.stage2 else cfg.STAGE1_CORPUS
-    print(f"Directional-RD runner | corpus={corpus.name} | judges={cfg.JUDGES}")
+    print(f"Directional-RD runner | corpus={corpus.name} | judges={judges}"
+          f"{' | EXT->'+str(cache.name) if args.ext else ''}")
     jobs = build_jobs(corpus, args.conditions, cfg.TARGETS)
     print(f"  built {len(jobs)} directional-RD jobs (one per Eval C reasoning)")
 
     if args.batch == "submit":
-        jc.batch_submit(jobs, cache_path=CACHE, batch_dir=batch_dir,
+        jc.batch_submit(jobs, cache_path=cache, batch_dir=batch_dir,
                         dry_run=args.dry_run)
         return
     if args.batch == "download":
-        jc.batch_download(batch_dir, CACHE)
-        records = list(jc._cache_load(CACHE).values())
+        jc.batch_download(batch_dir, cache)
+        records = list(jc._cache_load(cache).values())
     else:
-        records = jc.run_jobs(jobs, cache_path=CACHE, dry_run=args.dry_run,
-                              limit=args.limit, workers=args.workers,
+        records = jc.run_jobs(jobs, judges=judges, cache_path=cache,
+                              dry_run=args.dry_run, limit=args.limit,
+                              workers=args.workers,
                               max_tokens=cfg.JUDGE_MAX_TOKENS)
     if args.dry_run and not args.batch:
         return
     df = assemble(records)
-    df.to_parquet(OUT, index=False)
+    out = OUT.with_name(OUT.name.replace(".parquet", ".ext.parquet")) if args.ext else OUT
+    df.to_parquet(out, index=False)
 
     ok = df[df["direction"].notna()]
     cov = (ok["direction"] != "no_signal").mean() if len(ok) else 0

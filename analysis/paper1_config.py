@@ -18,8 +18,23 @@ ROLLOUT = RESULTS / "rollout"
 
 # --- Models (Path-B canonical, PRE_REGISTRATION §1.1) ----------------------
 TARGETS = ["claude-sonnet-4-5", "gpt-4.1"]
-JUDGES = ["claude-sonnet-4-6", "gpt-5"]          # cross-family Stage-1 pair
-JUDGE_FAMILY = {"claude-sonnet-4-6": "anthropic", "gpt-5": "openai"}
+JUDGES = ["claude-sonnet-4-6", "gpt-5"]          # cross-family Stage-1 pair (PRE-REGISTERED; do not change)
+
+# --- Four-family judge panel (exploratory extension, added 2026-07-14) -------
+# The two new families run the same instruments as JUDGES only (no target
+# re-run), via HF Inference Providers (synchronous path; no batch API).
+# Their verdicts are written to SEPARATE `.ext` caches so the pre-registered
+# two-judge analyses (which read JUDGES) are byte-for-byte unaffected.
+JUDGES_EXT_NEW = ["qwen3-235b", "deepseek-r1"]           # the two added judges
+JUDGES_EXT = JUDGES + JUDGES_EXT_NEW                      # full four-family panel
+JUDGE_FAMILY = {"claude-sonnet-4-6": "anthropic", "gpt-5": "openai",
+                "qwen3-235b": "qwen", "deepseek-r1": "deepseek"}
+
+def ext_cache(cache_path):
+    """Sibling cache path for the extended-judge verdicts (…​.ext.cache.jsonl)."""
+    import pathlib
+    p = pathlib.Path(cache_path)
+    return p.with_name(p.name.replace(".cache.jsonl", ".ext.cache.jsonl"))
 
 # --- Conditions (mirror prompts.PROMPTS; do not hardcode elsewhere) ---------
 # Imported lazily to avoid a hard dependency when only constants are needed.

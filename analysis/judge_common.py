@@ -118,6 +118,13 @@ def batch_submit(jobs, judges=None, cache_path=None, batch_dir=None,
             f"batch may be in flight and re-submitting would overwrite its "
             f"manifest (wrong-item contamination on download). Run --batch "
             f"download first, or archive/delete the batch dir, or pass force.")
+    registry_chk = load_model_registry()
+    hf_judges = [j for j in judges
+                 if resolve_model(j, registry_chk).startswith("hf/")]
+    if hf_judges:
+        raise SystemExit(
+            f"  HF judges {hf_judges} have no batch API — run them with the "
+            f"SYNCHRONOUS path (run_jobs / the runner's --ext flag), not --batch.")
     done = _cache_load(pathlib.Path(cache_path))
     work = [(job, judge) for job in jobs for judge in judges
             if (job["item_id"], judge) not in done]
