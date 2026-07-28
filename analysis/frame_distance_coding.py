@@ -140,6 +140,10 @@ def main():
     df.to_parquet(OUT.with_name(OUT.name.replace(".parquet",".ext.parquet")) if args.ext else OUT,
                   index=False)
 
+    if df.empty or "fdc_schema" not in df.columns:
+        print("\n  no parsed FDC verdicts to assemble "
+              f"({len(records)} records in, all unparsed/errored) — nothing written.")
+        return
     ok = df[df["fdc_schema"].notna()]
     print(f"\n  wrote {OUT} ({len(df)} rows, {df['fdc_schema'].isna().sum()} unparsed)")
     if len(ok):
