@@ -153,7 +153,14 @@ def call_llm(system, user, model_full, max_tokens=2000):
                               {"role": "user", "content": user}],
                     max_tokens=max_tokens,
                 )
-                return resp.choices[0].message.content
+                out = resp.choices[0].message.content or ""
+                # Reasoning models (e.g. DeepSeek-R1) emit an inline
+                # <think>...</think> trace before the answer; keep only the
+                # text after the final </think> so downstream JSON extraction
+                # sees clean output. No-op for non-reasoning models.
+                if "</think>" in out:
+                    out = out.rsplit("</think>", 1)[1].strip()
+                return out
             else:
                 raise ValueError(f"Unknown model prefix: {model_full}")
         except Exception as e:
