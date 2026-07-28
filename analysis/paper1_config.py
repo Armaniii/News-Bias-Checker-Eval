@@ -25,10 +25,10 @@ JUDGES = ["claude-sonnet-4-6", "gpt-5"]          # cross-family Stage-1 pair (PR
 # re-run), via HF Inference Providers (synchronous path; no batch API).
 # Their verdicts are written to SEPARATE `.ext` caches so the pre-registered
 # two-judge analyses (which read JUDGES) are byte-for-byte unaffected.
-JUDGES_EXT_NEW = ["qwen3-235b", "deepseek-r1"]           # the two added judges
+JUDGES_EXT_NEW = ["qwen3-235b", "deepseek-v32"]           # the two added judges
 JUDGES_EXT = JUDGES + JUDGES_EXT_NEW                      # full four-family panel
 JUDGE_FAMILY = {"claude-sonnet-4-6": "anthropic", "gpt-5": "openai",
-                "qwen3-235b": "qwen", "deepseek-r1": "deepseek"}
+                "qwen3-235b": "qwen", "deepseek-r1": "deepseek", "deepseek-v32": "deepseek"}
 
 def ext_cache(cache_path):
     """Sibling cache path for the extended-judge verdicts (…​.ext.cache.jsonl)."""
