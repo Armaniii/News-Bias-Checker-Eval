@@ -497,6 +497,33 @@ would be reported as per-judge exploratory. H26's confirmatory status
 rests on the registered point rule executed as written, and the validity
 grading in Finding~3 absorbs exactly this tension.
 
+\textbf{Reliability does not transfer across judge vendors (four-family
+extension, exploratory).} After Stage-2 we added two open-weight judges
+from two further families---Qwen3-235B-A22B (Alibaba) and
+DeepSeek-V3.2 (DeepSeek), run via HuggingFace Inference Providers---and
+re-scored the instruments across all four families (not pre-registered;
+runners \texttt{analysis/directional\_rd.py~-{}-ext} and
+\texttt{voice\_adoption.py~-{}-ext}, analysis
+\texttt{analysis/four\_family\_analysis.py}). Both instruments'
+verdicts reinforce the gate lesson rather than soften it. The surviving
+RD instrument does \emph{not} generalize: the rate at which each judge
+flags \emph{any} directional substitution ranges five-fold (Anthropic
+$9.5\%$, OpenAI $20.7\%$, Qwen $45.5\%$, DeepSeek $10.6\%$), and sign
+agreement on both-directional items falls from $82\%$ for the
+commercial pair ($n{=}142$) to $44$--$53\%$ for the DeepSeek pairs
+($n{=}30$--$49$), at or near chance. VAR's degeneracy replicates across
+all four labs (every family-pair $\kap \le 0.06$): only Anthropic's
+judge uses the \emph{inheriting} label appreciably ($15.8\%$ vs
+$1.2$--$1.8\%$ for the other three), and the disagreement is
+near-unidirectional---$631$ items where Anthropic labels
+\emph{inheriting} while $\ge2$ other labs label \emph{describing},
+against $5$ the reverse. On inspection these are a stable
+attribution-threshold judgment (whether ``the article characterizes
+$X$'' distances the loaded phrase or asserts it), not noise. The lesson
+generalizes: an instrument validated on one judge pair need not be
+reliable on judges from other labs, and a construct one judge family can
+measure another cannot.
+
 \begin{figure}[t]
 \centering
 \small
@@ -779,7 +806,14 @@ the both-judge-agreed floor is $+2.8$pp against the pooled $+5.2$pp, and
 absolute rates are judge-dependent (Sonnet judge $7.4\%$ vs $3.4\%$;
 GPT-5 judge $14.5\%$ vs $8.2\%$). Distribution shift between the pilot
 gate slice and the deployment population is a live explanation for the
-$\kap$ attenuation, alongside small-$n$ noise. We therefore report H26
+$\kap$ attenuation, alongside small-$n$ noise. A post-hoc four-family
+re-scoring (\S\ref{sec:gates}) further shows the RD instrument's
+reliability is vendor-pair-specific---cross-judge sign agreement is
+$82\%$ for the Anthropic$\times$OpenAI pair but $44$--$71\%$ for
+judges from two other labs (Qwen, DeepSeek-V3.2)---so the directional
+signal is reliably recoverable within the judge pair H26 uses, and the
+claim is conditioned on that pair and its judge-free lexicon
+corroboration, not on cross-vendor agreement. We therefore report H26
 as confirmed under its registered
 procedure and corroborated by a judge-free instrument, with final
 construct arbitration assigned to human coding.

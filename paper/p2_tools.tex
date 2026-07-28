@@ -255,8 +255,9 @@ probability for the exact label---rescale before thresholding.
 The reproducible signals above are politically even-handed on average;
 the classification \emph{errors} are not. Breaking accuracy down by true
 class exposes a single hard case shared by every model
-(Table~\ref{tab:byclass}): \emph{Lean~Right} is the hardest label for all
-four (exact accuracy $0.07$--$0.46$), and difficulty falls as an
+(Table~\ref{tab:byclass}): \emph{Lean~Right} is the hardest label for
+every model we evaluate---all six, spanning four independent labs (exact
+accuracy $0.07$--$0.46$), and difficulty falls as an
 article's expert lean strengthens (Spearman $\rho{=}-0.37$,
 $p{<}10^{-7}$)---the models read the poles well and lose the moderate
 right. The misreads are \emph{directional}: misclassified Lean-Right
@@ -278,12 +279,38 @@ Claude Sonnet 4.5 & $.97$ & $.23$ & $.50$ & $\mathbf{.07}$ & $.90$ \\
 GPT-4.1 & $.88$ & $.47$ & $.75$ & $\mathbf{.46}$ & $.72$ \\
 Claude Sonnet 4.6 & $.92$ & $.78$ & $.55$ & $\mathbf{.20}$ & $.80$ \\
 GPT-5 & $.82$ & $.70$ & $.53$ & $\mathbf{.42}$ & $.60$ \\
+Qwen3-235B & $.70$ & $.62$ & $.65$ & $\mathbf{.35}$ & $.72$ \\
+DeepSeek-V3.2 & $.85$ & $.45$ & $.65$ & $\mathbf{.35}$ & $.68$ \\
 \bottomrule
 \end{tabular}
-\caption{Exact classification accuracy by true lean class. Lean~Right is
-the hardest label for every model.}
+\caption{Exact classification accuracy by true lean class, six models
+across four labs (targets: Claude Sonnet~4.5, GPT-4.1; judges: Claude
+Sonnet~4.6, GPT-5, Qwen3-235B-A22B, DeepSeek-V3.2). Lean~Right is the
+hardest label for every one. The bottom two rows are an exploratory
+four-family extension via HuggingFace Inference Providers
+(\texttt{analysis/rate\_articles\_ext.py}).}
 \label{tab:byclass}
 \end{table}
+
+\textbf{The map holds across four independent labs (exploratory).}
+Adding two open-weight judges from two further families---Qwen3-235B-A22B
+(Alibaba) and DeepSeek-V3.2 (DeepSeek)---extends the committee to six
+models over four labs ($n{=}198$ articles rated by all six;
+\texttt{analysis/four\_family\_analysis.py}). Every headline
+replicates. Lean~Right is the hardest class for all six
+(Table~\ref{tab:byclass}); the agreement$\to$accuracy signal holds on
+all fifteen model pairs, including the new cross-vendor ones
+(Qwen$\times$DeepSeek agree $0.69$ vs disagree $0.45$;
+GPT-5$\times$DeepSeek $0.75$ vs $0.42$); consensus stays a monotone
+accuracy signal, with six-model unanimity ($35\%$ of articles) at
+$90\%$ accuracy; and the right-to-left misread is unchanged ($34\%$ of
+Lean-Right articles labeled Lean-Left or Left, pooled across the six).
+That the same failure and the same reliability signal appear in models
+from Anthropic, OpenAI, Alibaba, and DeepSeek makes an
+inherited-labels explanation harder to sustain and the pattern
+correspondingly more general. These results are exploratory (not
+pre-registered) and, like the rest, use AllSides labels as ground
+truth.
 
 \textbf{Both the map and the failure are prompt-invariant.} Re-running
 the two headline results under five different prompt scaffolds, the
