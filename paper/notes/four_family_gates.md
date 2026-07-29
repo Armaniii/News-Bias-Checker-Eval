@@ -60,3 +60,19 @@ KeyError crashed it before any ext verdicts were written. Low priority
 - H26 directional default: add an honest caveat that RD reliability is
   vendor-pair-specific; the finding stands on the commercial pair + judge-free
   lexicon, not on cross-vendor RD agreement.
+
+
+## UPDATE 2026-07-28 — VAR complete, FDC partial (all 3 instruments now scored)
+- VAR COMPLETE (27,710 verdicts). Full-n family-pair kappa still all ~0:
+  a×deepseek 0.031 (n=13851), a×openai -0.003 (n=999), a×qwen 0.051 (n=13847),
+  deepseek×openai -0.013, deepseek×qwen 0.066 (n=13851), openai×qwen -0.012.
+  Max = 0.066 -> paper should say kappa <= 0.07 (was 0.06). Degenerate confirmed.
+- FDC PARTIAL (684/3974; credits depleted again mid-FDC). New-judge pairs
+  n=258-341, all kappa ~0: a×deepseek -0.011, a×qwen -0.025, deepseek×openai
+  +0.042, deepseek×qwen +0.087, openai×qwen +0.077; a×openai -0.032 (n=2578).
+  Anchor-divergence failure replicates across four labs (clear even at partial n).
+- BOTTOM LINE (all 3 instruments, 4 families): the two-family pass/fail pattern
+  does NOT survive four families. RD ("pass") does not transfer (0.32 commercial
+  pair -> 0.05-0.09 open pairs). VAR + FDC ("fail") replicate as failures across
+  all four labs. Gate lesson maximally reinforced.
+- FDC full-n completion needs ~$3-4 more HF credit (VAR consumed most of the top-up).

@@ -134,7 +134,7 @@ def _load_verdicts(name, field):
             line = line.strip()
             if not line: continue
             r = json.loads(line); p = r.get("parsed") or {}
-            v = p.get(field)
+            v = p.get(field) if isinstance(p, dict) else None
             if v is not None:
                 rows.setdefault(r["item_id"], {})[cfg.JUDGE_FAMILY.get(r["judge"], r.get("judge_family","?"))] = v
     return rows
