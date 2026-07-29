@@ -46,9 +46,11 @@ $4$-model unanimity gate clears $44\%$ of articles at $87\%$ accuracy;
 and neither raw confidence (both models overconfident; a stated $0.9$
 means ${\sim}75\%$) nor a majority-vote ensemble (no accuracy gain over
 the best single model) should be used as a probability. Every result
-holds across five prompt conditions. Findings are exploratory and
-inherit AllSides outlet labels as ground truth; all statistics carry
-bootstrap CIs.
+holds across five prompt conditions, and the reliability map and the
+directional failure both replicate on a six-model committee spanning
+four independent labs (adding Qwen and DeepSeek judges). Findings are
+exploratory and inherit AllSides outlet labels as ground truth; all
+statistics carry bootstrap CIs.
 \end{abstract}
 
 \section{Introduction}
@@ -92,9 +94,10 @@ than an artifact of one.
   direction. The protocol needs no labels at inference and is
   prompt-invariant.
   \item \textbf{A directional failure mode shared across vendors.} All
-  four models read moderate-right content as center-or-left, so a
-  lean-labeling tool built on them under-counts the right; stable in
-  $5/5$ prompt conditions.
+  six models we evaluate---across four independent labs (Anthropic,
+  OpenAI, Alibaba, DeepSeek)---read moderate-right content as
+  center-or-left, so a lean-labeling tool built on them under-counts the
+  right; stable across five prompt conditions and all four vendors.
 \end{enumerate}
 
 \section{Setup}
@@ -109,7 +112,11 @@ headline). Two frontier \emph{target} models (Claude Sonnet~4.5,
 GPT-4.1) and two cross-family \emph{judge} models (Claude Sonnet~4.6,
 GPT-5) perform span-level bias detection with a shared bias-type schema
 \citep{spinde2021babe,hamborg2019automated}, summarization, and
-five-class lean classification with confidence. All analyses are
+five-class lean classification with confidence; two further open-weight
+judges (Qwen3-235B-A22B, Alibaba; DeepSeek-V3.2), added post hoc via
+HuggingFace Inference Providers, extend the classification committee to
+six models across four labs for the four-family checks
+(\texttt{analysis/rate\_articles\_ext.py}). All analyses are
 exploratory (not pre-registered) and use expert AllSides labels as
 ground truth \citep{baly2020detect}; bootstrap CIs use $10^4$ resamples.
 
