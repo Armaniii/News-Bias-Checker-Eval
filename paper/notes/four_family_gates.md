@@ -67,12 +67,13 @@ KeyError crashed it before any ext verdicts were written. Low priority
   a×deepseek 0.031 (n=13851), a×openai -0.003 (n=999), a×qwen 0.051 (n=13847),
   deepseek×openai -0.013, deepseek×qwen 0.066 (n=13851), openai×qwen -0.012.
   Max = 0.066 -> paper should say kappa <= 0.07 (was 0.06). Degenerate confirmed.
-- FDC PARTIAL (684/3974; credits depleted again mid-FDC). New-judge pairs
-  n=258-341, all kappa ~0: a×deepseek -0.011, a×qwen -0.025, deepseek×openai
-  +0.042, deepseek×qwen +0.087, openai×qwen +0.077; a×openai -0.032 (n=2578).
-  Anchor-divergence failure replicates across four labs (clear even at partial n).
+- FDC COMPLETE (3974). All family-pair kappa near zero, max 0.134:
+  a×deepseek 0.000 (n=1455), a×openai -0.032 (n=2578), a×qwen -0.034 (n=1979),
+  deepseek×openai 0.061 (n=1455), deepseek×qwen 0.134 (n=1450), openai×qwen
+  0.078 (n=1979). Anchor-divergence failure replicates across all four labs
+  (every pair kappa <= 0.13).
 - BOTTOM LINE (all 3 instruments, 4 families): the two-family pass/fail pattern
   does NOT survive four families. RD ("pass") does not transfer (0.32 commercial
   pair -> 0.05-0.09 open pairs). VAR + FDC ("fail") replicate as failures across
   all four labs. Gate lesson maximally reinforced.
-- FDC full-n completion needs ~$3-4 more HF credit (VAR consumed most of the top-up).
+- ALL THREE INSTRUMENTS COMPLETE across four families (RD 3974, VAR 27710, FDC 3974). Written into p1_disclosure.tex Finding 1.

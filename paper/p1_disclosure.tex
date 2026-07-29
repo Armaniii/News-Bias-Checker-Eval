@@ -501,28 +501,32 @@ grading in Finding~3 absorbs exactly this tension.
 extension, exploratory).} After Stage-2 we added two open-weight judges
 from two further families---Qwen3-235B-A22B (Alibaba) and
 DeepSeek-V3.2 (DeepSeek), run via HuggingFace Inference Providers---and
-re-scored the instruments across all four families (not pre-registered;
-runners \texttt{analysis/directional\_rd.py~-{}-ext} and
-\texttt{voice\_adoption.py~-{}-ext}, analysis
-\texttt{analysis/four\_family\_analysis.py}). Both instruments'
-verdicts reinforce the gate lesson rather than soften it. The surviving
+re-scored all three instruments across all four families (not
+pre-registered; runners \texttt{analysis/directional\_rd.py~-{}-ext},
+\texttt{voice\_adoption.py~-{}-ext},
+\texttt{frame\_distance\_coding.py~-{}-ext}; analysis
+\texttt{analysis/four\_family\_analysis.py}). The
+verdicts reinforce the gate lesson rather than soften it, and the
+two-family pass/fail pattern does not survive. The surviving
 RD instrument does \emph{not} generalize: the rate at which each judge
 flags \emph{any} directional substitution ranges five-fold (Anthropic
 $9.5\%$, OpenAI $20.7\%$, Qwen $45.5\%$, DeepSeek $10.6\%$), and sign
 agreement on both-directional items falls from $82\%$ for the
 commercial pair ($n{=}142$) to $44$--$53\%$ for the DeepSeek pairs
-($n{=}30$--$49$), at or near chance. VAR's degeneracy replicates across
-all four labs (every family-pair $\kap \le 0.06$): only Anthropic's
-judge uses the \emph{inheriting} label appreciably ($15.8\%$ vs
-$1.2$--$1.8\%$ for the other three), and the disagreement is
-near-unidirectional---$631$ items where Anthropic labels
+($n{=}30$--$49$), at or near chance. Both instruments that failed the
+original gate fail identically across all four labs: for VAR every
+family-pair $\kap \le 0.07$ (full re-scoring, $27{,}710$ verdicts) and
+for FDC every family-pair $\kap \le 0.13$. VAR's failure is legible:
+only Anthropic's judge uses the \emph{inheriting} label appreciably
+($15.8\%$ vs $1.2$--$1.8\%$ for the other three), and the disagreement
+is near-unidirectional---$631$ items where Anthropic labels
 \emph{inheriting} while $\ge2$ other labs label \emph{describing},
 against $5$ the reverse. On inspection these are a stable
 attribution-threshold judgment (whether ``the article characterizes
 $X$'' distances the loaded phrase or asserts it), not noise. The lesson
-generalizes: an instrument validated on one judge pair need not be
-reliable on judges from other labs, and a construct one judge family can
-measure another cannot.
+generalizes across three instruments and four labs: an instrument
+validated on one judge pair need not be reliable on judges from other
+labs, and a construct one judge family can measure another cannot.
 
 \begin{figure}[t]
 \centering
