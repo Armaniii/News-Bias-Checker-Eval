@@ -41,7 +41,7 @@ def load(cond):
 def rows_for(cond):
     d = load(cond)
     out = []
-    for a in set(d[TARGETS[0]]) & set(d[TARGETS[1]]):
+    for a in sorted(set(d[TARGETS[0]]) & set(d[TARGETS[1]])):
         e = exp5(a)
         if e is None: continue
         (l1, c1), (l2, c2) = d[TARGETS[0]][a], d[TARGETS[1]][a]
@@ -71,10 +71,19 @@ def capture(rows, key, frac):
 
 
 def aurc(rows, trust):
+    """Tie-robust expected AURC: within a tie-group of the trust score the
+    ordering is arbitrary, so we accrue error at the group's mean rate
+    (the expectation over within-group orderings) rather than an arbitrary
+    realized order. For continuous scores this equals the usual AURC."""
+    from itertools import groupby
     rs = sorted(rows, key=trust, reverse=True)      # most trusted first
-    c = np.array([r["correct"] for r in rs])
-    risk = np.cumsum(~c) / np.arange(1, len(c) + 1)
-    return float(np.trapz(risk, np.arange(1, len(c) + 1) / len(c)))
+    seq = []
+    for _, grp in groupby(rs, key=trust):
+        g = list(grp)
+        rate = np.mean([not r["correct"] for r in g])
+        seq.extend([rate] * len(g))
+    risk = np.cumsum(seq) / np.arange(1, len(seq) + 1)
+    return float(np.trapz(risk, np.arange(1, len(seq) + 1) / len(seq)))
 
 
 def boot_articles(rows, stat, rng):

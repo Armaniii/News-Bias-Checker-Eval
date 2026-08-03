@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""phase2_analyses.py — the panel's 'free' analyses for Paper 2 revision
+(paper/notes/panel_review_p2.md P1 items 12 / DA-M3 / R1 special charge).
+All v3-only. Outputs: printed report + data/phase2_analyses.json.
+
+A. Per-condition router: agree/disagree accuracy + AURC (disagree, conf,
+   combined) in each of the 5 prompt conditions (router transfer check).
+B. Unanimous-error composition: for the two-vendor 4-model committee and the
+   4-lab 6-model committee (baseline), the true-class composition of items
+   they clear unanimously BUT get wrong — does the gate auto-clear the
+   Lean-Right misreads? (DA-M3 coherence check)
+C. Boundary-exclusion check: Lean-Right accuracy on 'core' articles (middle
+   50% of the observed Lean-Right continuous-rating range) vs all — is the
+   Lean-Right hole a class-boundary artifact? (R1)
+"""
+import json, glob, csv, sys, pathlib
+import numpy as np
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / "analysis"))
+csv.field_size_limit(10**7)
+from triage_router import L5, V3, exp5, TARGETS, CONDS, load, rows_for, aurc
+
+JUDGES = ("claude-sonnet-4-6", "gpt-5", "qwen3-235b", "deepseek-v32")
+INV = {v: k for k, v in L5.items()}
+R = {}
+
+# ---------- A. per-condition router ----------
+print("A. ROUTER PER CONDITION (v3-only)")
+R["per_condition"] = {}
+for c in CONDS:
+    rows = rows_for(c)
+    ag = [r["correct"] for r in rows if r["agree"]]
+    di = [r["correct"] for r in rows if not r["agree"]]
+    a = {"n": len(rows), "agree_acc": round(float(np.mean(ag)), 3),
+         "disagree_acc": round(float(np.mean(di)), 3),
+         "aurc_disagree": round(aurc(rows, lambda r: (r["agree"], 0)), 3),
+         "aurc_conf": round(aurc(rows, lambda r: (0, r["minc"])), 3),
+         "aurc_combined": round(aurc(rows, lambda r: (r["agree"], r["minc"])), 3)}
+    R["per_condition"][c] = a
+    print(f"  {c:14s} n={a['n']} agree={a['agree_acc']} disagree={a['disagree_acc']} "
+          f"AURC d/c/comb={a['aurc_disagree']}/{a['aurc_conf']}/{a['aurc_combined']}")
+
+# ---------- B. unanimous-error composition ----------
+def lean_committee():
+    pred = {}
+    d0 = load("baseline")
+    for t in TARGETS:
+        pred[t] = {a: v[0] for a, v in d0[t].items()}
+    for j in JUDGES:
+        p = {}
+        for f in glob.glob(str(ROOT / f"results/article_ratings/{j}/*.json")):
+            d = json.load(open(f)); pl = d.get("predicted_lean")
+            if pl in L5 and d.get("article_id") in V3:
+                p[d["article_id"]] = L5[pl]
+        if p: pred[j] = p
+    return pred
+
+pred = lean_committee()
+print("\nB. UNANIMOUS-ERROR COMPOSITION (baseline lean)")
+R["unanimous_errors"] = {}
+for label, models in [("4-model (two-vendor)", list(TARGETS) + list(JUDGES[:2])),
+                      ("6-model (four-lab)", list(TARGETS) + list(JUDGES))]:
+    common = [a for a in set.intersection(*[set(pred[m]) for m in models])
+              if exp5(a) is not None]
+    unan = [a for a in common if len({pred[m][a] for m in models}) == 1]
+    errs = [a for a in unan if pred[models[0]][a] != exp5(a)]
+    comp = {INV[c]: sum(1 for a in errs if exp5(a) == c) for c in range(-2, 3)}
+    comp = {k: v for k, v in comp.items() if v}
+    R["unanimous_errors"][label] = {
+        "n_common": len(common), "n_unanimous": len(unan), "n_errors": len(errs),
+        "gate_acc": round(1 - len(errs) / len(unan), 3) if unan else None,
+        "error_true_class": comp}
+    print(f"  {label}: unanimous {len(unan)}/{len(common)}, errors {len(errs)} "
+          f"(acc {R['unanimous_errors'][label]['gate_acc']}), true-class of errors: {comp}")
+
+# ---------- C. boundary-exclusion Lean-Right check ----------
+print("\nC. LEAN-RIGHT BOUNDARY CHECK (baseline, per target)")
+lr = [(a, float(V3[a]["lean_rating"])) for a in V3
+      if V3[a].get("labeled_lean") == "Lean Right" and V3[a].get("lean_rating")]
+ratings = sorted(r for _, r in lr)
+q1, q3 = np.percentile(ratings, [25, 75])
+core = {a for a, r in lr if q1 <= r <= q3}
+R["boundary_check"] = {"lr_rating_range": [min(ratings), max(ratings)],
+                       "core_band": [round(q1, 2), round(q3, 2)], "n_core": len(core),
+                       "n_all": len(lr)}
+d0 = load("baseline")
+for t in TARGETS:
+    allacc = [d0[t][a][0] == 1 for a, _ in lr if a in d0[t]]
+    coreacc = [d0[t][a][0] == 1 for a in core if a in d0[t]]
+    R["boundary_check"][t] = {"all": round(float(np.mean(allacc)), 3),
+                              "core": round(float(np.mean(coreacc)), 3),
+                              "n_all": len(allacc), "n_core": len(coreacc)}
+    print(f"  {t}: all {np.mean(allacc):.3f} (n={len(allacc)}) vs core-band "
+          f"{np.mean(coreacc):.3f} (n={len(coreacc)})  [band {q1:.1f}..{q3:.1f}]")
+
+(ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))
+print("\nwrote data/phase2_analyses.json")

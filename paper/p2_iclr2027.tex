@@ -268,15 +268,16 @@ does not reach significance either). Integrated over
 \emph{all} coverage levels the picture is complementary: confidence,
 being continuous, resolves risk within the agree and disagree groups and
 so has a modestly lower area under the risk--coverage curve
-(AURC $0.213$ vs disagreement's $0.305$; random $0.41$, oracle
-$0.102$), even though the two are tied on error ranking. The two signals
+(tie-robust expected AURC $0.217$ vs disagreement's $0.296$; random
+${\approx}0.42$, oracle $0.102$), even though the two are tied on error ranking. The two signals
 carry the same information but deliver it differently---disagreement is
 \emph{free} and most powerful in the low-budget regime, confidence is
 smoother across the curve---and \emph{combining} them (route
 disagreements first, break ties within each group by confidence)
-achieves the lowest area of any signal (AURC $0.197$), an ordering stable across all five
-prompt conditions (disagreement AURC $0.27$--$0.35$, confidence
-$0.19$--$0.22$). The operational recommendation: \emph{route model
+achieves the lowest area of any signal (AURC $0.201$), an ordering stable across all five
+prompt conditions (disagreement AURC $0.29$--$0.34$, confidence
+$0.19$--$0.22$, combined lowest or tied-lowest in every condition;
+agree-vs-disagree accuracy $0.68$--$0.74$ vs $0.31$--$0.44$). The operational recommendation: \emph{route model
 disagreements to human review first, rank within groups by confidence,
 and expect no ranking gain from confidence alone until the budget exceeds
 the disagreement rate.}
@@ -307,7 +308,14 @@ accuracy. Its deployable value is instead a high-precision \emph{gate}:
 the four models agree unanimously on $44\%$ of articles, and there they
 are $87\%$ accurate---so unanimity auto-clears nearly half the volume at
 high precision, and the residual is exactly the disagreement set the
-router sends to review.
+router sends to review. A natural worry is that a committee-blind gate
+would silently pass the shared directional failure of
+\S\ref{sec:fail}; empirically it does not concentrate there --- the
+true classes of the two-vendor gate's $11$ unanimous errors are spread
+across Lean-Left ($4$), Center ($3$), and Lean-Right ($4$), and the
+four-lab six-model gate clears $35\%$ of articles at $90\%$ accuracy
+with only $2$ of its $7$ errors on Lean-Right
+(\texttt{analysis/phase2\_analyses.py}).
 
 \textbf{Never read raw confidence as a probability.} Both models are
 severely overconfident on the exact five-class label (mean confidence
@@ -386,7 +394,11 @@ the two headline results under five different prompt scaffolds, the
 agreement$\to$accuracy gap holds in all five (gap $0.28$--$0.36$,
 bootstrap $P(\text{gap}{>}0){=}1.0$ in every condition) and Lean~Right is
 the strict hardest class in all five (pooled accuracy $0.21$--$0.29$).
-The pattern is a property of the models, not of one prompt. Two riders:
+The pattern is a property of the models, not of one prompt. Nor is it
+a class-boundary artifact: restricting Lean-Right articles to the core
+band of their continuous rating (middle two quartiles) leaves the hole
+unchanged (Sonnet $0.086$ vs $0.075$ on all; GPT-4.1 $0.412$ vs
+$0.462$). Two riders:
 the Lean-Right effect is Claude-driven (Claude is the worst model on it
 in $5/5$ conditions, GPT-4.1 in only $3/5$), and lean classification is
 least reliable on policy-abstract topics (elections/economy/climate) and
