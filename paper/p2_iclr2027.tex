@@ -29,30 +29,32 @@ tools---are increasingly built by asking a frontier model to flag biased
 spans, label an article's lean, and explain itself. Which of those
 outputs can a builder trust, and how should the untrustworthy ones be
 triaged \emph{without} ground-truth labels at inference time? Evaluating
-two frontier target models and two cross-family judges on 200
-expert-rated U.S.\ news articles, we first map the primitives: the
+two frontier target models and two cross-family judges on 200 U.S.\
+news articles carrying outlet-anchored AllSides ratings, we first map the primitives: the
 \emph{volume} of flagged spans is a valid partisan-intensity meter
 (Spearman $\rho \approx 0.6$), and models rank-track the continuous
 expert lean rating at $\rho \approx 0.8$, but a single model's lean
 label near the center-right, its omission/framing flags (chance-corrected
 agreement $\kap \le 0.14$), and the specific text it highlights
 (cross-model overlap $0.26$) are model-specific opinion. We then turn the
-map into a validated selective-prediction protocol. A cost-free
-\emph{committee-disagreement} bit carries the same error-ranking
-information as a calibrated confidence score (AUC $0.69$ vs $0.70$,
-$p{=}.90$) for free, captures significantly more errors per unit of
-human-review budget in the practical $20$--$30\%$ regime ($+6$--$8$pts,
-$p{<}.05$; disagreements are $32\%$ vs $71\%$ accurate), and combined
-with confidence dominates either signal alone on the risk--coverage
-curve; a $4$-model unanimity gate clears $44\%$ of articles at $87\%$
-accuracy; and neither raw confidence (both models overconfident; a stated
+map into a validated selective-prediction protocol. A label-free
+\emph{committee-disagreement} bit (one extra model call, no annotation)
+is not distinguishable from a calibrated confidence score as an error
+ranker at this sample size (AUC $0.70$ vs $0.74$), shows a directional
+(non-significant) error-capture advantage at $20$--$30\%$ review
+budgets ($+6$--$7$pts; committee picks are $34\%$ accurate on
+disagreements vs $74\%$ on agreements, part of the gap structural), and
+combined with confidence yields the lowest risk--coverage area of any
+signal (AURC $0.20$ vs $0.21$ confidence, $0.31$ disagreement); a
+two-vendor four-model unanimity gate clears $44\%$ of articles at
+$87\%$ accuracy; and neither raw confidence (both models overconfident; a stated
 $0.9$ means ${\sim}75\%$) nor a majority-vote ensemble (no accuracy gain
-over the best single model) should be used as a probability. Every result
-holds across five prompt conditions, and the reliability map and the
-directional failure both replicate on a six-model committee spanning
+over the best single model) should be used as a probability. The two headline results hold across five prompt conditions, and the
+reliability map and the directional failure both replicate on a six-model committee spanning
 four independent labs (Anthropic, OpenAI, Alibaba, DeepSeek). Findings
-are exploratory and inherit AllSides outlet labels as ground truth; all
-statistics carry bootstrap CIs.
+are exploratory and inherit AllSides outlet labels as ground truth;
+headline statistics carry article-level bootstrap CIs (committed
+scripts reproduce every number).
 \end{abstract}
 
 \section{Introduction}
@@ -88,10 +90,11 @@ artifact of one.
   which are model-specific opinion (lean labels near center-right;
   omission and framing flags; specific highlights)---each with a number
   and a bootstrap CI (\S\ref{sec:map}).
-  \item \textbf{A validated, label-free triage protocol.} A cost-free
+  \item \textbf{A validated, label-free triage protocol.} A label-free
   committee-disagreement router with a published risk--coverage operating
-  curve, benchmarked against a calibrated confidence router (equal global
-  ranking, superior in-budget error capture); a high-precision unanimity
+  curve, benchmarked against a calibrated confidence router (not
+  distinguishable as an error ranker at this $n$; a directional
+  in-budget capture advantage; lowest AURC when combined); a high-precision unanimity
   gate; and a per-model calibration analysis showing raw confidence must
   be rescaled and is trustworthy only for direction (\S\ref{sec:triage}).
   \item \textbf{A directional failure mode shared across four vendors.}
@@ -117,12 +120,15 @@ signal that needs no human labels at all.
 
 \textbf{Selective prediction.} Deferring uncertain cases to a human is
 classical selective classification, evaluated by the risk--coverage curve
-\citep{elyaniv2010foundations,geifman2017selective}. The standard trust
-signal is model confidence. Our contribution is to show that for
-frontier-model lean classification a \emph{free} signal---whether two
-independent models agree---matches calibrated confidence as a global
-error ranker and beats it in the operationally relevant low-budget
-regime, and requires no labels to compute.
+\citep{elyaniv2010foundations,geifman2017selective}. Committee disagreement as an
+error signal descends from query-by-committee and ensemble uncertainty;
+our contribution is an operating-regime characterization for
+frontier-model lean classification: the annotation-free disagreement bit
+is not distinguishable from calibrated confidence as an error ranker at
+our sample size, shows a directional capture advantage below the
+disagreement rate, and combining the two signals yields the lowest
+risk--coverage area---measured head-to-head with article-clustered
+uncertainty throughout.
 
 \textbf{Political bias in LLMs, and news tasks.} A large literature
 measures LLM political orientation, largely via questionnaires
@@ -361,10 +367,12 @@ disagree $0.45$; GPT-5$\times$DeepSeek $0.75$ vs $0.42$); consensus stays
 a monotone accuracy signal, with six-model unanimity ($35\%$ of articles)
 at $90\%$ accuracy; and the right-to-left misread is unchanged ($34\%$ of
 Lean-Right articles labeled Lean-Left or Left, pooled across the six).
-That the same failure and the same reliability signal appear in models
-from Anthropic, OpenAI, Alibaba, and DeepSeek makes an inherited-labels
-explanation harder to sustain and the pattern correspondingly more
-general.
+Replication across Anthropic, OpenAI, Alibaba, and DeepSeek rules out a
+single-vendor quirk; it cannot, however, discriminate a shared
+model-side bias from an artifact of the shared outlet-anchored labels
+(all six models are scored against the same labels, and shared training
+corpora are a common cause) --- only independent article-level labels
+can separate these.
 
 \textbf{Both the map and the failure are prompt-invariant.} Re-running
 the two headline results under five different prompt scaffolds, the
