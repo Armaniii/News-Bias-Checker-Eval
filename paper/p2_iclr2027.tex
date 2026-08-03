@@ -430,6 +430,21 @@ router's AUC of $0.69$) is a natural next step. Third, any LLM judge
 inside a tool's own quality-control pipeline inherits the reliability
 problem we document for the models themselves.
 
+\section*{Ethics Statement}
+This paper documents a directional reliability failure --- frontier
+models under-label moderate-right news --- in politically sensitive
+tooling, and we state its use explicitly: our evidence supports
+\emph{escalating} affected items to human review, never automated or
+editorial re-weighting of content by political direction; citing this
+work as license to boost content of any lean misreads it. The ground
+truth itself is contested --- outlet-anchored ratings projected to
+articles --- and the failure is measured against, not independent of,
+that standard. The reliability map is dual-use (it also tells an actor
+which detector outputs are unauditable); we judge the builder and
+auditor benefit to outweigh this, and release evaluation code rather
+than any deployed classifier. News text is used under research norms
+with article text redistributed only as required for reproduction.
+
 \section*{Reproducibility Statement}
 The corpus curation script and manifest, all task and judge prompts, the
 runner, the four-family judging scripts
