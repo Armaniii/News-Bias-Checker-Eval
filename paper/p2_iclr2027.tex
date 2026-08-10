@@ -398,9 +398,18 @@ The pattern is a property of the models, not of one prompt. Nor is it
 a class-boundary artifact: restricting Lean-Right articles to the core
 band of their continuous rating (middle two quartiles) leaves the hole
 unchanged (Sonnet $0.086$ vs $0.075$ on all; GPT-4.1 $0.412$ vs
-$0.462$). Two riders:
-the Lean-Right effect is Claude-driven (Claude is the worst model on it
-in $5/5$ conditions, GPT-4.1 in only $3/5$), and lean classification is
+$0.462$). Three riders. First, the Lean-Right effect is Claude-driven
+(Claude is the worst model on it in $5/5$ conditions, GPT-4.1 in only
+$3/5$). Second, the target contrast is not a simple quality ordering
+but an \emph{engagement profile}: on clearly partisan articles (true
+Left or Right, $n{=}80$ paired) Claude Sonnet~4.5 is significantly the
+stronger reader ($0.94$ vs GPT-4.1's $0.80$; of the $13$ articles
+exactly one model read correctly, Claude was right in $12$, McNemar
+exact $p{=}.003$), and it produces the more substantive rationales
+($175$ vs $94$ words on average) --- the same engagement that costs it
+most in the subtle middle, where GPT-4.1's comparative reticence
+protects it (post-hoc contrast;
+\texttt{analysis/phase2\_analyses.py}). Third, lean classification is
 least reliable on policy-abstract topics (elections/economy/climate) and
 most reliable on identity-concrete ones.
 

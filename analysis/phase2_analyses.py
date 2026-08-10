@@ -93,5 +93,31 @@ for t in TARGETS:
     print(f"  {t}: all {np.mean(allacc):.3f} (n={len(allacc)}) vs core-band "
           f"{np.mean(coreacc):.3f} (n={len(coreacc)})  [band {q1:.1f}..{q3:.1f}]")
 
+# ---------- D. target contrast: pole accuracy (paired McNemar) + engagement ----------
+print("\nD. TARGET CONTRAST (baseline): pole accuracy + rationale engagement")
+from scipy import stats as _st
+d0 = load("baseline")
+poles = [a for a in set(d0[TARGETS[0]]) & set(d0[TARGETS[1]]) if exp5(a) in (-2, 2)]
+s = [d0[TARGETS[0]][a][0] == exp5(a) for a in sorted(poles)]
+g = [d0[TARGETS[1]][a][0] == exp5(a) for a in sorted(poles)]
+b = sum(1 for x, y in zip(s, g) if x and not y)
+c = sum(1 for x, y in zip(s, g) if y and not x)
+mc = _st.binomtest(b, b + c).pvalue if b + c else float("nan")
+R["pole_contrast"] = {"n": len(poles), "sonnet": round(float(np.mean(s)), 3),
+                      "gpt41": round(float(np.mean(g)), 3),
+                      "mcnemar_b": b, "mcnemar_c": c, "p_exact": round(float(mc), 4)}
+print(f"  poles (|lean|=2, n={len(poles)}): Sonnet {np.mean(s):.3f} vs GPT-4.1 "
+      f"{np.mean(g):.3f}; McNemar {b}:{c}, exact p={mc:.4f}")
+words = {t: [] for t in TARGETS}
+for cnd in CONDS:
+    for f in glob.glob(str(ROOT / f"results/rollout/eval-c/{cnd}/*/*.json")):
+        j = json.load(open(f)); m = j.get("model"); po = j.get("parsed_output")
+        if m in words and isinstance(po, dict) and j.get("article_id") in V3:
+            r = po.get("reasoning") or ""
+            if r: words[m].append(len(r.split()))
+R["rationale_words"] = {t: round(float(np.mean(v)), 1) for t, v in words.items()}
+print(f"  rationale words (all conds, v3): "
+      + ", ".join(f"{t} {np.mean(v):.0f}" for t, v in words.items()))
+
 (ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))
 print("\nwrote data/phase2_analyses.json")
