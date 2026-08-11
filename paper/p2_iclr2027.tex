@@ -73,7 +73,10 @@ product has none.
 This paper supplies both. We do not ask whether the models are biased (a
 companion study takes up the behavioral question); we ask which of a
 bias detector's outputs a tool can present as reliable, and how to
-triage the rest. Our answer is a reliability map with a clean split---
+triage the rest. We treat each output type a detector produces---flag
+counts, individual highlights, bias-type labels, lean labels,
+confidences---as a \emph{primitive} a product might build on, and score
+each separately. Our answer is a reliability map with a clean split---
 primitives anchored to explicit text reproduce across independent
 models; primitives that require inference about what is absent or
 implied do not---and, built on it, a label-free triage protocol whose
