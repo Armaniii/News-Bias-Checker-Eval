@@ -11,6 +11,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{microtype}
+\usepackage{graphicx}
 \newcommand{\pending}[1]{\textcolor{orange!80!black}{[#1]}}
 \newcommand{\kap}{\kappa}
 
@@ -281,6 +282,18 @@ agree-vs-disagree accuracy $0.68$--$0.74$ vs $0.31$--$0.44$). The operational re
 disagreements to human review first, rank within groups by confidence,
 and expect no ranking gain from confidence alone until the budget exceeds
 the disagreement rate.}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.82\linewidth]{figures/fig_risk_coverage}
+\caption{Risk--coverage operating curves for the three routing signals
+(baseline condition, $n{=}199$ articles; tie-robust expected risk, so
+the binary disagreement signal is flat within its trust groups). Gray
+dashed lines are the analytic random baseline and the oracle bound; the
+shaded band is the practical $20$--$30\%$ review-budget regime.
+Combining disagreement with confidence attains the lowest area (AURC in
+parentheses). Reproduced by \texttt{analysis/fig\_risk\_coverage.py}.}
+\label{fig:rc}
+\end{figure}
 
 \begin{table}[t]\centering\small
 \begin{tabular}{lccccc}
