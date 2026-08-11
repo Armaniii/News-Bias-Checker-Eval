@@ -175,7 +175,10 @@ def deck_b(axs):
     for m1, m2 in itertools.combinations(M6, 2):
         cm = [a for a in c6 if a in pred[m1] and a in pred[m2]]
         agp = [pred[m1][a] == exp5(a) for a in cm if pred[m1][a] == pred[m2][a]]
-        dip = [pred[m1][a] == exp5(a) for a in cm if pred[m1][a] != pred[m2][a]]
+        # disagree side: pair-MEAN accuracy (symmetric; mechanically <= 0.5,
+        # since at most one member can match the single true label)
+        dip = [(int(pred[m1][a] == exp5(a)) + int(pred[m2][a] == exp5(a))) / 2
+               for a in cm if pred[m1][a] != pred[m2][a]]
         a1.plot([0, 1], [np.mean(dip), np.mean(agp)], "-o", color=BLUE,
                 alpha=0.35, lw=0.9, ms=2.5)
     a1.set_xlim(-0.25, 1.25); a1.set_ylim(0, 1)
