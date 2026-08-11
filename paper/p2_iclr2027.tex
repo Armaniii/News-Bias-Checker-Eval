@@ -122,7 +122,12 @@ signal that needs no human labels at all.
 \textbf{Selective prediction.} Deferring uncertain cases to a human is
 classical selective classification, evaluated by the risk--coverage curve
 \citep{elyaniv2010foundations,geifman2017selective}. Committee disagreement as an
-error signal descends from query-by-committee and ensemble uncertainty;
+error signal descends from query-by-committee \citep{seung1992query},
+ensemble uncertainty \citep{lakshminarayanan2017simple}, and
+disagreement-predicts-error results \citep{jiang2022assessing}; in the
+LLM era, sampled self-consistency flags errors label-free
+\citep{manakul2023selfcheckgpt} and diverse-model panels replace single
+judges \citep{verga2024replacing};
 our contribution is an operating-regime characterization for
 frontier-model lean classification: the annotation-free disagreement bit
 is not distinguishable from calibrated confidence as an error ranker at
@@ -331,7 +336,9 @@ four-lab six-model gate clears $35\%$ of articles at $90\%$ accuracy
 with only $2$ of its $7$ errors on Lean-Right
 (\texttt{analysis/phase2\_analyses.py}).
 
-\textbf{Never read raw confidence as a probability.} Both models are
+\textbf{Never read raw confidence as a probability.} Consistent with
+documented verbalized-confidence behavior
+\citep{tian2023just,xiong2024can}, both models are
 severely overconfident on the exact five-class label (mean confidence
 $0.87$--$0.90$ vs accuracy $0.54$--$0.66$); a stated $0.9$ empirically
 means $71\%$ (Claude) to $77\%$ (GPT-4.1) exact accuracy. GPT-4.1's
@@ -459,9 +466,10 @@ triage router is validated on the baseline prompt condition and one model
 pair (though the reliability map and directional failure replicate across
 conditions and vendors); and the label-free signals so far require a
 \emph{committee}---disagreement needs two models, the unanimity gate four.
-A single-model cold-start signal (self-consistency across
-temperature-sampled generations, benchmarked against the disagreement
-router's AUC of $0.69$) is a natural next step. Third, any LLM judge
+A single-model cold-start signal---SelfCheckGPT-style self-consistency
+across temperature-sampled generations
+\citep{manakul2023selfcheckgpt}, benchmarked against the disagreement
+router's AUC of $0.70$---is a natural next step. Third, any LLM judge
 inside a tool's own quality-control pipeline inherits the reliability
 problem we document for the models themselves.
 
