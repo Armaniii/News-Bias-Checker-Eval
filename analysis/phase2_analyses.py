@@ -183,6 +183,10 @@ rows_s = sorted(rows_b, key=lambda r: r["minc"])
 resid_c = sum(not r["correct"] for r in rows_s[k:])
 print(f"  committee + conf-only routing (same workload): residual {resid_c/n:.1%}")
 proto["single_model_residual"] = {k: v["residual_err"] for k, v in single.items()}
+proto["expected_single_residual"] = round(float(np.mean(
+    [v["residual_err"] for v in single.values()])), 3)
+print(f"  ex-ante single-model strategy (uniform pick): expected residual "
+      f"{proto['expected_single_residual']:.1%}")
 proto["conf_only_residual"] = round(resid_c/n, 3)
 R["protocol_end_to_end"] = proto
 (ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))

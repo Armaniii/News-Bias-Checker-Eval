@@ -222,7 +222,28 @@ documents for humans---lexical bias is markedly easier to annotate than
 informational bias (omission, selection) \citep{fan2019basil}, and
 framing annotation has low agreement even for trained coders
 \citep{card2015media}; jury-scale human annotation is the established
-remedy \citep{pastorino2025frame}. The disagreement is not random: the
+remedy \citep{pastorino2025frame}. We propose a simple account of
+\emph{why} the gradient exists: reliability tracks whether the
+judgment's evidence set is \emph{closed} or \emph{open}. For
+word-anchored forms the full evidence is in the shared text---two
+models pointing at ``slammed'' are adjudicating the same span with the
+same linguistic priors, so they converge. The chance-level forms all
+require an \emph{unobserved reference}: bias-by-omission asks what a
+complete account \emph{would have} contained (a counterfactual drawn
+from the judge's prior knowledge of the story); unsubstantiated-claims
+asks whether the world supports an assertion (a verification task
+against knowledge the text does not contain); story choice and
+placement asks how \emph{other} outlets covered the event. Models with
+different training corpora hold different references, so their
+verdicts diverge irreducibly---not because one is careless but because
+the question, posed to a lone judge without retrieval, is answerable
+only from priors. This account is interpretive, but it makes testable
+predictions our data and the literature already match: the same split
+appears in human annotators \citep{fan2019basil}, who also differ in
+priors; the models' detection habits diverge most exactly on the
+open-evidence forms (below); and closing the evidence set---retrieval
+pipelines for claim support \citep{citeguard2026}, or supplying
+comparison coverage---is the known remedy. The disagreement is not random: the
 two models have
 distinct habits---Claude leads with bias-by-omission ($14\%$ of its
 flags), GPT-4.1 with sensationalism ($15\%$)---so one hunts what a story
@@ -383,11 +404,18 @@ other way, however: a \emph{single} model with confidence routing at
 the same workload achieves $14.1\%$ residual error --- if one happens
 to pick GPT-4.1 --- but $22.0\%$ with the other target, and our
 bootstrap shows the best model cannot be identified in advance
-($P(\text{best}) \le .63$, \S above). The two-model protocol's
-$16.1\%$ sits inside that single-model spread at its midpoint's cost:
-what the committee buys is not accuracy but \emph{robustness to the
-model-selection gamble}, plus the label-free unanimity certificate no
-single model can issue. Products already committed to a single
+($P(\text{best}) \le .63$, \S above). The right comparison is
+therefore \emph{ex ante}: a builder who must pick one model without
+ground truth faces an expected residual of $18.1\%$ (uniform over the
+two targets), which the protocol's $16.1\%$ beats---the protocol
+outperforms every strategy available \emph{before} the answer key is
+known, and loses only to hindsight. What the committee buys is not raw
+accuracy but \emph{robustness to the model-selection gamble}, plus the
+label-free unanimity certificate no single model can issue. The residual
+mechanism is also worth naming: the protocol's remaining errors are
+exactly the articles where both models are wrong \emph{together}, which
+agreement can never catch---a committee cannot out-perform its best
+member on accuracy (the ensemble null above), only on risk. Products already committed to a single
 well-calibrated model lose little by confidence routing alone; products
 that cannot validate that choice (the common case, given silent model
 updates) get the protocol's guarantee.
