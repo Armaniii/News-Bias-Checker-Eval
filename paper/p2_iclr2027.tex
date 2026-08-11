@@ -362,9 +362,20 @@ four-lab six-model gate clears $35\%$ of articles at $90\%$ accuracy
 with only $2$ of its $7$ errors on Lean-Right
 (\texttt{analysis/phase2\_analyses.py}).
 
+\begin{figure}[t]\centering
+\includegraphics[width=0.8\linewidth]{figures/fig_protocol_e2e}
+\caption{End-to-end protocol effectiveness: overall error after spending
+the same $38.7\%$ human-review budget under each strategy (baseline
+condition, humans assumed correct; dashed line = no triage). Protocol~1
+beats confidence-only routing of the same committee and sits inside the
+single-model spread without requiring the model-selection gamble.
+Reproduced by \texttt{analysis/fig\_protocol\_e2e.py}.}
+\label{fig:e2e}
+\end{figure}
+
 \textbf{End-to-end, the protocol's value is model-choice robustness.}
 Simulating Protocol~1 on the baseline articles (humans assumed correct;
-\texttt{analysis/phase2\_analyses.py}): routing the $38.7\%$
+Figure~\ref{fig:e2e}; \texttt{analysis/phase2\_analyses.py}): routing the $38.7\%$
 disagreement set cuts overall error from $41.7\%$ to $16.1\%$,
 catching $61\%$ of committee errors, and beats the same committee
 routed by confidence alone ($17.1\%$). An honest comparison cuts the
