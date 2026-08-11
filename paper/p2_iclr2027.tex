@@ -417,8 +417,17 @@ hindsight gap: routing by \emph{weakest consensus first} over the full
 six-model, four-lab committee reaches $14.0\%$ residual at the same
 budget (tie-robust boundary; $59\%$ of its errors caught)---matching
 the hindsight-best single model without the hindsight, at the cost of
-six inference calls per article (the four added judges are open-weight
-and inexpensive). The residual
+six inference calls per article. The cost objection dissolves under
+the deployment arithmetic: the protocol spends machine calls (cents ---
+the four added judges are open-weight, and in our runs cost well under
+a cent per article-call) to economize the resource it is optimizing,
+human review minutes (dollars); one routed human review costs more than
+running the whole committee on dozens of articles, and reaching the
+six-model residual with the two-model protocol would instead require
+widening the human-review budget. Latency and operational complexity
+are the real added costs, and the protocol tiers gracefully: run the
+two-model router synchronously and the cheap judges asynchronously for
+the gate. The residual
 mechanism is also worth naming: a disagreement protocol's remaining
 errors are exactly the articles where the committee is wrong
 \emph{together}, which agreement can never catch---a committee cannot
