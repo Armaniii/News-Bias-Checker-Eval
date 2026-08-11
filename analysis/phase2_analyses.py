@@ -151,5 +151,39 @@ print(f"  n_shared={len(sh)}; " + "; ".join(f"{k} {v}" for k, v in
       sorted(R["biastype_kappa_v3"].items(), key=lambda kv: -kv[1]
              if isinstance(kv[1], float) else 0) if k != "n_shared"))
 
+# ---------- F. END-TO-END protocol evaluation (baseline, v3-only) ----------
+print("\nF. END-TO-END PROTOCOL (route disagreements to human; human assumed correct)")
+rows_b = rows_for("baseline")
+n = len(rows_b)
+agree = [r for r in rows_b if r["agree"]]; dis = [r for r in rows_b if not r["agree"]]
+err_total = sum(not r["correct"] for r in rows_b)
+err_cleared = sum(not r["correct"] for r in agree)
+proto = {"n": n, "workload": round(len(dis)/n, 3),
+         "residual_err": round(err_cleared/n, 3),
+         "cleared_err_rate": round(err_cleared/len(agree), 3),
+         "errors_caught": round((err_total-err_cleared)/err_total, 3),
+         "no_triage_err": round(err_total/n, 3)}
+print(f"  committee no-triage error {proto['no_triage_err']:.1%}; protocol: route "
+      f"{proto['workload']:.1%} to humans -> overall error {proto['residual_err']:.1%} "
+      f"({proto['errors_caught']:.0%} of errors caught; cleared-set error {proto['cleared_err_rate']:.1%})")
+# baseline (a): single best model (GPT-4.1) + confidence routing at SAME workload
+d0 = load("baseline")
+single = {}
+for tm in TARGETS:
+    g = [(v[1], v[0] == exp5(a)) for a, v in d0[tm].items() if exp5(a) is not None]
+    g.sort(key=lambda x: x[0])       # lowest confidence first
+    k = int(round(len(g) * proto["workload"]))
+    resid_g = sum(1 for _, ok in g[k:] if not ok)
+    single[tm] = {"no_triage_err": round(float(np.mean([not ok for _, ok in g])), 3),
+                  "residual_err": round(resid_g/len(g), 3)}
+    print(f"  single-model baseline ({tm} + conf routing, same workload): no-triage "
+          f"{single[tm]['no_triage_err']:.1%} -> residual {single[tm]['residual_err']:.1%}")
+# baseline (b): committee + min-conf routing at same workload (no disagreement signal)
+rows_s = sorted(rows_b, key=lambda r: r["minc"])
+resid_c = sum(not r["correct"] for r in rows_s[k:])
+print(f"  committee + conf-only routing (same workload): residual {resid_c/n:.1%}")
+proto["single_model_residual"] = {k: v["residual_err"] for k, v in single.items()}
+proto["conf_only_residual"] = round(resid_c/n, 3)
+R["protocol_end_to_end"] = proto
 (ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))
 print("\nwrote data/phase2_analyses.json")

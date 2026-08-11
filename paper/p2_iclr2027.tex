@@ -263,8 +263,22 @@ corpus-level regression check, never as a live per-article flag.
 The map says most single-model outputs cannot be shown as fact. A
 deployed product cannot fix this with ground truth---it has none at
 inference---so it needs a trust signal computable from the model outputs
-alone. We show the best such signal is \emph{model disagreement}, and
-benchmark it against the obvious alternative, model confidence.
+alone. The protocol is three rules:
+
+\vspace{2pt}\noindent\fbox{\begin{minipage}{0.965\columnwidth}\small
+\textbf{Protocol 1 (label-free triage).} Run $K{\ge}2$ independent
+models per article. \textbf{(1)~Gate:} if all $K$ agree on the label,
+auto-clear it (measured here: $K{=}4$ clears $44\%$ of articles at
+$87\%$ accuracy; $K{=}6$, $35\%$ at $90\%$). \textbf{(2)~Route:}
+otherwise send the article to human review, ranked disagreements-first,
+ties broken by ascending rescaled confidence (the \emph{combined}
+signal of Figure~\ref{fig:rc}). \textbf{(3)~Display:} never surface
+raw confidence as a probability; rescale it, and trust it only for lean
+\emph{direction}. No step requires a ground-truth label at inference.
+\end{minipage}}\vspace{2pt}
+
+Below we benchmark the routing signal against the obvious alternative,
+model confidence, then evaluate the protocol end-to-end.
 
 \textbf{Route disagreement first.} On five-class lean
 ($n{=}199$ articles, both targets parsed; committee pick on a
@@ -344,6 +358,25 @@ across Lean-Left ($4$), Center ($3$), and Lean-Right ($4$), and the
 four-lab six-model gate clears $35\%$ of articles at $90\%$ accuracy
 with only $2$ of its $7$ errors on Lean-Right
 (\texttt{analysis/phase2\_analyses.py}).
+
+\textbf{End-to-end, the protocol's value is model-choice robustness.}
+Simulating Protocol~1 on the baseline articles (humans assumed correct;
+\texttt{analysis/phase2\_analyses.py}): routing the $38.7\%$
+disagreement set cuts overall error from $41.7\%$ to $16.1\%$,
+catching $61\%$ of committee errors, and beats the same committee
+routed by confidence alone ($17.1\%$). An honest comparison cuts the
+other way, however: a \emph{single} model with confidence routing at
+the same workload achieves $14.1\%$ residual error --- if one happens
+to pick GPT-4.1 --- but $22.0\%$ with the other target, and our
+bootstrap shows the best model cannot be identified in advance
+($P(\text{best}) \le .63$, \S above). The two-model protocol's
+$16.1\%$ sits inside that single-model spread at its midpoint's cost:
+what the committee buys is not accuracy but \emph{robustness to the
+model-selection gamble}, plus the label-free unanimity certificate no
+single model can issue. Products already committed to a single
+well-calibrated model lose little by confidence routing alone; products
+that cannot validate that choice (the common case, given silent model
+updates) get the protocol's guarantee.
 
 \textbf{Never read raw confidence as a probability.} Consistent with
 documented verbalized-confidence behavior

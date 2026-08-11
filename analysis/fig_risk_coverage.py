@@ -62,6 +62,16 @@ ax.annotate(f"confidence ({a_conf:.2f})", (0.56, 0.295), xytext=(0, 12),
 ax.annotate(f"combined ({a_comb:.2f})", (0.60, 0.145), xytext=(0, -14),
             textcoords="offset points", fontsize=8, color="#2a78d6", ha="center")
 
+# protocol operating point: clear the agreement set (61% coverage), route the rest
+agree_cov = np.mean([r["agree"] for r in rows])
+agree_err = np.mean([not r["correct"] for r in rows if r["agree"]])
+ax.plot([agree_cov], [agree_err], "o", ms=7, mfc="white", mec="#2a78d6", mew=1.8, zorder=5)
+ax.annotate("protocol operating point\n(clear agreements; route the rest)",
+            (agree_cov, agree_err), xytext=(0.33, 0.345), textcoords="data",
+            fontsize=7.5, color="#1d5aa8", ha="center",
+            arrowprops=dict(arrowstyle="-", color="#1d5aa8", lw=0.8,
+                            shrinkB=4))
+
 ax.set_xlim(0, 1.02); ax.set_ylim(0, 0.48)
 ax.set_xticks([0, .25, .5, .75, 1.0]); ax.set_xticklabels(["0", "25%", "50%", "75%", "100%"])
 ax.set_xlabel("coverage (share of articles auto-cleared, most-trusted first)", fontsize=8.5)
