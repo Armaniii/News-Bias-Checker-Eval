@@ -114,8 +114,62 @@ KAPPA = [("opinion as fact", .533, BLUE), ("subj. adjectives", .473, BLUE),
          ("story placement", .196, ORANGE), ("omission", .149, ORANGE),
          ("unsubst. claims", .076, ORANGE)]
 
+TRACE_NAMES = {"opinion as fact": "opinion statements presented as fact",
+    "subj. adjectives": "subjective qualifying adjectives",
+    "mind reading": "mind reading", "word choice": "word choice",
+    "ad hominem": "mudslinging/ad hominem",
+    "sensationalism": "sensationalism/emotionalism", "slant": "slant",
+    "elite vs populist": "elite vs. populist", "negativity": "negativity",
+    "spin": "spin", "flawed logic": "flawed logic",
+    "omitted attribution": "omission of source attribution",
+    "story placement": "bias by story choice and placement",
+    "omission": "bias by omission", "unsubst. claims": "unsubstantiated claims"}
+
+def span_traceability():
+    """share of flagged spans verbatim-present in the source, per bias type
+    (deterministic; eval-A ablation, v3-only)."""
+    import re
+    srcs = {a: (V3[a].get("text_clean") or V3[a].get("text") or "").lower()
+            for a in V3}
+    tot, hit = {}, {}
+    for fp in glob.glob(str(ROOT / "results/rollout/eval-a/ablation/*/*.json")):
+        d = json.load(open(fp)); a = d.get("article_id"); po = d.get("parsed_output")
+        if a not in V3 or not isinstance(po, list): continue
+        for x in po:
+            if not isinstance(x, dict) or not x.get("biasType") or not x.get("biasedText"):
+                continue
+            ty = re.sub(r"\s+", " ", x["biasType"].strip().lower()).replace(" bias", "")
+            bt = re.sub(r"\s+", " ", x["biasedText"].strip().lower())
+            if len(bt) < 8: continue
+            tot[ty] = tot.get(ty, 0) + 1
+            hit[ty] = hit.get(ty, 0) + (bt in srcs[a])
+    return {ty: hit[ty] / tot[ty] for ty in tot if tot[ty] >= 40}
+
+def criterion_rho():
+    """Spearman: per-article count of type-X flags vs expert |lean_rating|
+    (both targets pooled; eval-A ablation, v3-only)."""
+    import re
+    from scipy import stats as _st
+    inten = {a: abs(float(V3[a]["lean_rating"])) for a in V3
+             if V3[a].get("lean_rating")}
+    cnt = {}
+    for fp in glob.glob(str(ROOT / "results/rollout/eval-a/ablation/*/*.json")):
+        d = json.load(open(fp)); a = d.get("article_id"); po = d.get("parsed_output")
+        if a not in inten or not isinstance(po, list): continue
+        for x in po:
+            if isinstance(x, dict) and x.get("biasType"):
+                ty = re.sub(r"\s+", " ", x["biasType"].strip().lower()).replace(" bias", "")
+                cnt.setdefault(ty, {})[a] = cnt.setdefault(ty, {}).get(a, 0) + 1
+    arts = sorted(inten)
+    out = {}
+    for ty, c in cnt.items():
+        if sum(c.values()) < 40: continue
+        rho, p = _st.spearmanr([inten[a] for a in arts], [c.get(a, 0) for a in arts])
+        out[ty] = (rho, p)
+    return out
+
 def deck_b(axs):
-    a1, a2, a3 = axs
+    a1, a2, a2b, a2c, a3 = axs
     # (i) agreement -> accuracy, 15 pairs
     import itertools
     for m1, m2 in itertools.combinations(M6, 2):
@@ -127,8 +181,6 @@ def deck_b(axs):
     a1.set_xlim(-0.25, 1.25); a1.set_ylim(0, 1)
     a1.set_xticks([0, 1]); a1.set_xticklabels(["disagree", "agree"])
     a1.set_ylabel("lean-label accuracy", fontsize=7.5)
-    a1.annotate("15 model pairs,\nfour labs", (0.03, 0.9), fontsize=6.5,
-                color=DGRAY, va="top")
     style(a1)
     # (ii) bias-form kappa
     ys = np.arange(len(KAPPA))[::-1]
@@ -142,6 +194,33 @@ def deck_b(axs):
     a2.annotate("needs unobserved\nreference", (0.60, ys[-1] + 1.2), color=ORANGE,
                 fontsize=6.5, ha="right")
     style(a2)
+    # (ii-b) aligned deterministic check: flagged span found verbatim in source
+    tr = span_traceability()
+    for y, (lab, _, col) in zip(ys, KAPPA):
+        v = tr.get(TRACE_NAMES[lab])
+        if v is None: continue
+        a2b.plot([0.55, v], [y, y], "-", color=col, lw=1.0, alpha=0.55)
+        a2b.plot([v], [y], "o", ms=3.2, color=col)
+    a2b.set_yticks(ys); a2b.set_yticklabels([])
+    a2b.set_ylim(a2.get_ylim())
+    a2b.set_xlim(0.55, 0.95); a2b.set_xticks([.6, .9])
+    a2b.set_xticklabels(["60", "90%"])
+    a2b.set_xlabel("span found\nin text", fontsize=7)
+    style(a2b)
+    # (ii-c) criterion validity: flag count tracks expert-rated intensity
+    cr = criterion_rho()
+    for y, (lab, _, col) in zip(ys, KAPPA):
+        v = cr.get(TRACE_NAMES[lab])
+        if v is None: continue
+        rho, p = v
+        mfc = col if p < .01 else "white"
+        a2c.plot([0, rho], [y, y], "-", color=col, lw=1.0, alpha=0.55)
+        a2c.plot([rho], [y], "o", ms=3.2, color=col, mfc=mfc, mew=0.9)
+    a2c.set_yticks(ys); a2c.set_yticklabels([])
+    a2c.set_ylim(a2.get_ylim())
+    a2c.set_xlim(0, 0.62); a2c.set_xticks([0, .3, .6])
+    a2c.set_xlabel("tracks expert\nrating ($\\rho$)", fontsize=7)
+    style(a2c)
     # (iii) gate: committee size -> coverage/accuracy
     pts = [(2, 0.62, 0.74), (4, 0.44, 0.87), (6, 0.35, 0.90)]
     for kk, cov, acc in pts:
@@ -162,19 +241,19 @@ fig, ax = plt.subplots(figsize=(3.6, 2.2))
 deck_a(ax); fig.tight_layout()
 fig.savefig(OUT / "crown_a.pdf"); fig.savefig(OUT / "crown_a.png", dpi=170)
 # B
-fig, axs = plt.subplots(1, 3, figsize=(6.8, 2.2),
-                        gridspec_kw={"width_ratios": [1, 1.35, 1]})
+fig, axs = plt.subplots(1, 5, figsize=(7.4, 2.2),
+                        gridspec_kw={"width_ratios": [1, 1.35, 0.5, 0.5, 1]})
 deck_b(axs); fig.tight_layout()
 fig.savefig(OUT / "crown_b.pdf"); fig.savefig(OUT / "crown_b.png", dpi=170)
 # C
 fig = plt.figure(figsize=(6.8, 4.6))
-gs = fig.add_gridspec(2, 3, height_ratios=[1, 1], hspace=0.55, wspace=0.45,
-                      width_ratios=[1, 1.35, 1])
+gs = fig.add_gridspec(2, 5, height_ratios=[1, 1], hspace=0.55, wspace=0.5,
+                      width_ratios=[1, 1.35, 0.5, 0.5, 1])
 axA = fig.add_subplot(gs[0, :])
 deck_a(axA)
-axs = [fig.add_subplot(gs[1, i]) for i in range(3)]
+axs = [fig.add_subplot(gs[1, i]) for i in range(5)]
 deck_b(axs)
-for ax_, letter in ((axA, "a"), (axs[0], "b"), (axs[1], "c"), (axs[2], "d")):
+for ax_, letter in ((axA, "a"), (axs[0], "b"), (axs[1], "c"), (axs[4], "d")):
     ax_.annotate(letter, xy=(0, 1), xycoords="axes fraction", xytext=(-28, 6),
                  textcoords="offset points", fontsize=10, fontweight="bold")
 fig.savefig(OUT / "crown_c.pdf", bbox_inches="tight")
