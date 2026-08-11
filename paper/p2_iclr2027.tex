@@ -214,7 +214,13 @@ articles, Table~\ref{tab:biastype}). Agreement spans $0.53$ down to
 $0.08$: the word-anchored forms reach moderate agreement
 (opinion-stated-as-fact $0.53$, subjective adjectives $0.47$)---and the forms defined by what
 is \emph{absent from} or \emph{unverified against} the text collapse
-toward chance. The disagreement is not random: the two models have
+toward chance. The gradient echoes what the annotation literature
+documents for humans---lexical bias is markedly easier to annotate than
+informational bias (omission, selection) \citep{fan2019basil}, and
+framing annotation has low agreement even for trained coders
+\citep{card2015media}; jury-scale human annotation is the established
+remedy \citep{pastorino2025frame}. The disagreement is not random: the
+two models have
 distinct habits---Claude leads with bias-by-omission ($14\%$ of its
 flags), GPT-4.1 with sensationalism ($15\%$)---so one hunts what a story
 omits while the other hunts its tone, which is exactly why they cannot
@@ -223,7 +229,10 @@ even when both flag the same article, the specific highlighted text
 overlaps at only Jaccard $0.26$. For a tool: show concrete word-level
 flags; treat any single model's omission, framing, or unsupported-claim
 flag---and any individual highlight---as one model's opinion, surfaced
-only on cross-model agreement.
+only on cross-model agreement. The unsupported-claims bound applies to
+\emph{prompted} flags specifically: dedicated retrieval-plus-verification
+pipelines make claim support a tractable task \citep{citeguard2026}, and
+are the right tool for that primitive.
 
 \begin{table}[t]\centering\small
 \begin{tabular}{lc@{\hskip 2em}lc}
