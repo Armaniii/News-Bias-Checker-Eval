@@ -119,5 +119,37 @@ R["rationale_words"] = {t: round(float(np.mean(v)), 1) for t, v in words.items()
 print(f"  rationale words (all conds, v3): "
       + ", ".join(f"{t} {np.mean(v):.0f}" for t, v in words.items()))
 
+# ---------- E. bias-type cross-model kappa, v3-only (Table 1 recompute) ----------
+print("\nE. BIAS-TYPE KAPPA v3-only (eval-A ablation, both targets)")
+import re as _re
+def _norm(s): return _re.sub(r"\s+", " ", s.strip().lower()).replace(" bias", "")
+bt = {t: {} for t in TARGETS}
+for f in glob.glob(str(ROOT / "results/rollout/eval-a/ablation/*/*.json")):
+    j = json.load(open(f)); m = j.get("model"); po = j.get("parsed_output")
+    a = j.get("article_id")
+    if m not in bt or not isinstance(po, list) or a not in V3: continue
+    bt[m][a] = {_norm(x["biasType"]) for x in po
+                if isinstance(x, dict) and x.get("biasType")}
+sh = sorted(set(bt[TARGETS[0]]) & set(bt[TARGETS[1]]))
+def _kap(typ):
+    x = [typ in bt[TARGETS[0]][a] for a in sh]
+    y = [typ in bt[TARGETS[1]][a] for a in sh]
+    po_ = np.mean([i == j for i, j in zip(x, y)])
+    px, py = np.mean(x), np.mean(y)
+    pe = px * py + (1 - px) * (1 - py)
+    return (po_ - pe) / (1 - pe) if pe < 1 else float("nan")
+from collections import Counter as _C
+allt = _C()
+for t in TARGETS:
+    for s_ in bt[t].values(): allt.update(s_)
+R["biastype_kappa_v3"] = {"n_shared": len(sh)}
+for typ, _ in allt.most_common():
+    either = sum(1 for a in sh if typ in bt[TARGETS[0]][a] or typ in bt[TARGETS[1]][a])
+    if either >= 15:
+        R["biastype_kappa_v3"][typ] = round(float(_kap(typ)), 3)
+print(f"  n_shared={len(sh)}; " + "; ".join(f"{k} {v}" for k, v in
+      sorted(R["biastype_kappa_v3"].items(), key=lambda kv: -kv[1]
+             if isinstance(kv[1], float) else 0) if k != "n_shared"))
+
 (ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))
 print("\nwrote data/phase2_analyses.json")

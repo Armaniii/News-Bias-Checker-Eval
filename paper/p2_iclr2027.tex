@@ -35,8 +35,8 @@ news articles carrying outlet-anchored AllSides ratings, we first map the primit
 \emph{volume} of flagged spans is a valid partisan-intensity meter
 (Spearman $\rho \approx 0.6$), and models rank-track the continuous
 expert lean rating at $\rho \approx 0.8$, but a single model's lean
-label near the center-right, its omission/framing flags (chance-corrected
-agreement $\kap \le 0.14$), and the specific text it highlights
+label near the center-right, its omission and unsupported-claim flags
+(chance-corrected agreement $\kap \le 0.15$), and the specific text it highlights
 (cross-model overlap $0.26$) are model-specific opinion. We then turn the
 map into a validated selective-prediction protocol. A label-free
 \emph{committee-disagreement} bit (one extra model call, no annotation)
@@ -89,7 +89,7 @@ artifact of one.
   outputs of a frontier-model bias detector reproduce across models
   (detection volume; continuous-rating rank; cross-model agreement) and
   which are model-specific opinion (lean labels near center-right;
-  omission and framing flags; specific highlights)---each with a number
+  omission and unsupported-claim flags; specific highlights)---each with a number
   and a bootstrap CI (\S\ref{sec:map}).
   \item \textbf{A validated, label-free triage protocol.} A label-free
   committee-disagreement router with a published risk--coverage operating
@@ -204,9 +204,10 @@ discrete label partition this corpus identically.)
 
 \textbf{Only concrete, word-anchored bias forms reproduce.} Given both
 target models the same bias-type schema, we measure how often they agree
-a form is present (Cohen's $\kap$ over 256 jointly-rated articles,
-Table~\ref{tab:biastype}). No form clears moderate agreement---the ceiling
-is opinion-stated-as-fact at $\kap{=}0.45$---and the forms defined by what
+a form is present (Cohen's $\kap$ over the 200 jointly-rated v3
+articles, Table~\ref{tab:biastype}). Agreement spans $0.53$ down to
+$0.08$: the word-anchored forms reach moderate agreement
+(opinion-stated-as-fact $0.53$, subjective adjectives $0.47$)---and the forms defined by what
 is \emph{absent from} or \emph{unverified against} the text collapse
 toward chance. The disagreement is not random: the two models have
 distinct habits---Claude leads with bias-by-omission ($14\%$ of its
@@ -224,14 +225,14 @@ only on cross-model agreement.
 \toprule
 Reliably agreed ($\kap$) & & Barely above chance ($\kap$) & \\
 \midrule
-opinion stated as fact & $0.45$ & framing & $0.22$ \\
-negativity & $0.32$ & omission of attribution & $0.19$ \\
-word choice & $0.31$ & bias by omission & $0.14$ \\
-sensationalism & $0.24$ & unsubstantiated claims & $0.09$ \\
+opinion stated as fact & $0.53$ & omission of attribution & $0.23$ \\
+subjective adjectives & $0.47$ & story choice \& placement & $0.20$ \\
+mind reading & $0.43$ & bias by omission & $0.15$ \\
+word choice & $0.38$ & unsubstantiated claims & $0.08$ \\
 \bottomrule
 \end{tabular}
 \caption{Cross-model agreement on bias forms (Cohen's $\kap$, two target
-models, 256 shared articles). Detectability tracks textual explicitness:
+models, 200 shared v3 articles). Detectability tracks textual explicitness:
 models agree on loaded \emph{words}, not on what a story \emph{left out}
 or whether a claim is \emph{unsupported}.}
 \label{tab:biastype}
