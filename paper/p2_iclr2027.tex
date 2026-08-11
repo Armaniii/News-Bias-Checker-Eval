@@ -248,7 +248,16 @@ two models have
 distinct habits---Claude leads with bias-by-omission ($14\%$ of its
 flags), GPT-4.1 with sensationalism ($15\%$)---so one hunts what a story
 omits while the other hunts its tone, which is exactly why they cannot
-agree omission is present. The unreliability reaches the span level:
+agree omission is present. Figure~\ref{fig:battery} adds two
+independent validity checks that converge on the same gradient: whether
+the flagged span exists verbatim in the source (deterministic), and
+whether a form's flag count rises with the article's expert-rated
+intensity---the closest available proxy for accuracy in the absence of
+span-level ground truth. The convergence sharpens the map at both ends:
+story-placement and omitted-attribution flags are statistically
+unrelated to expert-rated bias, while unsubstantiated-claims flags
+quote genuine text yet carry no shared judgment---the failure is the
+open-evidence verdict, not the citation. The unreliability reaches the span level:
 even when both flag the same article, the specific highlighted text
 overlaps at only Jaccard $0.26$. For a tool: show concrete word-level
 flags; treat any single model's omission, framing, or unsupported-claim
