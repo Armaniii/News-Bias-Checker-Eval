@@ -213,7 +213,7 @@ discrete label partition this corpus identically.)
 \textbf{Only concrete, word-anchored bias forms reproduce.} Given both
 target models the same bias-type schema, we measure how often they agree
 a form is present (Cohen's $\kap$ over the 200 jointly-rated v3
-articles, Table~\ref{tab:biastype}). Agreement spans $0.53$ down to
+articles, Figure~\ref{fig:battery}). Agreement spans $0.53$ down to
 $0.08$: the word-anchored forms reach moderate agreement
 (opinion-stated-as-fact $0.53$, subjective adjectives $0.47$)---and the forms defined by what
 is \emph{absent from} or \emph{unverified against} the text collapse
@@ -258,23 +258,26 @@ only on cross-model agreement. The unsupported-claims bound applies to
 pipelines make claim support a tractable task \citep{citeguard2026}, and
 are the right tool for that primitive.
 
-\begin{table}[t]\centering\small
-\begin{tabular}{lc@{\hskip 2em}lc}
-\toprule
-Reliably agreed ($\kap$) & & Barely above chance ($\kap$) & \\
-\midrule
-opinion stated as fact & $0.53$ & omission of attribution & $0.23$ \\
-subjective adjectives & $0.47$ & story choice \& placement & $0.20$ \\
-mind reading & $0.43$ & bias by omission & $0.15$ \\
-word choice & $0.38$ & unsubstantiated claims & $0.08$ \\
-\bottomrule
-\end{tabular}
-\caption{Cross-model agreement on bias forms (Cohen's $\kap$, two target
-models, 200 shared v3 articles). Detectability tracks textual explicitness:
-models agree on loaded \emph{words}, not on what a story \emph{left out}
-or whether a claim is \emph{unsupported}.}
-\label{tab:biastype}
-\end{table}
+\begin{figure}[t]\centering
+\includegraphics[width=0.9\linewidth]{figures/fig_bias_battery}
+\caption{A validity battery for bias-type flags (two target models, 200
+shared v3 articles; word-anchored forms in blue, forms requiring an
+unobserved reference in orange). \emph{Left:} chance-corrected
+cross-model agreement that the form is present (Cohen's $\kap$).
+\emph{Middle:} deterministic groundedness---share of flagged spans found
+verbatim in the source; an upper bound on fabrication, since
+paraphrases and the descriptive spans natural to structural forms also
+fail the match. \emph{Right:} criterion validity---Spearman correlation
+between a form's per-article flag count and the article's expert
+intensity rating $|$lean rating$|$ (hollow = not significant; counts
+share variance with overall flag volume). Three independent measures
+converge on the same gradient; omitted-attribution and story-placement
+flags track expert-rated bias not at all ($\rho{=}.10$ and $.02$,
+n.s.), and unsubstantiated-claims flags quote real text ($79\%$
+traceable) while carrying no shared judgment ($\kap{=}.08$).
+Reproduced by \texttt{analysis/fig\_crown.py}.}
+\label{fig:battery}
+\end{figure}
 
 \textbf{A cheap word-list is a corpus monitor, not a per-item detector.}
 A deterministic paired left/right lexicon corroborates aggregate

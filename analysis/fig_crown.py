@@ -238,6 +238,54 @@ def deck_b(axs):
     a3.set_xticks([.3, .5, .7]); a3.set_xticklabels(["30%", "50%", "70%"])
     style(a3)
 
+# ---------------- production: standalone 3-column validity battery ----------------
+def render_battery():
+    fig, axs = plt.subplots(1, 3, figsize=(5.4, 2.9),
+                            gridspec_kw={"width_ratios": [1.5, 0.55, 0.55]})
+    a2, a2b, a2c = axs
+    ys = np.arange(len(KAPPA))[::-1]
+    for y, (lab, k, col) in zip(ys, KAPPA):
+        a2.plot([0, k], [y, y], "-", color=col, lw=1.1, alpha=0.85)
+        a2.plot([k], [y], "o", ms=3.6, color=col)
+    a2.set_yticks(ys); a2.set_yticklabels([k[0] for k in KAPPA], fontsize=7)
+    a2.set_xlim(0, 0.62); a2.set_xticks([0, .2, .4, .6])
+    a2.set_xlabel("cross-model agreement ($\\kappa$)", fontsize=7.5)
+    a2.annotate("word-anchored", (0.60, ys[0] + 0.1), color=BLUE, fontsize=7,
+                ha="right", va="bottom")
+    a2.annotate("needs unobserved reference", (0.60, ys[-1] - 0.15), color=ORANGE,
+                fontsize=7, ha="right", va="top")
+    a2.set_ylim(ys[-1] - 1.3, ys[0] + 1.3)
+    style(a2)
+    tr = span_traceability()
+    for y, (lab, _, col) in zip(ys, KAPPA):
+        v = tr.get(TRACE_NAMES[lab])
+        if v is None: continue
+        a2b.plot([0.55, v], [y, y], "-", color=col, lw=1.1, alpha=0.55)
+        a2b.plot([v], [y], "o", ms=3.6, color=col)
+    a2b.set_xlim(0.55, 0.95); a2b.set_xticks([.6, .9])
+    a2b.set_xticklabels(["60", "90%"])
+    a2b.set_xlabel("span found\nin text", fontsize=7.5)
+    cr = criterion_rho()
+    for y, (lab, _, col) in zip(ys, KAPPA):
+        v = cr.get(TRACE_NAMES[lab])
+        if v is None: continue
+        rho, p = v
+        a2c.plot([0, rho], [y, y], "-", color=col, lw=1.1, alpha=0.55)
+        a2c.plot([rho], [y], "o", ms=3.6, color=col,
+                 mfc=(col if p < .01 else "white"), mew=1.0)
+    a2c.set_xlim(0, 0.62); a2c.set_xticks([0, .3, .6])
+    a2c.set_xticklabels(["0", ".3", ".6"])
+    a2c.set_xlabel("tracks expert\nrating ($\\rho$)", fontsize=7.5)
+    for ax_ in (a2b, a2c):
+        ax_.set_yticks(ys); ax_.set_yticklabels([])
+        ax_.set_ylim(a2.get_ylim())
+        style(ax_)
+    fig.tight_layout()
+    prod = ROOT / "paper" / "figures"
+    fig.savefig(prod / "fig_bias_battery.pdf")
+    fig.savefig(prod / "fig_bias_battery.png", dpi=170)
+    print("wrote", prod / "fig_bias_battery.pdf")
+
 # ---------------- render ----------------
 # A
 fig, ax = plt.subplots(figsize=(3.6, 2.2))
@@ -261,4 +309,5 @@ for ax_, letter in ((axA, "a"), (axs[0], "b"), (axs[1], "c"), (axs[4], "d")):
                  textcoords="offset points", fontsize=10, fontweight="bold")
 fig.savefig(OUT / "crown_c.pdf", bbox_inches="tight")
 fig.savefig(OUT / "crown_c.png", dpi=170, bbox_inches="tight")
+render_battery()
 print("wrote crown_a/b/c to", OUT)
