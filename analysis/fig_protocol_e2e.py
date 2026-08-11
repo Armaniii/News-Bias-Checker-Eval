@@ -14,20 +14,22 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 R = json.loads((ROOT / "data" / "phase2_analyses.json").read_text())
 P = R["protocol_end_to_end"]
 
+P6 = R["protocol6_end_to_end"]
 bars = [  # (label, value, color)
+    ("Protocol 1, six models\n(four labs, model-agnostic)", P6["residual_err"],                   "#1d5aa8"),
     ("single model + confidence\n(if you pick GPT-4.1)",  P["single_model_residual"]["gpt-4.1"], "#c3c2b7"),
-    ("Protocol 1\n(committee, model-agnostic)",           P["residual_err"],                      "#2a78d6"),
+    ("Protocol 1, two models\n(model-agnostic)",           P["residual_err"],                      "#2a78d6"),
     ("committee + confidence only\n(no disagreement signal)", P["conf_only_residual"],            "#c3c2b7"),
     ("single model + confidence\n(if you pick the other)", P["single_model_residual"]["claude-sonnet-4-5"], "#c3c2b7"),
 ]
-fig, ax = plt.subplots(figsize=(5.2, 2.7))
+fig, ax = plt.subplots(figsize=(5.2, 3.1))
 y = range(len(bars))[::-1]
 for yi, (lab, val, col) in zip(y, bars):
     ax.barh(yi, val, height=0.62, color=col, zorder=3)
     ax.annotate(f"{val:.1%}", (val, yi), xytext=(4, 0), textcoords="offset points",
                 va="center", fontsize=8.5, color="#3b3a33")
 ax.axvline(P["no_triage_err"], ls="--", color="#9a9a92", lw=1.1)
-ax.annotate(f"no triage\n{P['no_triage_err']:.1%}", (P["no_triage_err"], 3.35),
+ax.annotate(f"no triage\n{P['no_triage_err']:.1%}", (P["no_triage_err"], 4.35),
             xytext=(-4, 0), textcoords="offset points", ha="right", va="top",
             fontsize=7.5, color="#6b6a60")
 ax.set_yticks(list(y)); ax.set_yticklabels([b[0] for b in bars], fontsize=8)

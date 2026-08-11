@@ -387,9 +387,10 @@ with only $2$ of its $7$ errors on Lean-Right
 \includegraphics[width=0.8\linewidth]{figures/fig_protocol_e2e}
 \caption{End-to-end protocol effectiveness: overall error after spending
 the same $38.7\%$ human-review budget under each strategy (baseline
-condition, humans assumed correct; dashed line = no triage). Protocol~1
-beats confidence-only routing of the same committee and sits inside the
-single-model spread without requiring the model-selection gamble.
+condition, humans assumed correct; dashed line = no triage). The
+two-model protocol beats confidence-only routing of the same committee
+and every ex-ante single-model strategy; the six-model, four-lab
+variant matches the hindsight-best single model without the hindsight.
 Reproduced by \texttt{analysis/fig\_protocol\_e2e.py}.}
 \label{fig:e2e}
 \end{figure}
@@ -411,11 +412,19 @@ two targets), which the protocol's $16.1\%$ beats---the protocol
 outperforms every strategy available \emph{before} the answer key is
 known, and loses only to hindsight. What the committee buys is not raw
 accuracy but \emph{robustness to the model-selection gamble}, plus the
-label-free unanimity certificate no single model can issue. The residual
-mechanism is also worth naming: the protocol's remaining errors are
-exactly the articles where both models are wrong \emph{together}, which
-agreement can never catch---a committee cannot out-perform its best
-member on accuracy (the ensemble null above), only on risk. Products already committed to a single
+label-free unanimity certificate no single model can issue. Scaling the committee closes even the
+hindsight gap: routing by \emph{weakest consensus first} over the full
+six-model, four-lab committee reaches $14.0\%$ residual at the same
+budget (tie-robust boundary; $59\%$ of its errors caught)---matching
+the hindsight-best single model without the hindsight, at the cost of
+six inference calls per article (the four added judges are open-weight
+and inexpensive). The residual
+mechanism is also worth naming: a disagreement protocol's remaining
+errors are exactly the articles where the committee is wrong
+\emph{together}, which agreement can never catch---a committee cannot
+out-perform its best member on accuracy (the ensemble null above), only
+on risk; widening the committee across labs shrinks precisely that
+shared-error set. Products already committed to a single
 well-calibrated model lose little by confidence routing alone; products
 that cannot validate that choice (the common case, given silent model
 updates) get the protocol's guarantee.

@@ -189,5 +189,42 @@ print(f"  ex-ante single-model strategy (uniform pick): expected residual "
       f"{proto['expected_single_residual']:.1%}")
 proto["conf_only_residual"] = round(resid_c/n, 3)
 R["protocol_end_to_end"] = proto
+# ---------- G. six-model protocol end-to-end (same budget, tie-robust) ----------
+print("\nG. SIX-MODEL PROTOCOL (route weakest consensus first, same budget)")
+from collections import Counter as _C6
+pred6 = {t: {a: v[0] for a, v in load("baseline")[t].items()} for t in TARGETS}
+for j in JUDGES:
+    p = {}
+    for f in glob.glob(str(ROOT / f"results/article_ratings/{j}/*.json")):
+        d = json.load(open(f)); pl = d.get("predicted_lean")
+        if pl in L5 and d.get("article_id") in V3: p[d["article_id"]] = L5[pl]
+    pred6[j] = p
+m6 = list(pred6)
+c6 = sorted(a for a in set.intersection(*[set(pred6[m]) for m in m6])
+            if exp5(a) is not None)
+rows6 = []
+for a in c6:
+    votes = [pred6[m][a] for m in m6]
+    modal, cnt = _C6(votes).most_common(1)[0]
+    rows6.append(dict(consensus=cnt, correct=(modal == exp5(a))))
+n6 = len(rows6); err6 = sum(not r["correct"] for r in rows6)
+k6 = int(round(n6 * proto["workload"]))
+# tie-robust: keep strongest-consensus first; boundary group contributes its
+# expected (group-mean) error for the fractional part kept.
+kept_err = 0.0; kept = 0
+for lvl in sorted({r["consensus"] for r in rows6}, reverse=True):
+    g = [r for r in rows6 if r["consensus"] == lvl]
+    take = min(len(g), n6 - k6 - kept)
+    if take <= 0: break
+    kept_err += take * np.mean([not r["correct"] for r in g])
+    kept += take
+proto6 = {"n": n6, "no_triage_err": round(err6 / n6, 3),
+          "residual_err": round(kept_err / n6, 3),
+          "errors_caught": round(1 - kept_err / err6, 3)}
+R["protocol6_end_to_end"] = proto6
+print(f"  6-model majority no-triage {proto6['no_triage_err']:.1%}; protocol at "
+      f"{proto['workload']:.0%} budget -> residual {proto6['residual_err']:.1%} "
+      f"({proto6['errors_caught']:.0%} of errors caught; tie-robust boundary)")
+
 (ROOT / "data" / "phase2_analyses.json").write_text(json.dumps(R, indent=2))
 print("\nwrote data/phase2_analyses.json")
